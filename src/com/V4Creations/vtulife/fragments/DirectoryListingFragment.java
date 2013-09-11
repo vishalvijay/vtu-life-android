@@ -26,12 +26,14 @@ import com.V4Creations.vtulife.server.LoadDirectoryFromServer;
 import com.V4Creations.vtulife.ui.VTULifeMainActivity;
 import com.V4Creations.vtulife.util.ActionBarStatus;
 import com.V4Creations.vtulife.util.DirectoryListItem;
+import com.V4Creations.vtulife.util.GoogleAnalyticsManager;
 import com.V4Creations.vtulife.util.Settings;
 import com.V4Creations.vtulife.util.StackItem;
 import com.actionbarsherlock.app.SherlockListFragment;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
+import com.google.analytics.tracking.android.Tracker;
 
 import de.keyboardsurfer.android.widget.crouton.Style;
 
@@ -58,6 +60,7 @@ public class DirectoryListingFragment extends SherlockListFragment implements
 	private LinearLayout progressLinearLayout;
 	private ProgressBar progressBar;
 	private TextView progressTextView;
+	private Tracker tracker;
 
 	public DirectoryListingFragment() {
 		mActionBarStatus = new ActionBarStatus();
@@ -81,6 +84,8 @@ public class DirectoryListingFragment extends SherlockListFragment implements
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
+		tracker = GoogleAnalyticsManager
+				.getGoogleAnalyticsTracker(vtuLifeMainActivity);
 		initView();
 		hideProgressLinearLayout();
 		initListAdapter();
@@ -112,6 +117,11 @@ public class DirectoryListingFragment extends SherlockListFragment implements
 				.toString();
 		String href = ((TextView) view.findViewById(R.id.hrefTextView))
 				.getText().toString();
+		String fileOrFolderName = ((TextView) view
+				.findViewById(R.id.nameTextView)).getText().toString();
+		GoogleAnalyticsManager.infomGoogleAnalytics(tracker,
+				GoogleAnalyticsManager.CATEGORY_NOTES,
+				GoogleAnalyticsManager.ACTION_FOLDER, fileOrFolderName, 0L);
 		if (ext.equals("dir")) {
 			StackItem stackItem = new StackItem(json, url, directoryName);
 			stack.push(stackItem);

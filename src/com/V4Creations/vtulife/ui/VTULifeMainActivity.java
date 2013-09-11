@@ -16,7 +16,6 @@ import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.TextView;
 
 import com.V4Creations.vtulife.R;
@@ -33,6 +32,7 @@ import com.V4Creations.vtulife.system.SystemFeatureChecker;
 import com.V4Creations.vtulife.util.ActionBarStatus;
 import com.V4Creations.vtulife.util.BaseActivity;
 import com.astuetz.viewpager.extensions.PagerSlidingTabStrip;
+import com.google.analytics.tracking.android.EasyTracker;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 import de.keyboardsurfer.android.widget.crouton.Configuration;
@@ -318,5 +318,16 @@ public class VTULifeMainActivity extends BaseActivity {
 				}
 			}
 		}).start();
+	}
+	@Override
+	protected void onStart() {
+		super.onStart();
+		EasyTracker.getInstance().activityStart(this);
+	}
+
+	@Override
+	protected void onStop() {
+		super.onStop();
+		EasyTracker.getInstance().activityStop(this);
 	}
 }

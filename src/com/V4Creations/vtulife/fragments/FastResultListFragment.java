@@ -26,9 +26,11 @@ import com.V4Creations.vtulife.interfaces.ResultLoadedInterface;
 import com.V4Creations.vtulife.server.LoadResultFromServer;
 import com.V4Creations.vtulife.ui.VTULifeMainActivity;
 import com.V4Creations.vtulife.util.ActionBarStatus;
+import com.V4Creations.vtulife.util.GoogleAnalyticsManager;
 import com.V4Creations.vtulife.util.ResultItem;
 import com.V4Creations.vtulife.util.Settings;
 import com.actionbarsherlock.app.SherlockListFragment;
+import com.google.analytics.tracking.android.Tracker;
 
 import de.keyboardsurfer.android.widget.crouton.Style;
 
@@ -47,6 +49,7 @@ public class FastResultListFragment extends SherlockListFragment implements
 	private boolean isLoading = false;
 	private LoadResultFromServer loadResultFromServer;
 	private ActionBarStatus mActionBarStatus;
+	private Tracker tracker;
 
 	private final String usnRegx = "[1-4][a-zA-Z][a-zA-Z][0-9][0-9][a-zA-Z][a-zA-Z][0-9][0-9][0-9]";
 
@@ -65,6 +68,8 @@ public class FastResultListFragment extends SherlockListFragment implements
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
+		tracker = GoogleAnalyticsManager
+				.getGoogleAnalyticsTracker(vtuLifeMainActivity);
 		initListAdapter();
 		initView();
 		initActionBarCustomView();
@@ -199,9 +204,12 @@ public class FastResultListFragment extends SherlockListFragment implements
 		resultAdapter.notifyDataSetChanged();
 	}
 
-	protected void saveAndRefreshUsnHistory(String string) {
-		if (!Arrays.asList(usnHistory).contains(string)) {
-			Settings.setUsnHistory(vtuLifeMainActivity, string);
+	protected void saveAndRefreshUsnHistory(String usn) {
+		GoogleAnalyticsManager.infomGoogleAnalytics(tracker,
+				GoogleAnalyticsManager.CATEGORY_RESULT,
+				GoogleAnalyticsManager.ACTION_FAST_RESULT, usn, 0L);
+		if (!Arrays.asList(usnHistory).contains(usn)) {
+			Settings.setUsnHistory(vtuLifeMainActivity, usn);
 			usnHistory = Settings.getUsnHistory(vtuLifeMainActivity);
 			adapter = new ArrayAdapter<String>(vtuLifeMainActivity,
 					android.R.layout.simple_dropdown_item_1line, usnHistory);

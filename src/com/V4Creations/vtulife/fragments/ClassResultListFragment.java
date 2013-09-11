@@ -29,9 +29,11 @@ import com.V4Creations.vtulife.interfaces.ResultLoadedInterface;
 import com.V4Creations.vtulife.server.LoadResultFromServer;
 import com.V4Creations.vtulife.ui.VTULifeMainActivity;
 import com.V4Creations.vtulife.util.ActionBarStatus;
+import com.V4Creations.vtulife.util.GoogleAnalyticsManager;
 import com.V4Creations.vtulife.util.ResultItem;
 import com.V4Creations.vtulife.util.Settings;
 import com.actionbarsherlock.app.SherlockListFragment;
+import com.google.analytics.tracking.android.Tracker;
 
 import de.keyboardsurfer.android.widget.crouton.Style;
 
@@ -55,6 +57,7 @@ public class ClassResultListFragment extends SherlockListFragment implements
 	private boolean isCanceled;
 	private Boolean isLoading;
 	private String classUsn;
+	private Tracker tracker;
 
 	public ClassResultListFragment() {
 		itemList = new ArrayList<ResultItem>();
@@ -72,6 +75,8 @@ public class ClassResultListFragment extends SherlockListFragment implements
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
 		isLoading = false;
+		tracker = GoogleAnalyticsManager
+				.getGoogleAnalyticsTracker(vtuLifeMainActivity);
 		initListAdapter();
 		initViews();
 		initActionBarCustomView();
@@ -293,9 +298,12 @@ public class ClassResultListFragment extends SherlockListFragment implements
 		resultAdapter.notifyDataSetChanged();
 	}
 
-	protected void saveAndRefreshUsnHistory(String string) {
-		if (!Arrays.asList(classUsnHistory).contains(string)) {
-			Settings.setClassUsnHistory(vtuLifeMainActivity, string);
+	protected void saveAndRefreshUsnHistory(String usn) {
+		GoogleAnalyticsManager.infomGoogleAnalytics(tracker,
+				GoogleAnalyticsManager.CATEGORY_RESULT,
+				GoogleAnalyticsManager.ACTION_CLASS_RESULT, usn, 0L);
+		if (!Arrays.asList(classUsnHistory).contains(usn)) {
+			Settings.setClassUsnHistory(vtuLifeMainActivity, usn);
 			classUsnHistory = Settings.getClassUsnHistory(vtuLifeMainActivity);
 			adapter = new ArrayAdapter<String>(vtuLifeMainActivity,
 					android.R.layout.simple_dropdown_item_1line,
