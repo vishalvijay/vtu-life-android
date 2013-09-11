@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/subjectRevalResultRelativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0d4b6e"
+    android:descendantFocusability="blocksDescendants"
+    android:padding="1dp"
+    android:paddingBottom="5dp"
+    android:paddingTop="5dp" >
+
+    <TextView
+        android:id="@+id/subjectRevalTextView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:gravity="center_vertical|center_horizontal"
+        android:textColor="#ffffff"
+        android:textIsSelectable="true"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/externalTextView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/subjectRevalTextView"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="@string/external_marks" />
+
+    <RelativeLayout
+        android:id="@+id/externalRelativeLayout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/externalTextView"
+        android:gravity="center_vertical|center_horizontal" >
+
+        <TextView
+            android:id="@+id/previousExternalTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:textIsSelectable="true"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/finalExternalTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="6dp"
+            android:layout_toRightOf="@id/previousExternalTextView"
+            android:textColor="#ffffff"
+            android:textIsSelectable="true"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/internalRevalTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/previousExternalTextView"
+            android:textColor="#ffffff"
+            android:textIsSelectable="true"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/subjectTotalRevalTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/finalExternalTextView"
+            android:layout_marginLeft="6dp"
+            android:layout_toRightOf="@id/internalRevalTextView"
+            android:textColor="#04b304"
+            android:textIsSelectable="true"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/subjectResultRevalTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/previousExternalTextView"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/subjectTotalRevalTextView"
+            android:textColor="#04b304"
+            android:textIsSelectable="true"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+</RelativeLayout>

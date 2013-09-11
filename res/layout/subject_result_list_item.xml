@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/subjectResultRelativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0d4b6e"
+    android:descendantFocusability="blocksDescendants"
+    android:padding="1dp"
+    android:paddingBottom="5dp"
+    android:paddingTop="5dp" >
+
+    <TextView
+        android:id="@+id/subjectTextView"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="2dp"
+        android:textColor="#ffffff"
+        android:textIsSelectable="true"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/externalTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/subjectTextView"
+        android:layout_margin="2dp"
+        android:textColor="#ffffff"
+        android:textIsSelectable="true"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/internalTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/subjectTextView"
+        android:layout_margin="2dp"
+        android:layout_toRightOf="@id/externalTextView"
+        android:textColor="#ffffff"
+        android:textIsSelectable="true"
+        android:textSize="17sp" />
+
+    <TextView
+        android:id="@+id/subjectResultTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/subjectTextView"
+        android:layout_margin="2dp"
+        android:textColor="#04b304"
+        android:textIsSelectable="true"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/subjectTotalTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/subjectTextView"
+        android:layout_margin="2dp"
+        android:layout_toLeftOf="@id/subjectResultTextView"
+        android:textColor="#04b304"
+        android:textIsSelectable="true"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

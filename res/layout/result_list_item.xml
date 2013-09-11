@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="#d7d690"
+    android:gravity="center_vertical|center_horizontal" >
+    <TextView
+        android:id="@+id/resultTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableRight="@drawable/result_devider"
+        android:textColor="#1a870f"
+        android:textIsSelectable="true"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/percentageTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/resultTextView"
+        android:drawableRight="@drawable/result_devider"
+        android:textColor="#1a870f"
+        android:textIsSelectable="true"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/totalTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/percentageTextView"
+        android:textColor="#1a870f"
+        android:textIsSelectable="true"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>

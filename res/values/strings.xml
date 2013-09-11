@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <string name="version">Version : %s</string>
+    <string name="homepage">Homepage : http://v4.vtulife.com</string>
+    <string name="email">Email : v4appfarm@gmail.com</string>
+    <string name="app_description">Description :\nVTU Life android app is a mobile interface of www.vtulife.com. VTU Life provides a platform where Students can communicate, discuss and share resources, information and ideas.</string>
+    <string name="developer">Developer : V4 Creations</string>
+    <string name="support">Support from :\n\twww.techkochi.com\n\tMatrix Inc.\n\tVisitorsid ( http://www.youtube.com/user/visitorsid )</string>
+    <string name="app_name">VTU Life</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="please_wait_">Please wait&#8230;</string>
+    <string name="www_vtulife_com">www.vtulife.com</string>
+    <string name="v4_creations">V4 Creations</string>
+    <string name="post_a_pic_message"><b><i>\"Take a pic and share to us.\nWe will publish it on your name.\"</i></b></string>
+    <string name="revaluation">Revaluation</string>
+    <string name="see_your_current_sem_result_here_nit_is_much_faster_nenter_your_usn_below_n">See your current sem result here.\nIt is much faster.\nEnter your USN below.\n</string>
+    <string name="usn">USN</string>
+    <string name="description">Description</string>
+    <string name="send">Send</string>
+    <string name="size_">"Size : "</string>
+    <string name="modified_">"Modified : "</string>
+    <string name="external_marks">External Marks</string>
+    <string name="class_usn">Class USN</string>
+    <string name="see_your_full_class_current_sem_nresult_here_nit_is_much_faster_nenter_your_class_usn_below_n_class_usn_eg_4pa09cs_">See your full class current sem\nresult here.\nIt is much faster.\nEnter your Class USN below.\n(Class USN eg: 4PA09CS)\n</string>
+    <string name="please_reload">Please reload</string>
+    <string name="usn_submit_button">Submit</string>
+    <string name="vtu_loading_activity_background">Vtu loading activity background</string>
+    <string name="click_to_choose_a_pic">Click to choose a picture</string>
+    <string name="upload_files_message"><b><i>\"Sharing is caring.\nSend your notes to us.\"</i></b></string>
+
+</resources>

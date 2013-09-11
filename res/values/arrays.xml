@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="menu">
+        <item>Home</item>
+        <item>Resources</item>
+        <item>Results</item>
+        <item>Blog</item>
+        <item>Events</item>
+        <item>Upload</item>
+        <item>Login</item>
+        <item>About us</item>
+    </string-array>
+
+</resources>

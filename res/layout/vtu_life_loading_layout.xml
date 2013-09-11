@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/loadRelativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/vtu_load_bg" >
+
+    <ImageView
+        android:id="@+id/centerIconImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/vtu_loading_activity_background"
+        android:padding="70dp"
+        android:src="@drawable/ic_launcher_web" />
+
+</RelativeLayout>
