@@ -319,6 +319,7 @@ public class VTULifeMainActivity extends BaseActivity {
 			}
 		}).start();
 	}
+
 	@Override
 	protected void onStart() {
 		super.onStart();
@@ -329,5 +330,9 @@ public class VTULifeMainActivity extends BaseActivity {
 	protected void onStop() {
 		super.onStop();
 		EasyTracker.getInstance().activityStop(this);
+	}
+
+	public void test(View v) {
+
 	}
 }
