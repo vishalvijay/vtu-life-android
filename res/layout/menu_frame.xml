@@ -5,28 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <RelativeLayout
-        android:id="@+id/actionBar"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/abs__action_bar_default_height"
+    <include
+        android:id="@+id/menuActionBar"
         android:layout_alignParentTop="true"
-        android:background="@drawable/menu_actionbar" >
-
-        <Button
-            android:layout_width="@dimen/abs__action_bar_default_height"
-            android:layout_height="@dimen/abs__action_bar_default_height"
-            android:layout_alignParentLeft="true"
-            android:layout_margin="@dimen/abs__action_bar_icon_vertical_padding"
-            android:background="@drawable/button_red"
-            android:text="2" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:text="@string/app_name"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-    </RelativeLayout>
+        layout="@layout/menu_actionbar" />
 
     <TableLayout
         android:id="@+id/menus"
@@ -93,74 +75,78 @@
         </TableRow>
     </TableLayout>
 
-    <TableLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/menus"
-        android:layout_below="@id/actionBar"
+        android:layout_below="@id/menuActionBar"
+        android:layout_centerInParent="true"
         android:background="@android:color/white"
-        android:gravity="center"
-        android:padding="5dp" >
+        android:scrollbars="none" >
 
-        <TableRow
+        <TableLayout
             android:layout_width="match_parent"
-            android:layout_marginBottom="8dp"
-            android:gravity="center" >
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="5dp" >
 
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:background="@drawable/menu_selector"
-                android:src="@drawable/home" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_marginBottom="8dp"
+                android:gravity="center" >
 
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:background="@drawable/menu_selector"
-                android:src="@drawable/notes" />
-        </TableRow>
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/menu_selector"
+                    android:src="@drawable/home" />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_marginBottom="8dp"
-            android:gravity="center" >
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:background="@drawable/menu_selector"
+                    android:src="@drawable/notes" />
+            </TableRow>
 
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:background="@drawable/menu_selector"
-                android:src="@drawable/result" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_marginBottom="8dp"
+                android:gravity="center" >
 
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:background="@drawable/menu_selector"
-                android:src="@drawable/class_result" />
-        </TableRow>
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/menu_selector"
+                    android:src="@drawable/result" />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_marginBottom="8dp"
-            android:gravity="center" >
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:background="@drawable/menu_selector"
+                    android:src="@drawable/class_result" />
+            </TableRow>
 
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:background="@drawable/menu_selector"
-                android:src="@drawable/share_notes" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_marginBottom="8dp"
+                android:gravity="center" >
 
-            <ImageButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="8dp"
-                android:background="@drawable/menu_selector"
-                android:src="@drawable/share_a_pic" />
-        </TableRow>
-    </TableLayout>
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/menu_selector"
+                    android:src="@drawable/share_notes" />
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:background="@drawable/menu_selector"
+                    android:src="@drawable/share_a_pic" />
+            </TableRow>
+        </TableLayout>
+    </ScrollView>
 
 </RelativeLayout>

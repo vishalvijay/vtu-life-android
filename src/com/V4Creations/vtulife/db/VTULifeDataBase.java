@@ -18,9 +18,9 @@ public class VTULifeDataBase {
 	private DatabaseHelper mDatabaseHelper;
 	public static final String DATABASE_NAME = "vtu_life";
 	public static final int DATABASE_VERSION = 1;
-	public static final String TABLE_RESULT_USN_HISTORY = "result_usn_history";
-	public static final String COL_USN = "usn";
-	public static final String COL_USN_TYPE = "usn_type";
+	private static final String TABLE_RESULT_USN_HISTORY = "result_usn_history";
+	private  static final String COL_USN = "usn";
+	private static final String COL_USN_TYPE = "usn_type";
 
 	public static final String CREATE_TABLE_RESULT_USN_HISTORY = "CREATE TABLE IF NOT EXISTS "
 			+ TABLE_RESULT_USN_HISTORY

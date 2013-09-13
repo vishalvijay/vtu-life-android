@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/abs__action_bar_default_height"
+        android:background="@drawable/menu_actionbar" >
+
+        <Button
+            android:id="@+id/notificationButton"
+            android:layout_width="@dimen/abs__action_bar_default_height"
+            android:layout_height="@dimen/abs__action_bar_default_height"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="@dimen/abs__action_bar_icon_vertical_padding"
+            android:background="@drawable/button_red"
+            android:text="2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Menu"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray" />
+
+</LinearLayout>

@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:padding="@dimen/content_margin"
-        android:scrollbarStyle="insideOverlay" />
+        android:scrollbars="none" />
 
     <LinearLayout
         android:id="@+id/progressLinearLayout"

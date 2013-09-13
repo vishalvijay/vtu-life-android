@@ -32,8 +32,10 @@ import com.V4Creations.vtulife.fragments.VTULifeWebFragment;
 import com.V4Creations.vtulife.system.SystemFeatureChecker;
 import com.V4Creations.vtulife.util.ActionBarStatus;
 import com.V4Creations.vtulife.util.BaseActivity;
+import com.V4Creations.vtulife.util.GoogleAnalyticsManager;
 import com.astuetz.viewpager.extensions.PagerSlidingTabStrip;
 import com.google.analytics.tracking.android.EasyTracker;
+import com.google.analytics.tracking.android.Tracker;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 import de.keyboardsurfer.android.widget.crouton.Configuration;
@@ -65,6 +67,7 @@ public class VTULifeMainActivity extends BaseActivity {
 	private Crouton infiniteCrouton;
 	private static final Configuration CONFIGURATION_INFINITE = new Configuration.Builder()
 			.setDuration(Configuration.DURATION_INFINITE).build();
+	private Tracker tracker;
 
 	public VTULifeMainActivity() {
 		super(R.string.app_name);
@@ -87,6 +90,8 @@ public class VTULifeMainActivity extends BaseActivity {
 	}
 
 	private void initTabs() {
+		tracker = GoogleAnalyticsManager
+				.getGoogleAnalyticsTracker(getApplicationContext());
 		mTabs = (PagerSlidingTabStrip) findViewById(R.id.tabs);
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setBackgroundResource(R.drawable.bg_noise_grey);
@@ -117,8 +122,14 @@ public class VTULifeMainActivity extends BaseActivity {
 				else
 					getSlidingMenu().setTouchModeAbove(
 							SlidingMenu.TOUCHMODE_MARGIN);
-				reflectActionBarChange(((FragmentInfo) mVtuLifeFragmentAdapter
-						.getItem(position)).getActionBarStatus(), position);
+				FragmentInfo fragmentInfo = (FragmentInfo) mVtuLifeFragmentAdapter
+						.getItem(position);
+				reflectActionBarChange(fragmentInfo.getActionBarStatus(),
+						position);
+				GoogleAnalyticsManager.infomGoogleAnalytics(tracker,
+						GoogleAnalyticsManager.CATEGORY_FRAGMENT,
+						GoogleAnalyticsManager.ACTION_FRAGMENT_SELECTED,
+						fragmentInfo.getTitle(), 0L);
 			}
 		});
 	}

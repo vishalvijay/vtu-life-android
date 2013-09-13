@@ -58,6 +58,6 @@
         android:layout_height="match_parent"
         android:layout_above="@id/usnLinearLayout"
         android:padding="@dimen/content_margin"
-        android:scrollbarStyle="insideOverlay" />
+        android:scrollbars="none" />
 
 </RelativeLayout>
