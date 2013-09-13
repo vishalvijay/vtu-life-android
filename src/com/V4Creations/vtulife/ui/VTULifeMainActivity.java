@@ -333,6 +333,8 @@ public class VTULifeMainActivity extends BaseActivity {
 	}
 
 	public void test(View v) {
-
+		Intent intent = new Intent(getApplicationContext(),
+				PreferencesActivity.class);
+		startActivity(intent);
 	}
 }

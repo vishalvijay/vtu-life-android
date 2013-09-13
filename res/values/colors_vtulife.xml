@@ -27,5 +27,9 @@
     <color name="list_even">#0d4b6e</color>
     <color name="gray_white">#2f5870</color>
     <color name="tab_background">#001929</color>
+    <color name="RedButtonBorder">#ff98392d</color>
+    <color name="RedGradientStart">#ffba1a07</color>
+    <color name="RedGradientEnd">#ffdf3f2b</color>
+    <color name="gray">#ff3c3c3c</color>
 
 </resources>

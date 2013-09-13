@@ -29,5 +29,7 @@
     <dimen name="post_a_pic_heigth">200dp</dimen>
     <dimen name="post_a_pic_padding_bottom">12dp</dimen>
     <dimen name="upload_file_title_margin_bottom">80dp</dimen>
+    <dimen name="button_rounding">3.0dip</dimen>
+    <dimen name="border">1.0px</dimen>
 
 </resources>
