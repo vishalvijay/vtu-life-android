@@ -1,7 +1,6 @@
 package com.V4Creations.vtulife.fragments;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Locale;
 
 import android.annotation.TargetApi;
@@ -25,6 +24,7 @@ import android.widget.TextView.OnEditorActionListener;
 import com.V4Creations.vtulife.R;
 import com.V4Creations.vtulife.adapters.ResultAdapter;
 import com.V4Creations.vtulife.adapters.VTULifeFragmentAdapter.FragmentInfo;
+import com.V4Creations.vtulife.db.VTULifeDataBase;
 import com.V4Creations.vtulife.interfaces.ResultLoadedInterface;
 import com.V4Creations.vtulife.server.LoadResultFromServer;
 import com.V4Creations.vtulife.ui.VTULifeMainActivity;
@@ -44,8 +44,7 @@ public class ClassResultListFragment extends SherlockListFragment implements
 	private CheckBox revalCheckBox;
 	private AutoCompleteTextView classUsnAutoCompleteTextView;
 	private ImageButton classSubmitImageButton;
-	private String[] classUsnHistory;
-	private ArrayAdapter<String> adapter;
+	private ArrayAdapter<String> mClassUsnHistoryAdapter;
 	private ArrayList<ResultItem> itemList;
 	private VTULifeMainActivity vtuLifeMainActivity;
 	private ResultAdapter resultAdapter;
@@ -136,10 +135,11 @@ public class ClassResultListFragment extends SherlockListFragment implements
 	private void initAutoCompleteTextView() {
 		classUsnAutoCompleteTextView = (AutoCompleteTextView) getView()
 				.findViewById(R.id.classUsnAutoCompleteTextView);
-		classUsnHistory = Settings.getClassUsnHistory(vtuLifeMainActivity);
-		adapter = new ArrayAdapter<String>(vtuLifeMainActivity,
+		ArrayList<String> classUsnHistory = VTULifeDataBase
+				.getClassUSNHistory(vtuLifeMainActivity);
+		mClassUsnHistoryAdapter = new ArrayAdapter<String>(vtuLifeMainActivity,
 				android.R.layout.simple_dropdown_item_1line, classUsnHistory);
-		classUsnAutoCompleteTextView.setAdapter(adapter);
+		classUsnAutoCompleteTextView.setAdapter(mClassUsnHistoryAdapter);
 		classUsnAutoCompleteTextView.addTextChangedListener(filterTextWatcher);
 	}
 
@@ -302,14 +302,8 @@ public class ClassResultListFragment extends SherlockListFragment implements
 		GoogleAnalyticsManager.infomGoogleAnalytics(tracker,
 				GoogleAnalyticsManager.CATEGORY_RESULT,
 				GoogleAnalyticsManager.ACTION_CLASS_RESULT, usn, 0L);
-		if (!Arrays.asList(classUsnHistory).contains(usn)) {
-			Settings.setClassUsnHistory(vtuLifeMainActivity, usn);
-			classUsnHistory = Settings.getClassUsnHistory(vtuLifeMainActivity);
-			adapter = new ArrayAdapter<String>(vtuLifeMainActivity,
-					android.R.layout.simple_dropdown_item_1line,
-					classUsnHistory);
-			classUsnAutoCompleteTextView.setAdapter(adapter);
-		}
+		if (VTULifeDataBase.setClassUSNHistory(vtuLifeMainActivity, usn))
+			mClassUsnHistoryAdapter.add(usn);
 	}
 
 	@Override

@@ -97,14 +97,18 @@ public class JSONParser {
 				// reader.close();
 				// is.close();
 			} catch (Exception e) {
-				throw new Exception(e.getMessage());
+				throw new Exception(
+						e.getMessage() == null ? "Error in connection"
+								: e.getMessage());
 			}
 
 			// try parse the string to a JSON object
 			try {
 				jObj = new JSONObject(json);
 			} catch (JSONException e) {
-				throw new Exception(e.getMessage());
+				throw new Exception(
+						e.getMessage() == null ? "Error in connection"
+								: e.getMessage());
 			}
 
 		} catch (UnsupportedEncodingException e) {

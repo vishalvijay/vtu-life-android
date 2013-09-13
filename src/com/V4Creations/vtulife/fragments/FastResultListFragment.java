@@ -1,7 +1,6 @@
 package com.V4Creations.vtulife.fragments;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Locale;
 
 import android.os.Bundle;
@@ -22,6 +21,7 @@ import android.widget.TextView.OnEditorActionListener;
 import com.V4Creations.vtulife.R;
 import com.V4Creations.vtulife.adapters.ResultAdapter;
 import com.V4Creations.vtulife.adapters.VTULifeFragmentAdapter.FragmentInfo;
+import com.V4Creations.vtulife.db.VTULifeDataBase;
 import com.V4Creations.vtulife.interfaces.ResultLoadedInterface;
 import com.V4Creations.vtulife.server.LoadResultFromServer;
 import com.V4Creations.vtulife.ui.VTULifeMainActivity;
@@ -41,8 +41,7 @@ public class FastResultListFragment extends SherlockListFragment implements
 	private CheckBox revalCheckBox;
 	private AutoCompleteTextView usnAutoCompleteTextView;
 	private ImageButton submitImageButton;
-	private String[] usnHistory;
-	private ArrayAdapter<String> adapter;
+	private ArrayAdapter<String> mUsnHistoryAdapter;
 	private ArrayList<ResultItem> itemList;
 	private VTULifeMainActivity vtuLifeMainActivity;
 	private ResultAdapter resultAdapter;
@@ -130,11 +129,11 @@ public class FastResultListFragment extends SherlockListFragment implements
 	private void initAutoCompleteTextView() {
 		usnAutoCompleteTextView = (AutoCompleteTextView) getView()
 				.findViewById(R.id.usnAutoCompleteTextView);
-		usnHistory = Settings.getUsnHistory(vtuLifeMainActivity);
-
-		adapter = new ArrayAdapter<String>(vtuLifeMainActivity,
+		ArrayList<String> usnHistory = VTULifeDataBase
+				.getUSNHistory(vtuLifeMainActivity);
+		mUsnHistoryAdapter = new ArrayAdapter<String>(vtuLifeMainActivity,
 				android.R.layout.simple_dropdown_item_1line, usnHistory);
-		usnAutoCompleteTextView.setAdapter(adapter);
+		usnAutoCompleteTextView.setAdapter(mUsnHistoryAdapter);
 
 		usnAutoCompleteTextView.addTextChangedListener(filterTextWatcher);
 	}
@@ -208,13 +207,8 @@ public class FastResultListFragment extends SherlockListFragment implements
 		GoogleAnalyticsManager.infomGoogleAnalytics(tracker,
 				GoogleAnalyticsManager.CATEGORY_RESULT,
 				GoogleAnalyticsManager.ACTION_FAST_RESULT, usn, 0L);
-		if (!Arrays.asList(usnHistory).contains(usn)) {
-			Settings.setUsnHistory(vtuLifeMainActivity, usn);
-			usnHistory = Settings.getUsnHistory(vtuLifeMainActivity);
-			adapter = new ArrayAdapter<String>(vtuLifeMainActivity,
-					android.R.layout.simple_dropdown_item_1line, usnHistory);
-			usnAutoCompleteTextView.setAdapter(adapter);
-		}
+		if (VTULifeDataBase.setUSNHistory(vtuLifeMainActivity, usn))
+			mUsnHistoryAdapter.add(usn);
 	}
 
 	@Override

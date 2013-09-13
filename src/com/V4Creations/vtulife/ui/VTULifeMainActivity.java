@@ -21,6 +21,7 @@ import android.widget.TextView;
 import com.V4Creations.vtulife.R;
 import com.V4Creations.vtulife.adapters.VTULifeFragmentAdapter;
 import com.V4Creations.vtulife.adapters.VTULifeFragmentAdapter.FragmentInfo;
+import com.V4Creations.vtulife.db.VTULifeDataBase;
 import com.V4Creations.vtulife.fragments.ClassResultListFragment;
 import com.V4Creations.vtulife.fragments.DirectoryListingFragment;
 import com.V4Creations.vtulife.fragments.FastResultListFragment;
@@ -330,6 +331,12 @@ public class VTULifeMainActivity extends BaseActivity {
 	protected void onStop() {
 		super.onStop();
 		EasyTracker.getInstance().activityStop(this);
+	}
+
+	@Override
+	protected void onDestroy() {
+		VTULifeDataBase.closeDb();
+		super.onDestroy();
 	}
 
 	public void test(View v) {
