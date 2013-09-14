@@ -57,7 +57,7 @@ public class VTULifeDataBase {
 		throw new CloneNotSupportedException();
 	}
 
-	private ArrayList<String> getUSNHistoryByType(int type) {
+	synchronized private ArrayList<String> getUSNHistoryByType(int type) {
 		SQLiteDatabase db = mDatabaseHelper.getReadableDatabase();
 		Cursor cursor = db.query(TABLE_RESULT_USN_HISTORY,
 				new String[] { COL_USN }, COL_USN_TYPE + "=? ",
@@ -69,7 +69,7 @@ public class VTULifeDataBase {
 		return usnArrayList;
 	}
 
-	private boolean setUSNHistoryByType(String usn, int type) {
+	synchronized private boolean setUSNHistoryByType(String usn, int type) {
 		long result;
 		try {
 			ContentValues contentValues = new ContentValues();
@@ -84,37 +84,37 @@ public class VTULifeDataBase {
 		return result != -1;
 	}
 
-	private boolean clearUSNHistoryByType(int type) {
+	synchronized private boolean clearUSNHistoryByType(int type) {
 		SQLiteDatabase db = mDatabaseHelper.getWritableDatabase();
 		int result = db.delete(TABLE_RESULT_USN_HISTORY, COL_USN_TYPE + "=?",
 				new String[] { type + "" });
 		return result != 0;
 	}
 
-	synchronized public static ArrayList<String> getUSNHistory(Context context) {
+	public static ArrayList<String> getUSNHistory(Context context) {
 		return getInstance(context).getUSNHistoryByType(TYPE_USN);
 	}
 
-	synchronized public static ArrayList<String> getClassUSNHistory(
+	public static ArrayList<String> getClassUSNHistory(
 			Context context) {
 		return getInstance(context).getUSNHistoryByType(TYPE_CLASS_USN);
 	}
 
-	synchronized public static boolean setUSNHistory(Context context, String usn) {
+	public static boolean setUSNHistory(Context context, String usn) {
 		return getInstance(context).setUSNHistoryByType(usn, TYPE_USN);
 	}
 
-	synchronized public static boolean setClassUSNHistory(Context context,
+	public static boolean setClassUSNHistory(Context context,
 			String classUsn) {
 		return getInstance(context).setUSNHistoryByType(classUsn,
 				TYPE_CLASS_USN);
 	}
 
-	synchronized public static boolean clearUSNHistory(Context context) {
+	public static boolean clearUSNHistory(Context context) {
 		return getInstance(context).clearUSNHistoryByType(TYPE_USN);
 	}
 
-	synchronized public static boolean clearClassUSNHistory(Context context) {
+	public static boolean clearClassUSNHistory(Context context) {
 		return getInstance(context).clearUSNHistoryByType(TYPE_CLASS_USN);
 	}
 }
