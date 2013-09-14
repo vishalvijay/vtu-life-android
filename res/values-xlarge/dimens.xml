@@ -16,12 +16,14 @@
 
 <resources>
 
-    <dimen name="slidingmenu_offset">500dp</dimen>
     <dimen name="message_text_padding_bottom">30dp</dimen>
     <dimen name="heading_font_size">30sp</dimen>
     <dimen name="post_a_pic_width">600dp</dimen>
     <dimen name="post_a_pic_heigth">480dp</dimen>
     <dimen name="post_a_pic_padding_bottom">28dp</dimen>
+
     <integer name="num_cols">1</integer>
-<dimen name="upload_file_title_margin_bottom">600dp</dimen>
+
+    <dimen name="upload_file_title_margin_bottom">600dp</dimen>
+
 </resources>

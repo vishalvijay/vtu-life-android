@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true" >
+
+    <include
+        android:id="@+id/menuActionBar"
+        android:layout_alignParentTop="true"
+        layout="@layout/menu_actionbar" />
+
+    <HorizontalScrollView
+        android:id="@+id/menus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/black"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="5dp" >
+
+            <ImageButton
+                android:id="@+id/rateAppImageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:background="@drawable/android_1_selector"
+                android:src="@drawable/icon_like"
+                android:tag="Rate the app" />
+
+            <ImageButton
+                android:id="@+id/likeOnFbImageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:background="@drawable/android_2_selector"
+                android:src="@drawable/icon_rate"
+                android:tag="Like us on facebook" />
+
+            <ImageButton
+                android:id="@+id/preferencesImageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:background="@drawable/android_3_selector"
+                android:src="@drawable/icon_settings"
+                android:tag="Preferences" />
+
+            <ImageButton
+                android:id="@+id/feedbackImageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:background="@drawable/android_4_selector"
+                android:src="@drawable/icon_feedback"
+                android:tag="Feedback" />
+
+            <ImageButton
+                android:id="@+id/helpImageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:background="@drawable/android_5_selector"
+                android:src="@drawable/icon_help"
+                android:tag="Help" />
+
+            <ImageButton
+                android:id="@+id/aboutImageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:background="@drawable/android_6_selector"
+                android:src="@drawable/icon_about"
+                android:tag="About" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/menus"
+        android:layout_below="@id/menuActionBar"
+        android:layout_centerInParent="true"
+        android:background="@android:color/white"
+        android:scrollbars="none" >
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="5dp" >
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_marginBottom="@dimen/menu_width"
+                android:gravity="center" >
+
+                <ImageButton
+                    android:id="@+id/websiteImageButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/menu_selector"
+                    android:src="@drawable/home"
+                    android:tag="@integer/id_vtu_life_web_fragment" />
+
+                <ImageButton
+                    android:id="@+id/notesImageButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/menu_width"
+                    android:background="@drawable/menu_selector"
+                    android:src="@drawable/notes"
+                    android:tag="@integer/id_directory_listnig_fragment" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_marginBottom="@dimen/menu_width"
+                android:gravity="center" >
+
+                <ImageButton
+                    android:id="@+id/fastResultImageButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/menu_selector"
+                    android:src="@drawable/result"
+                    android:tag="@integer/id_fast_result_fragment" />
+
+                <ImageButton
+                    android:id="@+id/classResultImageButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/menu_width"
+                    android:background="@drawable/menu_selector"
+                    android:src="@drawable/class_result"
+                    android:tag="@integer/id_class_result_fragment" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_marginBottom="@dimen/menu_width"
+                android:gravity="center" >
+
+                <ImageButton
+                    android:id="@+id/shareNotesImageButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/menu_selector"
+                    android:src="@drawable/share_notes"
+                    android:tag="@integer/id_upload_file_fragment" />
+
+                <ImageButton
+                    android:id="@+id/shareAPicImageButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/menu_width"
+                    android:background="@drawable/menu_selector"
+                    android:src="@drawable/share_a_pic"
+                    android:tag="@integer/id_share_a_pic_fragment" />
+            </TableRow>
+        </TableLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/subMenuNameTextView"
+        android:layout_width="13dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:background="@android:color/black"
+        android:gravity="center"
+        android:padding="2dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:visibility="gone" />
+
+</RelativeLayout>

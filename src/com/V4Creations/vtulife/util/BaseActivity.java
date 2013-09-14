@@ -3,6 +3,7 @@ package com.V4Creations.vtulife.util;
 import android.os.Bundle;
 
 import com.V4Creations.vtulife.R;
+import com.V4Creations.vtulife.system.SystemFeatureChecker;
 import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.view.Window;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
@@ -24,7 +25,7 @@ public class BaseActivity extends SlidingFragmentActivity {
 		SlidingMenu sm = getSlidingMenu();
 		sm.setShadowWidthRes(R.dimen.shadow_width);
 		sm.setShadowDrawable(R.drawable.drawer_shadow_light);
-		sm.setBehindOffsetRes(R.dimen.slidingmenu_offset);
+		sm.setBehindOffset((int) (SystemFeatureChecker.getDisplayWidth(this) * 0.25f));
 		sm.setFadeDegree(0.35f);
 		sm.setTouchModeAbove(SlidingMenu.TOUCHMODE_FULLSCREEN);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);

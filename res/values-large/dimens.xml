@@ -16,8 +16,6 @@
 
 <resources>
 
-    <dimen name="slidingmenu_offset">375dp</dimen>
-
     <integer name="num_cols">1</integer>
 
     <dimen name="heading_font_size">25sp</dimen>

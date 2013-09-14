@@ -31,5 +31,11 @@
     <color name="RedGradientStart">#ffba1a07</color>
     <color name="RedGradientEnd">#ffdf3f2b</color>
     <color name="gray">#ff3c3c3c</color>
+    <color name="android_color_1">#ff666666</color>
+    <color name="android_color_2">#ff96aa39</color>
+    <color name="android_color_3">#ffc74b46</color>
+    <color name="android_color_4">#fff4842d</color>
+    <color name="android_color_5">#ff3f9fe0</color>
+    <color name="android_color_6">#ff5161bc</color>
 
 </resources>

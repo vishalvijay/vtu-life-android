@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -17,6 +16,7 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.V4Creations.vtulife.R;
 import com.V4Creations.vtulife.adapters.VTULifeFragmentAdapter;
@@ -33,6 +33,7 @@ import com.V4Creations.vtulife.system.SystemFeatureChecker;
 import com.V4Creations.vtulife.util.ActionBarStatus;
 import com.V4Creations.vtulife.util.BaseActivity;
 import com.V4Creations.vtulife.util.GoogleAnalyticsManager;
+import com.V4Creations.vtulife.util.Settings;
 import com.astuetz.viewpager.extensions.PagerSlidingTabStrip;
 import com.google.analytics.tracking.android.EasyTracker;
 import com.google.analytics.tracking.android.Tracker;
@@ -56,7 +57,7 @@ public class VTULifeMainActivity extends BaseActivity {
 	public static final int ID_FAST_RESULT_FRAGMENT = 2;
 	public static final int ID_CLASS_RESULT_FRAGMENT = 3;
 	public static final int ID_UPLOAD_FILE_FRAGEMENT = 4;
-	public static final int ID_POST_A_PIC_FRAGMENT = 5;
+	public static final int ID_SHARE_A_PIC_FRAGMENT = 5;
 
 	private ViewPager mViewPager;
 	private PagerSlidingTabStrip mTabs;
@@ -68,6 +69,7 @@ public class VTULifeMainActivity extends BaseActivity {
 	private static final Configuration CONFIGURATION_INFINITE = new Configuration.Builder()
 			.setDuration(Configuration.DURATION_INFINITE).build();
 	private Tracker tracker;
+	private boolean mExitFlag = false;
 
 	public VTULifeMainActivity() {
 		super(R.string.app_name);
@@ -80,7 +82,7 @@ public class VTULifeMainActivity extends BaseActivity {
 		init();
 		setBehindContentView(R.layout.menu_frame);
 		getSupportFragmentManager().beginTransaction()
-				.replace(R.id.menu_frame, new MenuFragment()).commit();
+				.replace(R.id.menu_fram, new MenuFragment()).commit();
 	}
 
 	private void init() {
@@ -171,10 +173,9 @@ public class VTULifeMainActivity extends BaseActivity {
 		updateInternetConnection();
 	}
 
-	public void switchContent(int id) {
-		// getSupportFragmentManager().beginTransaction()
-		// .replace(R.id.content_frame, mContent).commit();
-		// getSlidingMenu().showContent();
+	public void changeCurrentFragemnt(int id) {
+		mViewPager.setCurrentItem(id);
+		getSlidingMenu().toggle();
 	}
 
 	public void rateAppOnPlayStore() {
@@ -187,11 +188,11 @@ public class VTULifeMainActivity extends BaseActivity {
 		}
 	}
 
-	private void reportBug() {
+	public void sendFeedback() {
 		Intent i = new Intent(Intent.ACTION_SEND);
 		i.setType("message/rfc822");
-		i.putExtra(Intent.EXTRA_EMAIL, new String[] { "v4appfarm@gmail.com" });
-		i.putExtra(Intent.EXTRA_SUBJECT, "Bug of "
+		i.putExtra(Intent.EXTRA_EMAIL, Settings.VTU_LIFE_EMAILS);
+		i.putExtra(Intent.EXTRA_SUBJECT, "Feedback of "
 				+ getString(R.string.app_name) + " android app.");
 		String bugReportBody = "Phone model : "
 				+ SystemFeatureChecker.getDeviceName()
@@ -212,7 +213,7 @@ public class VTULifeMainActivity extends BaseActivity {
 				+ "Please provide more details below :\n";
 		i.putExtra(Intent.EXTRA_TEXT, bugReportBody);
 		try {
-			startActivity(Intent.createChooser(i, "Report bug"));
+			startActivity(Intent.createChooser(i, "Send feedback"));
 		} catch (android.content.ActivityNotFoundException ex) {
 			showCrouton("There are no email clients installed.", Style.INFO,
 					true);
@@ -241,26 +242,24 @@ public class VTULifeMainActivity extends BaseActivity {
 
 	@Override
 	public void onBackPressed() {
-		AlertDialog.Builder builder = new AlertDialog.Builder(
-				VTULifeMainActivity.this);
-		builder.setMessage("Are you sure ?")
-				.setCancelable(false)
-				.setPositiveButton("Yes",
-						new DialogInterface.OnClickListener() {
-							public void onClick(DialogInterface dialog, int id) {
-								finish();
-							}
-						})
-				.setNegativeButton("No", new DialogInterface.OnClickListener() {
-					public void onClick(DialogInterface dialog, int id) {
-						dialog.cancel();
-					}
-				});
-		AlertDialog alert = builder.create();
-		alert.setTitle("Exit");
-		alert.setIcon(android.R.drawable.ic_dialog_alert);
-		alert.show();
+		if (mExitFlag)
+			finish();
+		else {
+			Toast.makeText(getApplicationContext(), "Press back again to exit",
+					Toast.LENGTH_SHORT).show();
+			new Thread(new Runnable() {
 
+				@Override
+				public void run() {
+					mExitFlag = true;
+					try {
+						Thread.sleep(2000);
+					} catch (InterruptedException e) {
+					}
+					mExitFlag = false;
+				}
+			}).start();
+		}
 	}
 
 	public void reflectActionBarChange(ActionBarStatus actionBarStatus,
@@ -351,8 +350,5 @@ public class VTULifeMainActivity extends BaseActivity {
 	}
 
 	public void test(View v) {
-		Intent intent = new Intent(getApplicationContext(),
-				PreferencesActivity.class);
-		startActivity(intent);
 	}
 }

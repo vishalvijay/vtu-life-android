@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <integer name="id_vtu_life_web_fragment">0</integer>
+    <integer name="id_directory_listnig_fragment">1</integer>
+    <integer name="id_fast_result_fragment">2</integer>
+    <integer name="id_class_result_fragment">3</integer>
+    <integer name="id_upload_file_fragment">4</integer>
+    <integer name="id_share_a_pic_fragment">5</integer>
+
+</resources>
