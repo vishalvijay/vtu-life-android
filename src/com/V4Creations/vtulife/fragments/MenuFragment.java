@@ -10,11 +10,13 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.V4Creations.vtulife.R;
+import com.V4Creations.vtulife.db.VTULifeDataBase;
+import com.V4Creations.vtulife.interfaces.RefreshListener;
 import com.V4Creations.vtulife.ui.VTULifeMainActivity;
 import com.actionbarsherlock.app.SherlockFragment;
 
 public class MenuFragment extends SherlockFragment implements
-		View.OnTouchListener, View.OnClickListener {
+		View.OnTouchListener, View.OnClickListener, RefreshListener {
 	String TAG = "MenuFragment";
 	private VTULifeMainActivity vtuLifeMainActivity;
 	private ImageButton mHelpImageButton, mRateAppImageButton,
@@ -22,15 +24,13 @@ public class MenuFragment extends SherlockFragment implements
 			mFeedbackImageButton, mAboutImageButton, mWebsiteImageButton,
 			mNotesImageButton, mFastResultImageButton, mClassResultImageButton,
 			mShareNotesImageButton, mShareAPicImageButton;
-	private Button mNotificationButton;
 	private TextView subMenuNameTextView;
+	private Button mNotificationButton;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-
 		vtuLifeMainActivity = (VTULifeMainActivity) getActivity();
-
 		return inflater.inflate(R.layout.menu_content, null);
 	}
 
@@ -43,11 +43,17 @@ public class MenuFragment extends SherlockFragment implements
 	private void initView() {
 		subMenuNameTextView = (TextView) getView().findViewById(
 				R.id.subMenuNameTextView);
-		mNotificationButton = (Button) getView().findViewById(
-				R.id.notificationButton);
-		mNotesImageButton.setOnClickListener(this);
+		initNotificationButton();
 		initMainMenu();
 		initSubMenu();
+	}
+
+	private void initNotificationButton() {
+		mNotificationButton = (Button) getView().findViewById(
+				R.id.notificationButton);
+		mNotificationButton.setOnClickListener(this);
+		mNotificationButton.setOnTouchListener(this);
+		refreshUnReadedNotificationCount();
 	}
 
 	private void initSubMenu() {
@@ -69,7 +75,7 @@ public class MenuFragment extends SherlockFragment implements
 		mPreferencesImageButton.setOnTouchListener(this);
 		mHelpImageButton.setOnTouchListener(this);
 		mAboutImageButton.setOnTouchListener(this);
-		
+
 		mRateAppImageButton.setOnClickListener(this);
 		mLikeOnFbImageButton.setOnClickListener(this);
 		mFeedbackImageButton.setOnClickListener(this);
@@ -142,5 +148,16 @@ public class MenuFragment extends SherlockFragment implements
 			vtuLifeMainActivity.changeCurrentFragemnt(Integer
 					.parseInt((String) v.getTag()));
 		}
+	}
+
+	@Override
+	public void refresh() {
+		refreshUnReadedNotificationCount();
+	}
+
+	private void refreshUnReadedNotificationCount() {
+		int count = VTULifeDataBase.getInstance(vtuLifeMainActivity)
+				.getUnreadedNotificationCount();
+		mNotificationButton.setText(count + "");
 	}
 }

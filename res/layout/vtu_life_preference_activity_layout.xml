@@ -233,7 +233,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:background="@drawable/directory_list_item_selector_odd"
+                        android:background="@drawable/vtu_life_list_item_selector_odd"
                         android:onClick="clearButtonClick"
                         android:tag="0"
                         android:text="USN" />
@@ -243,7 +243,7 @@
                         android:layout_height="wrap_content"
                         android:layout_margin="5dp"
                         android:layout_weight="1"
-                        android:background="@drawable/directory_list_item_selector_odd"
+                        android:background="@drawable/vtu_life_list_item_selector_odd"
                         android:onClick="clearButtonClick"
                         android:tag="1"
                         android:text="CLASS USN" />

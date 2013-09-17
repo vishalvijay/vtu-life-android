@@ -14,10 +14,10 @@ import android.support.v4.app.Fragment;
 
 import com.V4Creations.vtulife.adapters.ResultAdapter;
 import com.V4Creations.vtulife.interfaces.ResultLoadedInterface;
+import com.V4Creations.vtulife.model.ResultItem;
 import com.V4Creations.vtulife.system.SystemFeatureChecker;
 import com.V4Creations.vtulife.ui.VTULifeMainActivity;
 import com.V4Creations.vtulife.util.JSONParser;
-import com.V4Creations.vtulife.util.ResultItem;
 import com.V4Creations.vtulife.util.Settings;
 
 public class LoadResultFromServer extends AsyncTask<String, String, String> {

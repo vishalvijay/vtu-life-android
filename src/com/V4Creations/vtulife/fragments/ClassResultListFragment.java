@@ -26,12 +26,12 @@ import com.V4Creations.vtulife.adapters.ResultAdapter;
 import com.V4Creations.vtulife.adapters.VTULifeFragmentAdapter.FragmentInfo;
 import com.V4Creations.vtulife.db.VTULifeDataBase;
 import com.V4Creations.vtulife.interfaces.ResultLoadedInterface;
-import com.V4Creations.vtulife.interfaces.USNCleanerListener;
+import com.V4Creations.vtulife.interfaces.RefreshListener;
+import com.V4Creations.vtulife.model.ActionBarStatus;
+import com.V4Creations.vtulife.model.ResultItem;
 import com.V4Creations.vtulife.server.LoadResultFromServer;
 import com.V4Creations.vtulife.ui.VTULifeMainActivity;
-import com.V4Creations.vtulife.util.ActionBarStatus;
 import com.V4Creations.vtulife.util.GoogleAnalyticsManager;
-import com.V4Creations.vtulife.util.ResultItem;
 import com.V4Creations.vtulife.util.Settings;
 import com.actionbarsherlock.app.SherlockListFragment;
 import com.google.analytics.tracking.android.Tracker;
@@ -39,7 +39,7 @@ import com.google.analytics.tracking.android.Tracker;
 import de.keyboardsurfer.android.widget.crouton.Style;
 
 public class ClassResultListFragment extends SherlockListFragment implements
-		ResultLoadedInterface, FragmentInfo, USNCleanerListener {
+		ResultLoadedInterface, FragmentInfo, RefreshListener {
 	String TAG = "ClassResultListFragment";
 
 	private CheckBox revalCheckBox;
@@ -319,7 +319,7 @@ public class ClassResultListFragment extends SherlockListFragment implements
 	}
 
 	@Override
-	public void refreshUSN() {
+	public void refresh() {
 		mClassUsnHistoryAdapter.clear();
 		ArrayList<String> classUsnHistory = VTULifeDataBase
 				.getClassUSNHistory(vtuLifeMainActivity);

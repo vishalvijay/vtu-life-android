@@ -12,6 +12,15 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+
+    <permission
+        android:name="com.V4Creations.vtulife.permission.C2D_MESSAGE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.V4Creations.vtulife.permission.C2D_MESSAGE" />
 
     <application
         android:allowBackup="true"
@@ -55,12 +64,29 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.V4Creations.vtulife.ui.VTULifePreferences"
-            android:exported="false"
+            android:name="com.V4Creations.vtulife.ui.VTULifePreferencesSherlockActivity"
             android:label="Preferences"
             android:logo="@drawable/icon_settings"
             android:screenOrientation="portrait" >
         </activity>
+        <activity
+            android:name="com.V4Creations.vtulife.ui.VTULifeNotificationSherlockListActivity"
+            android:label="Notifications"
+            android:logo="@drawable/notification"
+            android:screenOrientation="portrait" >
+        </activity>
+
+        <receiver
+            android:name="com.V4Creations.vtulife.gcm.GcmBroadcastReceiver"
+            android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+
+                <category android:name="com.V4Creations.vtulife" />
+            </intent-filter>
+        </receiver>
+
+        <service android:name="com.V4Creations.vtulife.gcm.GcmIntentService" />
     </application>
 
 </manifest>

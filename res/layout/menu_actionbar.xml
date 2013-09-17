@@ -16,6 +16,7 @@
             android:layout_alignParentLeft="true"
             android:layout_margin="@dimen/abs__action_bar_icon_vertical_padding"
             android:background="@drawable/button_red"
+            android:tag="Notifications"
             android:text="2" />
 
         <TextView
@@ -24,6 +25,17 @@
             android:layout_centerInParent="true"
             android:text="Menu"
             android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <ImageButton
+            android:id="@+id/preferencesImageButton"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/android_1_selector"
+            android:paddingLeft="@dimen/abs__action_bar_icon_vertical_padding"
+            android:paddingRight="@dimen/abs__action_bar_icon_vertical_padding"
+            android:src="@drawable/icon_settings"
+            android:tag="Preferences" />
     </RelativeLayout>
 
     <View

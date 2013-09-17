@@ -30,8 +30,8 @@
                 android:id="@+id/rateAppImageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:background="@drawable/android_1_selector"
+                android:layout_margin="5dp"
+                android:background="@drawable/android_4_selector"
                 android:src="@drawable/icon_rate"
                 android:tag="Rate the app" />
 
@@ -39,26 +39,17 @@
                 android:id="@+id/likeOnFbImageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:background="@drawable/android_2_selector"
+                android:layout_margin="5dp"
+                android:background="@drawable/android_5_selector"
                 android:src="@drawable/icon_like"
                 android:tag="Like us on facebook" />
-
-            <ImageButton
-                android:id="@+id/preferencesImageButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:background="@drawable/android_3_selector"
-                android:src="@drawable/icon_settings"
-                android:tag="Preferences" />
 
             <ImageButton
                 android:id="@+id/feedbackImageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:background="@drawable/android_4_selector"
+                android:layout_margin="5dp"
+                android:background="@drawable/android_2_selector"
                 android:src="@drawable/icon_feedback"
                 android:tag="Feedback" />
 
@@ -66,8 +57,8 @@
                 android:id="@+id/helpImageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:background="@drawable/android_5_selector"
+                android:layout_margin="5dp"
+                android:background="@drawable/android_3_selector"
                 android:src="@drawable/icon_help"
                 android:tag="Help" />
 
@@ -75,7 +66,7 @@
                 android:id="@+id/aboutImageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"
+                android:layout_margin="5dp"
                 android:background="@drawable/android_6_selector"
                 android:src="@drawable/icon_about"
                 android:tag="About" />

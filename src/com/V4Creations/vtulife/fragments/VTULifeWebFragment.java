@@ -17,8 +17,8 @@ import android.widget.TextView;
 
 import com.V4Creations.vtulife.R;
 import com.V4Creations.vtulife.adapters.VTULifeFragmentAdapter.FragmentInfo;
+import com.V4Creations.vtulife.model.ActionBarStatus;
 import com.V4Creations.vtulife.ui.VTULifeMainActivity;
-import com.V4Creations.vtulife.util.ActionBarStatus;
 import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;

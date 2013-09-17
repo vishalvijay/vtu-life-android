@@ -12,8 +12,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.V4Creations.vtulife.R;
+import com.V4Creations.vtulife.model.ResultItem;
 import com.V4Creations.vtulife.ui.VTULifeMainActivity;
-import com.V4Creations.vtulife.util.ResultItem;
 
 public class ResultAdapter extends BaseAdapter {
 	private ArrayList<ResultItem> itemList;

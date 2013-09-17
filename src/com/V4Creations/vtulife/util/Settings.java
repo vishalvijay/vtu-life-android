@@ -4,16 +4,23 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import com.V4Creations.vtulife.system.SystemFeatureChecker;
+
 public class Settings {
 	public static final String WEB_URL = "http://www.vtulife.com";
 	public static final String RESULT_FROM_VTU = "/result/result_json.php";
+	public static final String GCM_REGISTER = "/nm/register.php";
 	public static final String[] VTU_LIFE_EMAILS = new String[] {
 			"v4appfarm@gmail.com", "someone@gmail.com" };
+	public static final String SENDER_ID="615350300672";
+	
 
 	private static String PREFS_IS_FULL_SEM_RESULT = "isFullSemResult";
 	private static String PREFS_IS_SORTED_RESULT = "isSortedResult";
 	private static String PREFS_FAVORITE_PAGE = "isFavoritePage";
 	private static String PREFS_IS_DEEP_SEARCH = "isDeepSearch";
+	private static String PREFS_GCM_REGISTER_ID = "gcm_register_id";
+	private static String PREFS_APP_VERSION_CODE = "app_version_code";
 
 	public static void setFullSemResultStatus(Context context, boolean status) {
 		SharedPreferences prefs = PreferenceManager
@@ -57,8 +64,7 @@ public class Settings {
 		return prefs.getInt(PREFS_FAVORITE_PAGE, 0);
 	}
 
-	public static void setDeepSearch(Context context,
-			boolean status) {
+	public static void setDeepSearch(Context context, boolean status) {
 		SharedPreferences prefs = PreferenceManager
 				.getDefaultSharedPreferences(context);
 		SharedPreferences.Editor edit = prefs.edit();
@@ -69,7 +75,32 @@ public class Settings {
 	public static boolean isDeepSearch(Context context) {
 		SharedPreferences prefs = PreferenceManager
 				.getDefaultSharedPreferences(context);
-		return prefs.getBoolean(PREFS_IS_DEEP_SEARCH,
-				false);
+		return prefs.getBoolean(PREFS_IS_DEEP_SEARCH, false);
+	}
+
+	public static void storeRegistrationIdWithAppVersion(Context context,
+			String regId) {
+		SharedPreferences prefs = PreferenceManager
+				.getDefaultSharedPreferences(context);
+		int appVersion = SystemFeatureChecker.getAppVersionCode(context);
+		SharedPreferences.Editor editor = prefs.edit();
+		editor.putString(PREFS_GCM_REGISTER_ID, regId);
+		editor.putInt(PREFS_APP_VERSION_CODE, appVersion);
+		editor.commit();
+	}
+
+	public static String getRegistrationId(Context context) {
+		SharedPreferences prefs = PreferenceManager
+				.getDefaultSharedPreferences(context);
+		String registrationId = prefs.getString(PREFS_GCM_REGISTER_ID, "");
+		if (registrationId.isEmpty())
+			return "";
+		int registeredVersion = prefs.getInt(PREFS_APP_VERSION_CODE,
+				Integer.MIN_VALUE);
+		int currentVersion = SystemFeatureChecker.getAppVersionCode(context);
+		if (registeredVersion != currentVersion) {
+			return "";
+		}
+		return registrationId;
 	}
 }

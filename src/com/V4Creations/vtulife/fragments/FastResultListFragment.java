@@ -23,12 +23,12 @@ import com.V4Creations.vtulife.adapters.ResultAdapter;
 import com.V4Creations.vtulife.adapters.VTULifeFragmentAdapter.FragmentInfo;
 import com.V4Creations.vtulife.db.VTULifeDataBase;
 import com.V4Creations.vtulife.interfaces.ResultLoadedInterface;
-import com.V4Creations.vtulife.interfaces.USNCleanerListener;
+import com.V4Creations.vtulife.interfaces.RefreshListener;
+import com.V4Creations.vtulife.model.ActionBarStatus;
+import com.V4Creations.vtulife.model.ResultItem;
 import com.V4Creations.vtulife.server.LoadResultFromServer;
 import com.V4Creations.vtulife.ui.VTULifeMainActivity;
-import com.V4Creations.vtulife.util.ActionBarStatus;
 import com.V4Creations.vtulife.util.GoogleAnalyticsManager;
-import com.V4Creations.vtulife.util.ResultItem;
 import com.V4Creations.vtulife.util.Settings;
 import com.actionbarsherlock.app.SherlockListFragment;
 import com.google.analytics.tracking.android.Tracker;
@@ -36,7 +36,7 @@ import com.google.analytics.tracking.android.Tracker;
 import de.keyboardsurfer.android.widget.crouton.Style;
 
 public class FastResultListFragment extends SherlockListFragment implements
-		ResultLoadedInterface, FragmentInfo, USNCleanerListener {
+		ResultLoadedInterface, FragmentInfo, RefreshListener {
 	String TAG = "FastResultListFragment";
 
 	private CheckBox revalCheckBox;
@@ -49,7 +49,7 @@ public class FastResultListFragment extends SherlockListFragment implements
 	private boolean isLoading = false;
 	private LoadResultFromServer loadResultFromServer;
 	private ActionBarStatus mActionBarStatus;
-	private Tracker tracker;
+	private Tracker mTracker;
 
 	private final String usnRegx = "[1-4][a-zA-Z][a-zA-Z][0-9][0-9][a-zA-Z][a-zA-Z][0-9][0-9][0-9]";
 
@@ -68,7 +68,7 @@ public class FastResultListFragment extends SherlockListFragment implements
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		tracker = GoogleAnalyticsManager
+		mTracker = GoogleAnalyticsManager
 				.getGoogleAnalyticsTracker(vtuLifeMainActivity);
 		initListAdapter();
 		initView();
@@ -205,7 +205,7 @@ public class FastResultListFragment extends SherlockListFragment implements
 	}
 
 	protected void saveAndRefreshUsnHistory(String usn) {
-		GoogleAnalyticsManager.infomGoogleAnalytics(tracker,
+		GoogleAnalyticsManager.infomGoogleAnalytics(mTracker,
 				GoogleAnalyticsManager.CATEGORY_RESULT,
 				GoogleAnalyticsManager.ACTION_FAST_RESULT, usn, 0L);
 		if (VTULifeDataBase.setUSNHistory(vtuLifeMainActivity, usn))
@@ -236,7 +236,7 @@ public class FastResultListFragment extends SherlockListFragment implements
 		return mActionBarStatus;
 	}
 
-	public void refreshUSN() {
+	public void refresh() {
 		mUsnHistoryAdapter.clear();
 		ArrayList<String> classUsnHistory = VTULifeDataBase
 				.getClassUSNHistory(vtuLifeMainActivity);

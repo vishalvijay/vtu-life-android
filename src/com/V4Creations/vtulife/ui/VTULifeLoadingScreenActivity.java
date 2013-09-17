@@ -6,10 +6,10 @@ import android.widget.ImageView;
 
 import com.V4Creations.vtulife.R;
 import com.V4Creations.vtulife.system.SystemFeatureChecker;
+import com.V4Creations.vtulife.util.GoogleAnalyticsManager;
 import com.actionbarsherlock.app.SherlockActivity;
 import com.actionbarsherlock.internal.nineoldandroids.animation.Animator;
 import com.actionbarsherlock.internal.nineoldandroids.animation.ObjectAnimator;
-import com.google.analytics.tracking.android.EasyTracker;
 
 public class VTULifeLoadingScreenActivity extends SherlockActivity {
 	String TAG = "VTULifeLoadingScreenActivity";
@@ -62,12 +62,12 @@ public class VTULifeLoadingScreenActivity extends SherlockActivity {
 	@Override
 	protected void onStart() {
 		super.onStart();
-		EasyTracker.getInstance().activityStart(this);
+		GoogleAnalyticsManager.startGoogleAnalyticsForActivity(this);
 	}
 
 	@Override
 	protected void onStop() {
 		super.onStop();
-		EasyTracker.getInstance().activityStop(this);
+		GoogleAnalyticsManager.stopGoogleAnalyticsForActivity(this);
 	}
 }

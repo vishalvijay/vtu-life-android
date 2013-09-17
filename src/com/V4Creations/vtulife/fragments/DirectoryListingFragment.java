@@ -22,13 +22,13 @@ import com.V4Creations.vtulife.R;
 import com.V4Creations.vtulife.adapters.DirectoryAdapter;
 import com.V4Creations.vtulife.adapters.VTULifeFragmentAdapter.FragmentInfo;
 import com.V4Creations.vtulife.interfaces.DirectoryLoadedInterface;
+import com.V4Creations.vtulife.model.ActionBarStatus;
+import com.V4Creations.vtulife.model.DirectoryListItem;
+import com.V4Creations.vtulife.model.StackItem;
 import com.V4Creations.vtulife.server.LoadDirectoryFromServer;
 import com.V4Creations.vtulife.ui.VTULifeMainActivity;
-import com.V4Creations.vtulife.util.ActionBarStatus;
-import com.V4Creations.vtulife.util.DirectoryListItem;
 import com.V4Creations.vtulife.util.GoogleAnalyticsManager;
 import com.V4Creations.vtulife.util.Settings;
-import com.V4Creations.vtulife.util.StackItem;
 import com.actionbarsherlock.app.SherlockListFragment;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
@@ -60,7 +60,7 @@ public class DirectoryListingFragment extends SherlockListFragment implements
 	private LinearLayout progressLinearLayout;
 	private ProgressBar progressBar;
 	private TextView progressTextView;
-	private Tracker tracker;
+	private Tracker mTracker;
 
 	public DirectoryListingFragment() {
 		mActionBarStatus = new ActionBarStatus();
@@ -84,7 +84,7 @@ public class DirectoryListingFragment extends SherlockListFragment implements
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		tracker = GoogleAnalyticsManager
+		mTracker = GoogleAnalyticsManager
 				.getGoogleAnalyticsTracker(vtuLifeMainActivity);
 		initView();
 		hideProgressLinearLayout();
@@ -119,7 +119,7 @@ public class DirectoryListingFragment extends SherlockListFragment implements
 				.getText().toString();
 		String fileOrFolderName = ((TextView) view
 				.findViewById(R.id.nameTextView)).getText().toString();
-		GoogleAnalyticsManager.infomGoogleAnalytics(tracker,
+		GoogleAnalyticsManager.infomGoogleAnalytics(mTracker,
 				GoogleAnalyticsManager.CATEGORY_NOTES,
 				GoogleAnalyticsManager.ACTION_FOLDER, fileOrFolderName, 0L);
 		if (ext.equals("dir")) {

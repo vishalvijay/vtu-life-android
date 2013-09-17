@@ -12,6 +12,7 @@ import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,15 +30,17 @@ import com.V4Creations.vtulife.fragments.MenuFragment;
 import com.V4Creations.vtulife.fragments.PostAPicFragment;
 import com.V4Creations.vtulife.fragments.UploadFileFragment;
 import com.V4Creations.vtulife.fragments.VTULifeWebFragment;
-import com.V4Creations.vtulife.interfaces.USNCleanerListener;
+import com.V4Creations.vtulife.interfaces.RefreshListener;
+import com.V4Creations.vtulife.model.ActionBarStatus;
+import com.V4Creations.vtulife.model.BaseActivity;
+import com.V4Creations.vtulife.server.GCMRegisterAsyncTask;
 import com.V4Creations.vtulife.system.SystemFeatureChecker;
-import com.V4Creations.vtulife.util.ActionBarStatus;
-import com.V4Creations.vtulife.util.BaseActivity;
 import com.V4Creations.vtulife.util.GoogleAnalyticsManager;
 import com.V4Creations.vtulife.util.Settings;
 import com.astuetz.viewpager.extensions.PagerSlidingTabStrip;
-import com.google.analytics.tracking.android.EasyTracker;
 import com.google.analytics.tracking.android.Tracker;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 
 import de.keyboardsurfer.android.widget.crouton.Configuration;
@@ -46,10 +49,12 @@ import de.keyboardsurfer.android.widget.crouton.Style;
 
 public class VTULifeMainActivity extends BaseActivity {
 
-	private final int DIALOG_ABOUT = 201;
-	private final int INTERNET_CHECK_TIME_DELAY_HIGH = 10000;
-	private final int INTERNET_CHECK_TIME_DELAY_LOW = 2000;
-	private final int PREFERENCE_REQUEST_CODE = 1000;
+	private final static int DIALOG_ABOUT = 201;
+	private final static int INTERNET_CHECK_TIME_DELAY_HIGH = 10000;
+	private final static int INTERNET_CHECK_TIME_DELAY_LOW = 2000;
+	private final static int PREFERENCE_REQUEST_CODE = 1000,
+			NOTIFICATION_REQUEST_CODE = 1001;
+	private final static int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
 	String TAG = "VTULifeMainActivity";
 
 	public static final int NUM_OF_FRAGMENTS = 6;
@@ -72,6 +77,8 @@ public class VTULifeMainActivity extends BaseActivity {
 			.setDuration(Configuration.DURATION_INFINITE).build();
 	private Tracker tracker;
 	private boolean mExitFlag = false;
+	private MenuFragment mMenuFragment;
+	private String mGcmRegisterIdString;
 
 	public VTULifeMainActivity() {
 		super(R.string.app_name);
@@ -82,9 +89,26 @@ public class VTULifeMainActivity extends BaseActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.vtulife_main_activity_layout);
 		init();
+		gcmCheck();
 		setBehindContentView(R.layout.menu_frame);
+		mMenuFragment = new MenuFragment();
 		getSupportFragmentManager().beginTransaction()
-				.replace(R.id.menu_fram, new MenuFragment()).commit();
+				.replace(R.id.menu_fram, mMenuFragment).commit();
+	}
+
+	private void gcmCheck() {
+		if (checkPlayServices()) {
+			mGcmRegisterIdString = Settings
+					.getRegistrationId(getApplicationContext());
+			if (mGcmRegisterIdString.isEmpty()) {
+				Log.e(TAG, "Ok0");
+				registerGCMToServer();
+			}
+		}
+	}
+
+	private void registerGCMToServer() {
+		new GCMRegisterAsyncTask(getApplicationContext()).execute();
 	}
 
 	private void init() {
@@ -175,6 +199,23 @@ public class VTULifeMainActivity extends BaseActivity {
 	protected void onResume() {
 		super.onResume();
 		updateInternetConnection();
+		checkPlayServices();
+	}
+
+	private boolean checkPlayServices() {
+		int resultCode = GooglePlayServicesUtil
+				.isGooglePlayServicesAvailable(this);
+		if (resultCode != ConnectionResult.SUCCESS) {
+			if (GooglePlayServicesUtil.isUserRecoverableError(resultCode)) {
+				GooglePlayServicesUtil.getErrorDialog(resultCode, this,
+						PLAY_SERVICES_RESOLUTION_REQUEST).show();
+			} else {
+				Log.i(TAG, "This device is not supported.");
+				finish();
+			}
+			return false;
+		}
+		return true;
 	}
 
 	public void changeCurrentFragemnt(int id) {
@@ -337,13 +378,13 @@ public class VTULifeMainActivity extends BaseActivity {
 	@Override
 	protected void onStart() {
 		super.onStart();
-		EasyTracker.getInstance().activityStart(this);
+		GoogleAnalyticsManager.startGoogleAnalyticsForActivity(this);
 	}
 
 	@Override
 	protected void onStop() {
 		super.onStop();
-		EasyTracker.getInstance().activityStop(this);
+		GoogleAnalyticsManager.stopGoogleAnalyticsForActivity(this);
 	}
 
 	@Override
@@ -354,7 +395,7 @@ public class VTULifeMainActivity extends BaseActivity {
 
 	public void showPreferences() {
 		Intent intent = new Intent(getApplicationContext(),
-				VTULifePreferences.class);
+				VTULifePreferencesSherlockActivity.class);
 		startActivityForResult(intent, PREFERENCE_REQUEST_CODE);
 	}
 
@@ -363,32 +404,40 @@ public class VTULifeMainActivity extends BaseActivity {
 		super.onActivityResult(requestCode, resultCode, data);
 		if (PREFERENCE_REQUEST_CODE == requestCode)
 			notifyUSNCleaner();
+		else if (NOTIFICATION_REQUEST_CODE == requestCode)
+			notifyNotificationRefresh();
+	}
+
+	private void notifyNotificationRefresh() {
+		((RefreshListener) mMenuFragment).refresh();
 	}
 
 	private void notifyUSNCleaner() {
-		((USNCleanerListener) mVtuLifeFragmentAdapter
-				.getItem(ID_CLASS_RESULT_FRAGMENT)).refreshUSN();
-		((USNCleanerListener) mVtuLifeFragmentAdapter
-				.getItem(ID_FAST_RESULT_FRAGMENT)).refreshUSN();
+		((RefreshListener) mVtuLifeFragmentAdapter
+				.getItem(ID_CLASS_RESULT_FRAGMENT)).refresh();
+		((RefreshListener) mVtuLifeFragmentAdapter
+				.getItem(ID_FAST_RESULT_FRAGMENT)).refresh();
 	}
 
 	public void showAbout() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void showHelp() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void likeUsOnFacebook() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	public void showNotification() {
-		// TODO Auto-generated method stub
-		
+		Intent intent = new Intent(getApplicationContext(),
+				VTULifeNotificationSherlockListActivity.class);
+		startActivityForResult(intent, NOTIFICATION_REQUEST_CODE);
 	}
+
 }

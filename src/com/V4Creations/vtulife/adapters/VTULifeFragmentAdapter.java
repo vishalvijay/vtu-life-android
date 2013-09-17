@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.V4Creations.vtulife.util.ActionBarStatus;
+import com.V4Creations.vtulife.model.ActionBarStatus;
 
 public class VTULifeFragmentAdapter extends FragmentPagerAdapter {
 	ArrayList<Fragment> mVtuLifeFragments;

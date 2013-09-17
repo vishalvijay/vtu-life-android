@@ -12,9 +12,9 @@ import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
 
 import com.V4Creations.vtulife.interfaces.DirectoryLoadedInterface;
+import com.V4Creations.vtulife.model.DirectoryListItem;
 import com.V4Creations.vtulife.system.SystemFeatureChecker;
 import com.V4Creations.vtulife.ui.VTULifeMainActivity;
-import com.V4Creations.vtulife.util.DirectoryListItem;
 import com.V4Creations.vtulife.util.JSONParser;
 import com.V4Creations.vtulife.util.Settings;
 

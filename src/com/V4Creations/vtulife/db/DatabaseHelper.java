@@ -16,6 +16,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		db.execSQL(VTULifeDataBase.CREATE_TABLE_RESULT_USN_HISTORY);
+		db.execSQL(VTULifeDataBase.CREATE_TABLE_NOTIFICATIONS);
 	}
 
 	@Override
@@ -25,7 +26,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-		db.execSQL(VTULifeDataBase.DROP_SME_FILE_DETAILS_TABLE);
+		db.execSQL(VTULifeDataBase.DROP_TABLE_RESULT_USN_HISTORY);
+		db.execSQL(VTULifeDataBase.DROP_TABLE_NOTIFICATIONS);
 		onCreate(db);
 	}
 }

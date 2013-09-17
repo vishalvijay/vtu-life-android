@@ -12,8 +12,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.V4Creations.vtulife.R;
+import com.V4Creations.vtulife.model.DirectoryListItem;
 import com.V4Creations.vtulife.ui.VTULifeMainActivity;
-import com.V4Creations.vtulife.util.DirectoryListItem;
 
 public class DirectoryAdapter extends BaseAdapter {
 	private ArrayList<DirectoryListItem> itemList;
@@ -73,10 +73,10 @@ public class DirectoryAdapter extends BaseAdapter {
 				.setBackgroundResource(selectImage(tempDirectoryListItem.ext));
 		if (tempDirectoryListItem.color % 2 != 0)
 			viewHolder.directoryRelativeLayout
-					.setBackgroundResource(R.drawable.directory_list_item_selector_odd);
+					.setBackgroundResource(R.drawable.vtu_life_list_item_selector_odd);
 		else
 			viewHolder.directoryRelativeLayout
-					.setBackgroundResource(R.drawable.directory_list_item_selector_even);
+					.setBackgroundResource(R.drawable.vtu_life_list_item_selector_even);
 		return convertView;
 	}
 

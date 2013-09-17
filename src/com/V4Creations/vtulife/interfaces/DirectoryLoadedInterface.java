@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import org.json.JSONObject;
 
-import com.V4Creations.vtulife.util.DirectoryListItem;
+import com.V4Creations.vtulife.model.DirectoryListItem;
 
 public interface DirectoryLoadedInterface {
 	void notifyDirectoryLoaded(ArrayList<DirectoryListItem> itemList,
