@@ -23,6 +23,7 @@ import com.V4Creations.vtulife.adapters.ResultAdapter;
 import com.V4Creations.vtulife.adapters.VTULifeFragmentAdapter.FragmentInfo;
 import com.V4Creations.vtulife.db.VTULifeDataBase;
 import com.V4Creations.vtulife.interfaces.ResultLoadedInterface;
+import com.V4Creations.vtulife.interfaces.USNCleanerListener;
 import com.V4Creations.vtulife.server.LoadResultFromServer;
 import com.V4Creations.vtulife.ui.VTULifeMainActivity;
 import com.V4Creations.vtulife.util.ActionBarStatus;
@@ -35,7 +36,7 @@ import com.google.analytics.tracking.android.Tracker;
 import de.keyboardsurfer.android.widget.crouton.Style;
 
 public class FastResultListFragment extends SherlockListFragment implements
-		ResultLoadedInterface, FragmentInfo {
+		ResultLoadedInterface, FragmentInfo, USNCleanerListener {
 	String TAG = "FastResultListFragment";
 
 	private CheckBox revalCheckBox;
@@ -233,5 +234,12 @@ public class FastResultListFragment extends SherlockListFragment implements
 	@Override
 	public ActionBarStatus getActionBarStatus() {
 		return mActionBarStatus;
+	}
+
+	public void refreshUSN() {
+		mUsnHistoryAdapter.clear();
+		ArrayList<String> classUsnHistory = VTULifeDataBase
+				.getClassUSNHistory(vtuLifeMainActivity);
+		mUsnHistoryAdapter.addAll(classUsnHistory);
 	}
 }

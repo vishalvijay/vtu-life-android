@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 android:background="@drawable/android_1_selector"
-                android:src="@drawable/icon_like"
+                android:src="@drawable/icon_rate"
                 android:tag="Rate the app" />
 
             <ImageButton
@@ -41,7 +41,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 android:background="@drawable/android_2_selector"
-                android:src="@drawable/icon_rate"
+                android:src="@drawable/icon_like"
                 android:tag="Like us on facebook" />
 
             <ImageButton

@@ -45,6 +45,7 @@ public class MenuFragment extends SherlockFragment implements
 				R.id.subMenuNameTextView);
 		mNotificationButton = (Button) getView().findViewById(
 				R.id.notificationButton);
+		mNotesImageButton.setOnClickListener(this);
 		initMainMenu();
 		initSubMenu();
 	}
@@ -68,10 +69,13 @@ public class MenuFragment extends SherlockFragment implements
 		mPreferencesImageButton.setOnTouchListener(this);
 		mHelpImageButton.setOnTouchListener(this);
 		mAboutImageButton.setOnTouchListener(this);
+		
 		mRateAppImageButton.setOnClickListener(this);
 		mLikeOnFbImageButton.setOnClickListener(this);
 		mFeedbackImageButton.setOnClickListener(this);
-
+		mPreferencesImageButton.setOnClickListener(this);
+		mHelpImageButton.setOnClickListener(this);
+		mAboutImageButton.setOnClickListener(this);
 	}
 
 	private void initMainMenu() {
@@ -117,15 +121,22 @@ public class MenuFragment extends SherlockFragment implements
 			vtuLifeMainActivity.rateAppOnPlayStore();
 			break;
 		case R.id.likeOnFbImageButton:
+			vtuLifeMainActivity.likeUsOnFacebook();
 			break;
 		case R.id.preferencesImageButton:
+			vtuLifeMainActivity.showPreferences();
 			break;
 		case R.id.feedbackImageButton:
 			vtuLifeMainActivity.sendFeedback();
 			break;
 		case R.id.helpImageButton:
+			vtuLifeMainActivity.showHelp();
 			break;
 		case R.id.aboutImageButton:
+			vtuLifeMainActivity.showAbout();
+			break;
+		case R.id.notificationButton:
+			vtuLifeMainActivity.showNotification();
 			break;
 		default:
 			vtuLifeMainActivity.changeCurrentFragemnt(Integer

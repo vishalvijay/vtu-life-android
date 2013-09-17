@@ -8,4 +8,13 @@
     <integer name="id_upload_file_fragment">4</integer>
     <integer name="id_share_a_pic_fragment">5</integer>
 
+    <string-array name="fragmentNames">
+        <item>Website</item>
+        <item>Notes</item>
+        <item>Fast result</item>
+        <item>Class result</item>
+        <item>Share notes</item>
+        <item>Share a pic</item>
+    </string-array>
+
 </resources>

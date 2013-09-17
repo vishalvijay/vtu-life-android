@@ -16,7 +16,8 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:label="@string/app_name" >
+        android:label="@string/app_name"
+        android:theme="@style/Theme.Vtulife" >
         <activity
             android:name="com.V4Creations.vtulife.ui.VTULifeLoadingScreenActivity"
             android:label="@string/app_name"
@@ -36,16 +37,14 @@
             android:configChanges="orientation|screenSize"
             android:label="@string/app_name"
             android:logo="@drawable/mondobar_icon_launcher"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.Vtulife" >
+            android:screenOrientation="portrait" >
 
             <!-- android:uiOptions="splitActionBarWhenNarrow" android:configChanges="orientation|screenSize" -->
         </activity>
         <activity
             android:name="com.ipaulpro.afilechooser.FileChooserActivity"
             android:exported="false"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.Vtulife" >
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.GET_CONTENT" />
 
@@ -54,6 +53,13 @@
 
                 <data android:mimeType="*/*" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="com.V4Creations.vtulife.ui.VTULifePreferences"
+            android:exported="false"
+            android:label="Preferences"
+            android:logo="@drawable/icon_settings"
+            android:screenOrientation="portrait" >
         </activity>
     </application>
 

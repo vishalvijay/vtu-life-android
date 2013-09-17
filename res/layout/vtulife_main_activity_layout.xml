@@ -24,11 +24,4 @@
         android:layout_height="match_parent"
         android:layout_below="@id/tabs" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:onClick="test"
-        android:text="Test Button" />
-
 </RelativeLayout>

@@ -29,6 +29,7 @@ import com.V4Creations.vtulife.fragments.MenuFragment;
 import com.V4Creations.vtulife.fragments.PostAPicFragment;
 import com.V4Creations.vtulife.fragments.UploadFileFragment;
 import com.V4Creations.vtulife.fragments.VTULifeWebFragment;
+import com.V4Creations.vtulife.interfaces.USNCleanerListener;
 import com.V4Creations.vtulife.system.SystemFeatureChecker;
 import com.V4Creations.vtulife.util.ActionBarStatus;
 import com.V4Creations.vtulife.util.BaseActivity;
@@ -48,6 +49,7 @@ public class VTULifeMainActivity extends BaseActivity {
 	private final int DIALOG_ABOUT = 201;
 	private final int INTERNET_CHECK_TIME_DELAY_HIGH = 10000;
 	private final int INTERNET_CHECK_TIME_DELAY_LOW = 2000;
+	private final int PREFERENCE_REQUEST_CODE = 1000;
 	String TAG = "VTULifeMainActivity";
 
 	public static final int NUM_OF_FRAGMENTS = 6;
@@ -134,6 +136,8 @@ public class VTULifeMainActivity extends BaseActivity {
 						fragmentInfo.getTitle(), 0L);
 			}
 		});
+		mViewPager.setCurrentItem(Settings
+				.getFavoritePage(getApplicationContext()));
 	}
 
 	private void initFragments() {
@@ -175,7 +179,6 @@ public class VTULifeMainActivity extends BaseActivity {
 
 	public void changeCurrentFragemnt(int id) {
 		mViewPager.setCurrentItem(id);
-		getSlidingMenu().toggle();
 	}
 
 	public void rateAppOnPlayStore() {
@@ -349,6 +352,43 @@ public class VTULifeMainActivity extends BaseActivity {
 		super.onDestroy();
 	}
 
-	public void test(View v) {
+	public void showPreferences() {
+		Intent intent = new Intent(getApplicationContext(),
+				VTULifePreferences.class);
+		startActivityForResult(intent, PREFERENCE_REQUEST_CODE);
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if (PREFERENCE_REQUEST_CODE == requestCode)
+			notifyUSNCleaner();
+	}
+
+	private void notifyUSNCleaner() {
+		((USNCleanerListener) mVtuLifeFragmentAdapter
+				.getItem(ID_CLASS_RESULT_FRAGMENT)).refreshUSN();
+		((USNCleanerListener) mVtuLifeFragmentAdapter
+				.getItem(ID_FAST_RESULT_FRAGMENT)).refreshUSN();
+	}
+
+	public void showAbout() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void showHelp() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void likeUsOnFacebook() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void showNotification() {
+		// TODO Auto-generated method stub
+		
 	}
 }

@@ -26,6 +26,7 @@ import com.V4Creations.vtulife.adapters.ResultAdapter;
 import com.V4Creations.vtulife.adapters.VTULifeFragmentAdapter.FragmentInfo;
 import com.V4Creations.vtulife.db.VTULifeDataBase;
 import com.V4Creations.vtulife.interfaces.ResultLoadedInterface;
+import com.V4Creations.vtulife.interfaces.USNCleanerListener;
 import com.V4Creations.vtulife.server.LoadResultFromServer;
 import com.V4Creations.vtulife.ui.VTULifeMainActivity;
 import com.V4Creations.vtulife.util.ActionBarStatus;
@@ -38,7 +39,7 @@ import com.google.analytics.tracking.android.Tracker;
 import de.keyboardsurfer.android.widget.crouton.Style;
 
 public class ClassResultListFragment extends SherlockListFragment implements
-		ResultLoadedInterface, FragmentInfo {
+		ResultLoadedInterface, FragmentInfo, USNCleanerListener {
 	String TAG = "ClassResultListFragment";
 
 	private CheckBox revalCheckBox;
@@ -206,18 +207,18 @@ public class ClassResultListFragment extends SherlockListFragment implements
 				subUsn = "0" + Integer.toString(currentUsn);
 			else
 				subUsn = Integer.toString(currentUsn);
-
-			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB)
+			int whichTypeResult = Settings.isFullSemResult(vtuLifeMainActivity) ? LoadResultFromServer.MULTY_SEM
+					: LoadResultFromServer.SINGLE_SEM;
+			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB
+					&& !Settings.isSortedResult(vtuLifeMainActivity))
 				new LoadResultFromServer(vtuLifeMainActivity, this,
-						Settings.RESULT_FROM_VTU,
-						LoadResultFromServer.SINGLE_SEM, classUsn + subUsn,
-						revalCheckBox.isChecked())
+						Settings.RESULT_FROM_VTU, whichTypeResult, classUsn
+								+ subUsn, revalCheckBox.isChecked())
 						.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 			else
 				new LoadResultFromServer(vtuLifeMainActivity, this,
-						Settings.RESULT_FROM_VTU,
-						LoadResultFromServer.SINGLE_SEM, classUsn + subUsn,
-						revalCheckBox.isChecked()).execute();
+						Settings.RESULT_FROM_VTU, whichTypeResult, classUsn
+								+ subUsn, revalCheckBox.isChecked()).execute();
 		}
 	}
 
@@ -250,7 +251,8 @@ public class ClassResultListFragment extends SherlockListFragment implements
 			if (!"Result not available.".equals(errorMessage) && !isCanceled)
 				vtuLifeMainActivity.showCrouton(
 						errorMessage + " (" + usn + ")", Style.ALERT, false);
-			continuesFailCount++;
+			if (!Settings.isDeepSearch(vtuLifeMainActivity))
+				continuesFailCount++;
 		}
 		if (!isCanceled) {
 			if ((continuesFailCount > 10 && currentUsn < 179)
@@ -314,6 +316,14 @@ public class ClassResultListFragment extends SherlockListFragment implements
 	@Override
 	public ActionBarStatus getActionBarStatus() {
 		return mActionBarStatus;
+	}
+
+	@Override
+	public void refreshUSN() {
+		mClassUsnHistoryAdapter.clear();
+		ArrayList<String> classUsnHistory = VTULifeDataBase
+				.getClassUSNHistory(vtuLifeMainActivity);
+		mClassUsnHistoryAdapter.addAll(classUsnHistory);
 	}
 
 }
