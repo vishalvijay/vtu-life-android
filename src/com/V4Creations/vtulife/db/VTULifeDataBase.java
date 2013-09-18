@@ -3,7 +3,7 @@ package com.V4Creations.vtulife.db;
 import java.util.ArrayList;
 
 import com.V4Creations.vtulife.interfaces.NotificationFromDBListener;
-import com.V4Creations.vtulife.model.Notification;
+import com.V4Creations.vtulife.model.VTULifeNotification;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -42,7 +42,7 @@ public class VTULifeDataBase {
 			+ TABLE_RESULT_USN_HISTORY + ";";
 
 	private static final String TABLE_NOTIFICATIONS = "notifications";
-	private static final String COL_ID = "id";
+	private static final String COL_ID = "_id";
 	private static final String COL_TYPE = "notification_type";
 	private static final String COL_TITLE = "title";
 	private static final String COL_MESSAGE = "message";
@@ -72,7 +72,7 @@ public class VTULifeDataBase {
 		mDatabaseHelper = new DatabaseHelper(mContext);
 	}
 
-	synchronized public static VTULifeDataBase getInstance(Context context) {
+	public static VTULifeDataBase getInstance(Context context) {
 		if (singltonObject == null)
 			singltonObject = new VTULifeDataBase(context);
 		return singltonObject;
@@ -98,6 +98,7 @@ public class VTULifeDataBase {
 		while (cursor.moveToNext())
 			usnArrayList.add(cursor.getString(cursor.getColumnIndex(COL_USN)));
 		cursor.close();
+		db.close();
 		return usnArrayList;
 	}
 
@@ -110,6 +111,7 @@ public class VTULifeDataBase {
 			SQLiteDatabase db = mDatabaseHelper.getWritableDatabase();
 			result = db.insertOrThrow(TABLE_RESULT_USN_HISTORY, COL_USN,
 					contentValues);
+			db.close();
 		} catch (SQLException e) {
 			result = -1;
 		}
@@ -120,6 +122,7 @@ public class VTULifeDataBase {
 		SQLiteDatabase db = mDatabaseHelper.getWritableDatabase();
 		int result = db.delete(TABLE_RESULT_USN_HISTORY, COL_USN_TYPE + "=?",
 				new String[] { type + "" });
+		db.close();
 		return result != 0;
 	}
 
@@ -150,16 +153,16 @@ public class VTULifeDataBase {
 
 	synchronized public void getNotifications(
 			final NotificationFromDBListener notificationFromDBListener) {
-		new AsyncTask<String, String, ArrayList<Notification>>() {
+		new AsyncTask<String, String, ArrayList<VTULifeNotification>>() {
 
 			@Override
-			protected ArrayList<Notification> doInBackground(String... params) {
-				ArrayList<Notification> notifications = new ArrayList<Notification>();
+			protected ArrayList<VTULifeNotification> doInBackground(String... params) {
+				ArrayList<VTULifeNotification> notifications = new ArrayList<VTULifeNotification>();
 				SQLiteDatabase db = mDatabaseHelper.getReadableDatabase();
 				Cursor cursor = db.query(TABLE_NOTIFICATIONS, new String[] {
 						COL_ID, COL_TYPE, COL_IS_SAW_MESSAGE, COL_TITLE,
 						COL_MESSAGE, COL_TIME_OF_NOTIFICATION }, null, null,
-						null, null, COL_ID);
+						null, null, COL_TIME_OF_NOTIFICATION+" DESC","50");
 				while (cursor.moveToNext()) {
 					long id = cursor.getLong(cursor.getColumnIndex(COL_ID));
 					int type = cursor.getInt(cursor.getColumnIndex(COL_TYPE));
@@ -172,21 +175,22 @@ public class VTULifeDataBase {
 							.getColumnIndex(COL_MESSAGE));
 					long time = cursor.getLong(cursor
 							.getColumnIndex(COL_TIME_OF_NOTIFICATION));
-					notifications.add(new Notification(id, type, isMessageSaw,
+					notifications.add(new VTULifeNotification(id, type, isMessageSaw,
 							titleString, messageString, time));
 				}
 				cursor.close();
+				db.close();
 				return notifications;
 			}
 
 			@Override
-			protected void onPostExecute(ArrayList<Notification> notifications) {
+			protected void onPostExecute(ArrayList<VTULifeNotification> notifications) {
 				notificationFromDBListener.notificationCreated(notifications);
 			}
 		}.execute();
 	}
 
-	synchronized public long insertNotification(Notification notification)
+	synchronized public long insertNotification(VTULifeNotification notification)
 			throws SQLException {
 		ContentValues contentValues = new ContentValues();
 		contentValues.put(COL_TYPE, notification.getType());
@@ -195,7 +199,9 @@ public class VTULifeDataBase {
 		contentValues.put(COL_MESSAGE, notification.getMessageString());
 		contentValues.put(COL_TIME_OF_NOTIFICATION, notification.getTime());
 		SQLiteDatabase db = mDatabaseHelper.getWritableDatabase();
-		return db.insertOrThrow(TABLE_NOTIFICATIONS, COL_ID, contentValues);
+		long result=db.insertOrThrow(TABLE_NOTIFICATIONS, COL_ID, contentValues);
+		db.close();
+		return result;
 	}
 
 	synchronized public int getUnreadedNotificationCount() {
@@ -208,22 +214,25 @@ public class VTULifeDataBase {
 			result = cursor.getString(cursor.getColumnIndex(COL_COUNT));
 		}
 		cursor.close();
+		db.close();
 		return Integer.parseInt(result);
 	}
 
 	synchronized public boolean updateNotificationSawState(
-			Notification notification) {
+			VTULifeNotification notification) {
 		ContentValues contentValues = new ContentValues();
 		contentValues.put(COL_IS_SAW_MESSAGE, notification.isNotificationSaw());
 		SQLiteDatabase db = mDatabaseHelper.getWritableDatabase();
 		long result = db.update(TABLE_NOTIFICATIONS, contentValues, COL_ID
 				+ "=?", new String[] { notification.getId() + "" });
+		db.close();
 		return result != 0;
 	}
 
 	synchronized public boolean clearAllNotifications() {
 		SQLiteDatabase db = mDatabaseHelper.getWritableDatabase();
 		int result = db.delete(TABLE_NOTIFICATIONS, "1", null);
+		db.close();
 		return result != 0;
 	}
 }

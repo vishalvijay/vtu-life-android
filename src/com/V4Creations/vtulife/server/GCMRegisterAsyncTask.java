@@ -1,6 +1,5 @@
 package com.V4Creations.vtulife.server;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,53 +7,45 @@ import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONObject;
 
-import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
-import android.widget.Toast;
 
 import com.V4Creations.vtulife.system.SystemFeatureChecker;
+import com.V4Creations.vtulife.ui.VTULifeMainActivity;
 import com.V4Creations.vtulife.util.JSONParser;
 import com.V4Creations.vtulife.util.Settings;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
+import de.keyboardsurfer.android.widget.crouton.Style;
+
 public class GCMRegisterAsyncTask extends AsyncTask<String, String, Boolean> {
 	String TAG = "GCMRegisterAsyncTask";
 	private String mGCMRegisterIdString;
-	private Context mContext;
+	private VTULifeMainActivity mVtuLifeMainActivity;
 	private static final String TAG_RESULT = "result",
 			RESULT_SUCCESS_VALUSE = "success",
-			POST_PARAM_REGISTER_ID = "gsm_id";
+			POST_PARAM_REGISTER_ID = "gsm_regid";
 
-	public GCMRegisterAsyncTask(Context context) {
-		mContext = context;
+	public GCMRegisterAsyncTask(VTULifeMainActivity vtuLifeMainActivity) {
+		mVtuLifeMainActivity = vtuLifeMainActivity;
 	}
 
 	@Override
 	protected Boolean doInBackground(String... asyncParams) {
 		boolean result = true;
-		if (SystemFeatureChecker.isInternetConnection(mContext)) {
-			Log.e(TAG, "Ok1");
+		if (SystemFeatureChecker.isInternetConnection(mVtuLifeMainActivity)) {
 			try {
 				mGCMRegisterIdString = GoogleCloudMessaging.getInstance(
-						mContext).register(Settings.SENDER_ID);
-				Log.e(TAG, "Ok4");
+						mVtuLifeMainActivity).register(Settings.SENDER_ID);
 				JSONParser jParser = new JSONParser();
 				List<NameValuePair> params = new ArrayList<NameValuePair>();
-				try {
-					Log.e(TAG, "Ok5");
-					params.add(new BasicNameValuePair(POST_PARAM_REGISTER_ID,
-							mGCMRegisterIdString));
-					JSONObject jsonObject = jParser.makeHttpRequest(
-							Settings.WEB_URL + Settings.GCM_REGISTER, "POST",
-							params);
-					if (!jsonObject.getString(TAG_RESULT).equals(
-							RESULT_SUCCESS_VALUSE))
-						result = false;
-					Log.e(TAG, "Ok6");
-				} catch (Exception e1) {
+				params.add(new BasicNameValuePair(POST_PARAM_REGISTER_ID,
+						mGCMRegisterIdString));
+				JSONObject jsonObject = jParser.makeHttpRequest(
+						Settings.WEB_URL + Settings.GCM_REGISTER, "POST",
+						params);
+				if (!jsonObject.getString(TAG_RESULT).equals(
+						RESULT_SUCCESS_VALUSE))
 					result = false;
-				}
 			} catch (Exception e) {
 				result = false;
 			}
@@ -63,12 +54,14 @@ public class GCMRegisterAsyncTask extends AsyncTask<String, String, Boolean> {
 		return result;
 	}
 
-	protected void onPostExecute(boolean result) {
-		Log.e(TAG, "Ok2");
-		if (result)
-			Settings.storeRegistrationIdWithAppVersion(mContext,
+	@Override
+	protected void onPostExecute(Boolean result) {
+		super.onPostExecute(result);
+		if (result) {
+			Settings.storeRegistrationIdWithAppVersion(mVtuLifeMainActivity,
 					mGCMRegisterIdString);
-		Toast.makeText(mContext, result ? "true" : "false", Toast.LENGTH_LONG)
-				.show();
+			mVtuLifeMainActivity.showCrouton("Registered for notification",
+					Style.INFO, true);
+		}
 	}
 }

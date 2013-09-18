@@ -12,7 +12,6 @@ import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,9 +31,9 @@ import com.V4Creations.vtulife.fragments.UploadFileFragment;
 import com.V4Creations.vtulife.fragments.VTULifeWebFragment;
 import com.V4Creations.vtulife.interfaces.RefreshListener;
 import com.V4Creations.vtulife.model.ActionBarStatus;
-import com.V4Creations.vtulife.model.BaseActivity;
 import com.V4Creations.vtulife.server.GCMRegisterAsyncTask;
 import com.V4Creations.vtulife.system.SystemFeatureChecker;
+import com.V4Creations.vtulife.util.BaseActivity;
 import com.V4Creations.vtulife.util.GoogleAnalyticsManager;
 import com.V4Creations.vtulife.util.Settings;
 import com.astuetz.viewpager.extensions.PagerSlidingTabStrip;
@@ -100,15 +99,13 @@ public class VTULifeMainActivity extends BaseActivity {
 		if (checkPlayServices()) {
 			mGcmRegisterIdString = Settings
 					.getRegistrationId(getApplicationContext());
-			if (mGcmRegisterIdString.isEmpty()) {
-				Log.e(TAG, "Ok0");
+			if (mGcmRegisterIdString.isEmpty())
 				registerGCMToServer();
-			}
 		}
 	}
 
 	private void registerGCMToServer() {
-		new GCMRegisterAsyncTask(getApplicationContext()).execute();
+		new GCMRegisterAsyncTask(this).execute();
 	}
 
 	private void init() {
@@ -209,10 +206,8 @@ public class VTULifeMainActivity extends BaseActivity {
 			if (GooglePlayServicesUtil.isUserRecoverableError(resultCode)) {
 				GooglePlayServicesUtil.getErrorDialog(resultCode, this,
 						PLAY_SERVICES_RESOLUTION_REQUEST).show();
-			} else {
-				Log.i(TAG, "This device is not supported.");
+			} else
 				finish();
-			}
 			return false;
 		}
 		return true;
@@ -420,8 +415,9 @@ public class VTULifeMainActivity extends BaseActivity {
 	}
 
 	public void showAbout() {
-		// TODO Auto-generated method stub
-
+		Intent intent = new Intent(getApplicationContext(),
+				VTULifeAboutShelockActivity.class);
+		startActivity(intent);
 	}
 
 	public void showHelp() {

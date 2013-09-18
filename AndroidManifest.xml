@@ -64,6 +64,12 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="com.V4Creations.vtulife.ui.VTULifeAboutShelockActivity"
+            android:label="About"
+            android:logo="@drawable/icon_about"
+            android:screenOrientation="portrait" >
+        </activity>
+                <activity
             android:name="com.V4Creations.vtulife.ui.VTULifePreferencesSherlockActivity"
             android:label="Preferences"
             android:logo="@drawable/icon_settings"
@@ -73,7 +79,11 @@
             android:name="com.V4Creations.vtulife.ui.VTULifeNotificationSherlockListActivity"
             android:label="Notifications"
             android:logo="@drawable/notification"
+            android:parentActivityName="com.V4Creations.vtulife.ui.VTULifeMainActivity"
             android:screenOrientation="portrait" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.V4Creations.vtulife.ui.VTULifeMainActivity" />
         </activity>
 
         <receiver

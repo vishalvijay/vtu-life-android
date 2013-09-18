@@ -18,8 +18,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/iconImageView"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:textIsSelectable="false"
-        android:textSize="17sp"
         android:textStyle="bold" />
 
     <TextView
@@ -28,14 +28,16 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/nameTextView"
         android:layout_toRightOf="@id/iconImageView"
-        android:text="@string/size_" />
+        android:text="@string/size_"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:id="@+id/sizeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/nameTextView"
-        android:layout_toRightOf="@id/sizeLabelTextView" />
+        android:layout_toRightOf="@id/sizeLabelTextView"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:id="@+id/dateLabelTextView"
@@ -43,14 +45,16 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/sizeLabelTextView"
         android:layout_toRightOf="@id/iconImageView"
-        android:text="@string/modified_" />
+        android:text="@string/modified_"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:id="@+id/dateTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/sizeLabelTextView"
-        android:layout_toRightOf="@id/dateLabelTextView" />
+        android:layout_toRightOf="@id/dateLabelTextView"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <TextView
         android:id="@+id/hrefTextView"

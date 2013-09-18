@@ -7,13 +7,14 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.V4Creations.vtulife.R;
 import com.V4Creations.vtulife.adapters.NotificationAdapter;
 import com.V4Creations.vtulife.db.VTULifeDataBase;
 import com.V4Creations.vtulife.interfaces.NotificationFromDBListener;
-import com.V4Creations.vtulife.model.Notification;
+import com.V4Creations.vtulife.model.VTULifeNotification;
 import com.V4Creations.vtulife.util.GoogleAnalyticsManager;
 import com.actionbarsherlock.app.SherlockListActivity;
 import com.actionbarsherlock.view.Menu;
@@ -27,6 +28,7 @@ import de.keyboardsurfer.android.widget.crouton.Style;
 public class VTULifeNotificationSherlockListActivity extends
 		SherlockListActivity {
 	private NotificationAdapter mNotificationAdapter;
+	private ArrayList<VTULifeNotification> mNotifications;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,16 +37,18 @@ public class VTULifeNotificationSherlockListActivity extends
 		setContentView(R.layout.vtu_life_notification_activity_layout);
 		setSupportProgressBarIndeterminateVisibility(true);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		TextView noteTextView = (TextView) findViewById(R.id.noteTextView);
+		noteTextView.setSelected(true);
 		VTULifeDataBase.getInstance(getApplicationContext()).getNotifications(
 				new NotificationFromDBListener() {
 
 					@Override
 					public void notificationCreated(
-							ArrayList<Notification> notifications) {
+							ArrayList<VTULifeNotification> notifications) {
 						setSupportProgressBarIndeterminateVisibility(false);
+						mNotifications = notifications;
 						mNotificationAdapter = new NotificationAdapter(
-								getApplicationContext(),
-								R.layout.notification_list_item, notifications);
+								getApplicationContext(), mNotifications);
 						setListAdapter(mNotificationAdapter);
 					}
 				});
@@ -53,7 +57,7 @@ public class VTULifeNotificationSherlockListActivity extends
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
-		mNotificationAdapter.getItem(position).setNotificationSaw(
+		mNotificationAdapter.getItem(position).toggelNotificationSaw(
 				getApplicationContext());
 		mNotificationAdapter.notifyDataSetChanged();
 	}
@@ -97,7 +101,8 @@ public class VTULifeNotificationSherlockListActivity extends
 		if (VTULifeDataBase.getInstance(getApplicationContext())
 				.clearAllNotifications()) {
 			Crouton.makeText(this, "Notification cleared", Style.INFO).show();
-			mNotificationAdapter.clear();
+			mNotifications.clear();
+			mNotificationAdapter.notifyDataSetChanged();
 		} else
 			Toast.makeText(getApplicationContext(),
 					"There is no notification to clear", Toast.LENGTH_SHORT)

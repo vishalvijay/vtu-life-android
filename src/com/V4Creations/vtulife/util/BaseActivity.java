@@ -1,4 +1,4 @@
-package com.V4Creations.vtulife.model;
+package com.V4Creations.vtulife.util;
 
 import android.os.Bundle;
 

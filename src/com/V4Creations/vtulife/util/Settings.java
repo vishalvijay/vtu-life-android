@@ -12,7 +12,7 @@ public class Settings {
 	public static final String GCM_REGISTER = "/nm/register.php";
 	public static final String[] VTU_LIFE_EMAILS = new String[] {
 			"v4appfarm@gmail.com", "someone@gmail.com" };
-	public static final String SENDER_ID="615350300672";
+	public static final String SENDER_ID="812211262410";
 	
 
 	private static String PREFS_IS_FULL_SEM_RESULT = "isFullSemResult";

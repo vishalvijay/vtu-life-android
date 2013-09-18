@@ -10,7 +10,7 @@
         android:id="@+id/notificationTypeImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="2dp"
+        android:layout_margin="2dp"
         android:src="@drawable/icon_about" />
 
     <LinearLayout
@@ -22,10 +22,8 @@
             android:id="@+id/titleTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="2dp"
             android:singleLine="true"
-            android:text="kwjfhewwwwwwwwwwwwwwwwwkwfbkewnfnewjfnj"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -38,7 +36,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:padding="2dp" />
+                android:focusable="false" />
 
             <TextView
                 android:id="@+id/messageTextView"
@@ -47,9 +45,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:layout_toLeftOf="@id/downloadButton"
-                android:padding="2dp"
-                android:text="kwjfhewqweeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeew"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceSmall" />
         </RelativeLayout>
 
         <TextView
@@ -58,9 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:gravity="right"
-            android:padding="2dp"
             android:singleLine="true"
-            android:text="newjfnjqwdddddddddddddddddddddddddddddddddddddddddd"
             android:textAppearance="?android:attr/textAppearanceSmall" />
     </LinearLayout>
 
