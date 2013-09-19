@@ -169,7 +169,6 @@ public class UploadFileFragment extends SherlockFragment implements
 		target.setPackage("com.V4Creations.vtulife");
 		List<String> extent = new ArrayList<String>();
 		Collections.addAll(extent, allowedFileTypeStrings);
-		target.putExtra("fullscreen", true);
 		target.putStringArrayListExtra("ext", (ArrayList<String>) extent);
 		Intent intent = Intent.createChooser(target, "Select a file");
 		try {

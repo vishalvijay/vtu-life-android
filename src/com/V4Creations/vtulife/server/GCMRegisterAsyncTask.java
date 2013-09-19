@@ -35,7 +35,7 @@ public class GCMRegisterAsyncTask extends AsyncTask<String, String, Boolean> {
 		if (SystemFeatureChecker.isInternetConnection(mVtuLifeMainActivity)) {
 			try {
 				mGCMRegisterIdString = GoogleCloudMessaging.getInstance(
-						mVtuLifeMainActivity).register(Settings.SENDER_ID);
+						mVtuLifeMainActivity).register(Settings.GCM_SENDER_ID);
 				JSONParser jParser = new JSONParser();
 				List<NameValuePair> params = new ArrayList<NameValuePair>();
 				params.add(new BasicNameValuePair(POST_PARAM_REGISTER_ID,

@@ -1,9 +1,7 @@
 package com.V4Creations.vtulife.fragments;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +16,7 @@ import android.widget.TextView;
 import com.V4Creations.vtulife.R;
 import com.V4Creations.vtulife.adapters.VTULifeFragmentAdapter.FragmentInfo;
 import com.V4Creations.vtulife.model.ActionBarStatus;
+import com.V4Creations.vtulife.system.SystemFeatureChecker;
 import com.V4Creations.vtulife.ui.VTULifeMainActivity;
 import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.view.Menu;
@@ -121,14 +120,20 @@ public class VTULifeWebFragment extends SherlockFragment implements
 
 			@Override
 			public boolean shouldOverrideUrlLoading(WebView view, String url) {
-				if (url.matches("http://www.vtulife.com/resource.php.*")) {
-					String currentPostion = url.substring(35);
-					view.loadUrl("http://www.vtulife.com/mresource.php"
-							+ currentPostion);
-				} else if (url
-						.equals("https://play.google.com/store/apps/details?id=com.V4Creations.vtulife"))
-					vtuLifeMainActivity.rateAppOnPlayStore();
-				// TODO Parse url
+				if (url.equals("https://play.google.com/store/apps/details?id=com.V4Creations.vtulife"))
+					vtuLifeMainActivity.showRateApp();
+				else if (url.contains("classresults.php"))
+					vtuLifeMainActivity
+							.changeCurrentFragemnt(VTULifeMainActivity.ID_CLASS_RESULT_FRAGMENT);
+				else if (url.contains("fastresults.php"))
+					vtuLifeMainActivity
+							.changeCurrentFragemnt(VTULifeMainActivity.ID_FAST_RESULT_FRAGMENT);
+				else if (url.contains("resource"))
+					vtuLifeMainActivity
+							.changeCurrentFragemnt(VTULifeMainActivity.ID_DIRECTORY_LISTING_FRAGMENT);
+				else if (url.contains("upload.html"))
+					vtuLifeMainActivity
+							.changeCurrentFragemnt(VTULifeMainActivity.ID_UPLOAD_FILE_FRAGEMENT);
 				else
 					view.loadUrl(url);
 				return true;
@@ -138,9 +143,10 @@ public class VTULifeWebFragment extends SherlockFragment implements
 			public void onDownloadStart(String url, String userAgent,
 					String contentDisposition, String mimetype,
 					long contentLength) {
-				Intent i = new Intent(Intent.ACTION_VIEW);
-				i.setData(Uri.parse(url));
-				startActivity(i);
+				SystemFeatureChecker.downloadFile(vtuLifeMainActivity, url,
+						false);
+				vtuLifeMainActivity.showCrouton("Downloading started",
+						Style.INFO, false);
 			}
 		});
 	}

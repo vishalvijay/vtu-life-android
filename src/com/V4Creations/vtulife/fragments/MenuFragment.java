@@ -124,7 +124,7 @@ public class MenuFragment extends SherlockFragment implements
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.rateAppImageButton:
-			vtuLifeMainActivity.rateAppOnPlayStore();
+			vtuLifeMainActivity.showRateApp();
 			break;
 		case R.id.likeOnFbImageButton:
 			vtuLifeMainActivity.likeUsOnFacebook();
@@ -133,7 +133,7 @@ public class MenuFragment extends SherlockFragment implements
 			vtuLifeMainActivity.showPreferences();
 			break;
 		case R.id.feedbackImageButton:
-			vtuLifeMainActivity.sendFeedback();
+			vtuLifeMainActivity.showFeedback();
 			break;
 		case R.id.helpImageButton:
 			vtuLifeMainActivity.showHelp();

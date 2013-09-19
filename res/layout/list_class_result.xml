@@ -34,7 +34,7 @@
             android:layout_marginTop="5.0dip"
             android:layout_weight="1.0"
             android:gravity="center"
-            android:hint="@string/usn"
+            android:hint="@string/class_usn"
             android:imeOptions="actionSend"
             android:inputType="textNoSuggestions"
             android:maxLength="7"
@@ -57,7 +57,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/classUsnLinearLayout"
-        android:padding="@dimen/content_margin"
-        android:scrollbars="none" />
+        android:padding="@dimen/content_margin" />
 
 </RelativeLayout>

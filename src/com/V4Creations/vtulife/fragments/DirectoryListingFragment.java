@@ -7,8 +7,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +24,7 @@ import com.V4Creations.vtulife.model.ActionBarStatus;
 import com.V4Creations.vtulife.model.DirectoryListItem;
 import com.V4Creations.vtulife.model.StackItem;
 import com.V4Creations.vtulife.server.LoadDirectoryFromServer;
+import com.V4Creations.vtulife.system.SystemFeatureChecker;
 import com.V4Creations.vtulife.ui.VTULifeMainActivity;
 import com.V4Creations.vtulife.util.GoogleAnalyticsManager;
 import com.V4Creations.vtulife.util.Settings;
@@ -131,9 +130,10 @@ public class DirectoryListingFragment extends SherlockListFragment implements
 					.toString();
 			loadDirectory();
 		} else {
-			Intent i = new Intent(Intent.ACTION_VIEW);
-			i.setData(Uri.parse(Settings.WEB_URL + PAGE_URL + href));
-			startActivity(i);
+			SystemFeatureChecker.downloadFile(vtuLifeMainActivity,
+					Settings.WEB_URL + PAGE_URL + href, false);
+			vtuLifeMainActivity.showCrouton("Downloading started", Style.INFO,
+					false);
 		}
 	}
 
@@ -243,9 +243,8 @@ public class DirectoryListingFragment extends SherlockListFragment implements
 		hideProgressLinearLayout();
 		if (isConnectionOk) {
 			this.json = json;
-			for (int i = 0; i < itemList.size(); i++) {
+			for (int i = 0; i < itemList.size(); i++)
 				this.itemList.add(itemList.get(i));
-			}
 			directoryAdapter.notifyDataSetChanged();
 		} else if (errorMessage.equals("Empty folder")) {
 			vtuLifeMainActivity.showCrouton(errorMessage, Style.INFO, false);

@@ -31,6 +31,7 @@ import com.V4Creations.vtulife.R;
 import com.V4Creations.vtulife.adapters.VTULifeFragmentAdapter.FragmentInfo;
 import com.V4Creations.vtulife.model.ActionBarStatus;
 import com.V4Creations.vtulife.ui.VTULifeMainActivity;
+import com.V4Creations.vtulife.util.Settings;
 import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
@@ -184,7 +185,7 @@ public class PostAPicFragment extends SherlockFragment implements TextWatcher,
 					String parentDirectoryAddress = Environment
 							.getExternalStorageDirectory()
 							+ File.separator
-							+ "vtulife" + File.separator;
+							+ Settings.DEFAULT_FOLDER + File.separator;
 					File parentDirecory = new File(parentDirectoryAddress);
 					parentDirecory.mkdirs();
 					String captureAddress = parentDirectoryAddress
@@ -208,7 +209,6 @@ public class PostAPicFragment extends SherlockFragment implements TextWatcher,
 					intent.setAction(Intent.ACTION_GET_CONTENT);
 					List<String> extent = new ArrayList<String>();
 					Collections.addAll(extent, allowedFileTypeStrings);
-					intent.putExtra("fullscreen", true);
 					intent.putStringArrayListExtra("ext",
 							(ArrayList<String>) extent);
 					startActivityForResult(Intent.createChooser(intent,

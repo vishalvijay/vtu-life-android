@@ -2,13 +2,11 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
     <string name="version">Version : %s</string>
-    <string name="homepage">Homepage : http://v4.vtulife.com</string>
-    <string name="email">Email : v4appfarm@gmail.com</string>
-    <string name="app_description">Description :\nVTU Life android app is a mobile interface of www.vtulife.com. VTU Life provides a platform where Students can communicate, discuss and share resources, information and ideas.</string>
-    <string name="developer">Developer : V4 Creations</string>
-    <string name="support">Support from :\n\twww.techkochi.com\n\tMatrix Inc.\n\tVisitorsid ( http://www.youtube.com/user/visitorsid )</string>
+    <string name="homepage">Homepage : http://www.vtulife.com</string>
+    <string name="email">Email : someone@vtulife.com</string>
+    <string name="app_description">VTU Life android app is a mobile interface of www.vtulife.com. VTU Life provides a platform where Students can communicate, discuss and share resources, information and ideas.</string>
+    <string name="developer">Developer : PACE Students</string>
     <string name="app_name">VTU Life</string>
-    <string name="hello_world">Hello world!</string>
     <string name="please_wait_">Please wait&#8230;</string>
     <string name="www_vtulife_com">www.vtulife.com</string>
     <string name="v4_creations">V4 Creations</string>

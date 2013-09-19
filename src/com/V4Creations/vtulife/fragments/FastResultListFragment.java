@@ -22,8 +22,8 @@ import com.V4Creations.vtulife.R;
 import com.V4Creations.vtulife.adapters.ResultAdapter;
 import com.V4Creations.vtulife.adapters.VTULifeFragmentAdapter.FragmentInfo;
 import com.V4Creations.vtulife.db.VTULifeDataBase;
-import com.V4Creations.vtulife.interfaces.ResultLoadedInterface;
 import com.V4Creations.vtulife.interfaces.RefreshListener;
+import com.V4Creations.vtulife.interfaces.ResultLoadedInterface;
 import com.V4Creations.vtulife.model.ActionBarStatus;
 import com.V4Creations.vtulife.model.ResultItem;
 import com.V4Creations.vtulife.server.LoadResultFromServer;
@@ -217,9 +217,8 @@ public class FastResultListFragment extends SherlockListFragment implements
 			boolean isConnectionOk, String errorMessage, String usn) {
 		stopLoading();
 		if (isConnectionOk) {
-			for (int i = 0; i < itemList.size(); i++) {
+			for (int i = 0; i < itemList.size(); i++)
 				this.itemList.add(itemList.get(i));
-			}
 			resultAdapter.notifyDataSetChanged();
 			saveAndRefreshUsnHistory(usn);
 		} else

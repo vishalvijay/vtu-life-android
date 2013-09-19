@@ -5,15 +5,18 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 import com.V4Creations.vtulife.system.SystemFeatureChecker;
+import com.V4Creations.vtulife.ui.VTULifeMainActivity;
 
 public class Settings {
+	public static final String FACEBOOK_PAGE_URL = "https://www.facebook.com/thevtulife";
 	public static final String WEB_URL = "http://www.vtulife.com";
 	public static final String RESULT_FROM_VTU = "/result/result_json.php";
 	public static final String GCM_REGISTER = "/nm/register.php";
 	public static final String[] VTU_LIFE_EMAILS = new String[] {
 			"v4appfarm@gmail.com", "someone@gmail.com" };
-	public static final String SENDER_ID="812211262410";
-	
+	public static final String GCM_SENDER_ID = "812211262410";
+	public static final String DEFAULT_FOLDER = "vtulife";
+	public static final CharSequence PACKAGE = "com.V4Creations.vtulife";
 
 	private static String PREFS_IS_FULL_SEM_RESULT = "isFullSemResult";
 	private static String PREFS_IS_SORTED_RESULT = "isSortedResult";
@@ -61,7 +64,8 @@ public class Settings {
 	public static int getFavoritePage(Context context) {
 		SharedPreferences prefs = PreferenceManager
 				.getDefaultSharedPreferences(context);
-		return prefs.getInt(PREFS_FAVORITE_PAGE, 0);
+		return prefs.getInt(PREFS_FAVORITE_PAGE,
+				VTULifeMainActivity.ID_VTU_LIFE_WEB_FRAGMENT);
 	}
 
 	public static void setDeepSearch(Context context, boolean status) {

@@ -69,7 +69,7 @@
             android:logo="@drawable/icon_about"
             android:screenOrientation="portrait" >
         </activity>
-                <activity
+        <activity
             android:name="com.V4Creations.vtulife.ui.VTULifePreferencesSherlockActivity"
             android:label="Preferences"
             android:logo="@drawable/icon_settings"

@@ -2,20 +2,14 @@ package com.V4Creations.vtulife.ui;
 
 import java.util.ArrayList;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.TypedValue;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.V4Creations.vtulife.R;
@@ -93,6 +87,7 @@ public class VTULifeMainActivity extends BaseActivity {
 		mMenuFragment = new MenuFragment();
 		getSupportFragmentManager().beginTransaction()
 				.replace(R.id.menu_fram, mMenuFragment).commit();
+		getSlidingMenu().toggle();
 	}
 
 	private void gcmCheck() {
@@ -172,13 +167,6 @@ public class VTULifeMainActivity extends BaseActivity {
 	}
 
 	@Override
-	protected void onSaveInstanceState(Bundle outState) {
-		super.onSaveInstanceState(outState);
-		outState.putInt("tab", getSupportActionBar()
-				.getSelectedNavigationIndex());
-	}
-
-	@Override
 	protected void onPause() {
 		super.onPause();
 		stopInternetCheck();
@@ -215,69 +203,28 @@ public class VTULifeMainActivity extends BaseActivity {
 
 	public void changeCurrentFragemnt(int id) {
 		mViewPager.setCurrentItem(id);
+		if (getSlidingMenu().isMenuShowing())
+			toggle();
 	}
 
-	public void rateAppOnPlayStore() {
-		Uri uri = Uri.parse("market://details?id=" + getPackageName());
-		Intent myAppLinkToMarket = new Intent(Intent.ACTION_VIEW, uri);
-		try {
-			startActivity(myAppLinkToMarket);
-		} catch (ActivityNotFoundException e) {
-			showCrouton("Unable to find google play app.", Style.INFO, true);
-		}
-	}
-
-	public void sendFeedback() {
-		Intent i = new Intent(Intent.ACTION_SEND);
-		i.setType("message/rfc822");
-		i.putExtra(Intent.EXTRA_EMAIL, Settings.VTU_LIFE_EMAILS);
-		i.putExtra(Intent.EXTRA_SUBJECT, "Feedback of "
-				+ getString(R.string.app_name) + " android app.");
-		String bugReportBody = "Phone model : "
-				+ SystemFeatureChecker.getDeviceName()
-				+ "\n"
-				+ "Application name : "
-				+ getString(R.string.app_name)
-				+ "\n"
-				+ "Application version name: "
-				+ SystemFeatureChecker
-						.getAppVersionName(getApplicationContext())
-				+ "\n"
-				+ "Application version code : "
-				+ SystemFeatureChecker
-						.getAppVersionCode(getApplicationContext()) + "\n"
-				+ "Phone android version : "
-				+ SystemFeatureChecker.getAndroidVersion() + "\n"
-				+ "-----------------------\n"
-				+ "Please provide more details below :\n";
-		i.putExtra(Intent.EXTRA_TEXT, bugReportBody);
-		try {
-			startActivity(Intent.createChooser(i, "Send feedback"));
-		} catch (android.content.ActivityNotFoundException ex) {
-			showCrouton("There are no email clients installed.", Style.INFO,
-					true);
-		}
-	}
-
-	@Override
-	protected Dialog onCreateDialog(int id) {
-		LayoutInflater factory = LayoutInflater.from(this);
-
-		switch (id) {
-		case DIALOG_ABOUT:
-			final View aboutView = factory.inflate(R.layout.about, null);
-			TextView versionLabel = (TextView) aboutView
-					.findViewById(R.id.version_label);
-			String versionName = SystemFeatureChecker
-					.getAppVersionName(getApplicationContext());
-			versionLabel.setText(getString(R.string.version, versionName));
-			return new AlertDialog.Builder(this)
-					.setIcon(R.drawable.ic_launcher)
-					.setTitle(R.string.app_name).setView(aboutView)
-					.setPositiveButton("OK", null).create();
-		}
-		return null;
-	}
+	// @Override
+	// protected Dialog onCreateDialog(int id) {
+	// LayoutInflater factory = LayoutInflater.from(this);
+	// switch (id) {
+	// case DIALOG_ABOUT:
+	// final View aboutView = factory.inflate(R.layout.about, null);
+	// TextView versionLabel = (TextView) aboutView
+	// .findViewById(R.id.version_label);
+	// String versionName = SystemFeatureChecker
+	// .getAppVersionName(getApplicationContext());
+	// versionLabel.setText(getString(R.string.version, versionName));
+	// return new AlertDialog.Builder(this)
+	// .setIcon(R.drawable.ic_launcher)
+	// .setTitle(R.string.app_name).setView(aboutView)
+	// .setPositiveButton("OK", null).create();
+	// }
+	// return null;
+	// }
 
 	@Override
 	public void onBackPressed() {
@@ -426,8 +373,7 @@ public class VTULifeMainActivity extends BaseActivity {
 	}
 
 	public void likeUsOnFacebook() {
-		// TODO Auto-generated method stub
-
+		SystemFeatureChecker.openUrlInBrowser(this, Settings.FACEBOOK_PAGE_URL);
 	}
 
 	public void showNotification() {
@@ -436,4 +382,20 @@ public class VTULifeMainActivity extends BaseActivity {
 		startActivityForResult(intent, NOTIFICATION_REQUEST_CODE);
 	}
 
+	public void showRateApp() {
+		try {
+			SystemFeatureChecker.rateAppOnPlayStore(this);
+		} catch (ActivityNotFoundException e) {
+			showCrouton("Google play app not installed.", Style.ALERT, true);
+		}
+	}
+
+	public void showFeedback() {
+		try {
+			SystemFeatureChecker.sendFeedback(this);
+		} catch (ActivityNotFoundException e) {
+			showCrouton("There are no email clients installed.", Style.ALERT,
+					true);
+		}
+	}
 }

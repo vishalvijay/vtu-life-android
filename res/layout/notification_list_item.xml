@@ -2,49 +2,62 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:descendantFocusability="blocksDescendants"
     android:gravity="center"
     android:orientation="horizontal"
-    android:padding="2dp" >
+    android:padding="@dimen/content_margin" >
 
     <ImageView
         android:id="@+id/notificationTypeImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="2dp"
+        android:background="@drawable/cp_button_red"
+        android:padding="3dp"
         android:src="@drawable/icon_about" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
         android:orientation="vertical" >
-
-        <TextView
-            android:id="@+id/titleTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal" >
 
-            <Button
-                android:id="@+id/downloadButton"
+            <ImageButton
+                android:id="@+id/downloadImageButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:focusable="false" />
+                android:layout_margin="5dp"
+                android:background="@drawable/blue_button_selector"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:padding="4dp"
+                android:src="@drawable/notification_downlaod" />
+
+            <TextView
+                android:id="@+id/titleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_toLeftOf="@id/downloadImageButton"
+                android:singleLine="true"
+                android:text="Abc"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
             <TextView
                 android:id="@+id/messageTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_centerVertical="true"
-                android:layout_toLeftOf="@id/downloadButton"
+                android:layout_below="@id/titleTextView"
+                android:layout_toLeftOf="@id/downloadImageButton"
+                android:text="Hai how are you"
                 android:textAppearance="?android:attr/textAppearanceSmall" />
         </RelativeLayout>
 
@@ -53,6 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
+            android:layout_marginRight="4dp"
             android:gravity="right"
             android:singleLine="true"
             android:textAppearance="?android:attr/textAppearanceSmall" />

@@ -12,7 +12,7 @@
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
  * See the License for the specific language governing permissions and 
  * limitations under the License. 
- */ 
+ */
 
 package com.ipaulpro.afilechooser;
 
@@ -47,8 +47,9 @@ public class FileListFragment extends SherlockListFragment implements
 	/**
 	 * Create a new instance with the given file path.
 	 * 
-	 * @param path The absolute path of the file (directory) to display.
-	 * @return A new Fragment with the given file path. 
+	 * @param path
+	 *            The absolute path of the file (directory) to display.
+	 * @return A new Fragment with the given file path.
 	 */
 	public static FileListFragment newInstance(String path) {
 		FileListFragment fragment = new FileListFragment();
@@ -75,8 +76,9 @@ public class FileListFragment extends SherlockListFragment implements
 		setListShown(false);
 
 		getLoaderManager().initLoader(LOADER_ID, null, this);
-		
+
 		super.onActivityCreated(savedInstanceState);
+		getListView().setVerticalScrollBarEnabled(false);
 	}
 
 	@Override

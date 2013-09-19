@@ -3,29 +3,31 @@ package com.V4Creations.vtulife.adapters;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import android.app.Activity;
 import android.content.Context;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.V4Creations.vtulife.R;
 import com.V4Creations.vtulife.model.VTULifeNotification;
+import com.V4Creations.vtulife.system.SystemFeatureChecker;
 
 public class NotificationAdapter extends BaseAdapter {
-	private Context mContext;
+	private Activity mActivity;
 	private ArrayList<VTULifeNotification> mNotifications;
 	private LayoutInflater mInflater;
 
-	public NotificationAdapter(Context context,
+	public NotificationAdapter(Activity activity,
 			ArrayList<VTULifeNotification> notifications) {
-		mContext = context;
+		mActivity = activity;
 		mNotifications = notifications;
-		mInflater = (LayoutInflater) mContext
+		mInflater = (LayoutInflater) mActivity
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
 
@@ -58,8 +60,8 @@ public class NotificationAdapter extends BaseAdapter {
 					.findViewById(R.id.messageTextView);
 			viewHolder.mTimeTextView = (TextView) convertView
 					.findViewById(R.id.timeTextView);
-			viewHolder.mDownloadButton = (Button) convertView
-					.findViewById(R.id.downloadButton);
+			viewHolder.mDownloadImageButton = (ImageButton) convertView
+					.findViewById(R.id.downloadImageButton);
 			convertView.setTag(viewHolder);
 		}
 		if (position % 2 == 0)
@@ -74,29 +76,39 @@ public class NotificationAdapter extends BaseAdapter {
 		viewHolder.mMessageTextView.setText(notification.getMessageString());
 		viewHolder.mTimeTextView.setText(getFormatedTimeStamb(notification
 				.getTime()));
+		viewHolder.mDownloadImageButton
+				.setOnClickListener(new View.OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						SystemFeatureChecker.rateAppOnPlayStore(mActivity);
+					}
+				});
 		int imageId;
 		if (notification.isNormalNotification()) {
 			imageId = notification.isNotificationSaw() ? R.drawable.notification_normal_disabled
 					: R.drawable.notification_normal;
-			viewHolder.mDownloadButton.setVisibility(View.GONE);
+			viewHolder.mDownloadImageButton.setVisibility(View.GONE);
 		} else {
 			imageId = notification.isNotificationSaw() ? R.drawable.notification_download_disabled
 					: R.drawable.notification_downlaod;
-			viewHolder.mDownloadButton.setVisibility(View.VISIBLE);
+			viewHolder.mDownloadImageButton.setVisibility(View.VISIBLE);
 		}
 		if (notification.isNotificationSaw()) {
-			viewHolder.mTimeTextView.setTextColor(mContext.getResources()
-					.getColor(R.color.gray));
-			viewHolder.mTitleTextView.setTextColor(mContext.getResources()
-					.getColor(R.color.gray));
-			viewHolder.mMessageTextView.setTextColor(mContext.getResources()
-					.getColor(R.color.gray));
+			viewHolder.mDownloadImageButton.setEnabled(false);
+			viewHolder.mTimeTextView.setTextColor(mActivity.getResources()
+					.getColor(android.R.color.black));
+			viewHolder.mTitleTextView.setTextColor(mActivity.getResources()
+					.getColor(android.R.color.black));
+			viewHolder.mMessageTextView.setTextColor(mActivity.getResources()
+					.getColor(android.R.color.black));
 		} else {
-			viewHolder.mTimeTextView.setTextColor(mContext.getResources()
+			viewHolder.mDownloadImageButton.setEnabled(true);
+			viewHolder.mTimeTextView.setTextColor(mActivity.getResources()
 					.getColor(android.R.color.white));
-			viewHolder.mTitleTextView.setTextColor(mContext.getResources()
+			viewHolder.mTitleTextView.setTextColor(mActivity.getResources()
 					.getColor(android.R.color.white));
-			viewHolder.mMessageTextView.setTextColor(mContext.getResources()
+			viewHolder.mMessageTextView.setTextColor(mActivity.getResources()
 					.getColor(android.R.color.white));
 		}
 		viewHolder.mTypeImageView.setImageResource(imageId);
@@ -106,12 +118,12 @@ public class NotificationAdapter extends BaseAdapter {
 	private CharSequence getFormatedTimeStamb(long time) {
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTimeInMillis(time);
-		return DateFormat.getDateFormat(mContext).format(calendar.getTime());
+		return DateFormat.getDateFormat(mActivity).format(calendar.getTime());
 	}
 
 	private static class ViewHolder {
 		public ImageView mTypeImageView;
 		public TextView mTitleTextView, mMessageTextView, mTimeTextView;
-		public Button mDownloadButton;
+		public ImageButton mDownloadImageButton;
 	}
 }

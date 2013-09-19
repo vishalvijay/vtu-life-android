@@ -11,5 +11,19 @@
         <item>Login</item>
         <item>About us</item>
     </string-array>
+    <string-array name="library_names">
+        <item>ActionBarSherlock</item>
+        <item>aFileChooser</item>
+        <item>Crouton</item>
+        <item>PagerSlidingTabStrip</item>
+        <item>SlidingMenu</item>
+    </string-array>
+    <string-array name="library_urls">
+        <item>https://github.com/JakeWharton/ActionBarSherlock</item>
+        <item>https://github.com/iPaulPro/aFileChooser</item>
+        <item>https://github.com/dnschneid/crouton</item>
+        <item>https://github.com/astuetz/PagerSlidingTabStrip</item>
+        <item>https://github.com/jfeinstein10/SlidingMenu</item>
+    </string-array>
 
 </resources>

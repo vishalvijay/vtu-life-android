@@ -15,7 +15,8 @@
         android:padding="3dp"
         android:scrollHorizontally="true"
         android:singleLine="true"
-        android:text="Click on the notification icon to mark as read. You will be getting all VTU related notification here." />
+        android:text="Find all VTU related updates here. Click on a notification to mark as read."
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,7 +38,8 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:background="@drawable/container_dropshadow"
+        android:gravity="center"
         android:padding="10dp"
-        android:text="No notification to show" />
+        android:text="There is nothing interesting right now.\nWe will keep you inform." />
 
 </RelativeLayout>

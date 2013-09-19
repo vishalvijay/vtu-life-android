@@ -48,7 +48,8 @@ public class VTULifeNotificationSherlockListActivity extends
 						setSupportProgressBarIndeterminateVisibility(false);
 						mNotifications = notifications;
 						mNotificationAdapter = new NotificationAdapter(
-								getApplicationContext(), mNotifications);
+								VTULifeNotificationSherlockListActivity.this,
+								mNotifications);
 						setListAdapter(mNotificationAdapter);
 					}
 				});

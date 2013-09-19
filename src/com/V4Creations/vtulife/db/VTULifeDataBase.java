@@ -2,15 +2,15 @@ package com.V4Creations.vtulife.db;
 
 import java.util.ArrayList;
 
-import com.V4Creations.vtulife.interfaces.NotificationFromDBListener;
-import com.V4Creations.vtulife.model.VTULifeNotification;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
+
+import com.V4Creations.vtulife.interfaces.NotificationFromDBListener;
+import com.V4Creations.vtulife.model.VTULifeNotification;
 
 public class VTULifeDataBase {
 

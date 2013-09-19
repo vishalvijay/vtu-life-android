@@ -25,8 +25,8 @@ import com.V4Creations.vtulife.R;
 import com.V4Creations.vtulife.adapters.ResultAdapter;
 import com.V4Creations.vtulife.adapters.VTULifeFragmentAdapter.FragmentInfo;
 import com.V4Creations.vtulife.db.VTULifeDataBase;
-import com.V4Creations.vtulife.interfaces.ResultLoadedInterface;
 import com.V4Creations.vtulife.interfaces.RefreshListener;
+import com.V4Creations.vtulife.interfaces.ResultLoadedInterface;
 import com.V4Creations.vtulife.model.ActionBarStatus;
 import com.V4Creations.vtulife.model.ResultItem;
 import com.V4Creations.vtulife.server.LoadResultFromServer;
@@ -58,6 +58,7 @@ public class ClassResultListFragment extends SherlockListFragment implements
 	private Boolean isLoading;
 	private String classUsn;
 	private Tracker tracker;
+	private int mSuccessResultCounter;
 
 	public ClassResultListFragment() {
 		itemList = new ArrayList<ResultItem>();
@@ -118,6 +119,7 @@ public class ClassResultListFragment extends SherlockListFragment implements
 		if (!isLoading) {
 			String usn = classUsnAutoCompleteTextView.getText().toString();
 			if (usn.matches(classUsnRegx)) {
+				mSuccessResultCounter = 0;
 				classUsn = usn;
 				getResult();
 			} else
@@ -223,30 +225,31 @@ public class ClassResultListFragment extends SherlockListFragment implements
 	}
 
 	@Override
-	public void notifyResultLoaded(ArrayList<ResultItem> itemList,
+	synchronized public void notifyResultLoaded(ArrayList<ResultItem> itemList,
 			boolean isConnectionOk, String errorMessage, String usn) {
 		if (lastLoadingAdded != -1) {
 			this.itemList.remove(lastLoadingAdded);
 			resultAdapter.notifyDataSetChanged();
 			lastLoadingAdded = -1;
 		}
-		if (isCanceled) {
+		if (isCanceled && isLoading) {
 			if (isLoading) {
-				vtuLifeMainActivity.showCrouton("Canceled", Style.INFO, false);
+				vtuLifeMainActivity.showCrouton("Canceled\n"
+						+ mSuccessResultCounter + " results fetched",
+						Style.INFO, false);
 				stopLoading();
 			}
 			return;
 		}
 		if (isConnectionOk) {
-			for (int i = 0; i < itemList.size(); i++) {
+			for (int i = 0; i < itemList.size(); i++)
 				this.itemList.add(itemList.get(i));
-				resultAdapter.notifyDataSetChanged();
-			}
 			lastLoadingAdded = this.itemList.size();
 			this.itemList.add(new ResultItem());
 			this.itemList.get(lastLoadingAdded).tag = ResultAdapter.TYPE_LOADING;
 			resultAdapter.notifyDataSetChanged();
 			continuesFailCount = 0;
+			mSuccessResultCounter++;
 		} else {
 			if (!"Result not available.".equals(errorMessage) && !isCanceled)
 				vtuLifeMainActivity.showCrouton(
@@ -271,6 +274,8 @@ public class ClassResultListFragment extends SherlockListFragment implements
 				askResultOfUsn(1);
 			} else if ((continuesFailCount > 10) || currentUsn == 420) {
 				stopLoading();
+				vtuLifeMainActivity.showCrouton(mSuccessResultCounter
+						+ " results fetched", Style.INFO, true);
 			} else
 				askResultOfUsn(1);
 		}
