@@ -51,7 +51,7 @@
     <style name="DropDownListView.Vtulife" parent="@style/Widget.Sherlock.ListView.DropDown">
         <item name="android:listSelector">@drawable/selectable_background_vtulife</item>
     </style>
-    
+
     <style name="DropDownNav.Vtulife" parent="@style/Widget.Sherlock.Spinner.DropDown.ActionBar">
         <item name="android:background">@drawable/spinner_background_ab_vtulife</item>
         <item name="android:popupBackground">@drawable/menu_dropdown_panel_vtulife</item>
@@ -77,6 +77,17 @@
     <style name="Theme.Vtulife.Widget" parent="@style/Theme.Sherlock">
         <item name="popupMenuStyle">@style/PopupMenu.Vtulife</item>
         <item name="dropDownListViewStyle">@style/DropDownListView.Vtulife</item>
+    </style>
+
+    <style name="SplashScreenTextStyle">
+        <item name="android:paddingLeft">4px</item>
+        <item name="android:paddingBottom">4px</item>
+        <item name="android:textColor">#ffffffff</item>
+        <item name="android:textSize">60sp</item>
+        <item name="android:shadowColor">#000000</item>
+        <item name="android:shadowDx">1</item>
+        <item name="android:shadowDy">1</item>
+        <item name="android:shadowRadius">1</item>
     </style>
 
 </resources>

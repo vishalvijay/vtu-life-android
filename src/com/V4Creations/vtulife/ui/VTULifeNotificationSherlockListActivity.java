@@ -93,7 +93,7 @@ public class VTULifeNotificationSherlockListActivity extends
 							}
 						});
 		AlertDialog alert = builder.create();
-		alert.setTitle("Clear notifications");
+		alert.setTitle("Clear all notifications");
 		alert.setIcon(android.R.drawable.ic_dialog_alert);
 		alert.show();
 	}

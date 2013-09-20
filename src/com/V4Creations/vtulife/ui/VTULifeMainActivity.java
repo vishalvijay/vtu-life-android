@@ -2,6 +2,7 @@ package com.V4Creations.vtulife.ui;
 
 import java.util.ArrayList;
 
+import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +11,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.TypedValue;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.V4Creations.vtulife.R;
@@ -41,8 +44,6 @@ import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
 
 public class VTULifeMainActivity extends BaseActivity {
-
-	private final static int DIALOG_ABOUT = 201;
 	private final static int INTERNET_CHECK_TIME_DELAY_HIGH = 10000;
 	private final static int INTERNET_CHECK_TIME_DELAY_LOW = 2000;
 	private final static int PREFERENCE_REQUEST_CODE = 1000,
@@ -87,7 +88,14 @@ public class VTULifeMainActivity extends BaseActivity {
 		mMenuFragment = new MenuFragment();
 		getSupportFragmentManager().beginTransaction()
 				.replace(R.id.menu_fram, mMenuFragment).commit();
-		getSlidingMenu().toggle();
+		checkFirstTimeUse();
+	}
+
+	private void checkFirstTimeUse() {
+		if (Settings.isFirtsTime(getApplicationContext())) {
+			Settings.setFirstTime(getApplicationContext(), false);
+			showCrouton("Welcome to VTU Life", Style.INFO, true);
+		}
 	}
 
 	private void gcmCheck() {
@@ -206,25 +214,6 @@ public class VTULifeMainActivity extends BaseActivity {
 		if (getSlidingMenu().isMenuShowing())
 			toggle();
 	}
-
-	// @Override
-	// protected Dialog onCreateDialog(int id) {
-	// LayoutInflater factory = LayoutInflater.from(this);
-	// switch (id) {
-	// case DIALOG_ABOUT:
-	// final View aboutView = factory.inflate(R.layout.about, null);
-	// TextView versionLabel = (TextView) aboutView
-	// .findViewById(R.id.version_label);
-	// String versionName = SystemFeatureChecker
-	// .getAppVersionName(getApplicationContext());
-	// versionLabel.setText(getString(R.string.version, versionName));
-	// return new AlertDialog.Builder(this)
-	// .setIcon(R.drawable.ic_launcher)
-	// .setTitle(R.string.app_name).setView(aboutView)
-	// .setPositiveButton("OK", null).create();
-	// }
-	// return null;
-	// }
 
 	@Override
 	public void onBackPressed() {
@@ -368,8 +357,52 @@ public class VTULifeMainActivity extends BaseActivity {
 	}
 
 	public void showHelp() {
-		// TODO Auto-generated method stub
 
+		Dialog dialog = new Dialog(this);
+		dialog.setContentView(R.layout.help_layout);
+
+		TextView facebookTextView = (TextView) dialog
+				.findViewById(R.id.facebookTextView);
+		TextView mailTextView = (TextView) dialog
+				.findViewById(R.id.emailTextView);
+		TextView downloadTextView = (TextView) dialog
+				.findViewById(R.id.downloadTextView);
+		View.OnClickListener onClickListener = new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				switch (v.getId()) {
+				case R.id.facebookTextView:
+					likeUsOnFacebook();
+					break;
+				case R.id.emailTextView:
+					sendNormalMail();
+					break;
+				case R.id.downloadTextView:
+					SystemFeatureChecker.downloadFile(VTULifeMainActivity.this,
+							Settings.WEB_URL + Settings.ANDROID_USER_MANUAL,
+							false);
+					break;
+				}
+			}
+		};
+		facebookTextView.setOnClickListener(onClickListener);
+		mailTextView.setOnClickListener(onClickListener);
+		downloadTextView.setOnClickListener(onClickListener);
+		dialog.setTitle("Help");
+		dialog.show();
+	}
+
+	protected void sendNormalMail() {
+		Intent i = new Intent(Intent.ACTION_SEND);
+		i.setType("message/rfc822");
+		i.putExtra(Intent.EXTRA_EMAIL,
+				new String[] { Settings.VTU_LIFE_EMAILS[1] });
+		try {
+			startActivity(Intent.createChooser(i, "Send email for help"));
+		} catch (android.content.ActivityNotFoundException ex) {
+			throw ex;
+		}
 	}
 
 	public void likeUsOnFacebook() {
@@ -397,5 +430,14 @@ public class VTULifeMainActivity extends BaseActivity {
 			showCrouton("There are no email clients installed.", Style.ALERT,
 					true);
 		}
+	}
+
+	@Override
+	public void onPostCreate(Bundle savedInstanceState) {
+		if (savedInstanceState == null) {
+			savedInstanceState = new Bundle();
+			savedInstanceState.putBoolean("SlidingActivityHelper.open", true);
+		}
+		super.onPostCreate(savedInstanceState);
 	}
 }

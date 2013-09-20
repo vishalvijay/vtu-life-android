@@ -11,6 +11,7 @@ import com.V4Creations.vtulife.R;
 import com.V4Creations.vtulife.adapters.ReferredLibraryAdapter;
 import com.V4Creations.vtulife.model.ReferredLibrary;
 import com.V4Creations.vtulife.system.SystemFeatureChecker;
+import com.V4Creations.vtulife.util.GoogleAnalyticsManager;
 import com.actionbarsherlock.app.SherlockListActivity;
 import com.actionbarsherlock.view.MenuItem;
 
@@ -63,5 +64,17 @@ public class VTULifeAboutShelockActivity extends SherlockListActivity {
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+
+	@Override
+	protected void onStart() {
+		super.onStart();
+		GoogleAnalyticsManager.startGoogleAnalyticsForActivity(this);
+	}
+
+	@Override
+	protected void onStop() {
+		super.onStop();
+		GoogleAnalyticsManager.stopGoogleAnalyticsForActivity(this);
 	}
 }

@@ -129,6 +129,8 @@ public class SystemFeatureChecker {
 			boolean isBrowserDownload) {
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD
 				&& !isBrowserDownload) {
+			DownloadManager dm = (DownloadManager) activity
+					.getSystemService(Context.DOWNLOAD_SERVICE);
 			try {
 				String parentDirectoryAddress = Environment
 						.getExternalStorageDirectory()
@@ -137,8 +139,6 @@ public class SystemFeatureChecker {
 				File parentDirecory = new File(parentDirectoryAddress);
 				parentDirecory.mkdirs();
 				String fileName = getFileNameFromFilePath(urlString);
-				DownloadManager dm = (DownloadManager) activity
-						.getSystemService(Context.DOWNLOAD_SERVICE);
 				Request request = new Request(Uri.parse(urlString))
 						.setDestinationInExternalPublicDir(
 								Settings.DEFAULT_FOLDER, fileName)
@@ -148,7 +148,15 @@ public class SystemFeatureChecker {
 								DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
 				dm.enqueue(request);
 			} catch (IllegalArgumentException e) {
-				openUrlInBrowser(activity, urlString);
+				try {
+					Request request = new Request(Uri.parse(urlString))
+							.setDescription("Downloading from VTU Life ...")
+							.setNotificationVisibility(
+									DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+					dm.enqueue(request);
+				} catch (Exception ex) {
+					openUrlInBrowser(activity, urlString);
+				}
 			}
 		} else {
 			openUrlInBrowser(activity, urlString);

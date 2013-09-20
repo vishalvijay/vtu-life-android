@@ -2,50 +2,50 @@ package com.V4Creations.vtulife.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.ImageView;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.LinearInterpolator;
+import android.widget.TextView;
 
 import com.V4Creations.vtulife.R;
 import com.V4Creations.vtulife.system.SystemFeatureChecker;
 import com.V4Creations.vtulife.util.GoogleAnalyticsManager;
 import com.actionbarsherlock.app.SherlockActivity;
-import com.actionbarsherlock.internal.nineoldandroids.animation.Animator;
-import com.actionbarsherlock.internal.nineoldandroids.animation.ObjectAnimator;
 
 public class VTULifeLoadingScreenActivity extends SherlockActivity {
 	String TAG = "VTULifeLoadingScreenActivity";
-	ImageView loadImageView;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		// getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-		// WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.vtu_life_loading_layout);
-		loadImageView = (ImageView) findViewById(R.id.centerIconImageView);
-		ObjectAnimator mover = ObjectAnimator.ofFloat(loadImageView,
-				"translationY", -1 * getPosition(), 0f);
-		mover.setDuration(2000);
-		mover.start();
-		mover.addListener(new Animator.AnimatorListener() {
+
+		TextView vtuLifeTextView = (TextView) findViewById(R.id.vtuLifeTextView);
+		AlphaAnimation blinkanimation = new AlphaAnimation(1, 0);
+		blinkanimation.setDuration(1500);
+		blinkanimation.setInterpolator(new LinearInterpolator());
+		blinkanimation.setRepeatCount(1);
+		blinkanimation.setRepeatMode(Animation.REVERSE);
+		vtuLifeTextView.startAnimation(blinkanimation);
+
+		blinkanimation.setAnimationListener(new AnimationListener() {
 
 			@Override
-			public void onAnimationStart(Animator animation) {
+			public void onAnimationStart(Animation animation) {
+
 			}
 
 			@Override
-			public void onAnimationRepeat(Animator animation) {
+			public void onAnimationRepeat(Animation animation) {
+
 			}
 
 			@Override
-			public void onAnimationEnd(Animator animation) {
+			public void onAnimationEnd(Animation animation) {
 				openMianActivity();
 			}
-
-			@Override
-			public void onAnimationCancel(Animator animation) {
-			}
 		});
-
 	}
 
 	public void openMianActivity() {
