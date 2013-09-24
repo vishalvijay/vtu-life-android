@@ -237,8 +237,9 @@ public class FastResultListFragment extends SherlockListFragment implements
 
 	public void refresh() {
 		mUsnHistoryAdapter.clear();
-		ArrayList<String> classUsnHistory = VTULifeDataBase
+		ArrayList<String> usnHistory = VTULifeDataBase
 				.getClassUSNHistory(vtuLifeMainActivity);
-		mUsnHistoryAdapter.addAll(classUsnHistory);
+		for (int i = 0; i < usnHistory.size(); i++)
+			mUsnHistoryAdapter.add(usnHistory.get(i));
 	}
 }

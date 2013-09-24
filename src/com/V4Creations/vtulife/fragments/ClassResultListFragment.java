@@ -55,10 +55,9 @@ public class ClassResultListFragment extends SherlockListFragment implements
 	private int continuesFailCount;
 	private int lastLoadingAdded;
 	private boolean isCanceled;
-	private Boolean isLoading;
 	private String classUsn;
 	private Tracker tracker;
-	private int mSuccessResultCounter;
+	private int mSuccessResultCounter, mResultThreadCounter;
 
 	public ClassResultListFragment() {
 		itemList = new ArrayList<ResultItem>();
@@ -75,7 +74,7 @@ public class ClassResultListFragment extends SherlockListFragment implements
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		isLoading = false;
+		mResultThreadCounter = 0;
 		tracker = GoogleAnalyticsManager
 				.getGoogleAnalyticsTracker(vtuLifeMainActivity);
 		initListAdapter();
@@ -116,7 +115,7 @@ public class ClassResultListFragment extends SherlockListFragment implements
 	}
 
 	protected void manageResultFetch() {
-		if (!isLoading) {
+		if (mResultThreadCounter == 0) {
 			String usn = classUsnAutoCompleteTextView.getText().toString();
 			if (usn.matches(classUsnRegx)) {
 				mSuccessResultCounter = 0;
@@ -192,7 +191,6 @@ public class ClassResultListFragment extends SherlockListFragment implements
 		continuesFailCount = 0;
 		currentUsn = 0;
 		lastLoadingAdded = -1;
-		isLoading = true;
 		isCanceled = false;
 		saveAndRefreshUsnHistory(classUsn);
 		askResultOfUsn(5);
@@ -200,6 +198,7 @@ public class ClassResultListFragment extends SherlockListFragment implements
 
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	private void askResultOfUsn(int numOfTimes) {
+		mResultThreadCounter += numOfTimes;
 		for (int i = 0; i < numOfTimes; i++) {
 			String subUsn;
 			currentUsn++;
@@ -227,16 +226,15 @@ public class ClassResultListFragment extends SherlockListFragment implements
 	@Override
 	synchronized public void notifyResultLoaded(ArrayList<ResultItem> itemList,
 			boolean isConnectionOk, String errorMessage, String usn) {
+		mResultThreadCounter--;
 		if (lastLoadingAdded != -1) {
 			this.itemList.remove(lastLoadingAdded);
 			resultAdapter.notifyDataSetChanged();
 			lastLoadingAdded = -1;
 		}
-		if (isCanceled && isLoading) {
-			if (isLoading) {
-				vtuLifeMainActivity.showCrouton("Canceled\n"
-						+ mSuccessResultCounter + " results fetched",
-						Style.INFO, false);
+		if (isCanceled) {
+			if (mResultThreadCounter == 0) {
+				vtuLifeMainActivity.showCrouton("Canceled", Style.INFO, false);
 				stopLoading();
 			}
 			return;
@@ -257,41 +255,39 @@ public class ClassResultListFragment extends SherlockListFragment implements
 			if (!Settings.isDeepSearch(vtuLifeMainActivity))
 				continuesFailCount++;
 		}
-		if (!isCanceled) {
-			if ((continuesFailCount > 10 && currentUsn < 179)
-					|| currentUsn == 179) {
-				currentUsn = 399;
-				continuesFailCount = 0;
-				int year = Integer.parseInt(usn.substring(3, 5));
-				year++;
-				String yearString;
-				if (year < 10)
-					yearString = "0" + Integer.toString(year);
-				else
-					yearString = Integer.toString(year);
-				classUsn = usn.substring(0, 3) + yearString
-						+ usn.substring(5, 7);
-				askResultOfUsn(1);
-			} else if ((continuesFailCount > 10) || currentUsn == 420) {
-				stopLoading();
-				vtuLifeMainActivity.showCrouton(mSuccessResultCounter
-						+ " results fetched", Style.INFO, true);
-			} else
-				askResultOfUsn(1);
-		}
+		if ((continuesFailCount > 10 && currentUsn < 179) || currentUsn == 179) {
+			currentUsn = 399;
+			continuesFailCount = 0;
+			int year = Integer.parseInt(usn.substring(3, 5));
+			year++;
+			String yearString;
+			if (year < 10)
+				yearString = "0" + Integer.toString(year);
+			else
+				yearString = Integer.toString(year);
+			classUsn = usn.substring(0, 3) + yearString + usn.substring(5, 7);
+			askResultOfUsn(1);
+		} else if ((continuesFailCount > 10) || currentUsn == 420)
+			stopLoading();
+		else
+			askResultOfUsn(1);
 	}
 
 	private void stopLoading() {
-		isLoading = false;
-		classSubmitImageButton.setEnabled(true);
-		mActionBarStatus.subTitle = null;
+		if (mResultThreadCounter == 0) {
+			classSubmitImageButton.setEnabled(true);
+			mActionBarStatus.subTitle = null;
 
-		classSubmitImageButton.setImageResource(R.drawable.ic_send_holo_dark);
-		classUsnAutoCompleteTextView.setEnabled(true);
-		mActionBarStatus.isInterminatePorogressBarVisible = false;
-		vtuLifeMainActivity.reflectActionBarChange(mActionBarStatus,
-				VTULifeMainActivity.ID_CLASS_RESULT_FRAGMENT);
-		revalCheckBox.setEnabled(true);
+			classSubmitImageButton
+					.setImageResource(R.drawable.ic_send_holo_dark);
+			classUsnAutoCompleteTextView.setEnabled(true);
+			mActionBarStatus.isInterminatePorogressBarVisible = false;
+			vtuLifeMainActivity.reflectActionBarChange(mActionBarStatus,
+					VTULifeMainActivity.ID_CLASS_RESULT_FRAGMENT);
+			revalCheckBox.setEnabled(true);
+			vtuLifeMainActivity.showCrouton(mSuccessResultCounter
+					+ " results fetched", Style.INFO, true);
+		}
 	}
 
 	@Override
@@ -328,7 +324,7 @@ public class ClassResultListFragment extends SherlockListFragment implements
 		mClassUsnHistoryAdapter.clear();
 		ArrayList<String> classUsnHistory = VTULifeDataBase
 				.getClassUSNHistory(vtuLifeMainActivity);
-		mClassUsnHistoryAdapter.addAll(classUsnHistory);
+		for (int i = 0; i < classUsnHistory.size(); i++)
+			mClassUsnHistoryAdapter.add(classUsnHistory.get(i));
 	}
-
 }

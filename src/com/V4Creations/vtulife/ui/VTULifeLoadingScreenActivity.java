@@ -6,10 +6,8 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
 import android.view.animation.LinearInterpolator;
-import android.widget.TextView;
 
 import com.V4Creations.vtulife.R;
-import com.V4Creations.vtulife.system.SystemFeatureChecker;
 import com.V4Creations.vtulife.util.GoogleAnalyticsManager;
 import com.actionbarsherlock.app.SherlockActivity;
 
@@ -21,13 +19,12 @@ public class VTULifeLoadingScreenActivity extends SherlockActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.vtu_life_loading_layout);
 
-		TextView vtuLifeTextView = (TextView) findViewById(R.id.vtuLifeTextView);
 		AlphaAnimation blinkanimation = new AlphaAnimation(1, 0);
 		blinkanimation.setDuration(1500);
 		blinkanimation.setInterpolator(new LinearInterpolator());
 		blinkanimation.setRepeatCount(1);
 		blinkanimation.setRepeatMode(Animation.REVERSE);
-		vtuLifeTextView.startAnimation(blinkanimation);
+		findViewById(R.id.vtuLifeTextView).startAnimation(blinkanimation);
 
 		blinkanimation.setAnimationListener(new AnimationListener() {
 
@@ -43,20 +40,16 @@ public class VTULifeLoadingScreenActivity extends SherlockActivity {
 
 			@Override
 			public void onAnimationEnd(Animation animation) {
-				openMianActivity();
+				openMainActivity();
 			}
 		});
 	}
 
-	public void openMianActivity() {
-		Intent intent = new Intent(VTULifeLoadingScreenActivity.this,
+	public void openMainActivity() {
+		Intent intent = new Intent(this,
 				VTULifeMainActivity.class);
 		startActivity(intent);
 		finish();
-	}
-
-	public int getPosition() {
-		return SystemFeatureChecker.getDisplayHeight(this) / 2;
 	}
 
 	@Override
