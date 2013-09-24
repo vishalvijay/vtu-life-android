@@ -262,6 +262,11 @@ public class VTULifeMainActivity extends BaseActivity {
 			Crouton.makeText(this, messageFromResource, style).show();
 	}
 
+	public void clearPendingCrouton() {
+		if (infiniteCrouton == null)
+			Crouton.clearCroutonsForActivity(this);
+	}
+
 	private void updateInternetConnection() {
 		isInternetCheckRunning = true;
 		isHighDelay = true;

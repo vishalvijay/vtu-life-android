@@ -287,6 +287,7 @@ public class ClassResultListFragment extends SherlockListFragment implements
 			revalCheckBox.setEnabled(true);
 			vtuLifeMainActivity.showCrouton(mSuccessResultCounter
 					+ " results fetched", Style.INFO, true);
+			vtuLifeMainActivity.clearPendingCrouton();
 		}
 	}
 
