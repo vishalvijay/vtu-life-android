@@ -1,7 +1,5 @@
 package com.V4Creations.vtulife.system;
 
-import java.io.File;
-
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.DownloadManager;
@@ -14,7 +12,6 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Build;
-import android.os.Environment;
 import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
 
@@ -132,12 +129,7 @@ public class SystemFeatureChecker {
 			DownloadManager dm = (DownloadManager) activity
 					.getSystemService(Context.DOWNLOAD_SERVICE);
 			try {
-				String parentDirectoryAddress = Environment
-						.getExternalStorageDirectory()
-						+ File.separator
-						+ Settings.DEFAULT_FOLDER + File.separator;
-				File parentDirecory = new File(parentDirectoryAddress);
-				parentDirecory.mkdirs();
+				Settings.getDefaultRootFolder();
 				String fileName = getFileNameFromFilePath(urlString);
 				Request request = new Request(Uri.parse(urlString))
 						.setDestinationInExternalPublicDir(

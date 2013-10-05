@@ -1,10 +1,12 @@
 package com.V4Creations.vtulife.ui;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -23,7 +25,7 @@ import com.V4Creations.vtulife.fragments.ClassResultListFragment;
 import com.V4Creations.vtulife.fragments.DirectoryListingFragment;
 import com.V4Creations.vtulife.fragments.FastResultListFragment;
 import com.V4Creations.vtulife.fragments.MenuFragment;
-import com.V4Creations.vtulife.fragments.PostAPicFragment;
+import com.V4Creations.vtulife.fragments.ShareAPicFragment;
 import com.V4Creations.vtulife.fragments.UploadFileFragment;
 import com.V4Creations.vtulife.fragments.VTULifeWebFragment;
 import com.V4Creations.vtulife.interfaces.RefreshListener;
@@ -72,8 +74,7 @@ public class VTULifeMainActivity extends BaseActivity {
 	private Tracker tracker;
 	private boolean mExitFlag = false;
 	private MenuFragment mMenuFragment;
-	private String mGcmRegisterIdString;
-
+	private Dialog mHelpDialog;
 	public VTULifeMainActivity() {
 		super(R.string.app_name);
 	}
@@ -99,12 +100,9 @@ public class VTULifeMainActivity extends BaseActivity {
 	}
 
 	private void gcmCheck() {
-		if (checkPlayServices()) {
-			mGcmRegisterIdString = Settings
-					.getRegistrationId(getApplicationContext());
-			if (mGcmRegisterIdString.isEmpty())
-				registerGCMToServer();
-		}
+		if (checkPlayServices()
+				&& !Settings.isGCMRegistered(getApplicationContext()))
+			registerGCMToServer();
 	}
 
 	private void registerGCMToServer() {
@@ -171,7 +169,7 @@ public class VTULifeMainActivity extends BaseActivity {
 		vtuLifeFragments.add(new FastResultListFragment());
 		vtuLifeFragments.add(new ClassResultListFragment());
 		vtuLifeFragments.add(new UploadFileFragment());
-		vtuLifeFragments.add(new PostAPicFragment());
+		vtuLifeFragments.add(new ShareAPicFragment());
 	}
 
 	@Override
@@ -363,14 +361,14 @@ public class VTULifeMainActivity extends BaseActivity {
 
 	public void showHelp() {
 
-		Dialog dialog = new Dialog(this);
-		dialog.setContentView(R.layout.help_layout);
+		mHelpDialog = new Dialog(this);
+		mHelpDialog.setContentView(R.layout.help_layout);
 
-		TextView facebookTextView = (TextView) dialog
+		TextView facebookTextView = (TextView) mHelpDialog
 				.findViewById(R.id.facebookTextView);
-		TextView mailTextView = (TextView) dialog
+		TextView mailTextView = (TextView) mHelpDialog
 				.findViewById(R.id.emailTextView);
-		TextView downloadTextView = (TextView) dialog
+		TextView downloadTextView = (TextView) mHelpDialog
 				.findViewById(R.id.downloadTextView);
 		View.OnClickListener onClickListener = new View.OnClickListener() {
 
@@ -384,9 +382,7 @@ public class VTULifeMainActivity extends BaseActivity {
 					sendNormalMail();
 					break;
 				case R.id.downloadTextView:
-					SystemFeatureChecker.downloadFile(VTULifeMainActivity.this,
-							Settings.WEB_URL + Settings.ANDROID_USER_MANUAL,
-							false);
+					downloadHelpManual();
 					break;
 				}
 			}
@@ -394,8 +390,44 @@ public class VTULifeMainActivity extends BaseActivity {
 		facebookTextView.setOnClickListener(onClickListener);
 		mailTextView.setOnClickListener(onClickListener);
 		downloadTextView.setOnClickListener(onClickListener);
-		dialog.setTitle("Help");
-		dialog.show();
+		mHelpDialog.setTitle("Help");
+		mHelpDialog.show();
+	}
+
+	protected void downloadHelpManual() {
+		if (isManualIsAlradyDownloaded()) {
+			openManual();
+		} else {
+			if(mHelpDialog!=null)
+				mHelpDialog.dismiss();
+			SystemFeatureChecker.downloadFile(VTULifeMainActivity.this,
+					Settings.WEB_URL + Settings.ANDROID_USER_MANUAL, false);
+		}
+	}
+
+	private void openManual() {
+		Uri path = Uri.fromFile(new File(getManualFileUrl()));
+		Intent intent = new Intent(Intent.ACTION_VIEW);
+		intent.setDataAndType(path, "application/pdf");
+		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+		try {
+			startActivity(intent);
+		} catch (ActivityNotFoundException e) {
+			Toast.makeText(this,
+					"No Application Available to View PDF",
+					Toast.LENGTH_SHORT).show();
+		}
+	}
+
+	private boolean isManualIsAlradyDownloaded() {
+		String fileName=getManualFileUrl();
+		return new File(fileName).exists();
+	}
+
+	private String getManualFileUrl() {
+		//TODO take it to a commen class
+		return Settings.getDefaultRootFolder()+Settings.ANDROID_USER_MANUAL;
 	}
 
 	protected void sendNormalMail() {

@@ -19,6 +19,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +40,7 @@ import com.actionbarsherlock.view.MenuItem;
 
 import de.keyboardsurfer.android.widget.crouton.Style;
 
-public class PostAPicFragment extends SherlockFragment implements TextWatcher,
+public class ShareAPicFragment extends SherlockFragment implements TextWatcher,
 		FragmentInfo {
 	String TAG = "PostAPicFragment";
 
@@ -55,7 +56,7 @@ public class PostAPicFragment extends SherlockFragment implements TextWatcher,
 			"bmp", "gif" };
 	private ActionBarStatus mActionBarStatus;
 
-	public PostAPicFragment() {
+	public ShareAPicFragment() {
 		mActionBarStatus = new ActionBarStatus();
 	}
 
@@ -182,23 +183,17 @@ public class PostAPicFragment extends SherlockFragment implements TextWatcher,
 		builder.setAdapter(adapter, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int item) {
 				if (item == 0) {
-					String parentDirectoryAddress = Environment
-							.getExternalStorageDirectory()
-							+ File.separator
-							+ Settings.DEFAULT_FOLDER + File.separator;
-					File parentDirecory = new File(parentDirectoryAddress);
-					parentDirecory.mkdirs();
-					String captureAddress = parentDirectoryAddress
+					String captureAddress = Settings.getDefaultRootFolder()
 							+ "share_vtu_life_"
 							+ String.valueOf(System.currentTimeMillis())
 							+ ".jpg";
+					Log.e(TAG, captureAddress);
 					ContentValues values = new ContentValues();
 					values.put(MediaStore.Images.Media.TITLE, captureAddress);
 					mCapturedImageURI = vtuLifeMainActivity
 							.getContentResolver()
 							.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
 									values);
-
 					Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 					intent.putExtra(MediaStore.EXTRA_OUTPUT, mCapturedImageURI);
 					startActivityForResult(intent, CAMERA_REQUEST);
@@ -238,40 +233,46 @@ public class PostAPicFragment extends SherlockFragment implements TextWatcher,
 
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
-		super.onActivityResult(requestCode, resultCode, data);
-		if (resultCode == Activity.RESULT_OK) {
-			switch (requestCode) {
-			case CAMERA_REQUEST:
-				shareImageLocation = getPath(mCapturedImageURI);
-				break;
-			case PICK_FROM_FILE:
-				Uri selectedImageUri = data.getData();
-				try {
-					shareImageLocation = getPath(selectedImageUri);
-				} catch (Exception e) {
-					shareImageLocation = data.getData().getPath();
+		try {
+			super.onActivityResult(requestCode, resultCode, data);
+			if (resultCode == Activity.RESULT_OK) {
+				switch (requestCode) {
+				case CAMERA_REQUEST:
+					shareImageLocation = getPath(mCapturedImageURI);
+					break;
+				case PICK_FROM_FILE:
+					Uri selectedImageUri = data.getData();
+					try {
+						shareImageLocation = getPath(selectedImageUri);
+					} catch (Exception e) {
+						shareImageLocation = data.getData().getPath();
+					}
+					if (!shareImageLocation.startsWith("/")
+							|| !isValideFileWRTExtention(shareImageLocation)) {
+						vtuLifeMainActivity.showCrouton("File not supportted",
+								Style.ALERT, true);
+						setIntialFileAddress();
+						return;
+					}
+					break;
 				}
-				if (!shareImageLocation.startsWith("/")
-						|| !isValideFileWRTExtention(shareImageLocation)) {
-					vtuLifeMainActivity.showCrouton("File not supportted",
+				if (isFileExist(shareImageLocation)) {
+					Bitmap myBitmap = BitmapFactory
+							.decodeFile(shareImageLocation);
+					myBitmap = Bitmap.createScaledBitmap(
+							myBitmap,
+							getResources().getDimensionPixelOffset(
+									R.dimen.post_a_pic_width),
+							getResources().getDimensionPixelOffset(
+									R.dimen.post_a_pic_heigth), true);
+					picImageView.setImageBitmap(myBitmap);
+				} else
+					vtuLifeMainActivity.showCrouton("File doesn't exist",
 							Style.ALERT, true);
-					setIntialFileAddress();
-					return;
-				}
-				break;
 			}
-			if (isFileExist(shareImageLocation)) {
-				Bitmap myBitmap = BitmapFactory.decodeFile(shareImageLocation);
-				myBitmap = Bitmap.createScaledBitmap(
-						myBitmap,
-						getResources().getDimensionPixelOffset(
-								R.dimen.post_a_pic_width),
-						getResources().getDimensionPixelOffset(
-								R.dimen.post_a_pic_heigth), true);
-				picImageView.setImageBitmap(myBitmap);
-			} else
-				vtuLifeMainActivity.showCrouton("File doesn't exist",
-						Style.ALERT, false);
+		} catch (Exception ex) {
+			vtuLifeMainActivity.showCrouton("Error occured please retry",
+					Style.ALERT, true);
 		}
 	}
 
