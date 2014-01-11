@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,11 +26,14 @@ import com.actionbarsherlock.view.Window;
 
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
+import de.timroes.swipetodismiss.SwipeDismissList;
+import de.timroes.swipetodismiss.SwipeDismissList.SwipeDirection;
 
 public class VTULifeNotificationSherlockListActivity extends
 		SherlockListActivity {
 	private NotificationAdapter mNotificationAdapter;
 	private ArrayList<VTULifeNotification> mNotifications;
+	private SwipeDismissList mSwipeList;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +56,7 @@ public class VTULifeNotificationSherlockListActivity extends
 								VTULifeNotificationSherlockListActivity.this,
 								mNotifications);
 						setListAdapter(mNotificationAdapter);
+						initSwipeToDelete();
 					}
 				});
 	}
@@ -58,9 +64,15 @@ public class VTULifeNotificationSherlockListActivity extends
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
-		mNotificationAdapter.getItem(position).toggelNotificationSaw(
-				getApplicationContext());
+		mNotificationAdapter.getItem(position).toggelNotificationSaw();
 		mNotificationAdapter.notifyDataSetChanged();
+		new Handler().postDelayed(new Runnable() {
+
+			@Override
+			public void run() {
+				mNotificationAdapter.notifyDataSetChanged();
+			}
+		}, 500);
 	}
 
 	@Override
@@ -127,5 +139,33 @@ public class VTULifeNotificationSherlockListActivity extends
 	protected void onStop() {
 		super.onStop();
 		GoogleAnalyticsManager.stopGoogleAnalyticsForActivity(this);
+		mSwipeList.discardUndo();
+	}
+
+	private void initSwipeToDelete() {
+		mNotificationAdapter = (NotificationAdapter) getListAdapter();
+		SwipeDismissList.OnDismissCallback callback = new SwipeDismissList.OnDismissCallback() {
+			public SwipeDismissList.Undoable onDismiss(AbsListView listView,
+					final int position) {
+				final VTULifeNotification deletedItem = mNotificationAdapter
+						.getItem(position);
+				mNotificationAdapter.remove(position);
+				return new SwipeDismissList.Undoable() {
+					public void undo() {
+						mNotificationAdapter.insert(position, deletedItem);
+					}
+
+					public String getTitle() {
+						return deletedItem.toString() + " deleted";
+					}
+
+					public void discard() {
+						deletedItem.delete();
+					}
+				};
+			}
+		};
+		mSwipeList = new SwipeDismissList(getListView(), callback);
+		mSwipeList.setSwipeDirection(SwipeDirection.START);
 	}
 }

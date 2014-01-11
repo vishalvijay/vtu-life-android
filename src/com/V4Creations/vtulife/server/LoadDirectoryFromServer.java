@@ -16,7 +16,7 @@ import com.V4Creations.vtulife.model.DirectoryListItem;
 import com.V4Creations.vtulife.system.SystemFeatureChecker;
 import com.V4Creations.vtulife.ui.VTULifeMainActivity;
 import com.V4Creations.vtulife.util.JSONParser;
-import com.V4Creations.vtulife.util.Settings;
+import com.V4Creations.vtulife.util.VTULifeConstance;
 
 public class LoadDirectoryFromServer extends AsyncTask<String, String, String> {
 	String TAG = "LoadDataFromServer";
@@ -50,7 +50,7 @@ public class LoadDirectoryFromServer extends AsyncTask<String, String, String> {
 			JSONParser jParser = new JSONParser();
 			List<NameValuePair> params = new ArrayList<NameValuePair>();
 			try {
-				json = jParser.makeHttpRequest(Settings.WEB_URL + url, "GET",
+				json = jParser.makeHttpRequest(VTULifeConstance.WEB_URL + url, "GET",
 						params);
 			} catch (Exception e1) {
 				isConnectionOk = false;

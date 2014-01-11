@@ -1,5 +1,9 @@
 package com.V4Creations.vtulife.system;
 
+import java.io.File;
+import java.util.Calendar;
+import java.util.UUID;
+
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.DownloadManager;
@@ -16,8 +20,9 @@ import android.telephony.TelephonyManager;
 import android.util.DisplayMetrics;
 
 import com.V4Creations.vtulife.R;
-import com.V4Creations.vtulife.util.Settings;
 import com.V4Creations.vtulife.util.StringOperator;
+import com.V4Creations.vtulife.util.VTULifeConstance;
+import com.V4Creations.vtulife.util.VTULifeUtils;
 
 public class SystemFeatureChecker {
 
@@ -98,7 +103,7 @@ public class SystemFeatureChecker {
 	public static void sendFeedback(Activity activity) {
 		Intent i = new Intent(Intent.ACTION_SEND);
 		i.setType("message/rfc822");
-		i.putExtra(Intent.EXTRA_EMAIL, Settings.VTU_LIFE_EMAILS);
+		i.putExtra(Intent.EXTRA_EMAIL, VTULifeConstance.VTU_LIFE_EMAILS);
 		i.putExtra(Intent.EXTRA_SUBJECT,
 				"Feedback of " + activity.getString(R.string.app_name)
 						+ " android app.");
@@ -126,25 +131,26 @@ public class SystemFeatureChecker {
 			boolean isBrowserDownload) {
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.GINGERBREAD
 				&& !isBrowserDownload) {
-			DownloadManager dm = (DownloadManager) activity
-					.getSystemService(Context.DOWNLOAD_SERVICE);
+			DownloadManager dm = SystemFeatureChecker
+					.getDownloadManager(activity);
 			try {
-				Settings.getDefaultRootFolder();
-				String fileName = getFileNameFromFilePath(urlString);
+				VTULifeUtils.getDefaultRootFolder();
+				String fileName = getFileNameFromGetURL(urlString);
 				Request request = new Request(Uri.parse(urlString))
 						.setDestinationInExternalPublicDir(
-								Settings.DEFAULT_FOLDER, fileName)
+								VTULifeConstance.DEFAULT_FOLDER, fileName)
 						.setTitle(fileName)
-						.setDescription("Downloading from VTU Life ...")
-						.setNotificationVisibility(
-								DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+						.setDescription("Downloading from VTU Life ...");
+				manageApiIssues(request);
 				dm.enqueue(request);
 			} catch (IllegalArgumentException e) {
 				try {
 					Request request = new Request(Uri.parse(urlString))
-							.setDescription("Downloading from VTU Life ...")
-							.setNotificationVisibility(
-									DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+							.setDestinationInExternalPublicDir(
+									VTULifeConstance.DEFAULT_FOLDER,
+									getFileNameFromURL(urlString))
+							.setDescription("Downloading from VTU Life ...");
+					manageApiIssues(request);
 					dm.enqueue(request);
 				} catch (Exception ex) {
 					openUrlInBrowser(activity, urlString);
@@ -155,16 +161,61 @@ public class SystemFeatureChecker {
 		}
 	}
 
+	private static String getFileNameFromURL(String urlString) {
+		try {
+			return new File(urlString).getName();
+		} catch (Exception ex) {
+
+		}
+		return Calendar.getInstance().getTimeInMillis() + "";
+	}
+
+	@TargetApi(Build.VERSION_CODES.GINGERBREAD)
+	public static DownloadManager getDownloadManager(Context context) {
+		return (DownloadManager) context
+				.getSystemService(Context.DOWNLOAD_SERVICE);
+	}
+
+	@SuppressWarnings("deprecation")
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+	private static void manageApiIssues(Request request) {
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+			if (android.os.Build.VERSION.SDK_INT > android.os.Build.VERSION_CODES.HONEYCOMB_MR2) {
+				request.setNotificationVisibility(Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+			} else {
+				request.setNotificationVisibility(Request.VISIBILITY_VISIBLE);
+			}
+		} else
+			request.setShowRunningNotification(true);
+	}
+
 	public static void openUrlInBrowser(Activity activity, String urlString) {
 		Intent i = new Intent(Intent.ACTION_VIEW);
 		i.setData(Uri.parse(urlString));
 		activity.startActivity(i);
 	}
 
-	private static String getFileNameFromFilePath(String urlString) {
+	private static String getFileNameFromGetURL(String urlString) {
 		String[] fileNameStrings = urlString.split("download=");
 		if (fileNameStrings.length < 2)
 			throw new IllegalArgumentException("Invalid URL");
 		return fileNameStrings[1].replace("+", "_");
+	}
+
+	public static String getDeviceUuid(Context context) {
+		final TelephonyManager tm = (TelephonyManager) context
+				.getSystemService(Context.TELEPHONY_SERVICE);
+
+		final String tmDevice, tmSerial, androidId;
+		tmDevice = "" + tm.getDeviceId();
+		tmSerial = "" + tm.getSimSerialNumber();
+		androidId = ""
+				+ android.provider.Settings.Secure.getString(
+						context.getContentResolver(),
+						android.provider.Settings.Secure.ANDROID_ID);
+
+		UUID deviceUuid = new UUID(androidId.hashCode(),
+				((long) tmDevice.hashCode() << 32) | tmSerial.hashCode());
+		return deviceUuid.toString();
 	}
 }

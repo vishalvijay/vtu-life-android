@@ -4,6 +4,7 @@ import java.util.Calendar;
 
 import android.content.Context;
 import android.database.SQLException;
+import android.os.AsyncTask;
 
 import com.V4Creations.vtulife.db.VTULifeDataBase;
 
@@ -16,9 +17,12 @@ public class VTULifeNotification {
 	private boolean isNotificationSaw;
 	private long mId, mTime;
 	private String mTitleString, mMessageString;
+	private Context mContext;
 
-	public VTULifeNotification(long id, int type, boolean messageSawStatus,
-			String titleString, String messageString, long time) {
+	public VTULifeNotification(Context context, long id, int type,
+			boolean messageSawStatus, String titleString, String messageString,
+			long time) {
+		mContext = context;
 		mId = id;
 		mType = type;
 		isNotificationSaw = messageSawStatus;
@@ -27,14 +31,15 @@ public class VTULifeNotification {
 		mTime = time;
 	}
 
-	public VTULifeNotification(String titleString, String messageString, int type,
-			Context context) throws SQLException {
+	public VTULifeNotification(Context context, String titleString,
+			String messageString, int type) throws SQLException {
+		mContext = context;
 		mTime = Calendar.getInstance().getTimeInMillis();
 		isNotificationSaw = false;
 		mType = type;
 		mTitleString = titleString;
 		mMessageString = messageString;
-		saveToDb(context);
+		saveToDb();
 	}
 
 	public boolean isNormalNotification() {
@@ -61,16 +66,34 @@ public class VTULifeNotification {
 		return mTime;
 	}
 
-	public void toggelNotificationSaw(Context context) {
+	public void toggelNotificationSaw() {
 		isNotificationSaw = !isNotificationSaw;
-		VTULifeDataBase.getInstance(context).updateNotificationSawState(this);
+		new AsyncTask<String, String, String>() {
+
+			@Override
+			protected String doInBackground(String... params) {
+				VTULifeDataBase.getInstance(mContext)
+						.updateNotificationSawState(VTULifeNotification.this);
+				return null;
+			}
+
+		}.execute();
 	}
 
-	private void saveToDb(Context context) throws SQLException {
-		mId = VTULifeDataBase.getInstance(context).insertNotification(this);
+	private void saveToDb() throws SQLException {
+		mId = VTULifeDataBase.getInstance(mContext).insertNotification(this);
 	}
 
 	public int getType() {
 		return mType;
+	}
+
+	public boolean delete() {
+		return VTULifeDataBase.getInstance(mContext).deleteNotification(mId);
+	}
+
+	@Override
+	public String toString() {
+		return mTitleString;
 	}
 }

@@ -13,6 +13,7 @@ import com.V4Creations.vtulife.system.SystemFeatureChecker;
 import com.V4Creations.vtulife.ui.VTULifeMainActivity;
 import com.V4Creations.vtulife.util.JSONParser;
 import com.V4Creations.vtulife.util.Settings;
+import com.V4Creations.vtulife.util.VTULifeConstance;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
 import de.keyboardsurfer.android.widget.crouton.Style;
@@ -23,7 +24,9 @@ public class GCMRegisterAsyncTask extends AsyncTask<String, String, Boolean> {
 	private VTULifeMainActivity mVtuLifeMainActivity;
 	private static final String TAG_RESULT = "result",
 			RESULT_SUCCESS_VALUSE = "success",
-			POST_PARAM_REGISTER_ID = "gsm_regid";
+			POST_PARAM_REGISTER_ID = "gcm_regid",
+			POST_PARAM_DEVICE_ID = "android_id";
+	
 
 	public GCMRegisterAsyncTask(VTULifeMainActivity vtuLifeMainActivity) {
 		mVtuLifeMainActivity = vtuLifeMainActivity;
@@ -35,13 +38,15 @@ public class GCMRegisterAsyncTask extends AsyncTask<String, String, Boolean> {
 		if (SystemFeatureChecker.isInternetConnection(mVtuLifeMainActivity)) {
 			try {
 				mGCMRegisterIdString = GoogleCloudMessaging.getInstance(
-						mVtuLifeMainActivity).register(Settings.GCM_SENDER_ID);
+						mVtuLifeMainActivity).register(VTULifeConstance.GCM_SENDER_ID);
 				JSONParser jParser = new JSONParser();
 				List<NameValuePair> params = new ArrayList<NameValuePair>();
 				params.add(new BasicNameValuePair(POST_PARAM_REGISTER_ID,
 						mGCMRegisterIdString));
+				params.add(new BasicNameValuePair(POST_PARAM_DEVICE_ID,
+						SystemFeatureChecker.getDeviceUuid(mVtuLifeMainActivity)));
 				JSONObject jsonObject = jParser.makeHttpRequest(
-						Settings.WEB_URL + Settings.GCM_REGISTER, "POST",
+						VTULifeConstance.WEB_URL + VTULifeConstance.GCM_REGISTER, "POST",
 						params);
 				if (!jsonObject.getString(TAG_RESULT).equals(
 						RESULT_SUCCESS_VALUSE))

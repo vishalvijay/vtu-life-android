@@ -175,7 +175,7 @@ public class VTULifeDataBase {
 							.getColumnIndex(COL_MESSAGE));
 					long time = cursor.getLong(cursor
 							.getColumnIndex(COL_TIME_OF_NOTIFICATION));
-					notifications.add(new VTULifeNotification(id, type, isMessageSaw,
+					notifications.add(new VTULifeNotification(mContext,id, type, isMessageSaw,
 							titleString, messageString, time));
 				}
 				cursor.close();
@@ -232,6 +232,13 @@ public class VTULifeDataBase {
 	synchronized public boolean clearAllNotifications() {
 		SQLiteDatabase db = mDatabaseHelper.getWritableDatabase();
 		int result = db.delete(TABLE_NOTIFICATIONS, "1", null);
+		db.close();
+		return result != 0;
+	}
+	
+	synchronized public boolean deleteNotification(long id) {
+		SQLiteDatabase db = mDatabaseHelper.getWritableDatabase();
+		int result = db.delete(TABLE_NOTIFICATIONS, COL_ID+"=?",new String[]{id+""});
 		db.close();
 		return result != 0;
 	}

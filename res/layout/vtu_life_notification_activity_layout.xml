@@ -15,7 +15,7 @@
         android:padding="3dp"
         android:scrollHorizontally="true"
         android:singleLine="true"
-        android:text="Find all VTU related updates here. Click on a notification to mark as read."
+        android:text="Find all VTU related updates here. Click on a notification to mark as read. Swip to delete a notification."
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <LinearLayout

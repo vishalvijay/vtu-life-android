@@ -1,32 +1,13 @@
 package com.V4Creations.vtulife.util;
 
-import java.io.File;
-
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.os.Environment;
 import android.preference.PreferenceManager;
 
 import com.V4Creations.vtulife.system.SystemFeatureChecker;
 import com.V4Creations.vtulife.ui.VTULifeMainActivity;
 
 public class Settings {
-	public static final String FACEBOOK_PAGE_URL = "https://www.facebook.com/thevtulife";
-	public static final String WEB_URL = "http://www.vtulife.com";
-	public static final String RESULT_FROM_VTU = "/result/result_json.php";
-	public static final String GCM_REGISTER = "/nm/register.php";
-	public static final String ANDROID_USER_MANUAL = "/vtuLifeAndroidAppDoc.pdf";
-	public static final String[] VTU_LIFE_EMAILS = new String[] {
-			"v4appfarm@gmail.com", "someone@vtulife.com" };
-	public static final String GCM_SENDER_ID = "812211262410";
-	public static final String DEFAULT_FOLDER = "vtulife";
-	private static final String DEFAULT_FOLDER_WITH_ROOT = Environment
-			.getExternalStorageDirectory()
-			+ File.separator
-			+ DEFAULT_FOLDER
-			+ File.separator;
-	public static final CharSequence PACKAGE = "com.V4Creations.vtulife";
-
 	private static String PREFS_IS_FULL_SEM_RESULT = "isFullSemResult";
 	private static String PREFS_IS_SORTED_RESULT = "isSortedResult";
 	private static String PREFS_FAVORITE_PAGE = "isFavoritePage";
@@ -34,12 +15,6 @@ public class Settings {
 	private static String PREFS_GCM_REGISTER_ID = "gcm_register_id";
 	private static String PREFS_APP_VERSION_CODE = "app_version_code";
 	private static String PREFS_IS_FIRST_TIME = "isFirstTime";
-
-	public static String getDefaultRootFolder() {
-		File file = new File(DEFAULT_FOLDER_WITH_ROOT);
-		file.mkdirs();
-		return file.getAbsolutePath();
-	}
 
 	public static void setFullSemResultStatus(Context context, boolean status) {
 		SharedPreferences prefs = PreferenceManager

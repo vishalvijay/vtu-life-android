@@ -29,7 +29,7 @@ import com.V4Creations.vtulife.model.ResultItem;
 import com.V4Creations.vtulife.server.LoadResultFromServer;
 import com.V4Creations.vtulife.ui.VTULifeMainActivity;
 import com.V4Creations.vtulife.util.GoogleAnalyticsManager;
-import com.V4Creations.vtulife.util.Settings;
+import com.V4Creations.vtulife.util.VTULifeConstance;
 import com.actionbarsherlock.app.SherlockListFragment;
 import com.google.analytics.tracking.android.Tracker;
 
@@ -152,7 +152,7 @@ public class FastResultListFragment extends SherlockListFragment implements
 		vtuLifeMainActivity.reflectActionBarChange(mActionBarStatus,
 				VTULifeMainActivity.ID_FAST_RESULT_FRAGMENT);
 		loadResultFromServer = new LoadResultFromServer(vtuLifeMainActivity,
-				this, Settings.RESULT_FROM_VTU, LoadResultFromServer.MULTY_SEM,
+				this, VTULifeConstance.RESULT_FROM_VTU, LoadResultFromServer.MULTY_SEM,
 				usn, revalCheckBox.isChecked());
 		loadResultFromServer.execute();
 	}

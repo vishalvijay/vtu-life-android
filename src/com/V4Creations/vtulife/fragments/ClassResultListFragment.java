@@ -33,6 +33,7 @@ import com.V4Creations.vtulife.server.LoadResultFromServer;
 import com.V4Creations.vtulife.ui.VTULifeMainActivity;
 import com.V4Creations.vtulife.util.GoogleAnalyticsManager;
 import com.V4Creations.vtulife.util.Settings;
+import com.V4Creations.vtulife.util.VTULifeConstance;
 import com.actionbarsherlock.app.SherlockListFragment;
 import com.google.analytics.tracking.android.Tracker;
 
@@ -213,12 +214,12 @@ public class ClassResultListFragment extends SherlockListFragment implements
 			if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB
 					&& !Settings.isSortedResult(vtuLifeMainActivity))
 				new LoadResultFromServer(vtuLifeMainActivity, this,
-						Settings.RESULT_FROM_VTU, whichTypeResult, classUsn
+						VTULifeConstance.RESULT_FROM_VTU, whichTypeResult, classUsn
 								+ subUsn, revalCheckBox.isChecked())
 						.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
 			else
 				new LoadResultFromServer(vtuLifeMainActivity, this,
-						Settings.RESULT_FROM_VTU, whichTypeResult, classUsn
+						VTULifeConstance.RESULT_FROM_VTU, whichTypeResult, classUsn
 								+ subUsn, revalCheckBox.isChecked()).execute();
 		}
 	}

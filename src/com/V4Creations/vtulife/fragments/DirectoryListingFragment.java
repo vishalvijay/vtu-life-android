@@ -27,7 +27,7 @@ import com.V4Creations.vtulife.server.LoadDirectoryFromServer;
 import com.V4Creations.vtulife.system.SystemFeatureChecker;
 import com.V4Creations.vtulife.ui.VTULifeMainActivity;
 import com.V4Creations.vtulife.util.GoogleAnalyticsManager;
-import com.V4Creations.vtulife.util.Settings;
+import com.V4Creations.vtulife.util.VTULifeConstance;
 import com.actionbarsherlock.app.SherlockListFragment;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
@@ -131,7 +131,7 @@ public class DirectoryListingFragment extends SherlockListFragment implements
 			loadDirectory();
 		} else {
 			SystemFeatureChecker.downloadFile(vtuLifeMainActivity,
-					Settings.WEB_URL + PAGE_URL + href, false);
+					VTULifeConstance.WEB_URL + PAGE_URL + href, false);
 			vtuLifeMainActivity.showCrouton("Downloading started", Style.INFO,
 					false);
 		}

@@ -126,4 +126,14 @@ public class NotificationAdapter extends BaseAdapter {
 		public TextView mTitleTextView, mMessageTextView, mTimeTextView;
 		public ImageButton mDownloadImageButton;
 	}
+
+	public void remove(int position) {
+		mNotifications.remove(position);
+		notifyDataSetChanged();
+	}
+
+	public void insert(int position, VTULifeNotification deletedItem) {
+		mNotifications.add(position, deletedItem);
+		notifyDataSetChanged();
+	}
 }

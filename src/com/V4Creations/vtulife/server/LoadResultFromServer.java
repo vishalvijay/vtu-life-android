@@ -11,6 +11,7 @@ import org.json.JSONObject;
 
 import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 
 import com.V4Creations.vtulife.adapters.ResultAdapter;
 import com.V4Creations.vtulife.interfaces.ResultLoadedInterface;
@@ -18,7 +19,7 @@ import com.V4Creations.vtulife.model.ResultItem;
 import com.V4Creations.vtulife.system.SystemFeatureChecker;
 import com.V4Creations.vtulife.ui.VTULifeMainActivity;
 import com.V4Creations.vtulife.util.JSONParser;
-import com.V4Creations.vtulife.util.Settings;
+import com.V4Creations.vtulife.util.VTULifeConstance;
 
 public class LoadResultFromServer extends AsyncTask<String, String, String> {
 	String TAG = "LoadResultFromServer";
@@ -79,6 +80,7 @@ public class LoadResultFromServer extends AsyncTask<String, String, String> {
 	}
 
 	protected String doInBackground(String... args) {
+		Log.e(TAG, "startted");
 		if (SystemFeatureChecker.isInternetConnection(vtuLifeMainActivity)) {
 			List<NameValuePair> params = new ArrayList<NameValuePair>();
 			try {
@@ -86,7 +88,7 @@ public class LoadResultFromServer extends AsyncTask<String, String, String> {
 				params.add(new BasicNameValuePair("resultType", Integer
 						.toString(resultType)));
 				currentResultJsonObject = jParser.makeHttpRequest(
-						Settings.WEB_URL + RESULT_URL, "POST", params);
+						VTULifeConstance.WEB_URL + RESULT_URL, "POST", params);
 				try {
 					if (currentResultJsonObject.getString(TAG_MESSAGE).equals(
 							"success")) {
@@ -187,12 +189,14 @@ public class LoadResultFromServer extends AsyncTask<String, String, String> {
 	}
 
 	protected void onPostExecute(String file_url) {
+		Log.e(TAG, "startted2");
 		resultLoadedInterface.notifyResultLoaded(itemList, isConnectionOk,
 				errorMessage, usn);
 	}
 
 	@Override
 	protected void onCancelled() {
+		Log.e(TAG, "finished");
 		super.onCancelled();
 		resultLoadedInterface.notifyResultLoaded(itemList, false, "Canceled",
 				usn);

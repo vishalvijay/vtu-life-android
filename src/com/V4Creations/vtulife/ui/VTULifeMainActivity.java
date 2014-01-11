@@ -35,6 +35,8 @@ import com.V4Creations.vtulife.system.SystemFeatureChecker;
 import com.V4Creations.vtulife.util.BaseActivity;
 import com.V4Creations.vtulife.util.GoogleAnalyticsManager;
 import com.V4Creations.vtulife.util.Settings;
+import com.V4Creations.vtulife.util.VTULifeConstance;
+import com.V4Creations.vtulife.util.VTULifeUtils;
 import com.astuetz.viewpager.extensions.PagerSlidingTabStrip;
 import com.google.analytics.tracking.android.Tracker;
 import com.google.android.gms.common.ConnectionResult;
@@ -401,7 +403,7 @@ public class VTULifeMainActivity extends BaseActivity {
 			if(mHelpDialog!=null)
 				mHelpDialog.dismiss();
 			SystemFeatureChecker.downloadFile(VTULifeMainActivity.this,
-					Settings.WEB_URL + Settings.ANDROID_USER_MANUAL, false);
+					VTULifeConstance.WEB_URL + VTULifeConstance.ANDROID_USER_MANUAL, false);
 		}
 	}
 
@@ -427,14 +429,14 @@ public class VTULifeMainActivity extends BaseActivity {
 
 	private String getManualFileUrl() {
 		//TODO take it to a commen class
-		return Settings.getDefaultRootFolder()+Settings.ANDROID_USER_MANUAL;
+		return VTULifeUtils.getDefaultRootFolder()+VTULifeConstance.ANDROID_USER_MANUAL;
 	}
 
 	protected void sendNormalMail() {
 		Intent i = new Intent(Intent.ACTION_SEND);
 		i.setType("message/rfc822");
 		i.putExtra(Intent.EXTRA_EMAIL,
-				new String[] { Settings.VTU_LIFE_EMAILS[1] });
+				new String[] { VTULifeUtils.getVTULifePublicEmailId()});
 		try {
 			startActivity(Intent.createChooser(i, "Send email for help"));
 		} catch (android.content.ActivityNotFoundException ex) {
@@ -443,7 +445,7 @@ public class VTULifeMainActivity extends BaseActivity {
 	}
 
 	public void likeUsOnFacebook() {
-		SystemFeatureChecker.openUrlInBrowser(this, Settings.FACEBOOK_PAGE_URL);
+		SystemFeatureChecker.openUrlInBrowser(this, VTULifeConstance.FACEBOOK_PAGE_URL);
 	}
 
 	public void showNotification() {

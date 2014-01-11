@@ -32,7 +32,7 @@ import com.V4Creations.vtulife.R;
 import com.V4Creations.vtulife.adapters.VTULifeFragmentAdapter.FragmentInfo;
 import com.V4Creations.vtulife.model.ActionBarStatus;
 import com.V4Creations.vtulife.ui.VTULifeMainActivity;
-import com.V4Creations.vtulife.util.Settings;
+import com.V4Creations.vtulife.util.VTULifeUtils;
 import com.actionbarsherlock.app.SherlockFragment;
 import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuInflater;
@@ -183,7 +183,7 @@ public class ShareAPicFragment extends SherlockFragment implements TextWatcher,
 		builder.setAdapter(adapter, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int item) {
 				if (item == 0) {
-					String captureAddress = Settings.getDefaultRootFolder()
+					String captureAddress = VTULifeUtils.getDefaultRootFolder()
 							+ "share_vtu_life_"
 							+ String.valueOf(System.currentTimeMillis())
 							+ ".jpg";

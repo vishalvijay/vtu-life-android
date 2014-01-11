@@ -2,13 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.V4Creations.vtulife"
     android:installLocation="auto"
-    android:versionCode="6100"
-    android:versionName="3.0.1" >
+    android:versionCode="6200"
+    android:versionName="3.0.3" >
 
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="18" />
 
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -27,6 +28,10 @@
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/Theme.Vtulife" >
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
         <activity
             android:name="com.V4Creations.vtulife.ui.VTULifeLoadingScreenActivity"
             android:label="@string/app_name"
@@ -97,6 +102,12 @@
         </receiver>
 
         <service android:name="com.V4Creations.vtulife.gcm.GcmIntentService" />
+
+        <receiver android:name="com.V4Creations.vtulife.receiver.DownloadBroadcastReceiver" >
+            <intent-filter>
+                <action android:name="android.intent.action.DOWNLOAD_COMPLETE" />
+            </intent-filter>
+        </receiver>
     </application>
 
 </manifest>
