@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Generated with http://android-holo-colors.com -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="vtulife" parent="@style/_vtulife" />
+
+    <style name="_vtulife" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:editTextBackground">@drawable/vtulife_edit_text_holo_light</item>
+        <item name="android:autoCompleteTextViewStyle">@style/AutoCompleteTextViewvtulife</item>
+        <item name="android:listChoiceIndicatorMultiple">@drawable/vtulife_btn_check_holo_light</item>
+        <item name="android:listChoiceIndicatorSingle">@drawable/vtulife_btn_radio_holo_light</item>
+        <item name="android:buttonStyle">@style/Buttonvtulife</item>
+        <item name="android:imageButtonStyle">@style/ImageButtonvtulife</item>
+        <item name="android:dropDownSpinnerStyle">@style/Spinnervtulife</item>
+        <item name="android:progressBarStyleHorizontal">@style/ProgressBarvtulife</item>
+        <item name="android:listChoiceBackgroundIndicator">@drawable/vtulife_list_selector_holo_light</item>
+        <item name="android:activatedBackgroundIndicator">@drawable/vtulife_activated_background_holo_light</item>
+        <item name="android:fastScrollThumbDrawable">@drawable/vtulife_fastscroll_thumb_holo</item>
+        <item name="actionBarItemBackground">@drawable/selectable_background_vtulife</item>
+        <item name="popupMenuStyle">@style/PopupMenu.Vtulife</item>
+        <item name="dropDownListViewStyle">@style/DropDownListView.Vtulife</item>
+        <item name="actionBarTabStyle">@style/ActionBarTabStyle.Vtulife</item>
+        <item name="actionDropDownStyle">@style/DropDownNav.Vtulife</item>
+        <item name="actionBarStyle">@style/ActionBar.Solid.Vtulife</item>
+        <item name="actionModeBackground">@drawable/cab_background_top_vtulife</item>
+        <item name="actionModeSplitBackground">@drawable/cab_background_bottom_vtulife</item>
+        <item name="actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Vtulife</item>
+
+        <!-- Light.DarkActionBar specific -->
+        <item name="actionBarWidgetTheme">@style/Theme.Vtulife.Widget</item>
+    </style>
+
+</resources>

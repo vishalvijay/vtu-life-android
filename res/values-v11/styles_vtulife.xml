@@ -3,9 +3,27 @@
 <!-- Generated with http://android-holo-colors.com -->
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <style name="ProgressBarVTULifeTheme" parent="android:Widget.Holo.ProgressBar.Horizontal">
-        <item name="android:progressDrawable">@drawable/progress_horizontal_holo_dark</item>
-        <item name="android:indeterminateDrawable">@drawable/progress_indeterminate_horizontal_holo_dark</item>
+    <style name="AutoCompleteTextViewvtulife" parent="android:Widget.Holo.Light.AutoCompleteTextView">
+        <item name="android:dropDownSelector">@drawable/vtulife_list_selector_holo_light</item>
+        <item name="android:background">@drawable/vtulife_edit_text_holo_light</item>
+    </style>
+
+    <style name="Buttonvtulife" parent="android:Widget.Holo.Light.Button">
+        <item name="android:background">@drawable/vtulife_btn_default_holo_light</item>
+    </style>
+
+    <style name="ImageButtonvtulife" parent="android:Widget.Holo.Light.ImageButton">
+        <item name="android:background">@drawable/vtulife_btn_default_holo_light</item>
+    </style>
+
+    <style name="Spinnervtulife" parent="android:Widget.Holo.Light.Spinner">
+        <item name="android:background">@drawable/vtulife_spinner_background_holo_light</item>
+        <item name="android:dropDownSelector">@drawable/vtulife_list_selector_holo_light</item>
+    </style>
+
+    <style name="ProgressBarvtulife" parent="android:Widget.Holo.Light.ProgressBar.Horizontal">
+        <item name="android:progressDrawable">@drawable/vtulife_progress_horizontal_holo_light</item>
+        <item name="android:indeterminateDrawable">@drawable/vtulife_progress_indeterminate_horizontal_holo_light</item>
     </style>
 
 </resources>

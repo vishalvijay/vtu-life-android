@@ -27,16 +27,15 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/Theme.Vtulife" >
+        android:theme="@style/vtulife" >
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name="com.V4Creations.vtulife.ui.VTULifeLoadingScreenActivity"
+            android:name="com.V4Creations.vtulife.view.activity.VTULifeLoadingScreenActivity"
             android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.Sherlock.Light.NoActionBar" >
+            android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -47,17 +46,16 @@
             android:name="com.google.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
         <activity
-            android:name="com.V4Creations.vtulife.ui.VTULifeMainActivity"
+            android:name="com.V4Creations.vtulife.view.activity.VTULifeMainActivity"
             android:configChanges="orientation|screenSize"
             android:label="@string/app_name"
-            android:logo="@drawable/mondobar_icon_launcher"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan" >
 
             <!-- android:uiOptions="splitActionBarWhenNarrow" android:configChanges="orientation|screenSize" -->
         </activity>
         <activity
-            android:name="com.ipaulpro.afilechooser.FileChooserActivity"
+            android:name="com.V4Creations.vtulife.afilechooser.FileChooserActivity"
             android:exported="false"
             android:screenOrientation="portrait" >
             <intent-filter>
@@ -70,22 +68,22 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.V4Creations.vtulife.ui.VTULifeAboutShelockActivity"
+            android:name="com.V4Creations.vtulife.view.activity.VTULifeAboutActivity"
             android:label="About"
-            android:logo="@drawable/icon_about"
+            android:logo="@drawable/ic_action_about"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.V4Creations.vtulife.ui.VTULifePreferencesSherlockActivity"
+            android:name="com.V4Creations.vtulife.view.activity.VTULifePreferencesActivity"
             android:label="Preferences"
-            android:logo="@drawable/icon_settings"
+            android:logo="@drawable/ic_action_settings"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="com.V4Creations.vtulife.ui.VTULifeNotificationSherlockListActivity"
+            android:name="com.V4Creations.vtulife.view.activity.VTULifeNotificationActivity"
             android:label="Notifications"
-            android:logo="@drawable/notification"
-            android:parentActivityName="com.V4Creations.vtulife.ui.VTULifeMainActivity"
+            android:logo="@drawable/ic_action_time"
+            android:parentActivityName="com.V4Creations.vtulife.view.activity.VTULifeMainActivity"
             android:screenOrientation="portrait" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -93,7 +91,7 @@
         </activity>
 
         <receiver
-            android:name="com.V4Creations.vtulife.gcm.GcmBroadcastReceiver"
+            android:name="com.V4Creations.vtulife.controller.gcm.GcmBroadcastReceiver"
             android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
@@ -102,9 +100,9 @@
             </intent-filter>
         </receiver>
 
-        <service android:name="com.V4Creations.vtulife.gcm.GcmIntentService" />
+        <service android:name="com.V4Creations.vtulife.controller.gcm.GcmIntentService" />
 
-        <receiver android:name="com.V4Creations.vtulife.receiver.DownloadBroadcastReceiver" >
+        <receiver android:name="com.V4Creations.vtulife.controller.receiver.DownloadBroadcastReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.DOWNLOAD_COMPLETE" />
             </intent-filter>

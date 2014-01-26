@@ -6,7 +6,7 @@ import android.content.Context;
 import android.database.SQLException;
 import android.os.AsyncTask;
 
-import com.V4Creations.vtulife.db.VTULifeDataBase;
+import com.V4Creations.vtulife.controller.db.VTULifeDataBase;
 
 public class VTULifeNotification {
 	public static final int TYPE_SOFTWARE_UPDATE = 1,

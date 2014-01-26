@@ -1,6 +1,5 @@
 package com.V4Creations.vtulife.util;
 
-
 public class VTULifeConstance {
 	// URLS
 	public static final String FACEBOOK_PAGE_URL = "https://www.facebook.com/thevtulife";
@@ -8,13 +7,14 @@ public class VTULifeConstance {
 	public static final String RESULT_FROM_VTU = "/result/result_json.php";
 	public static final String GCM_REGISTER = "/nm/register.php";
 	public static final String ANDROID_USER_MANUAL = "/vtuLifeAndroidAppDoc.pdf";
-	
-	//Emails
+
+	// Emails
 	public static final String[] VTU_LIFE_EMAILS = new String[] {
-		"v4appfarm@gmail.com", "someone@vtulife.com" };
-	//Constance
+			"v4appfarm@gmail.com", "someone@vtulife.com" };
+	// Constance
 	public static final String GCM_SENDER_ID = "812211262410";
-	
+
 	public static final String DEFAULT_FOLDER = "vtulife";
 	public static final CharSequence PACKAGE = "com.V4Creations.vtulife";
+	public static final String DEFAULT_FONT = "fonts/Roboto-Light.ttf";
 }

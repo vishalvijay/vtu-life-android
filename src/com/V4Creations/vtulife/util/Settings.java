@@ -4,13 +4,13 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.V4Creations.vtulife.system.SystemFeatureChecker;
-import com.V4Creations.vtulife.ui.VTULifeMainActivity;
+import com.V4Creations.vtulife.util.system.SystemFeatureChecker;
+import com.V4Creations.vtulife.view.activity.VTULifeMainActivity;
 
 public class Settings {
 	private static String PREFS_IS_FULL_SEM_RESULT = "isFullSemResult";
 	private static String PREFS_IS_SORTED_RESULT = "isSortedResult";
-	private static String PREFS_FAVORITE_PAGE = "isFavoritePage";
+	private static String PREFS_FAVORITE_PAGE = "favoritePage";
 	private static String PREFS_IS_DEEP_SEARCH = "isDeepSearch";
 	private static String PREFS_GCM_REGISTER_ID = "gcm_register_id";
 	private static String PREFS_APP_VERSION_CODE = "app_version_code";
@@ -98,7 +98,8 @@ public class Settings {
 		}
 		return registrationId;
 	}
-	public static boolean isGCMRegistered(Context context){
+
+	public static boolean isGCMRegistered(Context context) {
 		return !getRegistrationId(context).equals("");
 	}
 

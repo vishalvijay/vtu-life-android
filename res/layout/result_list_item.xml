@@ -4,11 +4,11 @@
     android:layout_height="wrap_content"
     android:background="#d7d690"
     android:gravity="center_vertical|center_horizontal" >
-    <TextView
+
+    <TextView
         android:id="@+id/resultTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableRight="@drawable/result_devider"
         android:textColor="#1a870f"
         android:textIsSelectable="true"
         android:textSize="14sp"
@@ -19,7 +19,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/resultTextView"
-        android:drawableRight="@drawable/result_devider"
         android:textColor="#1a870f"
         android:textIsSelectable="true"
         android:textSize="14sp"
