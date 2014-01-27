@@ -7,8 +7,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/content_margin" >
+        android:layout_height="match_parent" >
 
         <Button
             android:id="@+id/sendButton"
@@ -84,12 +83,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@id/selectAFileLinearLayout"
-            android:layout_marginBottom="@dimen/upload_file_title_margin_bottom"
             android:gravity="center_horizontal"
             android:text="@string/upload_files_message"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#ffffff"
-            android:textSize="@dimen/heading_font_size" />
+            android:textColor="#ffffff" />
     </RelativeLayout>
 
 </FrameLayout>

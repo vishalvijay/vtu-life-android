@@ -30,7 +30,7 @@ import com.V4Creations.vtulife.R;
 import com.V4Creations.vtulife.controller.adapters.VTULifeFragmentAdapter;
 import com.V4Creations.vtulife.controller.adapters.VTULifeFragmentAdapter.FragmentInfo;
 import com.V4Creations.vtulife.controller.db.VTULifeDataBase;
-import com.V4Creations.vtulife.controller.server.GCMRegisterAsyncTask;
+import com.V4Creations.vtulife.controller.server.GCMRegisterManagerAsyncTask;
 import com.V4Creations.vtulife.model.ActionBarStatus;
 import com.V4Creations.vtulife.model.interfaces.RefreshListener;
 import com.V4Creations.vtulife.util.GoogleAnalyticsManager;
@@ -116,7 +116,7 @@ public class VTULifeMainActivity extends ActionBarActivity implements
 	}
 
 	private void registerGCMToServer() {
-		new GCMRegisterAsyncTask(this).execute();
+		new GCMRegisterManagerAsyncTask(this).execute();
 	}
 
 	private void init() {

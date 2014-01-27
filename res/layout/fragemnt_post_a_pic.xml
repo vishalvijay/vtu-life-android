@@ -7,8 +7,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/content_margin" >
+        android:layout_height="match_parent" >
 
         <ImageView
             android:id="@+id/takeAPhotoImageView"
@@ -16,8 +15,7 @@
             android:layout_height="@dimen/post_a_pic_heigth"
             android:layout_centerInParent="true"
             android:contentDescription="@string/click_to_choose_a_pic"
-            android:gravity="center_horizontal"
-            android:paddingBottom="@dimen/post_a_pic_padding_bottom" />
+            android:gravity="center_horizontal" />
 
         <TextView
             android:id="@+id/messageTextView"
@@ -25,11 +23,9 @@
             android:layout_height="wrap_content"
             android:layout_above="@id/takeAPhotoImageView"
             android:gravity="center_horizontal"
-            android:paddingBottom="@dimen/message_text_padding_bottom"
             android:text="@string/post_a_pic_message"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#ffffff"
-            android:textSize="@dimen/heading_font_size" />
+            android:textColor="#ffffff" />
 
         <Button
             android:id="@+id/sendButton"

@@ -25,7 +25,7 @@ import com.V4Creations.vtulife.controller.adapters.DirectoryAdapter;
 import com.V4Creations.vtulife.controller.adapters.VTULifeFragmentAdapter.FragmentInfo;
 import com.V4Creations.vtulife.controller.server.LoadDirectoryFromServer;
 import com.V4Creations.vtulife.model.ActionBarStatus;
-import com.V4Creations.vtulife.model.DirectoryListItem;
+import com.V4Creations.vtulife.model.DirectoryItem;
 import com.V4Creations.vtulife.model.StackItem;
 import com.V4Creations.vtulife.model.interfaces.DirectoryLoadedInterface;
 import com.V4Creations.vtulife.util.GoogleAnalyticsManager;
@@ -51,8 +51,8 @@ public class DirectoryListingFragment extends ListFragment implements
 	private DirectoryAdapter directoryAdapter;
 	private final String PAGE_URL = "/androidDirectoryListing.php";
 	private final String SORT_URL = "?sort=date&order=asc";
-	private String url = PAGE_URL + SORT_URL;
-	private ArrayList<DirectoryListItem> itemList;
+	private String mUrl = PAGE_URL + SORT_URL;
+	private ArrayList<DirectoryItem> mItemList;
 	private LoadDirectoryFromServer loadDirectoryFromServer;
 	private LinearLayout progressLinearLayout;
 	private ProgressBar progressBar;
@@ -61,7 +61,7 @@ public class DirectoryListingFragment extends ListFragment implements
 
 	public DirectoryListingFragment() {
 		mActionBarStatus = new ActionBarStatus();
-		itemList = new ArrayList<DirectoryListItem>();
+		mItemList = new ArrayList<DirectoryItem>();
 		stack = new Stack<StackItem>();
 	}
 
@@ -95,7 +95,7 @@ public class DirectoryListingFragment extends ListFragment implements
 
 	private void initListAdapter() {
 		directoryAdapter = new DirectoryAdapter(vtuLifeMainActivity,
-				this.itemList);
+				this.mItemList);
 		setListAdapter(directoryAdapter);
 	}
 
@@ -110,22 +110,19 @@ public class DirectoryListingFragment extends ListFragment implements
 	@Override
 	public void onListItemClick(ListView l, View view, int position, long id) {
 		super.onListItemClick(l, view, position, id);
-		String ext = ((TextView) view.findViewById(R.id.extTextView)).getText()
-				.toString();
-		String href = ((TextView) view.findViewById(R.id.hrefTextView))
-				.getText().toString();
-		String fileOrFolderName = ((TextView) view
-				.findViewById(R.id.nameTextView)).getText().toString();
+		DirectoryItem directoryListItem = mItemList.get(position);
+		String ext = directoryListItem.ext;
+		String href = directoryListItem.href;
+		String fileOrFolderName = directoryListItem.name;
 		GoogleAnalyticsManager.infomGoogleAnalytics(mTracker,
 				GoogleAnalyticsManager.CATEGORY_NOTES,
 				GoogleAnalyticsManager.ACTION_FOLDER, fileOrFolderName, 0L);
 		if (ext.equals("dir")) {
-			StackItem stackItem = new StackItem(json, url, directoryName);
+			StackItem stackItem = new StackItem(json, mUrl, directoryName);
 			stack.push(stackItem);
 			directoryName = ((TextView) view.findViewById(R.id.nameTextView))
 					.getText().toString();
-			url = ((TextView) view.findViewById(R.id.hrefTextView)).getText()
-					.toString();
+			mUrl = href;
 			loadDirectory();
 		} else {
 			SystemFeatureChecker.downloadFile(vtuLifeMainActivity,
@@ -194,7 +191,7 @@ public class DirectoryListingFragment extends ListFragment implements
 	}
 
 	private void removeListItems() {
-		itemList.clear();
+		mItemList.clear();
 		directoryAdapter.notifyDataSetChanged();
 	}
 
@@ -209,7 +206,7 @@ public class DirectoryListingFragment extends ListFragment implements
 					.getJSONArray(LoadDirectoryFromServer.TAG_ITEMS);
 			for (int i = 0; i < items.length(); i++) {
 				JSONObject item = items.getJSONObject(i);
-				DirectoryListItem directoryListItem = new DirectoryListItem();
+				DirectoryItem directoryListItem = new DirectoryItem();
 				directoryListItem.href = item
 						.getString(LoadDirectoryFromServer.TAG_HREF);
 				directoryListItem.name = item
@@ -221,7 +218,7 @@ public class DirectoryListingFragment extends ListFragment implements
 				directoryListItem.ext = item
 						.getString(LoadDirectoryFromServer.TAG_EXT);
 				directoryListItem.color = i;
-				itemList.add(directoryListItem);
+				mItemList.add(directoryListItem);
 			}
 			directoryAdapter.notifyDataSetChanged();
 		} catch (JSONException e) {
@@ -235,20 +232,20 @@ public class DirectoryListingFragment extends ListFragment implements
 	private void goBack() {
 		StackItem stackItem = stack.pop();
 		json = stackItem.mJson;
-		url = stackItem.mUrl;
+		mUrl = stackItem.mUrl;
 		directoryName = stackItem.mDirName;
 		setCurrentDir();
 		hideProgressLinearLayout();
 	}
 
 	@Override
-	public void notifyDirectoryLoaded(ArrayList<DirectoryListItem> itemList,
+	public void notifyDirectoryLoaded(ArrayList<DirectoryItem> itemList,
 			boolean isConnectionOk, String errorMessage, JSONObject json) {
 		hideProgressLinearLayout();
 		if (isConnectionOk) {
 			this.json = json;
 			for (int i = 0; i < itemList.size(); i++)
-				this.itemList.add(itemList.get(i));
+				this.mItemList.add(itemList.get(i));
 			directoryAdapter.notifyDataSetChanged();
 		} else if (errorMessage.equals("Empty folder")) {
 			vtuLifeMainActivity.showCrouton(errorMessage, Style.INFO, false);
@@ -293,7 +290,7 @@ public class DirectoryListingFragment extends ListFragment implements
 		vtuLifeMainActivity.reflectActionBarChange(mActionBarStatus,
 				VTULifeMainActivity.ID_DIRECTORY_LISTING_FRAGMENT, true);
 		loadDirectoryFromServer = new LoadDirectoryFromServer(
-				vtuLifeMainActivity, this, url);
+				vtuLifeMainActivity, this, mUrl);
 		loadDirectoryFromServer.execute();
 	}
 

@@ -8,6 +8,8 @@
     <color name="android_color_5">#ff3f9fe0</color>
     <color name="android_color_6">#ff5161bc</color>
     <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="text_muted">#54595c</color>
     <color name="background_tab_pressed">#66338be5</color>
     <color name="menu_color_selected">#293f61</color>
     <color name="main_background">#b1b8c4</color>

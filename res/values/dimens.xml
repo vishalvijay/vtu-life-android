@@ -1,19 +1,6 @@
-
 <resources>
 
-    <dimen name="list_padding">10dp</dimen>
-    <dimen name="shadow_width">1dp</dimen>
-
-    <integer name="num_cols">1</integer>
-
-    <dimen name="content_margin">1dp</dimen>
-    <dimen name="heading_font_size">15sp</dimen>
-    <dimen name="message_text_padding_bottom">15dp</dimen>
     <dimen name="post_a_pic_width">250dp</dimen>
     <dimen name="post_a_pic_heigth">200dp</dimen>
-    <dimen name="post_a_pic_padding_bottom">12dp</dimen>
-    <dimen name="upload_file_title_margin_bottom">80dp</dimen>
-    <dimen name="button_rounding">360.0dip</dimen>
-    <dimen name="border">1.0px</dimen>
 
 </resources>

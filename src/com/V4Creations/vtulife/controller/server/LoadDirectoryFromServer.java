@@ -11,7 +11,7 @@ import org.json.JSONObject;
 import android.os.AsyncTask;
 import android.support.v4.app.Fragment;
 
-import com.V4Creations.vtulife.model.DirectoryListItem;
+import com.V4Creations.vtulife.model.DirectoryItem;
 import com.V4Creations.vtulife.model.interfaces.DirectoryLoadedInterface;
 import com.V4Creations.vtulife.util.JSONParser;
 import com.V4Creations.vtulife.util.VTULifeConstance;
@@ -27,7 +27,7 @@ public class LoadDirectoryFromServer extends AsyncTask<String, String, String> {
 	public static final String TAG_EXT_IMAGE = "ext_image";
 	public static final String TAG_SIZE = "size";
 	public static final String TAG_DATE = "date";
-	private ArrayList<DirectoryListItem> itemList;
+	private ArrayList<DirectoryItem> itemList;
 	private boolean isConnectionOk;
 	private String errorMessage;
 	private VTULifeMainActivity vtuLifeMainActivity;
@@ -41,7 +41,7 @@ public class LoadDirectoryFromServer extends AsyncTask<String, String, String> {
 		errorMessage = "";
 		this.vtuLifeMainActivity = vtuLifeMainActivity;
 		this.url = url;
-		itemList = new ArrayList<DirectoryListItem>();
+		itemList = new ArrayList<DirectoryItem>();
 		directoryLoadedInterface = (DirectoryLoadedInterface) fragment;
 	}
 
@@ -67,7 +67,7 @@ public class LoadDirectoryFromServer extends AsyncTask<String, String, String> {
 				}
 				for (int i = 0; i < items.length(); i++) {
 					JSONObject item = items.getJSONObject(i);
-					DirectoryListItem directoryListItem = new DirectoryListItem();
+					DirectoryItem directoryListItem = new DirectoryItem();
 					directoryListItem.href = item.getString(TAG_HREF);
 					directoryListItem.name = item.getString(TAG_NAME);
 					directoryListItem.size = item.getString(TAG_SIZE);

@@ -19,8 +19,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/noteTextView"
-        android:layout_margin="@dimen/content_margin" >
+        android:layout_below="@id/noteTextView" >
 
         <ListView
             android:id="@+id/listView"
