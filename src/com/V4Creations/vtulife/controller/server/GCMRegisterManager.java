@@ -6,7 +6,6 @@ import org.json.JSONObject;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
 
 import com.V4Creations.vtulife.util.Settings;
 import com.V4Creations.vtulife.util.VTULifeConstance;
@@ -18,10 +17,13 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 
 import de.keyboardsurfer.android.widget.crouton.Style;
 
-public class GCMRegisterManagerAsyncTask extends AsyncTask<Void, Void, String> {
+public class GCMRegisterManager extends AsyncTask<Void, Void, String> {
 	private Context mContext;
+	public static final String GCM_REGISTER = "/nm/register.php";
+	public static final String PARAM_REGISTER_ID = "gcm_regid",
+			PARAM_DEVICE_ID = "android_id";
 
-	public GCMRegisterManagerAsyncTask(Context context) {
+	public GCMRegisterManager(Context context) {
 		mContext = context;
 	}
 

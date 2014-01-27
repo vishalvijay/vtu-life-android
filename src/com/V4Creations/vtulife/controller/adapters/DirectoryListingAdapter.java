@@ -1,8 +1,8 @@
 package com.V4Creations.vtulife.controller.adapters;
 
-import java.util.ArrayList;
-
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,20 +11,20 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.V4Creations.vtulife.R;
-import com.V4Creations.vtulife.model.DirectoryItem;
+import com.V4Creations.vtulife.model.ResourceItem;
 
-public class DirectoryAdapter extends ArrayAdapter<DirectoryItem> {
+public class DirectoryListingAdapter extends ArrayAdapter<ResourceItem> {
 	private LayoutInflater mInflater;
 
-	public DirectoryAdapter(Context context, ArrayList<DirectoryItem> itemList) {
-		super(context, android.R.layout.simple_list_item_1, itemList);
+	public DirectoryListingAdapter(Context context) {
+		super(context, android.R.layout.simple_list_item_1);
 		mInflater = (LayoutInflater) context
 				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 	}
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		DirectoryItem tempDirectoryItem = getItem(position);
+		ResourceItem tempDirectoryItem = getItem(position);
 		ViewHolder viewHolder;
 		if (convertView == null) {
 			convertView = mInflater.inflate(R.layout.list_directory_item, null);
@@ -46,6 +46,18 @@ public class DirectoryAdapter extends ArrayAdapter<DirectoryItem> {
 		viewHolder.iconImageView.setBackgroundResource(tempDirectoryItem
 				.getIcon());
 		return convertView;
+	}
+
+	@SuppressLint("NewApi")
+	@Override
+	public void addAll(ResourceItem... items) {
+		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
+			super.addAll(items);
+		} else {
+			for (ResourceItem element : items) {
+				super.add(element);
+			}
+		}
 	}
 
 	private static class ViewHolder {

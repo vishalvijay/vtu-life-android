@@ -2,12 +2,11 @@ package com.V4Creations.vtulife.model;
 
 import com.V4Creations.vtulife.R;
 
-public class DirectoryItem {
+public class ResourceItem {
 	public String href;
 	public String name;
 	public String size;
 	public String date;
-	public int color;
 	public String ext;
 
 	public int getIcon() {
