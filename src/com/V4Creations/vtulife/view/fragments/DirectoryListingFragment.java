@@ -208,10 +208,13 @@ public class DirectoryListingFragment extends ListFragment implements
 	}
 
 	@Override
-	public void onLoadingFailure(String message) {
+	public void onLoadingFailure(String message, String trackMessage) {
 		vtuLifeMainActivity.showCrouton(message, Style.ALERT, false);
 		mActionBarStatus.subTitle = null;
 		callActionBarReflect();
 		showReload();
+		GoogleAnalyticsManager.infomGoogleAnalytics(mTracker,
+				GoogleAnalyticsManager.CATEGORY_NOTES,
+				GoogleAnalyticsManager.ACTION_NETWORK_ERROR, trackMessage, 0L);
 	}
 }

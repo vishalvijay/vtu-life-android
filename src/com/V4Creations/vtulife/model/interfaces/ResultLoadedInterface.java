@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import com.V4Creations.vtulife.model.ResultItem;
 
 public interface ResultLoadedInterface {
-	void notifyResultLoaded(ArrayList<ResultItem> itemList,
-			boolean isConnectionOk, String errorMessage,String usn);
+	public void onStartLoading();
+
+	public void onLoadingSuccess(ArrayList<ResultItem> resultItems, String usn);
+
+	public void onLoadingFailure(String message, String trackMessage);
 }

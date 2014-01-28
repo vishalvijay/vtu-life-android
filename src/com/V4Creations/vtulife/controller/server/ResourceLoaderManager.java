@@ -117,7 +117,7 @@ public class ResourceLoaderManager extends JsonHttpResponseHandler {
 		isReloadEnabled = false;
 		String message = statusCode != 405 ? context
 				.getString(R.string.default_connection_error) : e.getMessage();
-		mResourceLoaderInterface.onLoadingFailure(message);
+		mResourceLoaderInterface.onLoadingFailure(message, e.getMessage() + "");
 	}
 
 	private ArrayList<ResourceItem> parseJson(JSONObject jsonObject) {

@@ -19,6 +19,7 @@ public class GoogleAnalyticsManager {
 	public static String ACTION_SORTED_RESULT = "sorted_result";
 	public static String ACTION_DEEP_RESULT_SEARCH = "deep_result_search";
 	public static String ACTION_FAVORITE_PAGE = "favorite_page";
+	public static String ACTION_NETWORK_ERROR = "network_error";
 
 	public static void infomGoogleAnalytics(Tracker tracker, String category,
 			String action, String label, long value) {

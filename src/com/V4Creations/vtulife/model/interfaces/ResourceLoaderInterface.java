@@ -7,5 +7,5 @@ public interface ResourceLoaderInterface {
 
 	public void onLoadingSuccess(ResourceStackItem resourceStackItem);
 
-	public void onLoadingFailure(String message);
+	public void onLoadingFailure(String message, String trackMessage);
 }

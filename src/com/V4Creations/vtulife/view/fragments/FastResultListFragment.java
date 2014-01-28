@@ -1,7 +1,6 @@
 package com.V4Creations.vtulife.view.fragments;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
@@ -10,9 +9,9 @@ import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
-import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
@@ -21,40 +20,38 @@ import android.widget.TextView.OnEditorActionListener;
 
 import com.V4Creations.vtulife.R;
 import com.V4Creations.vtulife.controller.adapters.ResultAdapter;
+import com.V4Creations.vtulife.controller.adapters.UsnHistoryArrayAdapter;
 import com.V4Creations.vtulife.controller.adapters.VTULifeFragmentAdapter.FragmentInfo;
 import com.V4Creations.vtulife.controller.db.VTULifeDataBase;
-import com.V4Creations.vtulife.controller.server.LoadResultFromServer;
+import com.V4Creations.vtulife.controller.server.ResultLoaderManager;
 import com.V4Creations.vtulife.model.ActionBarStatus;
 import com.V4Creations.vtulife.model.ResultItem;
 import com.V4Creations.vtulife.model.interfaces.RefreshListener;
 import com.V4Creations.vtulife.model.interfaces.ResultLoadedInterface;
 import com.V4Creations.vtulife.util.GoogleAnalyticsManager;
-import com.V4Creations.vtulife.util.VTULifeConstance;
 import com.V4Creations.vtulife.view.activity.VTULifeMainActivity;
 import com.google.analytics.tracking.android.Tracker;
 
 import de.keyboardsurfer.android.widget.crouton.Style;
 
 public class FastResultListFragment extends ListFragment implements
-		ResultLoadedInterface, FragmentInfo, RefreshListener {
+		ResultLoadedInterface, FragmentInfo, RefreshListener, OnClickListener,
+		OnEditorActionListener {
 	String TAG = "FastResultListFragment";
 
 	private CheckBox revalCheckBox;
 	private AutoCompleteTextView usnAutoCompleteTextView;
 	private ImageButton submitImageButton;
-	private ArrayAdapter<String> mUsnHistoryAdapter;
-	private ArrayList<ResultItem> itemList;
+	private UsnHistoryArrayAdapter mUsnHistoryAdapter;
 	private VTULifeMainActivity vtuLifeMainActivity;
-	private ResultAdapter resultAdapter;
-	private boolean isLoading = false;
-	private LoadResultFromServer loadResultFromServer;
+	private ResultAdapter mAdapter;
 	private ActionBarStatus mActionBarStatus;
 	private Tracker mTracker;
+	private ResultLoaderManager mResultLoaderManager;
 
-	private final String usnRegx = "[1-4][a-zA-Z][a-zA-Z][0-9][0-9][a-zA-Z][a-zA-Z][0-9][0-9][0-9]";
+	private final String usnRegx = "[1-4][a-zA-Z][a-zA-Z][0-9][0-9][a-zA-Z][a-zA-Z][a-zA-Z0-9][0-9][0-9]";
 
 	public FastResultListFragment() {
-		itemList = new ArrayList<ResultItem>();
 		mActionBarStatus = new ActionBarStatus();
 	}
 
@@ -70,45 +67,16 @@ public class FastResultListFragment extends ListFragment implements
 		super.onActivityCreated(savedInstanceState);
 		mTracker = GoogleAnalyticsManager
 				.getGoogleAnalyticsTracker(vtuLifeMainActivity);
-		initListAdapter();
 		initView();
+	}
+
+	private void initView() {
+		initListAdapter();
+		submitImageButton = (ImageButton) getView().findViewById(
+				R.id.submitImageButton);
+		initAutoCompleteTextView();
 		initActionBarCustomView();
-		initEventListener();
-	}
-
-	private void initEventListener() {
-		submitImageButton.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				manageResultFetch();
-			}
-		});
-		usnAutoCompleteTextView
-				.setOnEditorActionListener(new OnEditorActionListener() {
-					public boolean onEditorAction(TextView v, int actionId,
-							KeyEvent event) {
-						if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER))
-								|| (actionId == EditorInfo.IME_ACTION_DONE)) {
-							manageResultFetch();
-						}
-						return false;
-					}
-				});
-	}
-
-	protected void manageResultFetch() {
-		String usn = usnAutoCompleteTextView.getText().toString();
-		if (usn.matches(usnRegx)) {
-			if (!isLoading)
-				getResult(usn);
-			else {
-				loadResultFromServer.cancel(true);
-				submitImageButton.setEnabled(false);
-			}
-		} else {
-			usnAutoCompleteTextView.setError("Invalid USN");
-		}
+		initListener();
 	}
 
 	private void initActionBarCustomView() {
@@ -117,112 +85,91 @@ public class FastResultListFragment extends ListFragment implements
 		revalCheckBox = (CheckBox) mActionBarStatus.customView
 				.findViewById(R.id.revalCheckBox);
 		mActionBarStatus.isCustomViewOnActionBarEnabled = true;
-		vtuLifeMainActivity.reflectActionBarChange(mActionBarStatus,
-				VTULifeMainActivity.ID_FAST_RESULT_FRAGMENT, true);
-	}
-
-	private void initView() {
-		submitImageButton = (ImageButton) getView().findViewById(
-				R.id.submitImageButton);
-		initAutoCompleteTextView();
+		callActionBarReflect();
 	}
 
 	private void initAutoCompleteTextView() {
 		usnAutoCompleteTextView = (AutoCompleteTextView) getView()
 				.findViewById(R.id.usnAutoCompleteTextView);
-		ArrayList<String> usnHistory = VTULifeDataBase
-				.getUSNHistory(vtuLifeMainActivity);
-		mUsnHistoryAdapter = new ArrayAdapter<String>(vtuLifeMainActivity,
-				android.R.layout.simple_dropdown_item_1line, usnHistory);
+		mUsnHistoryAdapter = new UsnHistoryArrayAdapter(vtuLifeMainActivity,
+				android.R.layout.simple_dropdown_item_1line);
 		usnAutoCompleteTextView.setAdapter(mUsnHistoryAdapter);
+		mUsnHistoryAdapter.reloadHistory(false);
 
-		usnAutoCompleteTextView.addTextChangedListener(filterTextWatcher);
+		usnAutoCompleteTextView.addTextChangedListener(new TextWatcher() {
+			public void afterTextChanged(Editable s) {
+			}
+
+			public void beforeTextChanged(CharSequence s, int start, int count,
+					int after) {
+			}
+
+			public void onTextChanged(CharSequence s, int start, int before,
+					int count) {
+				if (s.toString().length() == 10
+						&& !s.toString().matches(usnRegx))
+					showInvalodUsn();
+				else
+					usnAutoCompleteTextView.setError(null);
+			}
+		});
 	}
 
 	private void initListAdapter() {
-		resultAdapter = new ResultAdapter(vtuLifeMainActivity, itemList);
-		setListAdapter(resultAdapter);
+		mAdapter = new ResultAdapter(vtuLifeMainActivity);
+		setListAdapter(mAdapter);
+	}
+
+	private void initListener() {
+		submitImageButton.setOnClickListener(this);
+		usnAutoCompleteTextView.setOnEditorActionListener(this);
+	}
+
+	protected void manageResultFetch() {
+		String usn = usnAutoCompleteTextView.getText().toString();
+		if (usn.matches(usnRegx))
+			if (mResultLoaderManager != null
+					&& mResultLoaderManager.isLoading())
+				cancel();
+			else
+				getResult(usn);
+		else
+			showInvalodUsn();
+	}
+
+	private void showInvalodUsn() {
+		usnAutoCompleteTextView.setError("Invalid USN");
+	}
+
+	private void cancel() {
+		mResultLoaderManager.cancel();
+		stopLoading();
+		vtuLifeMainActivity.showCrouton("Cancelled", Style.INFO, false);
 	}
 
 	protected void getResult(String usn) {
-		usn = usn.toUpperCase(Locale.ENGLISH);
-		startLoading();
-		removeListItems();
-		mActionBarStatus.isInterminatePorogressBarVisible = true;
-		vtuLifeMainActivity.reflectActionBarChange(mActionBarStatus,
-				VTULifeMainActivity.ID_FAST_RESULT_FRAGMENT, true);
-		loadResultFromServer = new LoadResultFromServer(vtuLifeMainActivity,
-				this, VTULifeConstance.RESULT_FROM_VTU,
-				LoadResultFromServer.MULTY_SEM, usn, revalCheckBox.isChecked());
-		loadResultFromServer.execute();
-	}
-
-	private TextWatcher filterTextWatcher = new TextWatcher() {
-		public void afterTextChanged(Editable s) {
-		}
-
-		public void beforeTextChanged(CharSequence s, int start, int count,
-				int after) {
-		}
-
-		public void onTextChanged(CharSequence s, int start, int before,
-				int count) {
-			if (s.toString().length() == 10 && !s.toString().matches(usnRegx)) {
-				usnAutoCompleteTextView.setError("Invalid USN");
-			} else {
-				usnAutoCompleteTextView.setError(null);
-			}
-		}
-
-	};
-
-	private void startLoading() {
-		isLoading = true;
-		submitImageButton.setImageResource(R.drawable.ic_action_cancel);
-		usnAutoCompleteTextView.setEnabled(false);
-		mActionBarStatus.subTitle = "Loading...";
-		mActionBarStatus.isInterminatePorogressBarVisible = true;
-		vtuLifeMainActivity.reflectActionBarChange(mActionBarStatus,
-				VTULifeMainActivity.ID_FAST_RESULT_FRAGMENT, true);
-		revalCheckBox.setEnabled(false);
+		mResultLoaderManager = new ResultLoaderManager(vtuLifeMainActivity,
+				this);
+		mResultLoaderManager.getResult(usn, revalCheckBox.isChecked(),
+				ResultLoaderManager.MULTY_SEM);
 	}
 
 	private void stopLoading() {
-		isLoading = false;
+		mResultLoaderManager = null;
 		submitImageButton.setImageResource(R.drawable.ic_action_send_now);
-		submitImageButton.setEnabled(true);
 		usnAutoCompleteTextView.setEnabled(true);
 		mActionBarStatus.subTitle = null;
 		mActionBarStatus.isInterminatePorogressBarVisible = false;
-		vtuLifeMainActivity.reflectActionBarChange(mActionBarStatus,
-				VTULifeMainActivity.ID_FAST_RESULT_FRAGMENT, true);
 		revalCheckBox.setEnabled(true);
-	}
-
-	public void removeListItems() {
-		itemList.clear();
-		resultAdapter.notifyDataSetChanged();
+		callActionBarReflect();
 	}
 
 	protected void saveAndRefreshUsnHistory(String usn) {
 		GoogleAnalyticsManager.infomGoogleAnalytics(mTracker,
 				GoogleAnalyticsManager.CATEGORY_RESULT,
 				GoogleAnalyticsManager.ACTION_FAST_RESULT, usn, 0L);
-		if (VTULifeDataBase.setUSNHistory(vtuLifeMainActivity, usn))
-			mUsnHistoryAdapter.add(usn);
-	}
-
-	@Override
-	public void notifyResultLoaded(ArrayList<ResultItem> itemList,
-			boolean isConnectionOk, String errorMessage, String usn) {
-		stopLoading();
-		if (isConnectionOk) {
-			for (int i = 0; i < itemList.size(); i++)
-				this.itemList.add(itemList.get(i));
-			resultAdapter.notifyDataSetChanged();
-			saveAndRefreshUsnHistory(usn);
-		} else
-			vtuLifeMainActivity.showCrouton(errorMessage, Style.ALERT, false);
+		VTULifeDataBase.setUSNHistory(vtuLifeMainActivity, usn);
+		mUsnHistoryAdapter.reloadHistory(false);
 	}
 
 	@Override
@@ -245,5 +192,50 @@ public class FastResultListFragment extends ListFragment implements
 
 	public static String getFeatureName() {
 		return "Result";
+	}
+
+	@Override
+	public void onStartLoading() {
+		mAdapter.clear();
+		submitImageButton.setImageResource(R.drawable.ic_action_cancel);
+		usnAutoCompleteTextView.setEnabled(false);
+		mActionBarStatus.subTitle = "Loading...";
+		mActionBarStatus.isInterminatePorogressBarVisible = true;
+		revalCheckBox.setEnabled(false);
+		callActionBarReflect();
+	}
+
+	@Override
+	public void onLoadingSuccess(ArrayList<ResultItem> resultItems, String usn) {
+		stopLoading();
+		mAdapter.addAll(resultItems);
+		saveAndRefreshUsnHistory(usn);
+	}
+
+	@Override
+	public void onLoadingFailure(String message, String trackMessage) {
+		stopLoading();
+		vtuLifeMainActivity.showCrouton(message, Style.ALERT, false);
+		GoogleAnalyticsManager.infomGoogleAnalytics(mTracker,
+				GoogleAnalyticsManager.CATEGORY_RESULT,
+				GoogleAnalyticsManager.ACTION_NETWORK_ERROR, trackMessage, 0L);
+	}
+
+	@Override
+	public void onClick(View v) {
+		manageResultFetch();
+	}
+
+	@Override
+	public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+		if ((event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER))
+				|| (actionId == EditorInfo.IME_ACTION_DONE))
+			manageResultFetch();
+		return false;
+	}
+
+	private void callActionBarReflect() {
+		vtuLifeMainActivity.reflectActionBarChange(mActionBarStatus,
+				VTULifeMainActivity.ID_FAST_RESULT_FRAGMENT, true);
 	}
 }
