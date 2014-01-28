@@ -10,6 +10,7 @@ import org.json.JSONObject;
 import android.app.Activity;
 import android.content.Context;
 
+import com.V4Creations.vtulife.R;
 import com.V4Creations.vtulife.model.ResourceItem;
 import com.V4Creations.vtulife.model.ResourceStackItem;
 import com.V4Creations.vtulife.model.interfaces.ResourceLoaderInterface;
@@ -47,7 +48,10 @@ public class ResourceLoaderManager extends JsonHttpResponseHandler {
 			String newUrl = RESOURCE_MAIN + (href == null ? SORT_URL : href);
 			VTULifeRestClient.loadResource(newUrl, this);
 		} else
-			onFailure(400, new Throwable("Internet connection not available"),
+			onFailure(
+					405,
+					new Throwable(context
+							.getString(R.string.internet_not_available)),
 					new JSONObject());
 	}
 
@@ -73,7 +77,7 @@ public class ResourceLoaderManager extends JsonHttpResponseHandler {
 	}
 
 	public void reload() {
-		String url = SORT_URL;
+		String url = null;
 		if (!mStack.isEmpty())
 			url = mStack.lastElement().mUrl;
 		isReloadEnabled = true;
@@ -84,7 +88,7 @@ public class ResourceLoaderManager extends JsonHttpResponseHandler {
 	public void onSuccess(JSONObject response) {
 		isLoading = false;
 		ResourceStackItem resourceStackItem;
-		if (!isReloadEnabled) {
+		if (!isReloadEnabled || mStack.isEmpty()) {
 			ArrayList<ResourceItem> resourceItems = parseJson(response);
 			String parentDirectoryName = null, parentDirectoryHref = null;
 			if (selectedIndex != -1 && !mStack.isEmpty()) {
@@ -97,11 +101,11 @@ public class ResourceLoaderManager extends JsonHttpResponseHandler {
 			resourceStackItem = new ResourceStackItem(resourceItems,
 					parentDirectoryName, parentDirectoryHref);
 		} else {
-			isReloadEnabled = false;
 			ResourceStackItem tempResourceStackItem = mStack.pop();
 			resourceStackItem = new ResourceStackItem(parseJson(response),
 					tempResourceStackItem.mDirName, tempResourceStackItem.mUrl);
 		}
+		isReloadEnabled = false;
 		mStack.push(resourceStackItem);
 		mResourceLoaderInterface.onLoadingSuccess(resourceStackItem);
 	}
@@ -111,9 +115,8 @@ public class ResourceLoaderManager extends JsonHttpResponseHandler {
 		isLoading = false;
 		selectedIndex = -1;
 		isReloadEnabled = false;
-		String message = e.getMessage();
-		if (message == null)
-			message = "Request could not be processed.";
+		String message = statusCode != 405 ? context
+				.getString(R.string.default_connection_error) : e.getMessage();
 		mResourceLoaderInterface.onLoadingFailure(message);
 	}
 
