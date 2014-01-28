@@ -91,8 +91,7 @@ public class FastResultListFragment extends ListFragment implements
 	private void initAutoCompleteTextView() {
 		usnAutoCompleteTextView = (AutoCompleteTextView) getView()
 				.findViewById(R.id.usnAutoCompleteTextView);
-		mUsnHistoryAdapter = new UsnHistoryArrayAdapter(vtuLifeMainActivity,
-				android.R.layout.simple_dropdown_item_1line);
+		mUsnHistoryAdapter = new UsnHistoryArrayAdapter(vtuLifeMainActivity);
 		usnAutoCompleteTextView.setAdapter(mUsnHistoryAdapter);
 		mUsnHistoryAdapter.reloadHistory(false);
 

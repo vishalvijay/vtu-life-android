@@ -177,13 +177,13 @@ public class ResultLoaderManager extends JsonHttpResponseHandler {
 
 	private String getResult(String result) throws JSONException {
 		if (result.equals("FAIL"))
-			return "Result : FAIL";
+			return "FAIL";
 		else if (result.equals("FIRST CLASS WITH DISTINCTION"))
-			return "Result : FCD";
+			return "FCD";
 		else if (result.equals("FIRST CLASS"))
-			return "Result : FC";
+			return "FC";
 		else if (result.equals("SECOND CLASS"))
-			return "Result : SC";
+			return "SC";
 		return "Error";
 	}
 

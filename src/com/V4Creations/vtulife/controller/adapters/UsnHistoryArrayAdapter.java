@@ -12,8 +12,8 @@ import com.V4Creations.vtulife.controller.db.VTULifeDataBase;
 
 public class UsnHistoryArrayAdapter extends ArrayAdapter<String> {
 
-	public UsnHistoryArrayAdapter(Context context, int resource) {
-		super(context, resource);
+	public UsnHistoryArrayAdapter(Context context) {
+		super(context, android.R.layout.simple_list_item_1);
 	}
 
 	@SuppressLint("NewApi")
