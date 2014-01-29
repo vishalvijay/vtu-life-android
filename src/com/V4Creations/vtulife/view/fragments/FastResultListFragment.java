@@ -215,9 +215,11 @@ public class FastResultListFragment extends ListFragment implements
 			int statusCode, String usn) {
 		stopLoading();
 		vtuLifeMainActivity.showCrouton(message, Style.ALERT, false);
-		GoogleAnalyticsManager.infomGoogleAnalytics(mTracker,
-				GoogleAnalyticsManager.CATEGORY_RESULT,
-				GoogleAnalyticsManager.ACTION_NETWORK_ERROR, trackMessage, 0L);
+		if (!trackMessage.equals(""))
+			GoogleAnalyticsManager.infomGoogleAnalytics(mTracker,
+					GoogleAnalyticsManager.CATEGORY_RESULT,
+					GoogleAnalyticsManager.ACTION_NETWORK_ERROR, trackMessage
+							+ "-" + statusCode, 0L);
 	}
 
 	@Override

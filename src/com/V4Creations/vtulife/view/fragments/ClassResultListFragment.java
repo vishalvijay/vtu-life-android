@@ -226,8 +226,8 @@ public class ClassResultListFragment extends ListFragment implements
 		if (!trackMessage.equals(""))
 			GoogleAnalyticsManager.infomGoogleAnalytics(mTracker,
 					GoogleAnalyticsManager.CATEGORY_RESULT,
-					GoogleAnalyticsManager.ACTION_NETWORK_ERROR, trackMessage,
-					0L);
+					GoogleAnalyticsManager.ACTION_NETWORK_ERROR, trackMessage
+							+ "-" + statusCode, 0L);
 	}
 
 	@Override
