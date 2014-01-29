@@ -34,24 +34,23 @@ public class ResultLoaderManager extends JsonHttpResponseHandler {
 
 	private Context context;
 	private String mUsn;
-	private int mResultType = REGULAR_RESULT, mResultMode = SINGLE_SEM;
+	private int mResultType = REGULAR_RESULT, mResultMode = MULTY_SEM;
 	private ResultLoadedInterface mResultLoadedInterface;
-	private boolean isCancelled = false;
-	private boolean isLoading = false;
+	private boolean isCancelled = false, isLoading = false;
 
 	public ResultLoaderManager(Context context,
-			ResultLoadedInterface resultLoadedInterface) {
+			ResultLoadedInterface resultLoadedInterface, String usn,
+			boolean resultType, int resultMode) {
 		this.context = context;
 		mResultLoadedInterface = resultLoadedInterface;
-	}
-
-	public void getResult(String usn, boolean resultType, int resultMode) {
-		if (isCancelled())
-			return;
 		isLoading = true;
 		mResultType = getResultType(resultType);
 		mUsn = usn.toUpperCase(Locale.getDefault());
 		mResultMode = resultMode;
+		getResult();
+	}
+
+	private void getResult() {
 		if (SystemFeatureChecker.isInternetConnection(context)) {
 			mResultLoadedInterface.onStartLoading();
 			VTULifeRestClient.getResult(mUsn, mResultType, this);
@@ -85,7 +84,8 @@ public class ResultLoaderManager extends JsonHttpResponseHandler {
 				message = errorResponse.getString(VTULifeRestClient.KEY_ERROR);
 		} catch (JSONException e1) {
 		}
-		mResultLoadedInterface.onLoadingFailure(message, e.getMessage() + "");
+		mResultLoadedInterface.onLoadingFailure(message, e.getMessage() + "",
+				statusCode, mUsn);
 		cancel();
 	}
 
@@ -185,13 +185,6 @@ public class ResultLoaderManager extends JsonHttpResponseHandler {
 		else if (result.equals("SECOND CLASS"))
 			return "SC";
 		return "Error";
-	}
-
-	public boolean isCancelled() {
-		if (isCancelled)
-			throw new IllegalStateException(
-					"Result loader alrady cancelled. Create new and try");
-		return isCancelled;
 	}
 
 	public void cancel() {

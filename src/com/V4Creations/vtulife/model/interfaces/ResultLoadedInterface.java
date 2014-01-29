@@ -9,5 +9,6 @@ public interface ResultLoadedInterface {
 
 	public void onLoadingSuccess(ArrayList<ResultItem> resultItems, String usn);
 
-	public void onLoadingFailure(String message, String trackMessage);
+	public void onLoadingFailure(String message, String trackMessage,
+			int statusCode, String usn);
 }

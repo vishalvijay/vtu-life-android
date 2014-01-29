@@ -148,8 +148,7 @@ public class FastResultListFragment extends ListFragment implements
 
 	protected void getResult(String usn) {
 		mResultLoaderManager = new ResultLoaderManager(vtuLifeMainActivity,
-				this);
-		mResultLoaderManager.getResult(usn, revalCheckBox.isChecked(),
+				this, usn, revalCheckBox.isChecked(),
 				ResultLoaderManager.MULTY_SEM);
 	}
 
@@ -212,7 +211,8 @@ public class FastResultListFragment extends ListFragment implements
 	}
 
 	@Override
-	public void onLoadingFailure(String message, String trackMessage) {
+	public void onLoadingFailure(String message, String trackMessage,
+			int statusCode, String usn) {
 		stopLoading();
 		vtuLifeMainActivity.showCrouton(message, Style.ALERT, false);
 		GoogleAnalyticsManager.infomGoogleAnalytics(mTracker,
