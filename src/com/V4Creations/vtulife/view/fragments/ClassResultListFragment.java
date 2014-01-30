@@ -144,10 +144,6 @@ public class ClassResultListFragment extends ListFragment implements
 
 	private void cancel() {
 		mClassResultLoaderManager.cancel();
-		vtuLifeMainActivity.showCrouton("Cancelled ("
-				+ mClassResultLoaderManager.getTotatlSuccessResult()
-				+ " results).", Style.INFO, false);
-		stopLoading();
 	}
 
 	protected void getResult(String classUsn) {
@@ -250,10 +246,12 @@ public class ClassResultListFragment extends ListFragment implements
 
 	@Override
 	public void onFinishLoading() {
-		if (!mClassResultLoaderManager.isCancelled())
-			vtuLifeMainActivity.showCrouton("Finished ("
-					+ mClassResultLoaderManager.getTotatlSuccessResult()
-					+ " results).", Style.INFO, false);
+		String message = "Finished";
+		if (mClassResultLoaderManager.isCancelled())
+			message = "Cancelled";
+		vtuLifeMainActivity.showCrouton(message + " ("
+				+ mClassResultLoaderManager.getTotatlSuccessResult()
+				+ " results).", Style.INFO, false);
 		stopLoading();
 	}
 }
