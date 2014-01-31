@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/directoryListingRelativeLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -31,7 +32,7 @@
         android:text="@string/size_"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/text_muted"
-        android:textStyle="italic" />
+        app:isItalic="true" />
 
     <com.V4Creations.vtulife.view.customviews.CustomeTextView
         android:id="@+id/sizeTextView"
@@ -41,7 +42,7 @@
         android:layout_toRightOf="@id/sizeLabelTextView"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/text_muted"
-        android:textStyle="italic" />
+        app:isItalic="true" />
 
     <com.V4Creations.vtulife.view.customviews.CustomeTextView
         android:id="@+id/dateLabelTextView"
@@ -52,7 +53,7 @@
         android:text="@string/modified_"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/text_muted"
-        android:textStyle="italic" />
+        app:isItalic="true" />
 
     <com.V4Creations.vtulife.view.customviews.CustomeTextView
         android:id="@+id/dateTextView"
@@ -62,6 +63,6 @@
         android:layout_toRightOf="@id/dateLabelTextView"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/text_muted"
-        android:textStyle="italic" />
+        app:isItalic="true" />
 
 </RelativeLayout>

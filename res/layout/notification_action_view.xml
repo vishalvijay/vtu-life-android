@@ -6,7 +6,7 @@
     android:clickable="true"
     android:soundEffectsEnabled="true" >
 
-    <TextView
+    <com.V4Creations.vtulife.view.customviews.CustomeTextView
         android:id="@+id/notifcationCountTextView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"

@@ -18,10 +18,9 @@
             android:layout_height="@dimen/abc_action_bar_default_height"
             android:background="@color/solid_white"
             android:textColor="@android:color/black"
-            app2:pstsDividerColor="#76a4c8"
-            app2:pstsIndicatorColor="#355d98"
+            app2:pstsDividerColor="@color/theme_color_lite"
+            app2:pstsIndicatorColor="@color/theme_color"
             app2:pstsIndicatorHeight="6dp" />
-        <!-- app2:pstsTabBackground="@drawable/tab_selector" -->
 
         <android.support.v4.view.ViewPager
             android:id="@+id/pager"

@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@drawable/main_background" >
 
-    <TextView
+    <com.V4Creations.vtulife.view.customviews.CustomeTextView
         android:id="@+id/noteTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
+        android:background="@color/menu_background"
         android:ellipsize="marquee"
         android:marqueeRepeatLimit="marquee_forever"
-        android:padding="3dp"
+        android:padding="@dimen/normal_view_padding"
         android:scrollHorizontally="true"
         android:singleLine="true"
-        android:text="Find all VTU related updates here. Click on a notification to mark as read. Swip to delete a notification."
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:text="Find all VTU related updates here. Click on a notification to mark as read. Swipe to delete a notification."
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/white" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,13 +32,14 @@
             android:scrollbars="none" />
     </LinearLayout>
 
-    <TextView
+    <com.V4Creations.vtulife.view.customviews.CustomeTextView
         android:id="@+id/emptyView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:gravity="center"
-        android:padding="10dp"
-        android:text="There is nothing interesting right now.\nWe will keep you inform." />
+        android:padding="@dimen/double_common_padding"
+        android:text="There is nothing interesting right now.\nWe will keep you inform."
+        app:isItalic="true" />
 
 </RelativeLayout>

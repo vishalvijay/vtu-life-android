@@ -45,6 +45,10 @@ public class DirectoryListingAdapter extends ArrayAdapter<ResourceItem> {
 		viewHolder.dateTextView.setText(tempDirectoryItem.date);
 		viewHolder.iconImageView.setBackgroundResource(tempDirectoryItem
 				.getIcon());
+		int color = R.color.odd_color;
+		if (position % 2 == 0)
+			color = R.color.even_color;
+		convertView.setBackgroundResource(color);
 		return convertView;
 	}
 

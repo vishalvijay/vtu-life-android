@@ -23,6 +23,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -407,32 +408,31 @@ public class VTULifeMainActivity extends ActionBarActivity implements
 		mHelpDialog = new Dialog(this);
 		mHelpDialog.setContentView(R.layout.activity_help);
 
-		TextView facebookTextView = (TextView) mHelpDialog
-				.findViewById(R.id.facebookTextView);
-		TextView mailTextView = (TextView) mHelpDialog
-				.findViewById(R.id.emailTextView);
-		TextView downloadTextView = (TextView) mHelpDialog
-				.findViewById(R.id.downloadTextView);
+		Button facebookButton = (Button) mHelpDialog
+				.findViewById(R.id.facebookButton);
+		Button mailButton = (Button) mHelpDialog.findViewById(R.id.emailButton);
+		Button downloadButton = (Button) mHelpDialog
+				.findViewById(R.id.downloadButton);
 		View.OnClickListener onClickListener = new View.OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				switch (v.getId()) {
-				case R.id.facebookTextView:
+				case R.id.facebookButton:
 					likeUsOnFacebook();
 					break;
-				case R.id.emailTextView:
+				case R.id.emailButton:
 					sendNormalMail();
 					break;
-				case R.id.downloadTextView:
+				case R.id.downloadButton:
 					downloadHelpManual();
 					break;
 				}
 			}
 		};
-		facebookTextView.setOnClickListener(onClickListener);
-		mailTextView.setOnClickListener(onClickListener);
-		downloadTextView.setOnClickListener(onClickListener);
+		facebookButton.setOnClickListener(onClickListener);
+		mailButton.setOnClickListener(onClickListener);
+		downloadButton.setOnClickListener(onClickListener);
 		mHelpDialog.setTitle("Help");
 		mHelpDialog.show();
 	}

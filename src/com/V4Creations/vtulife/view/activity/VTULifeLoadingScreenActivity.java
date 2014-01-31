@@ -1,8 +1,8 @@
 package com.V4Creations.vtulife.view.activity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
@@ -11,7 +11,7 @@ import android.view.animation.LinearInterpolator;
 import com.V4Creations.vtulife.R;
 import com.V4Creations.vtulife.util.GoogleAnalyticsManager;
 
-public class VTULifeLoadingScreenActivity extends ActionBarActivity {
+public class VTULifeLoadingScreenActivity extends Activity {
 	String TAG = "VTULifeLoadingScreenActivity";
 
 	@Override

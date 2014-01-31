@@ -37,6 +37,8 @@ public class ResourceItem {
 			return R.drawable.xsl;
 		else if (ext.matches("(?i)doc") || ext.matches("(?i)docx"))
 			return R.drawable.doc;
+		else if (ext.matches("(?i)ppt") || ext.matches("(?i)pptx"))
+			return R.drawable.ppt;
 		else if (ext.matches("(?i)pdf"))
 			return R.drawable.pdf;
 		else if (ext.matches("(?i)psd"))

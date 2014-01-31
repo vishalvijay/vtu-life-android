@@ -64,12 +64,6 @@ public class NotificationAdapter extends BaseAdapter {
 					.findViewById(R.id.downloadImageButton);
 			convertView.setTag(viewHolder);
 		}
-//		if (position % 2 == 0)
-//			convertView
-//					.setBackgroundResource(R.drawable.vtu_life_list_item_selector_even);
-//		else
-//			convertView
-//					.setBackgroundResource(R.drawable.vtu_life_list_item_selector_odd);
 		ViewHolder viewHolder = (ViewHolder) convertView.getTag();
 		VTULifeNotification notification = getItem(position);
 		viewHolder.mTitleTextView.setText(notification.getTitleString());
@@ -85,33 +79,36 @@ public class NotificationAdapter extends BaseAdapter {
 					}
 				});
 		int imageId;
-//		if (notification.isNormalNotification()) {
-//			imageId = notification.isNotificationSaw() ? R.drawable.notification_normal_disabled
-//					: R.drawable.notification_normal;
-//			viewHolder.mDownloadImageButton.setVisibility(View.GONE);
-//		} else {
-//			imageId = notification.isNotificationSaw() ? R.drawable.notification_download_disabled
-//					: R.drawable.notification_downlaod;
-//			viewHolder.mDownloadImageButton.setVisibility(View.VISIBLE);
-//		}
+		if (notification.isNormalNotification()) {
+			imageId = notification.isNotificationSaw() ? R.drawable.ic_action_email_disabled
+					: R.drawable.ic_action_email;
+			viewHolder.mDownloadImageButton.setVisibility(View.GONE);
+		} else {
+			imageId = notification.isNotificationSaw() ? R.drawable.ic_action_download_disabled
+					: R.drawable.ic_action_download;
+			viewHolder.mDownloadImageButton.setVisibility(View.VISIBLE);
+		}
 		if (notification.isNotificationSaw()) {
 			viewHolder.mDownloadImageButton.setEnabled(false);
-			viewHolder.mTimeTextView.setTextColor(mActivity.getResources()
-					.getColor(android.R.color.black));
-			viewHolder.mTitleTextView.setTextColor(mActivity.getResources()
-					.getColor(android.R.color.black));
-			viewHolder.mMessageTextView.setTextColor(mActivity.getResources()
-					.getColor(android.R.color.black));
+			viewHolder.mTimeTextView
+					.setTextColor(getColor(R.color.solid_white));
+			viewHolder.mTitleTextView
+					.setTextColor(getColor(R.color.solid_white));
+			viewHolder.mMessageTextView
+					.setTextColor(getColor(R.color.solid_white));
 		} else {
 			viewHolder.mDownloadImageButton.setEnabled(true);
-			viewHolder.mTimeTextView.setTextColor(mActivity.getResources()
-					.getColor(android.R.color.white));
-			viewHolder.mTitleTextView.setTextColor(mActivity.getResources()
-					.getColor(android.R.color.white));
-			viewHolder.mMessageTextView.setTextColor(mActivity.getResources()
-					.getColor(android.R.color.white));
+			viewHolder.mTimeTextView.setTextColor(getColor(R.color.black));
+			viewHolder.mTitleTextView
+					.setTextColor(getColor(R.color.text_muted));
+			viewHolder.mMessageTextView
+					.setTextColor(getColor(R.color.text_muted));
 		}
-//		viewHolder.mTypeImageView.setImageResource(imageId);
+		viewHolder.mTypeImageView.setImageResource(imageId);
+		int color = R.color.odd_color;
+		if (position % 2 == 0)
+			color = R.color.even_color;
+		convertView.setBackgroundResource(color);
 		return convertView;
 	}
 
@@ -136,4 +133,9 @@ public class NotificationAdapter extends BaseAdapter {
 		mNotifications.add(position, deletedItem);
 		notifyDataSetChanged();
 	}
+
+	private int getColor(int resColor) {
+		return mActivity.getResources().getColor(resColor);
+	}
+
 }

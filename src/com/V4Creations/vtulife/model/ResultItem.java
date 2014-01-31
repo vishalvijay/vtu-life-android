@@ -5,6 +5,7 @@ public class ResultItem {
 			TYPE_SEMESTER = 2, TYPE_SUBJECT_RESULT = 3,
 			TYPE_SUBJECT_REVAL_RESULT = 4, TYPE_RESULT_SINGLE = 5,
 			TYPE_MAX_COUNT = 6;
+	public static String RESULT_FAIL = "Result : FAIL";
 
 	private String usn, name, result, subjectName, subjectResult;
 	private double percentage;

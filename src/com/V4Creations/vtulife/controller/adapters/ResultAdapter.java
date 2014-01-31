@@ -2,13 +2,11 @@ package com.V4Creations.vtulife.controller.adapters;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Color;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.V4Creations.vtulife.R;
@@ -82,13 +80,15 @@ public class ResultAdapter extends ArrayAdapter<ResultItem> {
 		} else
 			viewHolder = (ViewHolder) convertView.getTag();
 		ResultItem resultItem = getItem(position);
-		if (resultItem.getResult().equals("Result : FAIL"))
-			viewHolder.resultSingleTextView.setTextColor(Color
-					.parseColor("#ff0000"));
-		else
-			viewHolder.resultSingleTextView.setTextColor(Color
-					.parseColor("#178304"));
+		int color = getColor(R.color.pass_color);
+		int bgColor = R.color.bg_result_pass;
+		if (resultItem.getResult().equals(ResultItem.RESULT_FAIL)) {
+			color = getColor(R.color.fail_color);
+			bgColor = R.color.bg_result_fail;
+		}
+		viewHolder.resultSingleTextView.setTextColor(color);
 		viewHolder.resultSingleTextView.setText(resultItem.getResult());
+		convertView.setBackgroundResource(bgColor);
 		return convertView;
 	}
 
@@ -110,29 +110,15 @@ public class ResultAdapter extends ArrayAdapter<ResultItem> {
 					.findViewById(R.id.subjectTotalRevalTextView);
 			viewHolder.subjectResultRevalTextView = (TextView) convertView
 					.findViewById(R.id.subjectResultRevalTextView);
-			viewHolder.subjectMarkRevalRelativeLayout = (RelativeLayout) convertView
-					.findViewById(R.id.subjectRevalResultRelativeLayout);
 			convertView.setTag(viewHolder);
 		} else
 			viewHolder = (ViewHolder) convertView.getTag();
 		ResultItem resultItem = getItem(position);
-		if (position % 2 == 0)
-			viewHolder.subjectMarkRevalRelativeLayout.setBackgroundColor(Color
-					.parseColor("#0d4b6e"));
-		else
-			viewHolder.subjectMarkRevalRelativeLayout.setBackgroundColor(Color
-					.parseColor("#0a3b57"));
-		if (!resultItem.getSubjectResult().equals("P")) {
-			viewHolder.subjectResultRevalTextView.setTextColor(Color
-					.parseColor("#ff0000"));
-			viewHolder.subjectTotalRevalTextView.setTextColor(Color
-					.parseColor("#ff0000"));
-		} else {
-			viewHolder.subjectResultRevalTextView.setTextColor(Color
-					.parseColor("#04b304"));
-			viewHolder.subjectTotalRevalTextView.setTextColor(Color
-					.parseColor("#04b304"));
-		}
+		int color = getColor(R.color.pass_color);
+		if (!resultItem.getSubjectResult().equals("P"))
+			color = getColor(R.color.fail_color);
+		viewHolder.subjectResultRevalTextView.setTextColor(color);
+		viewHolder.subjectTotalRevalTextView.setTextColor(color);
 		viewHolder.subjectNameRevalTextView
 				.setText(resultItem.getSubjectName());
 		viewHolder.previousExternalRevalTextView.setText(resultItem
@@ -144,6 +130,10 @@ public class ResultAdapter extends ArrayAdapter<ResultItem> {
 				.getSubjectTotal());
 		viewHolder.subjectResultRevalTextView.setText(resultItem
 				.getSubjectResult());
+		int bgColor = R.color.odd_color;
+		if (position % 2 == 0)
+			bgColor = R.color.even_color;
+		convertView.setBackgroundResource(bgColor);
 		return convertView;
 	}
 
@@ -163,34 +153,24 @@ public class ResultAdapter extends ArrayAdapter<ResultItem> {
 					.findViewById(R.id.subjectTotalTextView);
 			viewHolder.subjectResultTextView = (TextView) convertView
 					.findViewById(R.id.subjectResultTextView);
-			viewHolder.subjectMarkRelativeLayout = (RelativeLayout) convertView
-					.findViewById(R.id.subjectResultRelativeLayout);
 			convertView.setTag(viewHolder);
 		} else
 			viewHolder = (ViewHolder) convertView.getTag();
 		ResultItem resultItem = getItem(position);
-		if (position % 2 == 0)
-			viewHolder.subjectMarkRelativeLayout.setBackgroundColor(Color
-					.parseColor("#0d4b6e"));
-		else
-			viewHolder.subjectMarkRelativeLayout.setBackgroundColor(Color
-					.parseColor("#0a3b57"));
-		if (!resultItem.getSubjectResult().equals("P")) {
-			viewHolder.subjectResultTextView.setTextColor(Color
-					.parseColor("#ff0000"));
-			viewHolder.subjectTotalTextView.setTextColor(Color
-					.parseColor("#ff0000"));
-		} else {
-			viewHolder.subjectResultTextView.setTextColor(Color
-					.parseColor("#04b304"));
-			viewHolder.subjectTotalTextView.setTextColor(Color
-					.parseColor("#04b304"));
-		}
+		int color = getColor(R.color.pass_color);
+		if (!resultItem.getSubjectResult().equals("P"))
+			color = getColor(R.color.fail_color);
+		viewHolder.subjectResultTextView.setTextColor(color);
+		viewHolder.subjectTotalTextView.setTextColor(color);
 		viewHolder.subjectNameTextView.setText(resultItem.getSubjectName());
 		viewHolder.externalTextView.setText(resultItem.getExternal());
 		viewHolder.internalTextView.setText(resultItem.getInternal());
 		viewHolder.subjectTotalTextView.setText(resultItem.getSubjectTotal());
 		viewHolder.subjectResultTextView.setText(resultItem.getSubjectResult());
+		int bgColor = R.color.odd_color;
+		if (position % 2 == 0)
+			bgColor = R.color.even_color;
+		convertView.setBackgroundResource(bgColor);
 		return convertView;
 	}
 
@@ -223,21 +203,24 @@ public class ResultAdapter extends ArrayAdapter<ResultItem> {
 		} else
 			viewHolder = (ViewHolder) convertView.getTag();
 		ResultItem resultItem = getItem(position);
-		if (resultItem.getResult().equals("Result : FAIL")) {
-			viewHolder.resultTextView.setTextColor(Color.parseColor("#ff0000"));
-			viewHolder.percentageTextView.setTextColor(Color
-					.parseColor("#ff0000"));
-			viewHolder.totalTextView.setTextColor(Color.parseColor("#ff0000"));
-		} else {
-			viewHolder.resultTextView.setTextColor(Color.parseColor("#178304"));
-			viewHolder.percentageTextView.setTextColor(Color
-					.parseColor("#178304"));
-			viewHolder.totalTextView.setTextColor(Color.parseColor("#178304"));
+		int color = getColor(R.color.pass_color);
+		int bgColor = R.color.bg_result_pass;
+		if (resultItem.getResult().equals(ResultItem.RESULT_FAIL)) {
+			color = getColor(R.color.fail_color);
+			bgColor = R.color.bg_result_fail;
 		}
+		viewHolder.resultTextView.setTextColor(color);
+		viewHolder.percentageTextView.setTextColor(color);
+		viewHolder.totalTextView.setTextColor(color);
 		viewHolder.resultTextView.setText(resultItem.getResult());
 		viewHolder.percentageTextView.setText(resultItem.getPercentage());
 		viewHolder.totalTextView.setText(resultItem.getTotal());
+		convertView.setBackgroundResource(bgColor);
 		return convertView;
+	}
+
+	private int getColor(int resColor) {
+		return getContext().getResources().getColor(resColor);
 	}
 
 	private View getStudentDetails(View convertView, int position) {
@@ -271,14 +254,12 @@ public class ResultAdapter extends ArrayAdapter<ResultItem> {
 		TextView internalTextView;
 		TextView subjectTotalTextView;
 		TextView subjectResultTextView;
-		RelativeLayout subjectMarkRelativeLayout;
 		TextView subjectNameRevalTextView;
 		TextView previousExternalRevalTextView;
 		TextView finalExternalRevalTextView;
 		TextView internalRevalTextView;
 		TextView subjectTotalRevalTextView;
 		TextView subjectResultRevalTextView;
-		RelativeLayout subjectMarkRevalRelativeLayout;
 		TextView resultSingleTextView;
 	}
 }

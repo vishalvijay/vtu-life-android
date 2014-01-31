@@ -52,12 +52,6 @@ public class ReferredLibraryAdapter extends BaseAdapter {
 					.findViewById(R.id.libraryUrlTextView);
 			convertView.setTag(viewHolder);
 		}
-		// if (position % 2 == 0)
-		// convertView
-		// .setBackgroundResource(R.drawable.vtu_life_list_item_selector_even);
-		// else
-		// convertView
-		// .setBackgroundResource(R.drawable.vtu_life_list_item_selector_odd);
 		ViewHolder holder = (ViewHolder) convertView.getTag();
 		ReferredLibrary referredLibrary = getItem(position);
 		holder.mLibraryName.setText(referredLibrary.getName());
@@ -66,6 +60,10 @@ public class ReferredLibraryAdapter extends BaseAdapter {
 			holder.mLibraryUrl.setVisibility(View.VISIBLE);
 		else
 			holder.mLibraryUrl.setVisibility(View.GONE);
+		int color = R.color.odd_color;
+		if (position % 2 == 0)
+			color = R.color.even_color;
+		convertView.setBackgroundResource(color);
 		return convertView;
 	}
 

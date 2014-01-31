@@ -15,5 +15,20 @@
     <color name="main_background">#b1b8c4</color>
     <color name="solid_white">#eeeeee</color>
     <color name="white_frame">#f5f6f7</color>
+    <color name="odd_color">#f9f9f9</color>
+    <color name="even_color">#ffffff</color>
+    <color name="theme_color">#355d98</color>
+    <color name="theme_color_lite">#76a4c8</color>
+    <color name="component_background">#ebeef3</color>
+    <color name="bg_student_details">#cccccc</color>
+    <color name="fail_color">#8c2e0b</color>
+    <color name="pass_color">#468847</color>
+    <color name="bg_semester">#fcf8e3</color>
+    <color name="font_semester">#9a4400</color>
+    <color name="bg_result_pass">#cfe7c5</color>
+    <color name="bg_result_fail">#f2dede</color>
+    <color name="bg_header">#1c1d22</color>
+    <color name="click_color">#80333333</color>
+    <color name="menu_background">#1c1d22</color>
 
 </resources>

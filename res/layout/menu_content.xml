@@ -12,8 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#1c1d22"
-        android:divider="#000000"
+        android:background="@color/menu_background"
+        android:divider="@color/black"
         android:dividerHeight="1dp"
         android:scrollbars="none" >
     </ListView>

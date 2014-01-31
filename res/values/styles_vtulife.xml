@@ -105,19 +105,14 @@
         <item name="dropDownListViewStyle">@style/DropDownListView.Vtulife</item>
     </style>
 
-    <style name="SplashScreenTextStyle">
-        <item name="android:paddingLeft">4px</item>
-        <item name="android:paddingBottom">4px</item>
-        <item name="android:textColor">#ffffffff</item>
-        <item name="android:textSize">60sp</item>
-        <item name="android:shadowColor">#000000</item>
-        <item name="android:shadowDx">1</item>
-        <item name="android:shadowDy">1</item>
-        <item name="android:shadowRadius">1</item>
-    </style>
-
     <style name="CheckBoxActionBar" parent="android:Widget.CompoundButton.CheckBox">
         <item name="android:button">@drawable/actionbar_btn_check_holo_dark</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="VTULifeButton">
+        <item name="android:background">@drawable/submit_selecter</item>
+        <item name="android:padding">@dimen/normal_view_padding</item>
         <item name="android:textColor">@color/white</item>
     </style>
 

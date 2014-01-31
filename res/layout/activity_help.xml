@@ -1,75 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:padding="@dimen/common_padding" >
 
-    <TextView
+    <com.V4Creations.vtulife.view.customviews.CustomeTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="3dp"
+        android:layout_marginBottom="@dimen/normal_view_padding"
         android:text="Students help"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/black" />
 
-    <TextView
+    <com.V4Creations.vtulife.view.customviews.CustomeTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="6dp"
+        android:layout_margin="@dimen/normal_view_padding"
         android:text="Get in touch with us via Facebook or email for any further queries ,accadamic advaices and guidance."
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@android:color/black" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/text_muted"
+        app:isItalic="true" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal" >
 
-        <TextView
-            android:id="@+id/facebookTextView"
+        <com.V4Creations.vtulife.view.customviews.CustomeButton
+            android:id="@+id/facebookButton"
+            style="@style/VTULifeButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/normal_view_padding"
             android:layout_weight="1"
-            android:clickable="true"
             android:drawableRight="@drawable/ic_action_good"
-            android:gravity="center"
-            android:text="Facebook"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:text="Facebook" />
 
-        <TextView
-            android:id="@+id/emailTextView"
+        <com.V4Creations.vtulife.view.customviews.CustomeButton
+            android:id="@+id/emailButton"
+            style="@style/VTULifeButton"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/normal_view_padding"
             android:layout_weight="1"
-            android:clickable="true"
             android:drawableRight="@drawable/ic_action_email"
-            android:gravity="center"
-            android:text="Email"
-            android:textAppearance="?android:attr/textAppearanceMedium" />
+            android:text="Email" />
     </LinearLayout>
 
-    <TextView
+    <com.V4Creations.vtulife.view.customviews.CustomeTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="3dp"
+        android:layout_marginBottom="@dimen/normal_view_padding"
         android:text="App help"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/black" />
 
-    <TextView
+    <com.V4Creations.vtulife.view.customviews.CustomeTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="6dp"
+        android:layout_margin="@dimen/normal_view_padding"
         android:text="Download the latest user manual for this app here. This manual will guid you to make the best use of this app"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textColor="@android:color/black" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/text_muted"
+        app:isItalic="true" />
 
-    <TextView
-        android:id="@+id/downloadTextView"
+    <com.V4Creations.vtulife.view.customviews.CustomeButton
+        android:id="@+id/downloadButton"
+        style="@style/VTULifeButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:clickable="true"
+        android:layout_margin="@dimen/normal_view_padding"
         android:drawableRight="@drawable/ic_action_download"
-        android:gravity="center"
-        android:text="Download"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:text="Download" />
 
 </LinearLayout>
