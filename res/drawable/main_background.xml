@@ -1,0 +1,20 @@
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item>
+        <shape>
+            <padding
+                android:bottom="@dimen/common_padding"
+                android:left="@dimen/common_padding"
+                android:right="@dimen/common_padding"
+                android:top="@dimen/common_padding" />
+
+            <solid android:color="@color/main_background" />
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <solid android:color="@color/white_frame" />
+        </shape>
+    </item>
+
+</layer-list>

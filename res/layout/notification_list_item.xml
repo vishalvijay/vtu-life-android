@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:descendantFocusability="blocksDescendants"
     android:gravity="center"
     android:orientation="horizontal"
-    android:padding="5dp" >
+    android:padding="@dimen/common_padding" >
 
     <ImageView
         android:id="@+id/notificationTypeImageView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="2dp"
-        android:background="@drawable/cp_button_red"
-        android:padding="3dp"
-        android:src="@drawable/icon_about" />
+        android:layout_height="match_parent"
+        android:background="@color/theme_color"
+        android:padding="@dimen/common_padding"
+        android:src="@drawable/ic_action_about" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp"
-        android:orientation="vertical" >
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/normal_view_padding" >
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -33,14 +33,12 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:layout_margin="5dp"
-                android:background="@drawable/blue_button_selector"
+                android:layout_margin="@dimen/common_padding"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
-                android:padding="4dp"
-                android:src="@drawable/notification_downlaod" />
+                android:src="@drawable/ic_action_download_disabled" />
 
-            <TextView
+            <com.V4Creations.vtulife.view.customviews.CustomeTextView
                 android:id="@+id/titleTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -48,9 +46,10 @@
                 android:layout_toLeftOf="@id/downloadImageButton"
                 android:singleLine="true"
                 android:text="Abc"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textColor="@color/black" />
 
-            <TextView
+            <com.V4Creations.vtulife.view.customviews.CustomeTextView
                 android:id="@+id/messageTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -58,18 +57,21 @@
                 android:layout_below="@id/titleTextView"
                 android:layout_toLeftOf="@id/downloadImageButton"
                 android:text="Hai how are you"
-                android:textAppearance="?android:attr/textAppearanceSmall" />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="@color/text_muted" />
         </RelativeLayout>
 
-        <TextView
+        <com.V4Creations.vtulife.view.customviews.CustomeTextView
             android:id="@+id/timeTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:layout_marginRight="4dp"
+            android:layout_marginRight="@dimen/common_padding"
             android:gravity="right"
             android:singleLine="true"
-            android:textAppearance="?android:attr/textAppearanceSmall" />
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/text_muted"
+            app:isItalic="true" />
     </LinearLayout>
 
 </LinearLayout>

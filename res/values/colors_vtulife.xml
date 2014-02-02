@@ -1,41 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-     File created by the Android Action Bar Style Generator
-
-     Copyright (C) 2011 The Android Open Source Project
-     Copyright (C) 2012 readyState Software Ltd
-
-     Licensed under the Apache License, Version 2.0 (the "License");
-     you may not use this file except in compliance with the License.
-     You may obtain a copy of the License at
-  
-          http://www.apache.org/licenses/LICENSE-2.0
-  
-     Unless required by applicable law or agreed to in writing, software
-     distributed under the License is distributed on an "AS IS" BASIS,
-     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-     See the License for the specific language governing permissions and
-     limitations under the License.
--->
-
 <resources>
 
-    <!-- color name="pressed_vtulife">#CC8B322F</color -->
-    <color name="pressed_vtulife">#8b322f</color>
-    <color name="dark_background">#292929</color>
-    <color name="list_odd">#0a3b57</color>
-    <color name="list_even">#0d4b6e</color>
-    <color name="gray_white">#2f5870</color>
-    <color name="tab_background">#001929</color>
-    <color name="RedButtonBorder">#ff98392d</color>
-    <color name="RedGradientStart">#ffba1a07</color>
-    <color name="RedGradientEnd">#ffdf3f2b</color>
-    <color name="gray">#ff3c3c3c</color>
     <color name="android_color_1">#ff666666</color>
     <color name="android_color_2">#ff96aa39</color>
     <color name="android_color_3">#ffc74b46</color>
     <color name="android_color_4">#fff4842d</color>
     <color name="android_color_5">#ff3f9fe0</color>
     <color name="android_color_6">#ff5161bc</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="text_muted">#54595c</color>
+    <color name="background_tab_pressed">#66338be5</color>
+    <color name="menu_color_selected">#293f61</color>
+    <color name="main_background">#b1b8c4</color>
+    <color name="solid_white">#eeeeee</color>
+    <color name="white_frame">#f5f6f7</color>
+    <color name="odd_color">#f9f9f9</color>
+    <color name="even_color">#ffffff</color>
+    <color name="theme_color">#355d98</color>
+    <color name="theme_color_lite">#76a4c8</color>
+    <color name="component_background">#ebeef3</color>
+    <color name="bg_student_details">#cccccc</color>
+    <color name="fail_color">#8c2e0b</color>
+    <color name="pass_color">#468847</color>
+    <color name="bg_semester">#fcf8e3</color>
+    <color name="font_semester">#9a4400</color>
+    <color name="bg_result_pass">#cfe7c5</color>
+    <color name="bg_result_fail">#f2dede</color>
+    <color name="bg_header">#1c1d22</color>
+    <color name="click_color">#80333333</color>
+    <color name="menu_background">#1c1d22</color>
 
 </resources>

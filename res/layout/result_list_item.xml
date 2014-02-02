@@ -1,38 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:background="#d7d690"
-    android:gravity="center_vertical|center_horizontal" >
-    <TextView
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:descendantFocusability="blocksDescendants"
+    android:gravity="center"
+    android:orientation="horizontal" >
+
+    <com.V4Creations.vtulife.view.customviews.CustomeTextView
         android:id="@+id/resultTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableRight="@drawable/result_devider"
-        android:textColor="#1a870f"
-        android:textIsSelectable="true"
-        android:textSize="14sp"
-        android:textStyle="bold" />
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
-    <TextView
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/result_devider_padding"
+        android:background="@color/theme_color_lite" />
+
+    <com.V4Creations.vtulife.view.customviews.CustomeTextView
         android:id="@+id/percentageTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/resultTextView"
-        android:drawableRight="@drawable/result_devider"
-        android:textColor="#1a870f"
-        android:textIsSelectable="true"
-        android:textSize="14sp"
-        android:textStyle="bold" />
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
-    <TextView
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/result_devider_padding"
+        android:background="@color/theme_color_lite" />
+
+    <com.V4Creations.vtulife.view.customviews.CustomeTextView
         android:id="@+id/totalTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/percentageTextView"
-        android:textColor="#1a870f"
-        android:textIsSelectable="true"
-        android:textSize="14sp"
-        android:textStyle="bold" />
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
-</RelativeLayout>
+</LinearLayout>

@@ -1,71 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/directoryListingRelativeLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="2dp" >
+    android:padding="3dp" >
 
     <ImageView
         android:id="@+id/iconImageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:contentDescription="@drawable/folder"
         android:focusable="false" />
 
-    <TextView
+    <com.V4Creations.vtulife.view.customviews.CustomeTextView
         android:id="@+id/nameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/iconImageView"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textIsSelectable="false"
-        android:textStyle="bold" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/black"
+        android:textIsSelectable="false" />
 
-    <TextView
+    <com.V4Creations.vtulife.view.customviews.CustomeTextView
         android:id="@+id/sizeLabelTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/nameTextView"
         android:layout_toRightOf="@id/iconImageView"
         android:text="@string/size_"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/text_muted"
+        app:isItalic="true" />
 
-    <TextView
+    <com.V4Creations.vtulife.view.customviews.CustomeTextView
         android:id="@+id/sizeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/nameTextView"
         android:layout_toRightOf="@id/sizeLabelTextView"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/text_muted"
+        app:isItalic="true" />
 
-    <TextView
+    <com.V4Creations.vtulife.view.customviews.CustomeTextView
         android:id="@+id/dateLabelTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/sizeLabelTextView"
         android:layout_toRightOf="@id/iconImageView"
         android:text="@string/modified_"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/text_muted"
+        app:isItalic="true" />
 
-    <TextView
+    <com.V4Creations.vtulife.view.customviews.CustomeTextView
         android:id="@+id/dateTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/sizeLabelTextView"
         android:layout_toRightOf="@id/dateLabelTextView"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <TextView
-        android:id="@+id/hrefTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone" />
-
-    <TextView
-        android:id="@+id/extTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone" />
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@color/text_muted"
+        app:isItalic="true" />
 
 </RelativeLayout>

@@ -6,11 +6,11 @@
         android:color="@android:color/black" />
 
     <padding
-        android:bottom="2dp"
-        android:left="2dp"
-        android:right="2dp"
-        android:top="2dp" />
+        android:bottom="@dimen/normal_view_padding"
+        android:left="@dimen/normal_view_padding"
+        android:right="@dimen/normal_view_padding"
+        android:top="@dimen/normal_view_padding" />
 
-    <solid android:color="@color/dark_background" />
+    <solid android:color="@color/main_background" />
 
 </shape>

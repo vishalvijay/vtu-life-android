@@ -2,17 +2,13 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="#d7d690"
     android:descendantFocusability="blocksDescendants" >
 
-    <TextView
+    <com.V4Creations.vtulife.view.customviews.CustomeTextView
         android:id="@+id/resultSingleTextView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center_horizontal|center_vertical"
-        android:textColor="#1a870f"
-        android:textIsSelectable="true"
-        android:textSize="14sp"
-        android:textStyle="bold" />
+        android:layout_centerInParent="true"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </RelativeLayout>

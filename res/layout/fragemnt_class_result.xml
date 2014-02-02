@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_background" >
+
+    <com.V4Creations.vtulife.view.customviews.CustomeTextView
+        android:id="@android:id/empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:background="@drawable/feed_checkin_bubble"
+        android:gravity="center_horizontal"
+        android:padding="@dimen/double_common_padding"
+        android:text="@string/see_your_full_class_current_sem_nresult_here_nit_is_much_faster_nenter_your_class_usn_below_n_class_usn_eg_4pa09cs_"
+        android:textColor="@color/black"
+        app:isItalic="true" />
+
+    <LinearLayout
+        android:id="@+id/classUsnLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/box_background"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/common_padding"
+        android:paddingRight="0dp"
+        android:paddingTop="0dp" >
+
+        <com.V4Creations.vtulife.view.customviews.CustomeAutoCompleteTextView
+            android:id="@+id/classUsnAutoCompleteTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/common_padding"
+            android:layout_weight="5"
+            android:gravity="center"
+            android:hint="@string/class_usn"
+            android:imeOptions="actionSend"
+            android:inputType="textNoSuggestions"
+            android:maxLength="8"
+            android:singleLine="true"
+            android:textColor="@color/black" />
+
+        <ImageButton
+            android:id="@+id/classSubmitImageButton"
+            style="@style/VTULifeButton"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:contentDescription="@string/usn_submit_button"
+            android:nextFocusLeft="@id/classUsnAutoCompleteTextView"
+            android:src="@drawable/ic_action_send_now" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@android:id/list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/classUsnLinearLayout"
+        android:scrollbarStyle="outsideOverlay" />
+
+</RelativeLayout>

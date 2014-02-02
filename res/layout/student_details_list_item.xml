@@ -2,29 +2,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#597280"
+    android:background="@drawable/student_details_background"
     android:descendantFocusability="blocksDescendants"
-    android:orientation="vertical" >
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/common_padding"
+    android:paddingRight="@dimen/common_padding" >
 
-    <TextView
+    <com.V4Creations.vtulife.view.customviews.CustomeTextView
         android:id="@+id/nameTextView"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:background="#e7e7e7"
-        android:gravity="center_vertical|center_horizontal"
-        android:textColor="#0e4c6f"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:background="@color/theme_color"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@color/white" />
 
-    <TextView
+    <com.V4Creations.vtulife.view.customviews.CustomeTextView
         android:id="@+id/usnTextView"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:background="#e7e7e7"
-        android:gravity="center_vertical|center_horizontal"
-        android:textColor="#0e4c6f"
-        android:textSize="16sp" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/black" />
 
 </LinearLayout>

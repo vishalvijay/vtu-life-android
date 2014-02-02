@@ -11,7 +11,7 @@
     <string-array name="fragmentNames">
         <item>Website</item>
         <item>Notes</item>
-        <item>Fast result</item>
+        <item>Result</item>
         <item>Class result</item>
         <item>Share notes</item>
         <item>Share a pic</item>

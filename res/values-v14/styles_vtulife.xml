@@ -20,33 +20,20 @@
 
 <resources>
 
-    <style name="Theme.Vtulife" parent="@style/Theme.Sherlock">
-        <item name="android:actionBarItemBackground">@drawable/selectable_background_vtulife</item>
-        <item name="android:popupMenuStyle">@style/PopupMenu.Vtulife</item>
-        <item name="android:dropDownListViewStyle">@style/DropDownListView.Vtulife</item>
-        <item name="android:actionDropDownStyle">@style/DropDownNav.Vtulife</item>
-        <item name="android:actionBarStyle">@style/ActionBar.Solid.Vtulife</item>
-        <item name="android:actionModeBackground">@drawable/cab_background_top_vtulife</item>
-        <item name="android:actionModeSplitBackground">@drawable/cab_background_bottom_vtulife</item>
-        <item name="android:actionModeCloseButtonStyle">@style/ActionButton.CloseMode.Vtulife</item>
-        <item name="homeAsUpIndicator">@drawable/new_indicator</item>
-        <item name="android:homeAsUpIndicator">@drawable/new_indicator</item>
-    </style>
-
-    <style name="ActionBar.Solid.Vtulife" parent="@style/Widget.Sherlock.ActionBar.Solid">
+    <style name="ActionBar.Solid.Vtulife" parent="@style/Widget.AppCompat.Light.ActionBar.Solid.Inverse">
         <item name="android:background">@drawable/ab_solid_vtulife</item>
         <item name="android:backgroundStacked">@drawable/ab_stacked_solid_vtulife</item>
         <item name="android:backgroundSplit">@drawable/ab_bottom_solid_vtulife</item>
         <item name="android:progressBarStyle">@style/ProgressBar.Vtulife</item>
     </style>
 
-    <style name="ActionBar.Transparent.Vtulife" parent="@style/Widget.Sherlock.ActionBar">
+    <style name="ActionBar.Transparent.Vtulife" parent="@style/Widget.AppCompat.ActionBar">
         <item name="android:background">@drawable/ab_transparent_vtulife</item>
         <item name="android:progressBarStyle">@style/ProgressBar.Vtulife</item>
     </style>
 
     <!-- this style is only referenced in a Light.DarkActionBar based theme -->
-    <style name="Theme.Vtulife.Widget" parent="@style/Theme.Sherlock">
+    <style name="Theme.Vtulife.Widget" parent="@style/Theme.AppCompat">
         <item name="android:popupMenuStyle">@style/PopupMenu.Vtulife</item>
         <item name="android:dropDownListViewStyle">@style/DropDownListView.Vtulife</item>
     </style>

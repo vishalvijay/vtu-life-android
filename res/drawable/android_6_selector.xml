@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:drawable="@drawable/pressed_background_vtulife" android:state_pressed="true"/>
+    <item android:drawable="@color/click_color" android:state_pressed="true"/>
     <item android:drawable="@color/android_color_6"/>
 
 </selector>
