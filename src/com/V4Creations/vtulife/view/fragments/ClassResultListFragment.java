@@ -32,6 +32,7 @@ import com.V4Creations.vtulife.util.GoogleAnalyticsManager;
 import com.V4Creations.vtulife.view.activity.VTULifeMainActivity;
 import com.google.analytics.tracking.android.Tracker;
 
+import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
 
 public class ClassResultListFragment extends ListFragment implements
@@ -143,6 +144,7 @@ public class ClassResultListFragment extends ListFragment implements
 	}
 
 	private void cancel() {
+		Crouton.clearCroutonsForActivity(vtuLifeMainActivity);
 		mClassResultLoaderManager.cancel();
 	}
 
@@ -207,7 +209,7 @@ public class ClassResultListFragment extends ListFragment implements
 
 	@Override
 	public void onLoadingSuccess(ArrayList<ResultItem> resultItems, String usn) {
-		mAdapter.addAll(resultItems);
+		mAdapter.supportAddAll(resultItems);
 		if (!isClassUsnSaved) {
 			saveAndRefreshUsnHistory();
 			isClassUsnSaved = true;

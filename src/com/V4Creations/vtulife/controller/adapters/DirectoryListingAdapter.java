@@ -1,25 +1,18 @@
 package com.V4Creations.vtulife.controller.adapters;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.os.Build;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.V4Creations.vtulife.R;
 import com.V4Creations.vtulife.model.ResourceItem;
 
-public class DirectoryListingAdapter extends ArrayAdapter<ResourceItem> {
-	private LayoutInflater mInflater;
+public class DirectoryListingAdapter extends SupportArrayAdapter<ResourceItem> {
 
 	public DirectoryListingAdapter(Context context) {
-		super(context, android.R.layout.simple_list_item_1);
-		mInflater = (LayoutInflater) context
-				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		super(context);
 	}
 
 	@Override
@@ -27,7 +20,8 @@ public class DirectoryListingAdapter extends ArrayAdapter<ResourceItem> {
 		ResourceItem tempDirectoryItem = getItem(position);
 		ViewHolder viewHolder;
 		if (convertView == null) {
-			convertView = mInflater.inflate(R.layout.list_directory_item, null);
+			convertView = getLayoutInflater().inflate(
+					R.layout.list_directory_item, null);
 			viewHolder = new ViewHolder();
 			viewHolder.nameTextView = (TextView) convertView
 					.findViewById(R.id.nameTextView);
@@ -50,18 +44,6 @@ public class DirectoryListingAdapter extends ArrayAdapter<ResourceItem> {
 			color = R.color.even_color;
 		convertView.setBackgroundResource(color);
 		return convertView;
-	}
-
-	@SuppressLint("NewApi")
-	@Override
-	public void addAll(ResourceItem... items) {
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-			super.addAll(items);
-		} else {
-			for (ResourceItem element : items) {
-				super.add(element);
-			}
-		}
 	}
 
 	private static class ViewHolder {

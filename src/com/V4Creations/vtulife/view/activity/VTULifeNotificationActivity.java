@@ -33,7 +33,6 @@ import de.timroes.swipetodismiss.SwipeDismissList.SwipeDirection;
 
 public class VTULifeNotificationActivity extends ActionBarActivity {
 	private NotificationAdapter mNotificationAdapter;
-	private ArrayList<VTULifeNotification> mNotifications;
 	private SwipeDismissList mSwipeList;
 	private ListView mListView;
 
@@ -44,34 +43,31 @@ public class VTULifeNotificationActivity extends ActionBarActivity {
 		setContentView(R.layout.activity_notification);
 		setSupportProgressBarIndeterminateVisibility(true);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		TextView noteTextView = (TextView) findViewById(R.id.noteTextView);
 		initViews();
-		noteTextView.setSelected(true);
 		VTULifeDataBase.getInstance(getApplicationContext()).getNotifications(
 				new NotificationFromDBListener() {
 
 					@Override
 					public void notificationListCreated(
 							ArrayList<VTULifeNotification> notifications) {
+						mNotificationAdapter.supportAddAll(notifications);
 						setSupportProgressBarIndeterminateVisibility(false);
-						mNotifications = notifications;
-						mNotificationAdapter = new NotificationAdapter(
-								VTULifeNotificationActivity.this,
-								mNotifications);
-
-						mListView.setAdapter(mNotificationAdapter);
-						initSwipeToDelete();
 					}
 				});
 	}
 
 	private void initViews() {
+		TextView noteTextView = (TextView) findViewById(R.id.noteTextView);
+		noteTextView.setSelected(true);
 		initListView();
 	}
 
 	private void initListView() {
 		mListView = (ListView) findViewById(R.id.listView);
 		mListView.setEmptyView(findViewById(R.id.emptyView));
+		mNotificationAdapter = new NotificationAdapter(this);
+		mListView.setAdapter(mNotificationAdapter);
+		initSwipeToDelete();
 		mListView.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -129,8 +125,7 @@ public class VTULifeNotificationActivity extends ActionBarActivity {
 		if (VTULifeDataBase.getInstance(getApplicationContext())
 				.clearAllNotifications()) {
 			Crouton.makeText(this, "Notification cleared", Style.INFO).show();
-			mNotifications.clear();
-			mNotificationAdapter.notifyDataSetChanged();
+			mNotificationAdapter.clear();
 		} else
 			Toast.makeText(getApplicationContext(),
 					"There is no notification to clear", Toast.LENGTH_SHORT)
@@ -163,10 +158,10 @@ public class VTULifeNotificationActivity extends ActionBarActivity {
 					final int position) {
 				final VTULifeNotification deletedItem = mNotificationAdapter
 						.getItem(position);
-				mNotificationAdapter.remove(position);
+				mNotificationAdapter.remove(deletedItem);
 				return new SwipeDismissList.Undoable() {
 					public void undo() {
-						mNotificationAdapter.insert(position, deletedItem);
+						mNotificationAdapter.insert(deletedItem, position);
 					}
 
 					public String getTitle() {

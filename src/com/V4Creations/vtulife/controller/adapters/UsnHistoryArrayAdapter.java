@@ -2,30 +2,15 @@ package com.V4Creations.vtulife.controller.adapters;
 
 import java.util.ArrayList;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.AsyncTask;
-import android.os.Build;
-import android.widget.ArrayAdapter;
 
 import com.V4Creations.vtulife.controller.db.VTULifeDataBase;
 
-public class UsnHistoryArrayAdapter extends ArrayAdapter<String> {
+public class UsnHistoryArrayAdapter extends SupportArrayAdapter<String> {
 
 	public UsnHistoryArrayAdapter(Context context) {
-		super(context, android.R.layout.simple_list_item_1);
-	}
-
-	@SuppressLint("NewApi")
-	@Override
-	public void addAll(String... items) {
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-			super.addAll(items);
-		} else {
-			for (String element : items) {
-				super.add(element);
-			}
-		}
+		super(context);
 	}
 
 	public void reloadHistory(final boolean isClassUsn) {
@@ -37,9 +22,9 @@ public class UsnHistoryArrayAdapter extends ArrayAdapter<String> {
 						.getUSNHistory(getContext());
 			}
 
-			protected void onPostExecute(java.util.ArrayList<String> result) {
+			protected void onPostExecute(ArrayList<String> result) {
 				clear();
-				addAll(result);
+				supportAddAll(result);
 			};
 		}.execute();
 	}

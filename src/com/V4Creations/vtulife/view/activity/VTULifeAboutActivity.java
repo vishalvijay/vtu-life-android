@@ -40,14 +40,7 @@ public class VTULifeAboutActivity extends ActionBarActivity {
 
 	private void initListView() {
 		mListView = (ListView) findViewById(R.id.listView);
-		String[] libraryNames = getResources().getStringArray(
-				R.array.library_names);
-		String[] libraryUrls = getResources().getStringArray(
-				R.array.library_urls);
-		for (int i = 0; i < libraryNames.length; i++)
-			mReferredLibrarys.add(new ReferredLibrary(libraryNames[i],
-					libraryUrls[i]));
-		mAdapter = new ReferredLibraryAdapter(this, mReferredLibrarys);
+		mAdapter = new ReferredLibraryAdapter(this);
 		mListView.setAdapter(mAdapter);
 		mListView.setOnItemClickListener(new OnItemClickListener() {
 

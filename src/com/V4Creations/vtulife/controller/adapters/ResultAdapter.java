@@ -1,24 +1,17 @@
 package com.V4Creations.vtulife.controller.adapters;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
-import android.os.Build;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.V4Creations.vtulife.R;
 import com.V4Creations.vtulife.model.ResultItem;
 
-public class ResultAdapter extends ArrayAdapter<ResultItem> {
-	private LayoutInflater mInflater;
+public class ResultAdapter extends SupportArrayAdapter<ResultItem> {
 
 	public ResultAdapter(Context context) {
-		super(context, android.R.layout.simple_list_item_1);
-		mInflater = (LayoutInflater) context
-				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		super(context);
 	}
 
 	@Override
@@ -29,18 +22,6 @@ public class ResultAdapter extends ArrayAdapter<ResultItem> {
 	@Override
 	public int getViewTypeCount() {
 		return ResultItem.TYPE_MAX_COUNT;
-	}
-
-	@SuppressLint("NewApi")
-	@Override
-	public void addAll(ResultItem... items) {
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
-			super.addAll(items);
-		} else {
-			for (ResultItem element : items) {
-				super.add(element);
-			}
-		}
 	}
 
 	@Override
@@ -71,8 +52,8 @@ public class ResultAdapter extends ArrayAdapter<ResultItem> {
 	private View getSingleResult(View convertView, int position) {
 		ViewHolder viewHolder;
 		if (convertView == null) {
-			convertView = mInflater.inflate(R.layout.result_single_list_item,
-					null);
+			convertView = getLayoutInflater().inflate(
+					R.layout.result_single_list_item, null);
 			viewHolder = new ViewHolder();
 			viewHolder.resultSingleTextView = (TextView) convertView
 					.findViewById(R.id.resultSingleTextView);
@@ -95,7 +76,7 @@ public class ResultAdapter extends ArrayAdapter<ResultItem> {
 	private View getSubjectRevalResult(View convertView, int position) {
 		ViewHolder viewHolder;
 		if (convertView == null) {
-			convertView = mInflater.inflate(
+			convertView = getLayoutInflater().inflate(
 					R.layout.subject_reval_result_list_item, null);
 			viewHolder = new ViewHolder();
 			viewHolder.subjectNameRevalTextView = (TextView) convertView
@@ -140,8 +121,8 @@ public class ResultAdapter extends ArrayAdapter<ResultItem> {
 	private View getSubjectResult(View convertView, int position) {
 		ViewHolder viewHolder;
 		if (convertView == null) {
-			convertView = mInflater.inflate(R.layout.subject_result_list_item,
-					null);
+			convertView = getLayoutInflater().inflate(
+					R.layout.subject_result_list_item, null);
 			viewHolder = new ViewHolder();
 			viewHolder.subjectNameTextView = (TextView) convertView
 					.findViewById(R.id.subjectTextView);
@@ -177,7 +158,8 @@ public class ResultAdapter extends ArrayAdapter<ResultItem> {
 	private View getSemester(View convertView, int position) {
 		ViewHolder viewHolder;
 		if (convertView == null) {
-			convertView = mInflater.inflate(R.layout.semester_list_item, null);
+			convertView = getLayoutInflater().inflate(
+					R.layout.semester_list_item, null);
 			viewHolder = new ViewHolder();
 			viewHolder.semesterTextView = (TextView) convertView
 					.findViewById(R.id.semesterNumber);
@@ -191,7 +173,8 @@ public class ResultAdapter extends ArrayAdapter<ResultItem> {
 	private View getResult(View convertView, int position) {
 		ViewHolder viewHolder;
 		if (convertView == null) {
-			convertView = mInflater.inflate(R.layout.result_list_item, null);
+			convertView = getLayoutInflater().inflate(
+					R.layout.result_list_item, null);
 			viewHolder = new ViewHolder();
 			viewHolder.resultTextView = (TextView) convertView
 					.findViewById(R.id.resultTextView);
@@ -226,8 +209,8 @@ public class ResultAdapter extends ArrayAdapter<ResultItem> {
 	private View getStudentDetails(View convertView, int position) {
 		ViewHolder viewHolder;
 		if (convertView == null) {
-			convertView = mInflater.inflate(R.layout.student_details_list_item,
-					null);
+			convertView = getLayoutInflater().inflate(
+					R.layout.student_details_list_item, null);
 			viewHolder = new ViewHolder();
 			viewHolder.nameTextView = (TextView) convertView
 					.findViewById(R.id.nameTextView);

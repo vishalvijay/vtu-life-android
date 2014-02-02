@@ -1,15 +1,12 @@
 package com.V4Creations.vtulife.controller.adapters;
 
-import java.util.ArrayList;
 import java.util.Calendar;
 
 import android.app.Activity;
 import android.content.Context;
 import android.text.format.DateFormat;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,39 +15,18 @@ import com.V4Creations.vtulife.R;
 import com.V4Creations.vtulife.model.VTULifeNotification;
 import com.V4Creations.vtulife.util.system.SystemFeatureChecker;
 
-public class NotificationAdapter extends BaseAdapter {
-	private Activity mActivity;
-	private ArrayList<VTULifeNotification> mNotifications;
-	private LayoutInflater mInflater;
+public class NotificationAdapter extends
+		SupportArrayAdapter<VTULifeNotification> {
 
-	public NotificationAdapter(Activity activity,
-			ArrayList<VTULifeNotification> notifications) {
-		mActivity = activity;
-		mNotifications = notifications;
-		mInflater = (LayoutInflater) mActivity
-				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-	}
-
-	@Override
-	public int getCount() {
-		return mNotifications.size();
-	}
-
-	@Override
-	public VTULifeNotification getItem(int position) {
-		return mNotifications.get(position);
-	}
-
-	@Override
-	public long getItemId(int position) {
-		return position;
+	public NotificationAdapter(Context context) {
+		super(context);
 	}
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		if (convertView == null) {
-			convertView = mInflater.inflate(R.layout.notification_list_item,
-					null);
+			convertView = getLayoutInflater().inflate(
+					R.layout.notification_list_item, null);
 			ViewHolder viewHolder = new ViewHolder();
 			viewHolder.mTypeImageView = (ImageView) convertView
 					.findViewById(R.id.notificationTypeImageView);
@@ -75,7 +51,8 @@ public class NotificationAdapter extends BaseAdapter {
 
 					@Override
 					public void onClick(View v) {
-						SystemFeatureChecker.rateAppOnPlayStore(mActivity);
+						SystemFeatureChecker
+								.rateAppOnPlayStore((Activity) getContext());
 					}
 				});
 		int imageId;
@@ -115,7 +92,8 @@ public class NotificationAdapter extends BaseAdapter {
 	private CharSequence getFormatedTimeStamb(long time) {
 		Calendar calendar = Calendar.getInstance();
 		calendar.setTimeInMillis(time);
-		return DateFormat.getDateFormat(mActivity).format(calendar.getTime());
+		return DateFormat.getDateFormat(getContext())
+				.format(calendar.getTime());
 	}
 
 	private static class ViewHolder {
@@ -124,18 +102,8 @@ public class NotificationAdapter extends BaseAdapter {
 		public ImageButton mDownloadImageButton;
 	}
 
-	public void remove(int position) {
-		mNotifications.remove(position);
-		notifyDataSetChanged();
-	}
-
-	public void insert(int position, VTULifeNotification deletedItem) {
-		mNotifications.add(position, deletedItem);
-		notifyDataSetChanged();
-	}
-
 	private int getColor(int resColor) {
-		return mActivity.getResources().getColor(resColor);
+		return getContext().getResources().getColor(resColor);
 	}
 
 }

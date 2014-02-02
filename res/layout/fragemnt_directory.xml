@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
-        <com.V4Creations.vtulife.view.customviews.CustomeAutoCompleteTextView
+        <com.V4Creations.vtulife.view.customviews.CustomeTextView
             android:id="@+id/progressTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

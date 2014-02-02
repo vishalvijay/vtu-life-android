@@ -167,7 +167,7 @@ public class ShareAPicFragment extends Fragment implements TextWatcher,
 	}
 
 	private void clearAllData() {
-		picImageView.setImageResource(R.drawable.camera);
+		picImageView.setImageResource(R.drawable.camera_ic);
 		descriptionEditText.setText("");
 		setIntialFileAddress();
 	}

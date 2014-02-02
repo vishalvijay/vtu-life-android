@@ -3,47 +3,33 @@ package com.V4Creations.vtulife.controller.adapters;
 import java.util.ArrayList;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.V4Creations.vtulife.R;
 import com.V4Creations.vtulife.model.ReferredLibrary;
 
-public class ReferredLibraryAdapter extends BaseAdapter {
-	private Context mContext;
-	private ArrayList<ReferredLibrary> mReferredLibraryArrayList;
-	private LayoutInflater mInflater;
+public class ReferredLibraryAdapter extends
+		SupportArrayAdapter<ReferredLibrary> {
 
-	public ReferredLibraryAdapter(Context context,
-			ArrayList<ReferredLibrary> referredLibraryArrayList) {
-		mContext = context;
-		mReferredLibraryArrayList = referredLibraryArrayList;
-		mInflater = (LayoutInflater) mContext
-				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-	}
-
-	@Override
-	public int getCount() {
-		return mReferredLibraryArrayList.size();
-	}
-
-	@Override
-	public ReferredLibrary getItem(int position) {
-		return mReferredLibraryArrayList.get(position);
-	}
-
-	@Override
-	public long getItemId(int position) {
-		return position;
+	public ReferredLibraryAdapter(Context context) {
+		super(context);
+		String[] libraryNames = getContext().getResources().getStringArray(
+				R.array.library_names);
+		String[] libraryUrls = getContext().getResources().getStringArray(
+				R.array.library_urls);
+		ArrayList<ReferredLibrary> referredLibrarys = new ArrayList<ReferredLibrary>();
+		for (int i = 0; i < libraryNames.length; i++)
+			referredLibrarys.add(new ReferredLibrary(libraryNames[i],
+					libraryUrls[i]));
+		supportAddAll(referredLibrarys);
 	}
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		if (convertView == null) {
-			convertView = mInflater.inflate(
+			convertView = getLayoutInflater().inflate(
 					R.layout.referred_library_list_item, null);
 			ViewHolder viewHolder = new ViewHolder();
 			viewHolder.mLibraryName = (TextView) convertView

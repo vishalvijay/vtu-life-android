@@ -1,10 +1,8 @@
 package com.V4Creations.vtulife.controller.adapters;
 
 import android.content.Context;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.V4Creations.vtulife.R;
@@ -17,15 +15,11 @@ import com.V4Creations.vtulife.view.fragments.UploadFileFragment;
 import com.V4Creations.vtulife.view.fragments.WebFragment;
 
 public class NavigationDrawerArrayAdapter extends
-		ArrayAdapter<NavigationDrawerMenu> {
-
-	private LayoutInflater inflater;
+		SupportArrayAdapter<NavigationDrawerMenu> {
 	private int mSelectedPosion = -1;
 
 	public NavigationDrawerArrayAdapter(Context context) {
-		super(context, android.R.layout.simple_list_item_1);
-		inflater = (LayoutInflater) context
-				.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		super(context);
 		initMenu();
 	}
 
@@ -48,8 +42,8 @@ public class NavigationDrawerArrayAdapter extends
 	public View getView(int position, View convertView, ViewGroup parent) {
 		TextView menuNameTextView;
 		if (convertView == null) {
-			convertView = inflater.inflate(R.layout.navigation_menu_list_item,
-					null);
+			convertView = getLayoutInflater().inflate(
+					R.layout.navigation_menu_list_item, null);
 			menuNameTextView = (TextView) convertView
 					.findViewById(R.id.menuNameTextView);
 			convertView.setTag(menuNameTextView);

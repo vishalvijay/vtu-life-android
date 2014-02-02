@@ -206,7 +206,7 @@ public class FastResultListFragment extends ListFragment implements
 	@Override
 	public void onLoadingSuccess(ArrayList<ResultItem> resultItems, String usn) {
 		stopLoading();
-		mAdapter.addAll(resultItems);
+		mAdapter.supportAddAll(resultItems);
 		saveAndRefreshUsnHistory(usn);
 	}
 

@@ -20,8 +20,7 @@
         android:layout_toRightOf="@id/iconImageView"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/black"
-        android:textIsSelectable="false"
-        android:textStyle="italic" />
+        android:textIsSelectable="false" />
 
     <com.V4Creations.vtulife.view.customviews.CustomeTextView
         android:id="@+id/sizeLabelTextView"

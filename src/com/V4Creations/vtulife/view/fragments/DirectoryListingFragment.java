@@ -195,7 +195,7 @@ public class DirectoryListingFragment extends ListFragment implements
 	public void onLoadingSuccess(ResourceStackItem resourceStackItem) {
 		hideProgressLinearLayout();
 		if (resourceStackItem.mResourceItems.size() != 0)
-			mAdapter.addAll(resourceStackItem.mResourceItems);
+			mAdapter.supportAddAll(resourceStackItem.mResourceItems);
 		else {
 			vtuLifeMainActivity.showCrouton("Empty folder", Style.INFO, false);
 			if (mResourceLoaderManager.isGoBack())

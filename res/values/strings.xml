@@ -12,7 +12,7 @@
     <string name="v4_creations">V4 Creations</string>
     <string name="post_a_pic_message"><b>\"Take a pic and share to us.\nWe will publish it on your name.\"</b></string>
     <string name="revaluation">Revaluation</string>
-    <string name="see_your_current_sem_result_here_nit_is_much_faster_nenter_your_usn_below_n">See your current sem result here.\nIt is much faster.\nEnter your USN below.\n</string>
+    <string name="see_your_current_sem_result_here_nit_is_much_faster_nenter_your_usn_below_n">See your current sem result here.\nIt is much faster.\nEnter your USN below.\n(USN eg: 4PA10CS001)\n</string>
     <string name="usn">USN</string>
     <string name="description">Description</string>
     <string name="send">Send</string>
@@ -20,7 +20,7 @@
     <string name="modified_">"Modified : "</string>
     <string name="external_marks">External Marks</string>
     <string name="class_usn">Class USN</string>
-    <string name="see_your_full_class_current_sem_nresult_here_nit_is_much_faster_nenter_your_class_usn_below_n_class_usn_eg_4pa09cs_">See your full class current sem\nresult here.\nIt is much faster.\nEnter your Class USN below.\n(Class USN eg: 4PA09CS)\n</string>
+    <string name="see_your_full_class_current_sem_nresult_here_nit_is_much_faster_nenter_your_class_usn_below_n_class_usn_eg_4pa09cs_">See your full class current sem\nresult here.\nIt is much faster.\nEnter your Class USN below.\n(Class USN eg: 4PA11CS)\n</string>
     <string name="please_reload">Please reload</string>
     <string name="usn_submit_button">Submit</string>
     <string name="vtu_loading_activity_background">Vtu loading activity background</string>
