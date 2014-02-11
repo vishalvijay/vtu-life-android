@@ -9,6 +9,7 @@ import android.view.animation.Animation.AnimationListener;
 import android.view.animation.LinearInterpolator;
 
 import com.V4Creations.vtulife.R;
+import com.V4Creations.vtulife.util.BugSenseManager;
 import com.V4Creations.vtulife.util.GoogleAnalyticsManager;
 
 public class VTULifeLoadingScreenActivity extends Activity {
@@ -17,6 +18,7 @@ public class VTULifeLoadingScreenActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		BugSenseManager.initBugSense(this);
 		setContentView(R.layout.activity_loading);
 
 		AlphaAnimation blinkanimation = new AlphaAnimation(1, 0);

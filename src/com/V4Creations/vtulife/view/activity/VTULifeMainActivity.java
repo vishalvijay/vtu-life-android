@@ -34,6 +34,7 @@ import com.V4Creations.vtulife.controller.db.VTULifeDataBase;
 import com.V4Creations.vtulife.controller.server.GCMRegisterManager;
 import com.V4Creations.vtulife.model.ActionBarStatus;
 import com.V4Creations.vtulife.model.interfaces.RefreshListener;
+import com.V4Creations.vtulife.util.BugSenseManager;
 import com.V4Creations.vtulife.util.GoogleAnalyticsManager;
 import com.V4Creations.vtulife.util.NavigationMenuManager;
 import com.V4Creations.vtulife.util.NavigationMenuManager.NavigationMenuManagerListener;
@@ -96,6 +97,7 @@ public class VTULifeMainActivity extends ActionBarActivity implements
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		BugSenseManager.initBugSense(this);
 		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 		setContentView(R.layout.activity_main);
 		init();

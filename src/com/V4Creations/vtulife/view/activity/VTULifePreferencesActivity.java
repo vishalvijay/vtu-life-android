@@ -10,11 +10,11 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.V4Creations.vtulife.R;
 import com.V4Creations.vtulife.controller.db.VTULifeDataBase;
+import com.V4Creations.vtulife.util.BugSenseManager;
 import com.V4Creations.vtulife.util.GoogleAnalyticsManager;
 import com.V4Creations.vtulife.util.Settings;
 import com.google.analytics.tracking.android.Tracker;
@@ -31,6 +31,7 @@ public class VTULifePreferencesActivity extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		BugSenseManager.initBugSense(this);
 		setContentView(R.layout.activity_preference);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		mTracker = GoogleAnalyticsManager

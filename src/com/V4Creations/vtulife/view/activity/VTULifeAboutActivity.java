@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.V4Creations.vtulife.R;
 import com.V4Creations.vtulife.controller.adapters.ReferredLibraryAdapter;
 import com.V4Creations.vtulife.model.ReferredLibrary;
+import com.V4Creations.vtulife.util.BugSenseManager;
 import com.V4Creations.vtulife.util.GoogleAnalyticsManager;
 import com.V4Creations.vtulife.util.system.SystemFeatureChecker;
 
@@ -25,6 +26,7 @@ public class VTULifeAboutActivity extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		BugSenseManager.initBugSense(this);
 		setContentView(R.layout.activity_about);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		mReferredLibrarys = new ArrayList<ReferredLibrary>();

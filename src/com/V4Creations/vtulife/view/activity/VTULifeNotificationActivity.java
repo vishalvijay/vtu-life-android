@@ -24,6 +24,7 @@ import com.V4Creations.vtulife.controller.adapters.NotificationAdapter;
 import com.V4Creations.vtulife.controller.db.VTULifeDataBase;
 import com.V4Creations.vtulife.model.VTULifeNotification;
 import com.V4Creations.vtulife.model.interfaces.NotificationFromDBListener;
+import com.V4Creations.vtulife.util.BugSenseManager;
 import com.V4Creations.vtulife.util.GoogleAnalyticsManager;
 
 import de.keyboardsurfer.android.widget.crouton.Crouton;
@@ -39,6 +40,7 @@ public class VTULifeNotificationActivity extends ActionBarActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		BugSenseManager.initBugSense(this);
 		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 		setContentView(R.layout.activity_notification);
 		setSupportProgressBarIndeterminateVisibility(true);
