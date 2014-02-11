@@ -167,7 +167,7 @@ public class ClassResultListFragment extends ListFragment implements
 	protected void saveAndRefreshUsnHistory() {
 		GoogleAnalyticsManager.infomGoogleAnalytics(mTracker,
 				GoogleAnalyticsManager.CATEGORY_RESULT,
-				GoogleAnalyticsManager.ACTION_FAST_RESULT,
+				GoogleAnalyticsManager.ACTION_CLASS_RESULT,
 				mClassResultLoaderManager.getClassUsn(), 0L);
 		VTULifeDataBase.setClassUSNHistory(vtuLifeMainActivity,
 				mClassResultLoaderManager.getClassUsn());
