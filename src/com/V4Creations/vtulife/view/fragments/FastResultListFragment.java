@@ -180,12 +180,10 @@ public class FastResultListFragment extends ListFragment implements
 		return mActionBarStatus;
 	}
 
+	@Override
 	public void refresh() {
-		mUsnHistoryAdapter.clear();
-		ArrayList<String> usnHistory = VTULifeDataBase
-				.getClassUSNHistory(vtuLifeMainActivity);
-		for (int i = 0; i < usnHistory.size(); i++)
-			mUsnHistoryAdapter.add(usnHistory.get(i));
+		if (mUsnHistoryAdapter != null)
+			mUsnHistoryAdapter.reloadHistory(false);
 	}
 
 	public static String getFeatureName() {

@@ -1,6 +1,7 @@
 package com.V4Creations.vtulife.util;
 
 import java.io.File;
+import java.io.IOException;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -13,15 +14,23 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 
 public class VTULifeUtils {
-	private static final String DEFAULT_FOLDER_WITH_ROOT = Environment
-			.getExternalStorageDirectory()
-			+ File.separator
-			+ VTULifeConstance.DEFAULT_FOLDER + File.separator;
+	public static final boolean isProduction = false;
 
-	public static String getDefaultRootFolder() {
-		File file = new File(DEFAULT_FOLDER_WITH_ROOT);
-		file.mkdirs();
-		return file.getAbsolutePath();
+	public static String getRootFolder() {
+		return Environment.DIRECTORY_DOWNLOADS;
+	}
+
+	public static String getDefaultRootFolder() throws IOException {
+		File path = new File(
+				Environment.getExternalStoragePublicDirectory(getRootFolder()),
+				VTULifeConstance.DEFAULT_FOLDER);
+		path.mkdirs();
+		return path.getAbsolutePath();
+	}
+
+	public static String getOnlyFolderWithFileName(String fileName) {
+		return new File(VTULifeConstance.DEFAULT_FOLDER, fileName)
+				.getAbsolutePath();
 	}
 
 	public static String getVTULifePublicEmailId() {

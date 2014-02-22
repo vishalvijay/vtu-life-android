@@ -1,6 +1,7 @@
 package com.V4Creations.vtulife.view.activity;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import android.app.Dialog;
@@ -98,7 +99,7 @@ public class VTULifeMainActivity extends ActionBarActivity implements
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		BugSenseManager.initBugSense(this);
-		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+		supportRequestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
 		setContentView(R.layout.activity_main);
 		init();
 		gcmCheck();
@@ -367,8 +368,8 @@ public class VTULifeMainActivity extends ActionBarActivity implements
 
 	@Override
 	protected void onDestroy() {
-		VTULifeDataBase.closeDb();
 		super.onDestroy();
+		VTULifeDataBase.closeDb();
 	}
 
 	public void showPreferences() {
@@ -440,40 +441,50 @@ public class VTULifeMainActivity extends ActionBarActivity implements
 	}
 
 	protected void downloadHelpManual() {
-		if (isManualIsAlradyDownloaded()) {
+		if (isManualIsAlradyDownloaded())
 			openManual();
-		} else {
-			if (mHelpDialog != null)
-				mHelpDialog.dismiss();
-			SystemFeatureChecker.downloadFile(VTULifeMainActivity.this,
-					VTULifeConstance.WEB_URL
-							+ VTULifeConstance.ANDROID_USER_MANUAL, false);
-		}
+		else
+			doDownloadHelpManual();
+		if (mHelpDialog != null)
+			mHelpDialog.dismiss();
+	}
+
+	private void doDownloadHelpManual() {
+		SystemFeatureChecker.downloadFile(VTULifeMainActivity.this,
+				VTULifeConstance.WEB_URL + "/"
+						+ VTULifeConstance.ANDROID_USER_MANUAL, false);
 	}
 
 	private void openManual() {
-		Uri path = Uri.fromFile(new File(getManualFileUrl()));
-		Intent intent = new Intent(Intent.ACTION_VIEW);
-		intent.setDataAndType(path, "application/pdf");
-		intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
 		try {
-			startActivity(intent);
-		} catch (ActivityNotFoundException e) {
-			Toast.makeText(this, "No Application Available to View PDF",
-					Toast.LENGTH_SHORT).show();
+			Uri path = Uri.fromFile(new File(getManualFileUrl()));
+			Intent intent = new Intent(Intent.ACTION_VIEW);
+			intent.setDataAndType(path, "application/pdf");
+			intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+			try {
+				startActivity(intent);
+			} catch (ActivityNotFoundException e) {
+				Toast.makeText(this, "No Application Available to View PDF",
+						Toast.LENGTH_SHORT).show();
+			}
+		} catch (IOException e) {
+			doDownloadHelpManual();
 		}
 	}
 
 	private boolean isManualIsAlradyDownloaded() {
-		String fileName = getManualFileUrl();
-		return new File(fileName).exists();
+		try {
+			String fileName = getManualFileUrl();
+			return new File(fileName).exists();
+		} catch (IOException e) {
+			return false;
+		}
 	}
 
-	private String getManualFileUrl() {
+	private String getManualFileUrl() throws IOException {
 		// TODO take it to a commen class
-		return VTULifeUtils.getDefaultRootFolder()
-				+ VTULifeConstance.ANDROID_USER_MANUAL;
+		return new File(VTULifeUtils.getDefaultRootFolder(),
+				VTULifeConstance.ANDROID_USER_MANUAL).getAbsolutePath();
 	}
 
 	protected void sendNormalMail() {
