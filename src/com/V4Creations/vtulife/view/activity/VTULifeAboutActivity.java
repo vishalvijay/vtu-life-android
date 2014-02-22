@@ -1,7 +1,5 @@
 package com.V4Creations.vtulife.view.activity;
 
-import java.util.ArrayList;
-
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;

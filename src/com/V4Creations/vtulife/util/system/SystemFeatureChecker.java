@@ -134,11 +134,12 @@ public class SystemFeatureChecker {
 			DownloadManager dm = SystemFeatureChecker
 					.getDownloadManager(activity);
 			try {
-				VTULifeUtils.getDefaultRootFolder();
 				String fileName = getFileNameFromGetURL(urlString);
 				Request request = new Request(Uri.parse(urlString))
 						.setDestinationInExternalPublicDir(
-								VTULifeConstance.DEFAULT_FOLDER, fileName)
+								VTULifeUtils.getRootFolder(),
+								VTULifeUtils
+										.getOnlyFolderWithFileName(fileName))
 						.setTitle(fileName)
 						.setDescription("Downloading from VTU Life ...");
 				manageApiIssues(request);
@@ -147,8 +148,9 @@ public class SystemFeatureChecker {
 				try {
 					Request request = new Request(Uri.parse(urlString))
 							.setDestinationInExternalPublicDir(
-									VTULifeConstance.DEFAULT_FOLDER,
-									getFileNameFromURL(urlString))
+									VTULifeUtils.getRootFolder(),
+									VTULifeUtils
+											.getOnlyFolderWithFileName(getFileNameFromURL(urlString)))
 							.setDescription("Downloading from VTU Life ...");
 					manageApiIssues(request);
 					dm.enqueue(request);

@@ -1,6 +1,7 @@
 package com.V4Creations.vtulife.view.fragments;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -183,20 +184,28 @@ public class ShareAPicFragment extends Fragment implements TextWatcher,
 		builder.setAdapter(adapter, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int item) {
 				if (item == 0) {
-					String captureAddress = VTULifeUtils.getDefaultRootFolder()
-							+ "share_vtu_life_"
-							+ String.valueOf(System.currentTimeMillis())
-							+ ".jpg";
-					Log.e(TAG, captureAddress);
-					ContentValues values = new ContentValues();
-					values.put(MediaStore.Images.Media.TITLE, captureAddress);
-					mCapturedImageURI = vtuLifeMainActivity
-							.getContentResolver()
-							.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-									values);
-					Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-					intent.putExtra(MediaStore.EXTRA_OUTPUT, mCapturedImageURI);
-					startActivityForResult(intent, CAMERA_REQUEST);
+					try {
+						String captureAddress = VTULifeUtils
+								.getDefaultRootFolder()
+								+ "share_vtu_life_"
+								+ String.valueOf(System.currentTimeMillis())
+								+ ".jpg";
+
+						Log.e(TAG, captureAddress);
+						ContentValues values = new ContentValues();
+						values.put(MediaStore.Images.Media.TITLE,
+								captureAddress);
+						mCapturedImageURI = vtuLifeMainActivity
+								.getContentResolver()
+								.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+										values);
+						Intent intent = new Intent(
+								MediaStore.ACTION_IMAGE_CAPTURE);
+						intent.putExtra(MediaStore.EXTRA_OUTPUT,
+								mCapturedImageURI);
+						startActivityForResult(intent, CAMERA_REQUEST);
+					} catch (IOException e) {
+					}
 					dialog.dismiss();
 				} else {
 					Intent intent = new Intent();

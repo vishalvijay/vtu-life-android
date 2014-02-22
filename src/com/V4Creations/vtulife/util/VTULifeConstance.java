@@ -4,7 +4,7 @@ public class VTULifeConstance {
 	// URLS
 	public static final String WEB_URL = "http://www.vtulife.com";
 	public static final String FACEBOOK_PAGE_URL = "https://www.facebook.com/thevtulife";
-	public static final String ANDROID_USER_MANUAL = "/vtuLifeAndroidAppDoc.pdf";
+	public static final String ANDROID_USER_MANUAL = "vtuLifeAndroidAppDoc.pdf";
 
 	// Emails
 	public static final String[] VTU_LIFE_EMAILS = new String[] {
