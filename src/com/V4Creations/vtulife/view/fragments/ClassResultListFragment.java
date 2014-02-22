@@ -184,12 +184,10 @@ public class ClassResultListFragment extends ListFragment implements
 		return mActionBarStatus;
 	}
 
+	@Override
 	public void refresh() {
-		mClassUsnHistoryAdapter.clear();
-		ArrayList<String> usnHistory = VTULifeDataBase
-				.getClassUSNHistory(vtuLifeMainActivity);
-		for (int i = 0; i < usnHistory.size(); i++)
-			mClassUsnHistoryAdapter.add(usnHistory.get(i));
+		if (mClassUsnHistoryAdapter != null)
+			mClassUsnHistoryAdapter.reloadHistory(true);
 	}
 
 	public static String getFeatureName() {
