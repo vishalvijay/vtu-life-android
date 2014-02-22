@@ -113,10 +113,12 @@ public class DirectoryListingFragment extends ListFragment implements
 	@Override
 	public void onPrepareOptionsMenu(Menu menu) {
 		super.onPrepareOptionsMenu(menu);
-		if (!vtuLifeMainActivity.isNavigationDrawerOpen()) {
+		if (vtuLifeMainActivity != null
+				&& !vtuLifeMainActivity.isNavigationDrawerOpen()) {
 			MenuItem backMenuItem = menu.findItem(R.id.menu_back);
 			MenuItem refreshMenuItem = menu.findItem(R.id.menu_refresh);
-			if (mResourceLoaderManager.isGoBack()) {
+			if (mResourceLoaderManager != null
+					&& mResourceLoaderManager.isGoBack()) {
 				backMenuItem.setEnabled(true);
 				backMenuItem.setIcon(R.drawable.ic_action_previous_item);
 			} else {
@@ -124,7 +126,8 @@ public class DirectoryListingFragment extends ListFragment implements
 				backMenuItem
 						.setIcon(R.drawable.ic_action_previous_item_disabled);
 			}
-			if (!mResourceLoaderManager.isReloading()) {
+			if (mResourceLoaderManager != null
+					&& !mResourceLoaderManager.isReloading()) {
 				refreshMenuItem.setIcon(R.drawable.ic_action_refresh);
 				refreshMenuItem.setEnabled(true);
 			} else {
