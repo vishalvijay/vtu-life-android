@@ -6,7 +6,8 @@ import com.bugsense.trace.BugSenseHandler;
 
 public class BugSenseManager {
 	public static void initBugSense(Activity activity) {
-		BugSenseHandler.initAndStartSession(activity,
-				VTULifeConstance.BUG_SENSE_KEY);
+		if (VTULifeUtils.isProduction)
+			BugSenseHandler.initAndStartSession(activity,
+					VTULifeConstance.BUG_SENSE_KEY);
 	}
 }

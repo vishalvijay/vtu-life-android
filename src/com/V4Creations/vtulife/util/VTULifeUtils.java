@@ -13,6 +13,8 @@ import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.TaskStackBuilder;
 
 public class VTULifeUtils {
+	public static final boolean isProduction = false;
+
 	private static final String DEFAULT_FOLDER_WITH_ROOT = Environment
 			.getExternalStorageDirectory()
 			+ File.separator

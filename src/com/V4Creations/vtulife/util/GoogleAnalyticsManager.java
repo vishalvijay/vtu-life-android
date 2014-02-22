@@ -23,7 +23,8 @@ public class GoogleAnalyticsManager {
 
 	public static void infomGoogleAnalytics(Tracker tracker, String category,
 			String action, String label, long value) {
-		tracker.sendEvent(category, action, label, value);
+		if (VTULifeUtils.isProduction)
+			tracker.sendEvent(category, action, label, value);
 	}
 
 	public static Tracker getGoogleAnalyticsTracker(Context context) {
@@ -32,10 +33,12 @@ public class GoogleAnalyticsManager {
 	}
 
 	public static void startGoogleAnalyticsForActivity(Activity activity) {
-		EasyTracker.getInstance().activityStart(activity);
+		if (VTULifeUtils.isProduction)
+			EasyTracker.getInstance().activityStart(activity);
 	}
 
 	public static void stopGoogleAnalyticsForActivity(Activity activity) {
-		EasyTracker.getInstance().activityStop(activity);
+		if (VTULifeUtils.isProduction)
+			EasyTracker.getInstance().activityStop(activity);
 	}
 }
