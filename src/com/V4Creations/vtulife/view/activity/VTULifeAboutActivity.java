@@ -20,7 +20,6 @@ import com.V4Creations.vtulife.util.system.SystemFeatureChecker;
 
 public class VTULifeAboutActivity extends ActionBarActivity {
 	private ReferredLibraryAdapter mAdapter;
-	private ArrayList<ReferredLibrary> mReferredLibrarys;
 	private ListView mListView;
 
 	@Override
@@ -29,7 +28,6 @@ public class VTULifeAboutActivity extends ActionBarActivity {
 		BugSenseManager.initBugSense(this);
 		setContentView(R.layout.activity_about);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		mReferredLibrarys = new ArrayList<ReferredLibrary>();
 		initListView();
 		TextView marqueeTextView = (TextView) this
 				.findViewById(R.id.marqueueTextView);
@@ -49,8 +47,7 @@ public class VTULifeAboutActivity extends ActionBarActivity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				ReferredLibrary referredLibraryModel = mReferredLibrarys
-						.get(position);
+				ReferredLibrary referredLibraryModel = mAdapter.getItem(position);
 				referredLibraryModel.setUrlVisible(!referredLibraryModel
 						.isUrlVisible());
 				mAdapter.notifyDataSetChanged();
