@@ -368,8 +368,8 @@ public class VTULifeMainActivity extends ActionBarActivity implements
 
 	@Override
 	protected void onDestroy() {
-		VTULifeDataBase.closeDb();
 		super.onDestroy();
+		VTULifeDataBase.closeDb();
 	}
 
 	public void showPreferences() {

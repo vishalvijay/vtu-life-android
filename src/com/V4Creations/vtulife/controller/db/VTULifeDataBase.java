@@ -90,15 +90,19 @@ public class VTULifeDataBase {
 	}
 
 	synchronized private ArrayList<String> getUSNHistoryByType(int type) {
-		SQLiteDatabase db = mDatabaseHelper.getReadableDatabase();
-		Cursor cursor = db.query(TABLE_RESULT_USN_HISTORY,
-				new String[] { COL_USN }, COL_USN_TYPE + "=? ",
-				new String[] { type + "" }, null, null, null);
 		ArrayList<String> usnArrayList = new ArrayList<String>();
-		while (cursor.moveToNext())
-			usnArrayList.add(cursor.getString(cursor.getColumnIndex(COL_USN)));
-		cursor.close();
-		db.close();
+		try {
+			SQLiteDatabase db = mDatabaseHelper.getReadableDatabase();
+			Cursor cursor = db.query(TABLE_RESULT_USN_HISTORY,
+					new String[] { COL_USN }, COL_USN_TYPE + "=? ",
+					new String[] { type + "" }, null, null, null);
+			while (cursor.moveToNext())
+				usnArrayList.add(cursor.getString(cursor
+						.getColumnIndex(COL_USN)));
+			cursor.close();
+			db.close();
+		} catch (IllegalStateException ex) {
+		}
 		return usnArrayList;
 	}
 
@@ -159,29 +163,34 @@ public class VTULifeDataBase {
 			protected ArrayList<VTULifeNotification> doInBackground(
 					String... params) {
 				ArrayList<VTULifeNotification> notifications = new ArrayList<VTULifeNotification>();
-				SQLiteDatabase db = mDatabaseHelper.getReadableDatabase();
-				Cursor cursor = db.query(TABLE_NOTIFICATIONS, new String[] {
-						COL_ID, COL_TYPE, COL_IS_SAW_MESSAGE, COL_TITLE,
-						COL_MESSAGE, COL_TIME_OF_NOTIFICATION }, null, null,
-						null, null, COL_TIME_OF_NOTIFICATION + " DESC", "50");
-				while (cursor.moveToNext()) {
-					long id = cursor.getLong(cursor.getColumnIndex(COL_ID));
-					int type = cursor.getInt(cursor.getColumnIndex(COL_TYPE));
-					boolean isMessageSaw = cursor.getString(
-							cursor.getColumnIndex(COL_IS_SAW_MESSAGE)).equals(
-							"1") ? true : false;
-					String titleString = cursor.getString(cursor
-							.getColumnIndex(COL_TITLE));
-					String messageString = cursor.getString(cursor
-							.getColumnIndex(COL_MESSAGE));
-					long time = cursor.getLong(cursor
-							.getColumnIndex(COL_TIME_OF_NOTIFICATION));
-					notifications.add(new VTULifeNotification(mContext, id,
-							type, isMessageSaw, titleString, messageString,
-							time));
+				try {
+					SQLiteDatabase db = mDatabaseHelper.getReadableDatabase();
+					Cursor cursor = db.query(TABLE_NOTIFICATIONS, new String[] {
+							COL_ID, COL_TYPE, COL_IS_SAW_MESSAGE, COL_TITLE,
+							COL_MESSAGE, COL_TIME_OF_NOTIFICATION }, null,
+							null, null, null, COL_TIME_OF_NOTIFICATION
+									+ " DESC", "50");
+					while (cursor.moveToNext()) {
+						long id = cursor.getLong(cursor.getColumnIndex(COL_ID));
+						int type = cursor.getInt(cursor
+								.getColumnIndex(COL_TYPE));
+						boolean isMessageSaw = cursor.getString(
+								cursor.getColumnIndex(COL_IS_SAW_MESSAGE))
+								.equals("1") ? true : false;
+						String titleString = cursor.getString(cursor
+								.getColumnIndex(COL_TITLE));
+						String messageString = cursor.getString(cursor
+								.getColumnIndex(COL_MESSAGE));
+						long time = cursor.getLong(cursor
+								.getColumnIndex(COL_TIME_OF_NOTIFICATION));
+						notifications.add(new VTULifeNotification(mContext, id,
+								type, isMessageSaw, titleString, messageString,
+								time));
+					}
+					cursor.close();
+					db.close();
+				} catch (IllegalStateException ex) {
 				}
-				cursor.close();
-				db.close();
 				return notifications;
 			}
 
@@ -210,16 +219,19 @@ public class VTULifeDataBase {
 	}
 
 	synchronized public int getUnreadedNotificationCount() {
-		SQLiteDatabase db = mDatabaseHelper.getReadableDatabase();
-		Cursor cursor = db.query(TABLE_NOTIFICATIONS,
-				new String[] { COL_COUNT }, COL_IS_SAW_MESSAGE + "=?",
-				new String[] { "0" }, null, null, null);
 		String result = "0";
-		if (cursor.moveToNext()) {
-			result = cursor.getString(cursor.getColumnIndex(COL_COUNT));
+		try {
+			SQLiteDatabase db = mDatabaseHelper.getReadableDatabase();
+			Cursor cursor = db.query(TABLE_NOTIFICATIONS,
+					new String[] { COL_COUNT }, COL_IS_SAW_MESSAGE + "=?",
+					new String[] { "0" }, null, null, null);
+			if (cursor.moveToNext()) {
+				result = cursor.getString(cursor.getColumnIndex(COL_COUNT));
+			}
+			cursor.close();
+			db.close();
+		} catch (IllegalStateException ex) {
 		}
-		cursor.close();
-		db.close();
 		return Integer.parseInt(result);
 	}
 
