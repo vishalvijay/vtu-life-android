@@ -22,9 +22,11 @@ public class SupportArrayAdapter<T> extends ArrayAdapter<T> {
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
 			super.addAll(result);
 		} else {
+			setNotifyOnChange(false);
 			for (T element : result) {
 				super.add(element);
 			}
+			notifyDataSetChanged();
 		}
 	}
 
