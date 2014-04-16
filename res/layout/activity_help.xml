@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/normal_view_padding"
-        android:text="Students help"
+        android:text="@string/student_help"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/black" />
 
@@ -18,7 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/normal_view_padding"
-        android:text="Get in touch with us via Facebook or email for any further queries ,accadamic advaices and guidance."
+        android:text="@string/student_help_text"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/text_muted"
         app:isItalic="true" />
@@ -36,7 +36,7 @@
             android:layout_margin="@dimen/normal_view_padding"
             android:layout_weight="1"
             android:drawableRight="@drawable/ic_action_good"
-            android:text="Facebook" />
+            android:text="@string/facebook" />
 
         <com.V4Creations.vtulife.view.customviews.CustomeButton
             android:id="@+id/emailButton"
@@ -46,14 +46,14 @@
             android:layout_margin="@dimen/normal_view_padding"
             android:layout_weight="1"
             android:drawableRight="@drawable/ic_action_email"
-            android:text="Email" />
+            android:text="@string/email" />
     </LinearLayout>
 
     <com.V4Creations.vtulife.view.customviews.CustomeTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/normal_view_padding"
-        android:text="App help"
+        android:text="@string/app_help"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@color/black" />
 
@@ -61,7 +61,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/normal_view_padding"
-        android:text="Download the latest user manual for this app here. This manual will guid you to make the best use of this app"
+        android:text="@string/user_manual"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="@color/text_muted"
         app:isItalic="true" />
@@ -73,6 +73,6 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/normal_view_padding"
         android:drawableRight="@drawable/ic_action_download"
-        android:text="Download" />
+        android:text="@string/download" />
 
 </LinearLayout>

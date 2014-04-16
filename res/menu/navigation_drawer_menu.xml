@@ -5,14 +5,14 @@
     <item
         android:id="@+id/menu_notifications"
         android:icon="@drawable/ic_action_time"
-        android:title="Notifications"
-        android:titleCondensed="Notifications"
+        android:title="@string/notifications"
+        android:titleCondensed="@string/notifications"
         app:actionLayout="@layout/notification_action_view"
         app:showAsAction="always"/>
     <item
         android:id="@+id/menu_settings"
         android:icon="@drawable/ic_action_settings"
-        android:title="Settings"
+        android:title="@string/settings"
         app:showAsAction="always"/>
 
 </menu>

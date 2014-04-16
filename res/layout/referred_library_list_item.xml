@@ -12,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
+        android:contentDescription="@string/view_more_details"
         android:src="@drawable/ic_action_next_item_disabled" />
 
     <LinearLayout
@@ -26,7 +27,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:singleLine="true"
-            android:text="Library Name"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/text_muted" />
 
@@ -36,7 +36,6 @@
             android:layout_height="wrap_content"
             android:autoLink="web"
             android:singleLine="true"
-            android:text="www.library.com"
             android:textAppearance="?android:attr/textAppearanceSmall"
             app:isItalic="true" />
     </LinearLayout>

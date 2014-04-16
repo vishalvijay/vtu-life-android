@@ -21,7 +21,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/box_background"
                 android:padding="@dimen/common_padding"
-                android:text="Result"
+                android:text="@string/result"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/black" />
 
@@ -34,7 +34,7 @@
                 <com.V4Creations.vtulife.view.customviews.CustomeTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Full result view"
+                    android:text="@string/full_result_view"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@android:color/black" />
 
@@ -59,7 +59,7 @@
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
                         android:layout_toLeftOf="@id/compoundFrameLayout1"
-                        android:text="To see all semester result of each student in class result"
+                        android:text="@string/to_see_all_semester_result_of_each_student_in_class_result"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:textColor="@color/text_muted"
                         app:isItalic="true" />
@@ -75,7 +75,7 @@
                 <com.V4Creations.vtulife.view.customviews.CustomeTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Sorted result"
+                    android:text="@string/sorted_result"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@android:color/black" />
 
@@ -100,7 +100,7 @@
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
                         android:layout_toLeftOf="@id/compoundFrameLayout2"
-                        android:text="Sort class result based on USN. But doing so will make result featching slow. (Effective only in Android 3.0 and above)"
+                        android:text="@string/sort_class_result_based_on_usn_but_doing_so_will_make_result_featching_slow_effective_only_in_android_3_0_and_above_"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:textColor="@color/text_muted"
                         app:isItalic="true" />
@@ -116,7 +116,7 @@
                 <com.V4Creations.vtulife.view.customviews.CustomeTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Deep class result search"
+                    android:text="@string/deep_class_result_search"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@android:color/black" />
 
@@ -142,7 +142,7 @@
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
                         android:layout_toLeftOf="@id/compoundFrameLayout3"
-                        android:text="This is an expensive operation. Better disable this unless you realy want"
+                        android:text="@string/this_is_an_expensive_operation_better_disable_this_unless_you_realy_want"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:textColor="@color/text_muted"
                         app:isItalic="true" />
@@ -160,7 +160,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/box_background"
                 android:padding="@dimen/common_padding"
-                android:text="Favorites"
+                android:text="@string/favorites"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/black" />
 
@@ -173,7 +173,7 @@
                 <com.V4Creations.vtulife.view.customviews.CustomeTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Set your favorite page as default"
+                    android:text="@string/set_your_favorite_page_as_default"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@android:color/black" />
 
@@ -195,7 +195,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/box_background"
                 android:padding="@dimen/common_padding"
-                android:text="History"
+                android:text="@string/history"
                 android:textAppearance="?android:attr/textAppearanceLarge" />
 
             <LinearLayout
@@ -207,7 +207,7 @@
                 <com.V4Creations.vtulife.view.customviews.CustomeTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Clear all searched USN"
+                    android:text="@string/clear_all_searched_usn"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:textColor="@android:color/black" />
 

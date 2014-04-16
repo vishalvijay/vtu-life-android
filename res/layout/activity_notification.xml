@@ -16,7 +16,7 @@
         android:padding="@dimen/normal_view_padding"
         android:scrollHorizontally="true"
         android:singleLine="true"
-        android:text="Find all VTU related updates here. Click on a notification to mark as read. Swipe to delete a notification."
+        android:text="@string/notification_marquee"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:textColor="@color/white" />
 
@@ -39,7 +39,7 @@
         android:layout_centerInParent="true"
         android:gravity="center"
         android:padding="@dimen/double_common_padding"
-        android:text="There is nothing interesting right now.\nWe will keep you inform."
+        android:text="@string/notification_empty_text"
         app:isItalic="true" />
 
 </RelativeLayout>

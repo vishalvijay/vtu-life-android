@@ -2,6 +2,7 @@ package com.V4Creations.vtulife.view.fragments;
 
 import java.util.ArrayList;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.text.Editable;
@@ -44,7 +45,7 @@ public class ClassResultListFragment extends ListFragment implements
 	private AutoCompleteTextView classUsnAutoCompleteTextView;
 	private ImageButton classSubmitImageButton;
 	private UsnHistoryArrayAdapter mClassUsnHistoryAdapter;
-	private VTULifeMainActivity vtuLifeMainActivity;
+	private VTULifeMainActivity activity;
 	private ResultAdapter mAdapter;
 	private ActionBarStatus mActionBarStatus;
 	private Tracker mTracker;
@@ -60,15 +61,14 @@ public class ClassResultListFragment extends ListFragment implements
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		vtuLifeMainActivity = (VTULifeMainActivity) getActivity();
+		activity = (VTULifeMainActivity) getActivity();
 		return inflater.inflate(R.layout.fragemnt_class_result, null);
 	}
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		mTracker = GoogleAnalyticsManager
-				.getGoogleAnalyticsTracker(vtuLifeMainActivity);
+		mTracker = GoogleAnalyticsManager.getGoogleAnalyticsTracker(activity);
 		initView();
 	}
 
@@ -82,8 +82,8 @@ public class ClassResultListFragment extends ListFragment implements
 	}
 
 	private void initActionBarCustomView() {
-		mActionBarStatus.customView = LayoutInflater.from(vtuLifeMainActivity)
-				.inflate(R.layout.check_box_layout, null);
+		mActionBarStatus.customView = LayoutInflater.from(activity).inflate(
+				R.layout.check_box_layout, null);
 		revalCheckBox = (CheckBox) mActionBarStatus.customView
 				.findViewById(R.id.revalCheckBox);
 		mActionBarStatus.isCustomViewOnActionBarEnabled = true;
@@ -93,8 +93,7 @@ public class ClassResultListFragment extends ListFragment implements
 	private void initAutoCompleteTextView() {
 		classUsnAutoCompleteTextView = (AutoCompleteTextView) getView()
 				.findViewById(R.id.classUsnAutoCompleteTextView);
-		mClassUsnHistoryAdapter = new UsnHistoryArrayAdapter(
-				vtuLifeMainActivity);
+		mClassUsnHistoryAdapter = new UsnHistoryArrayAdapter(activity);
 		classUsnAutoCompleteTextView.setAdapter(mClassUsnHistoryAdapter);
 		mClassUsnHistoryAdapter.reloadHistory(true);
 
@@ -118,7 +117,7 @@ public class ClassResultListFragment extends ListFragment implements
 	}
 
 	private void initListAdapter() {
-		mAdapter = new ResultAdapter(vtuLifeMainActivity);
+		mAdapter = new ResultAdapter(activity);
 		setListAdapter(mAdapter);
 	}
 
@@ -140,17 +139,18 @@ public class ClassResultListFragment extends ListFragment implements
 	}
 
 	private void showInvalodUsn() {
-		classUsnAutoCompleteTextView.setError("Invalid class USN.");
+		classUsnAutoCompleteTextView
+				.setError(getString(R.string.invalid_class_usn));
 	}
 
 	private void cancel() {
-		Crouton.clearCroutonsForActivity(vtuLifeMainActivity);
+		Crouton.clearCroutonsForActivity(activity);
 		mClassResultLoaderManager.cancel();
 	}
 
 	protected void getResult(String classUsn) {
-		mClassResultLoaderManager = new ClassResultLoaderManager(
-				vtuLifeMainActivity, this, classUsn, revalCheckBox.isChecked());
+		mClassResultLoaderManager = new ClassResultLoaderManager(activity,
+				this, classUsn, revalCheckBox.isChecked());
 		isClassUsnSaved = false;
 	}
 
@@ -169,14 +169,14 @@ public class ClassResultListFragment extends ListFragment implements
 				GoogleAnalyticsManager.CATEGORY_RESULT,
 				GoogleAnalyticsManager.ACTION_CLASS_RESULT,
 				mClassResultLoaderManager.getClassUsn(), 0L);
-		VTULifeDataBase.setClassUSNHistory(vtuLifeMainActivity,
+		VTULifeDataBase.setClassUSNHistory(activity,
 				mClassResultLoaderManager.getClassUsn());
 		mClassUsnHistoryAdapter.reloadHistory(true);
 	}
 
 	@Override
 	public String getTitle() {
-		return ClassResultListFragment.getFeatureName();
+		return ClassResultListFragment.getFeatureName(activity);
 	}
 
 	@Override
@@ -190,8 +190,8 @@ public class ClassResultListFragment extends ListFragment implements
 			mClassUsnHistoryAdapter.reloadHistory(true);
 	}
 
-	public static String getFeatureName() {
-		return "Class Result";
+	public static String getFeatureName(Context context) {
+		return context.getString(R.string.class_result);
 	}
 
 	@Override
@@ -199,7 +199,7 @@ public class ClassResultListFragment extends ListFragment implements
 		mAdapter.clear();
 		classSubmitImageButton.setImageResource(R.drawable.ic_action_cancel);
 		classUsnAutoCompleteTextView.setEnabled(false);
-		mActionBarStatus.subTitle = "Loading...";
+		mActionBarStatus.subTitle = getString(R.string.loading);
 		mActionBarStatus.isInterminatePorogressBarVisible = true;
 		revalCheckBox.setEnabled(false);
 		callActionBarReflect();
@@ -217,8 +217,7 @@ public class ClassResultListFragment extends ListFragment implements
 	@Override
 	public void onLoadingFailure(String message, String trackMessage,
 			int statusCode, String usn) {
-		vtuLifeMainActivity.showCrouton(message + "(" + usn + ")", Style.ALERT,
-				false);
+		activity.showCrouton(message + "(" + usn + ")", Style.ALERT, false);
 		if (!trackMessage.equals(""))
 			GoogleAnalyticsManager.infomGoogleAnalytics(mTracker,
 					GoogleAnalyticsManager.CATEGORY_RESULT,
@@ -240,18 +239,20 @@ public class ClassResultListFragment extends ListFragment implements
 	}
 
 	private void callActionBarReflect() {
-		vtuLifeMainActivity.reflectActionBarChange(mActionBarStatus,
+		activity.reflectActionBarChange(mActionBarStatus,
 				VTULifeMainActivity.ID_CLASS_RESULT_FRAGMENT, true);
 	}
 
 	@Override
 	public void onFinishLoading() {
-		String message = "Finished";
+		String message = getString(R.string.finished);
 		if (mClassResultLoaderManager.isCancelled())
-			message = "Cancelled";
-		vtuLifeMainActivity.showCrouton(message + " ("
-				+ mClassResultLoaderManager.getTotatlSuccessResult()
-				+ " results).", Style.INFO, false);
+			message = getString(R.string.cancelled);
+		activity.showCrouton(
+				message + " ("
+						+ mClassResultLoaderManager.getTotatlSuccessResult()
+						+ " " + getString(R.string.results) + ").", Style.INFO,
+				false);
 		stopLoading();
 	}
 }

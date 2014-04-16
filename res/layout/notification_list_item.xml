@@ -9,6 +9,7 @@
     android:padding="@dimen/common_padding" >
 
     <ImageView
+        android:contentDescription="@string/notification_icon"
         android:id="@+id/notificationTypeImageView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -36,6 +37,7 @@
                 android:layout_margin="@dimen/common_padding"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
+                android:contentDescription="@string/download_app_button"
                 android:src="@drawable/ic_action_download_disabled" />
 
             <com.V4Creations.vtulife.view.customviews.CustomeTextView
@@ -45,7 +47,6 @@
                 android:layout_alignParentLeft="true"
                 android:layout_toLeftOf="@id/downloadImageButton"
                 android:singleLine="true"
-                android:text="Abc"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textColor="@color/black" />
 
@@ -56,7 +57,6 @@
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/titleTextView"
                 android:layout_toLeftOf="@id/downloadImageButton"
-                android:text="Hai how are you"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/text_muted" />
         </RelativeLayout>

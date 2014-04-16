@@ -4,17 +4,17 @@
     <item
         android:id="@+id/menu_back"
         android:icon="@drawable/ic_action_previous_item"
-        android:title="Back"
+        android:title="@string/back"
         app:showAsAction="always"/>
     <item
         android:id="@+id/menu_refresh"
         android:icon="@drawable/ic_action_refresh"
-        android:title="Refresh"
+        android:title="@string/refresh"
         app:showAsAction="always"/>
     <item
         android:id="@+id/menu_forward"
         android:icon="@drawable/ic_action_next_item"
-        android:title="Forward"
+        android:title="@string/forward"
         app:showAsAction="always"/>
 
 </menu>

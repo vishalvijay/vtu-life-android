@@ -39,8 +39,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:background="@drawable/android_4_selector"
-                android:src="@drawable/ic_action_important"
-                android:tag="Rate the app" />
+                android:contentDescription="@string/rate_the_app"
+                android:src="@drawable/ic_action_important" />
 
             <ImageButton
                 android:id="@+id/likeOnFbImageButton"
@@ -48,8 +48,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:background="@drawable/android_5_selector"
-                android:src="@drawable/ic_action_good"
-                android:tag="Like us on facebook" />
+                android:contentDescription="@string/like_us_on_fb"
+                android:src="@drawable/ic_action_good" />
 
             <ImageButton
                 android:id="@+id/feedbackImageButton"
@@ -57,8 +57,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:background="@drawable/android_2_selector"
-                android:src="@drawable/ic_action_email"
-                android:tag="Feedback" />
+                android:contentDescription="@string/feedback"
+                android:src="@drawable/ic_action_email" />
 
             <ImageButton
                 android:id="@+id/helpImageButton"
@@ -66,8 +66,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:background="@drawable/android_3_selector"
-                android:src="@drawable/ic_action_help"
-                android:tag="Help" />
+                android:contentDescription="@string/help"
+                android:src="@drawable/ic_action_help" />
 
             <ImageButton
                 android:id="@+id/aboutImageButton"
@@ -75,8 +75,8 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:background="@drawable/android_6_selector"
-                android:src="@drawable/ic_action_about"
-                android:tag="About" />
+                android:contentDescription="@string/about"
+                android:src="@drawable/ic_action_about" />
         </LinearLayout>
     </HorizontalScrollView>
 

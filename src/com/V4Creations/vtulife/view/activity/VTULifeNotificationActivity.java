@@ -103,7 +103,7 @@ public class VTULifeNotificationActivity extends ActionBarActivity {
 
 	private void clearNotifications() {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		builder.setMessage("Are you sure ?")
+		builder.setMessage(R.string.are_you_sure)
 				.setCancelable(false)
 				.setPositiveButton(android.R.string.yes,
 						new DialogInterface.OnClickListener() {
@@ -118,7 +118,7 @@ public class VTULifeNotificationActivity extends ActionBarActivity {
 							}
 						});
 		AlertDialog alert = builder.create();
-		alert.setTitle("Clear all notifications");
+		alert.setTitle(R.string.clear_all_notifications);
 		alert.setIcon(android.R.drawable.ic_dialog_alert);
 		alert.show();
 	}
@@ -126,11 +126,12 @@ public class VTULifeNotificationActivity extends ActionBarActivity {
 	protected void processClearNotification() {
 		if (VTULifeDataBase.getInstance(getApplicationContext())
 				.clearAllNotifications()) {
-			Crouton.makeText(this, "Notification cleared", Style.INFO).show();
+			Crouton.makeText(this, R.string.notification_cleared, Style.INFO)
+					.show();
 			mNotificationAdapter.clear();
 		} else
 			Toast.makeText(getApplicationContext(),
-					"There is no notification to clear", Toast.LENGTH_SHORT)
+					R.string.no_notification_to_clear, Toast.LENGTH_SHORT)
 					.show();
 	}
 
@@ -167,7 +168,8 @@ public class VTULifeNotificationActivity extends ActionBarActivity {
 					}
 
 					public String getTitle() {
-						return deletedItem.toString() + " deleted";
+						return getString(R.string.notification_deleted,
+								deletedItem.toString());
 					}
 
 					public void discard() {

@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/box_background"
-        android:text="Credits"
+        android:text="@string/credits"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <ListView
@@ -39,6 +39,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/common_padding"
+                android:contentDescription="@string/app_name"
                 android:src="@drawable/ic_launcher" />
 
             <LinearLayout

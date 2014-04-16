@@ -9,6 +9,7 @@ import java.util.List;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
@@ -45,7 +46,7 @@ public class ShareAPicFragment extends Fragment implements TextWatcher,
 		FragmentInfo {
 	String TAG = "PostAPicFragment";
 
-	private VTULifeMainActivity vtuLifeMainActivity;
+	private VTULifeMainActivity activity;
 	private EditText descriptionEditText;
 	private ImageView picImageView;
 	private Button sendButton;
@@ -70,7 +71,7 @@ public class ShareAPicFragment extends Fragment implements TextWatcher,
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		vtuLifeMainActivity = (VTULifeMainActivity) getActivity();
+		activity = (VTULifeMainActivity) getActivity();
 		return inflater.inflate(R.layout.fragemnt_post_a_pic, null);
 	}
 
@@ -105,9 +106,10 @@ public class ShareAPicFragment extends Fragment implements TextWatcher,
 						&& !shareImageLocation.equals("")) {
 					sendMail(description);
 				} else {
-					vtuLifeMainActivity.showCrouton(
-							"Please provide all details.", Style.CONFIRM, true);
-					descriptionEditText.setError("Enter description");
+					activity.showCrouton(R.string.provide_all_details,
+							Style.CONFIRM, true);
+					descriptionEditText
+							.setError(getString(R.string.description_required));
 				}
 			}
 		});
@@ -128,7 +130,8 @@ public class ShareAPicFragment extends Fragment implements TextWatcher,
 			i.setType("message/rfc822");
 			i.putExtra(Intent.EXTRA_EMAIL,
 					new String[] { "someone@vtulife.com" });
-			i.putExtra(Intent.EXTRA_SUBJECT, "Share photos in VTU Life");
+			i.putExtra(Intent.EXTRA_SUBJECT,
+					getString(R.string.share_photo_mail_subject));
 			i.putExtra(Intent.EXTRA_STREAM, shareImageLocation);
 			String bugReportBody = description;
 			i.putExtra(Intent.EXTRA_TEXT, bugReportBody);
@@ -138,16 +141,14 @@ public class ShareAPicFragment extends Fragment implements TextWatcher,
 			i.putExtra(Intent.EXTRA_STREAM, uris);
 			try {
 				startActivityForResult(
-						Intent.createChooser(i, "Complete action using"),
+						Intent.createChooser(i, getString(R.string.send_email)),
 						SEND_EMAIL);
 			} catch (android.content.ActivityNotFoundException ex) {
-				vtuLifeMainActivity.showCrouton(
-						"There are no email clients installed.", Style.INFO,
+				activity.showCrouton(R.string.email_client_missing, Style.INFO,
 						true);
 			}
 		} else
-			vtuLifeMainActivity.showCrouton("File doesn't exist", Style.ALERT,
-					false);
+			activity.showCrouton(R.string.file_not_exist, Style.ALERT, false);
 	}
 
 	@Override
@@ -174,13 +175,13 @@ public class ShareAPicFragment extends Fragment implements TextWatcher,
 	}
 
 	private void showImageDialog() {
-		final String[] items = new String[] { "From Camera", "From SD Card" };
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-				vtuLifeMainActivity, android.R.layout.select_dialog_item, items);
-		AlertDialog.Builder builder = new AlertDialog.Builder(
-				vtuLifeMainActivity);
+		final String[] items = new String[] { getString(R.string.from_camera),
+				getString(R.string.from_sd_card) };
+		ArrayAdapter<String> adapter = new ArrayAdapter<String>(activity,
+				android.R.layout.select_dialog_item, items);
+		AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 
-		builder.setTitle("Select Image");
+		builder.setTitle(R.string.choose_image);
 		builder.setAdapter(adapter, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int item) {
 				if (item == 0) {
@@ -195,7 +196,7 @@ public class ShareAPicFragment extends Fragment implements TextWatcher,
 						ContentValues values = new ContentValues();
 						values.put(MediaStore.Images.Media.TITLE,
 								captureAddress);
-						mCapturedImageURI = vtuLifeMainActivity
+						mCapturedImageURI = activity
 								.getContentResolver()
 								.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
 										values);
@@ -216,7 +217,8 @@ public class ShareAPicFragment extends Fragment implements TextWatcher,
 					intent.putStringArrayListExtra("ext",
 							(ArrayList<String>) extent);
 					startActivityForResult(Intent.createChooser(intent,
-							"Complete action using"), PICK_FROM_FILE);
+							getString(R.string.complete_action_using)),
+							PICK_FROM_FILE);
 					dialog.dismiss();
 				}
 			}
@@ -229,8 +231,8 @@ public class ShareAPicFragment extends Fragment implements TextWatcher,
 	private String getPath(Uri uri) {
 		String res = null;
 		String[] proj = { MediaStore.Images.Media.DATA };
-		Cursor cursor = vtuLifeMainActivity.getContentResolver().query(uri,
-				proj, null, null, null);
+		Cursor cursor = activity.getContentResolver().query(uri, proj, null,
+				null, null);
 		if (cursor.moveToFirst()) {
 			int column_index = cursor
 					.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
@@ -258,7 +260,7 @@ public class ShareAPicFragment extends Fragment implements TextWatcher,
 					}
 					if (!shareImageLocation.startsWith("/")
 							|| !isValideFileWRTExtention(shareImageLocation)) {
-						vtuLifeMainActivity.showCrouton("File not supportted",
+						activity.showCrouton(R.string.file_not_supported,
 								Style.ALERT, true);
 						setIntialFileAddress();
 						return;
@@ -276,11 +278,11 @@ public class ShareAPicFragment extends Fragment implements TextWatcher,
 									R.dimen.post_a_pic_heigth), true);
 					picImageView.setImageBitmap(myBitmap);
 				} else
-					vtuLifeMainActivity.showCrouton("File doesn't exist",
-							Style.ALERT, true);
+					activity.showCrouton(R.string.file_not_exist, Style.ALERT,
+							true);
 			}
 		} catch (Exception ex) {
-			vtuLifeMainActivity.showCrouton("Error occured please retry",
+			activity.showCrouton(R.string.error_occurred_please_retry,
 					Style.ALERT, true);
 		}
 	}
@@ -328,7 +330,7 @@ public class ShareAPicFragment extends Fragment implements TextWatcher,
 
 	@Override
 	public String getTitle() {
-		return ShareAPicFragment.getFeatureName();
+		return ShareAPicFragment.getFeatureName(activity);
 	}
 
 	@Override
@@ -336,7 +338,7 @@ public class ShareAPicFragment extends Fragment implements TextWatcher,
 		return mActionBarStatus;
 	}
 
-	public static String getFeatureName() {
-		return "Share A Pic";
+	public static String getFeatureName(Context context) {
+		return context.getString(R.string.share_a_pic);
 	}
 }
