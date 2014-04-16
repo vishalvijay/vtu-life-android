@@ -35,9 +35,9 @@ public class DownloadBroadcastReceiver extends BroadcastReceiver {
 						.getColumnIndex(DownloadManager.COLUMN_TITLE));
 				String message;
 				if (status == DownloadManager.STATUS_SUCCESSFUL)
-					message = "Download complete";
+					message = context.getString(R.string.download_complete);
 				else
-					message = "Download unsuccessful";
+					message = context.getString(R.string.download_unsuccessful);
 				VTULifeUtils.showNotification(id, title, message,
 						R.drawable.ic_action_download, context,
 						VTULifeMainActivity.class);

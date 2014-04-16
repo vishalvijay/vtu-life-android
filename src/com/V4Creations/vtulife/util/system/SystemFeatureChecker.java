@@ -104,23 +104,21 @@ public class SystemFeatureChecker {
 		Intent i = new Intent(Intent.ACTION_SEND);
 		i.setType("message/rfc822");
 		i.putExtra(Intent.EXTRA_EMAIL, VTULifeConstance.VTU_LIFE_EMAILS);
-		i.putExtra(Intent.EXTRA_SUBJECT,
-				"Feedback of " + activity.getString(R.string.app_name)
-						+ " android app.");
-		String bugReportBody = "Phone model : "
-				+ SystemFeatureChecker.getDeviceName() + "\n"
-				+ "Application name : " + activity.getString(R.string.app_name)
-				+ "\n" + "Application version name: "
-				+ SystemFeatureChecker.getAppVersionName(activity) + "\n"
-				+ "Application version code : "
-				+ SystemFeatureChecker.getAppVersionCode(activity) + "\n"
-				+ "Phone android version : "
-				+ SystemFeatureChecker.getAndroidVersion() + "\n"
-				+ "-----------------------\n"
-				+ "Please provide more details below :\n";
+		i.putExtra(
+				Intent.EXTRA_SUBJECT,
+				activity.getString(R.string.feedback_mail_subject,
+						activity.getString(R.string.app_name)));
+		String bugReportBody = String.format(
+				activity.getString(R.string.feedback_mail_body),
+				SystemFeatureChecker.getDeviceName(),
+				activity.getString(R.string.app_name),
+				SystemFeatureChecker.getAppVersionName(activity),
+				SystemFeatureChecker.getAppVersionCode(activity),
+				SystemFeatureChecker.getAndroidVersion());
 		i.putExtra(Intent.EXTRA_TEXT, bugReportBody);
 		try {
-			activity.startActivity(Intent.createChooser(i, "Send feedback"));
+			activity.startActivity(Intent.createChooser(i,
+					activity.getString(R.string.send_feedback)));
 		} catch (android.content.ActivityNotFoundException ex) {
 			throw ex;
 		}
@@ -141,7 +139,8 @@ public class SystemFeatureChecker {
 								VTULifeUtils
 										.getOnlyFolderWithFileName(fileName))
 						.setTitle(fileName)
-						.setDescription("Downloading from VTU Life ...");
+						.setDescription(
+								activity.getString(R.string.downloading_from_vtu_life));
 				manageApiIssues(request);
 				dm.enqueue(request);
 			} catch (IllegalArgumentException e) {
@@ -151,7 +150,8 @@ public class SystemFeatureChecker {
 									VTULifeUtils.getRootFolder(),
 									VTULifeUtils
 											.getOnlyFolderWithFileName(getFileNameFromURL(urlString)))
-							.setDescription("Downloading from VTU Life ...");
+							.setDescription(
+									activity.getString(R.string.downloading_from_vtu_life));
 					manageApiIssues(request);
 					dm.enqueue(request);
 				} catch (Exception ex) {
@@ -219,5 +219,10 @@ public class SystemFeatureChecker {
 		UUID deviceUuid = new UUID(androidId.hashCode(),
 				((long) tmDevice.hashCode() << 32) | tmSerial.hashCode());
 		return deviceUuid.toString();
+	}
+
+	public static String getAppPlayStoreURL() {
+		return "https://play.google.com/store/apps/details?id="
+				+ VTULifeConstance.PACKAGE;
 	}
 }

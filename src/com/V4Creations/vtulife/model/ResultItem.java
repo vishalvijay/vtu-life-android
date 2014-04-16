@@ -1,19 +1,27 @@
 package com.V4Creations.vtulife.model;
 
+import android.content.Context;
+
+import com.V4Creations.vtulife.R;
+
 public class ResultItem {
 	public static final int TYPE_STUDENT_DETAILS = 0, TYPE_RESULT = 1,
 			TYPE_SEMESTER = 2, TYPE_SUBJECT_RESULT = 3,
 			TYPE_SUBJECT_REVAL_RESULT = 4, TYPE_RESULT_SINGLE = 5,
 			TYPE_MAX_COUNT = 6;
-	public static String RESULT_FAIL = "Result : FAIL";
 
 	private String usn, name, result, subjectName, subjectResult;
 	private double percentage;
 	private int type, semester, total, finalMark, external, internal,
 			subjectTotal;
+	private Context context;
+
+	public ResultItem(Context context) {
+		this.context = context;
+	}
 
 	public String getResult() {
-		return "Result : " + result;
+		return context.getString(R.string.li_result, result);
 	}
 
 	public void setResult(String result) {
@@ -61,7 +69,7 @@ public class ResultItem {
 	}
 
 	public String getFinalMark() {
-		return "Final : " + finalMark;
+		return context.getString(R.string.li_final, finalMark);
 	}
 
 	public void setFinalMark(int finalMark) {
@@ -69,7 +77,7 @@ public class ResultItem {
 	}
 
 	public String getExternal() {
-		return "External : " + external;
+		return context.getString(R.string.li_external, external);
 	}
 
 	public void setExternal(int external) {
@@ -77,7 +85,7 @@ public class ResultItem {
 	}
 
 	public String getPercentage() {
-		return "Percentage : " + percentage + "%";
+		return context.getString(R.string.li_percentage, percentage);
 	}
 
 	public void setPercentage(double percentage) {
@@ -85,7 +93,7 @@ public class ResultItem {
 	}
 
 	public String getTotal() {
-		return "Total : " + total;
+		return context.getString(R.string.li_total, total);
 	}
 
 	public void setTotal(int total) {
@@ -93,7 +101,7 @@ public class ResultItem {
 	}
 
 	public String getSemester() {
-		return "Semester : " + semester;
+		return context.getString(R.string.li_semester, semester);
 	}
 
 	public void setSemester(int semester) {
@@ -101,7 +109,7 @@ public class ResultItem {
 	}
 
 	public String getSubjectTotal() {
-		return "Total : " + subjectTotal;
+		return context.getString(R.string.li_total, subjectTotal);
 	}
 
 	public void setSubjectTotal(int subjectTotal) {
@@ -109,10 +117,15 @@ public class ResultItem {
 	}
 
 	public String getInternal() {
-		return "Internal : " + internal;
+		return context.getString(R.string.li_internal, internal);
 	}
 
 	public void setInternal(int internal) {
 		this.internal = internal;
+	}
+
+	public String getFailString() {
+		return context.getString(R.string.li_result,
+				context.getString(R.string.fail));
 	}
 }

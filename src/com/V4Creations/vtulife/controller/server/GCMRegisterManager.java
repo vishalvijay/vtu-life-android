@@ -7,6 +7,7 @@ import org.json.JSONObject;
 import android.content.Context;
 import android.os.AsyncTask;
 
+import com.V4Creations.vtulife.R;
 import com.V4Creations.vtulife.util.Settings;
 import com.V4Creations.vtulife.util.VTULifeConstance;
 import com.V4Creations.vtulife.util.VTULifeRestClient;
@@ -51,8 +52,8 @@ public class GCMRegisterManager extends AsyncTask<Void, Void, String> {
 							Settings.storeRegistrationIdWithAppVersion(
 									mContext, gcmRegisterIdString);
 							((VTULifeMainActivity) mContext).showCrouton(
-									"Registered for notification", Style.INFO,
-									true);
+									R.string.registered_for_notification,
+									Style.INFO, true);
 						}
 					});
 		}

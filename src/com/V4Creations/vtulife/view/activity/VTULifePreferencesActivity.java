@@ -1,6 +1,5 @@
 package com.V4Creations.vtulife.view.activity;
 
-
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
@@ -145,11 +144,13 @@ public class VTULifePreferencesActivity extends ActionBarActivity {
 		}
 		if (result) {
 			String text = ((Button) v).getText().toString();
-			Crouton.makeText(this, text + " history cleared", Style.INFO)
+			Crouton.makeText(this,
+					getString(R.string.usn_history_cleared, text), Style.INFO)
 					.show();
 		} else
 			Toast.makeText(getApplicationContext(),
-					"No search history available", Toast.LENGTH_SHORT).show();
+					R.string.no_search_history_available, Toast.LENGTH_SHORT)
+					.show();
 	}
 
 	@Override

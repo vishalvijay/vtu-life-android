@@ -2,6 +2,7 @@ package com.V4Creations.vtulife.view.fragments;
 
 import java.util.ArrayList;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.text.Editable;
@@ -43,7 +44,7 @@ public class FastResultListFragment extends ListFragment implements
 	private AutoCompleteTextView usnAutoCompleteTextView;
 	private ImageButton submitImageButton;
 	private UsnHistoryArrayAdapter mUsnHistoryAdapter;
-	private VTULifeMainActivity vtuLifeMainActivity;
+	private VTULifeMainActivity activity;
 	private ResultAdapter mAdapter;
 	private ActionBarStatus mActionBarStatus;
 	private Tracker mTracker;
@@ -58,15 +59,14 @@ public class FastResultListFragment extends ListFragment implements
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		vtuLifeMainActivity = (VTULifeMainActivity) getActivity();
+		activity = (VTULifeMainActivity) getActivity();
 		return inflater.inflate(R.layout.fragemnt_fast_result, null);
 	}
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		mTracker = GoogleAnalyticsManager
-				.getGoogleAnalyticsTracker(vtuLifeMainActivity);
+		mTracker = GoogleAnalyticsManager.getGoogleAnalyticsTracker(activity);
 		initView();
 	}
 
@@ -80,8 +80,8 @@ public class FastResultListFragment extends ListFragment implements
 	}
 
 	private void initActionBarCustomView() {
-		mActionBarStatus.customView = LayoutInflater.from(vtuLifeMainActivity)
-				.inflate(R.layout.check_box_layout, null);
+		mActionBarStatus.customView = LayoutInflater.from(activity).inflate(
+				R.layout.check_box_layout, null);
 		revalCheckBox = (CheckBox) mActionBarStatus.customView
 				.findViewById(R.id.revalCheckBox);
 		mActionBarStatus.isCustomViewOnActionBarEnabled = true;
@@ -91,7 +91,7 @@ public class FastResultListFragment extends ListFragment implements
 	private void initAutoCompleteTextView() {
 		usnAutoCompleteTextView = (AutoCompleteTextView) getView()
 				.findViewById(R.id.usnAutoCompleteTextView);
-		mUsnHistoryAdapter = new UsnHistoryArrayAdapter(vtuLifeMainActivity);
+		mUsnHistoryAdapter = new UsnHistoryArrayAdapter(activity);
 		usnAutoCompleteTextView.setAdapter(mUsnHistoryAdapter);
 		mUsnHistoryAdapter.reloadHistory(false);
 
@@ -115,7 +115,7 @@ public class FastResultListFragment extends ListFragment implements
 	}
 
 	private void initListAdapter() {
-		mAdapter = new ResultAdapter(vtuLifeMainActivity);
+		mAdapter = new ResultAdapter(activity);
 		setListAdapter(mAdapter);
 	}
 
@@ -137,19 +137,18 @@ public class FastResultListFragment extends ListFragment implements
 	}
 
 	private void showInvalodUsn() {
-		usnAutoCompleteTextView.setError("Invalid USN");
+		usnAutoCompleteTextView.setError(getString(R.string.invalid_usn));
 	}
 
 	private void cancel() {
 		mResultLoaderManager.cancel();
 		stopLoading();
-		vtuLifeMainActivity.showCrouton("Cancelled", Style.INFO, false);
+		activity.showCrouton(R.string.cancelled, Style.INFO, false);
 	}
 
 	protected void getResult(String usn) {
-		mResultLoaderManager = new ResultLoaderManager(vtuLifeMainActivity,
-				this, usn, revalCheckBox.isChecked(),
-				ResultLoaderManager.MULTY_SEM);
+		mResultLoaderManager = new ResultLoaderManager(activity, this, usn,
+				revalCheckBox.isChecked(), ResultLoaderManager.MULTY_SEM);
 	}
 
 	private void stopLoading() {
@@ -166,13 +165,13 @@ public class FastResultListFragment extends ListFragment implements
 		GoogleAnalyticsManager.infomGoogleAnalytics(mTracker,
 				GoogleAnalyticsManager.CATEGORY_RESULT,
 				GoogleAnalyticsManager.ACTION_FAST_RESULT, usn, 0L);
-		VTULifeDataBase.setUSNHistory(vtuLifeMainActivity, usn);
+		VTULifeDataBase.setUSNHistory(activity, usn);
 		mUsnHistoryAdapter.reloadHistory(false);
 	}
 
 	@Override
 	public String getTitle() {
-		return FastResultListFragment.getFeatureName();
+		return FastResultListFragment.getFeatureName(activity);
 	}
 
 	@Override
@@ -186,8 +185,8 @@ public class FastResultListFragment extends ListFragment implements
 			mUsnHistoryAdapter.reloadHistory(false);
 	}
 
-	public static String getFeatureName() {
-		return "Result";
+	public static String getFeatureName(Context context) {
+		return context.getString(R.string.result);
 	}
 
 	@Override
@@ -195,7 +194,7 @@ public class FastResultListFragment extends ListFragment implements
 		mAdapter.clear();
 		submitImageButton.setImageResource(R.drawable.ic_action_cancel);
 		usnAutoCompleteTextView.setEnabled(false);
-		mActionBarStatus.subTitle = "Loading...";
+		mActionBarStatus.subTitle = getString(R.string.loading);
 		mActionBarStatus.isInterminatePorogressBarVisible = true;
 		revalCheckBox.setEnabled(false);
 		callActionBarReflect();
@@ -212,7 +211,7 @@ public class FastResultListFragment extends ListFragment implements
 	public void onLoadingFailure(String message, String trackMessage,
 			int statusCode, String usn) {
 		stopLoading();
-		vtuLifeMainActivity.showCrouton(message, Style.ALERT, false);
+		activity.showCrouton(message, Style.ALERT, false);
 		if (!trackMessage.equals(""))
 			GoogleAnalyticsManager.infomGoogleAnalytics(mTracker,
 					GoogleAnalyticsManager.CATEGORY_RESULT,
@@ -234,7 +233,7 @@ public class FastResultListFragment extends ListFragment implements
 	}
 
 	private void callActionBarReflect() {
-		vtuLifeMainActivity.reflectActionBarChange(mActionBarStatus,
+		activity.reflectActionBarChange(mActionBarStatus,
 				VTULifeMainActivity.ID_FAST_RESULT_FRAGMENT, true);
 	}
 }

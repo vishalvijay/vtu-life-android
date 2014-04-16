@@ -114,7 +114,7 @@ public class ResultLoaderManager extends JsonHttpResponseHandler {
 
 	private ResultItem getSubject(JSONArray subjectJsonArray)
 			throws JSONException {
-		ResultItem resultItem = new ResultItem();
+		ResultItem resultItem = new ResultItem(context);
 		resultItem.setSubjectName(subjectJsonArray.getString(0));
 		if (mResultType == REGULAR_RESULT) {
 			resultItem.setType(ResultItem.TYPE_SUBJECT_RESULT);
@@ -135,7 +135,7 @@ public class ResultLoaderManager extends JsonHttpResponseHandler {
 
 	private ResultItem getSingleResult(JSONObject jsonObject, int index)
 			throws JSONException {
-		ResultItem resultItem = new ResultItem();
+		ResultItem resultItem = new ResultItem(context);
 		resultItem.setType(ResultItem.TYPE_RESULT_SINGLE);
 		resultItem.setResult(getResult(jsonObject.getJSONArray(KEY_RESULT)
 				.getString(index)));
@@ -144,7 +144,7 @@ public class ResultLoaderManager extends JsonHttpResponseHandler {
 
 	private ResultItem getSemester(JSONArray semesterJsonArray, int index)
 			throws JSONException {
-		ResultItem resultItem = new ResultItem();
+		ResultItem resultItem = new ResultItem(context);
 		resultItem.setType(ResultItem.TYPE_SEMESTER);
 		resultItem.setSemester(semesterJsonArray.getInt(index));
 		return resultItem;
@@ -152,7 +152,7 @@ public class ResultLoaderManager extends JsonHttpResponseHandler {
 
 	private ResultItem getResultDetails(JSONObject jsonObject)
 			throws JSONException {
-		ResultItem resultItem = new ResultItem();
+		ResultItem resultItem = new ResultItem(context);
 		if (mResultType == REGULAR_RESULT) {
 			resultItem.setType(ResultItem.TYPE_RESULT);
 			resultItem.setPercentage(jsonObject.getJSONArray(KEY_PERCENTAGE)
@@ -168,7 +168,7 @@ public class ResultLoaderManager extends JsonHttpResponseHandler {
 
 	private ResultItem getStudentDetails(JSONObject jsonObject)
 			throws JSONException {
-		ResultItem resultItem = new ResultItem();
+		ResultItem resultItem = new ResultItem(context);
 		resultItem.setType(ResultItem.TYPE_STUDENT_DETAILS);
 		resultItem.setName(jsonObject.getString(KEY_NAME));
 		resultItem.setUsn(jsonObject.getString(KEY_USN));
@@ -177,14 +177,14 @@ public class ResultLoaderManager extends JsonHttpResponseHandler {
 
 	private String getResult(String result) throws JSONException {
 		if (result.equals("FAIL"))
-			return "FAIL";
+			return context.getString(R.string.fail);
 		else if (result.equals("FIRST CLASS WITH DISTINCTION"))
-			return "FCD";
+			return context.getString(R.string.fcd);
 		else if (result.equals("FIRST CLASS"))
-			return "FC";
+			return context.getString(R.string.fc);
 		else if (result.equals("SECOND CLASS"))
-			return "SC";
-		return "Error";
+			return context.getString(R.string.sc);
+		return context.getString(R.string.na);
 	}
 
 	public void cancel() {

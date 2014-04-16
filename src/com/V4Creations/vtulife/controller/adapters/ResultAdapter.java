@@ -63,7 +63,7 @@ public class ResultAdapter extends SupportArrayAdapter<ResultItem> {
 		ResultItem resultItem = getItem(position);
 		int color = getColor(R.color.pass_color);
 		int bgColor = R.color.bg_result_pass;
-		if (resultItem.getResult().equals(ResultItem.RESULT_FAIL)) {
+		if (resultItem.getResult().equals(resultItem.getFailString())) {
 			color = getColor(R.color.fail_color);
 			bgColor = R.color.bg_result_fail;
 		}
@@ -188,7 +188,7 @@ public class ResultAdapter extends SupportArrayAdapter<ResultItem> {
 		ResultItem resultItem = getItem(position);
 		int color = getColor(R.color.pass_color);
 		int bgColor = R.color.bg_result_pass;
-		if (resultItem.getResult().equals(ResultItem.RESULT_FAIL)) {
+		if (resultItem.getResult().equals(resultItem.getFailString())) {
 			color = getColor(R.color.fail_color);
 			bgColor = R.color.bg_result_fail;
 		}

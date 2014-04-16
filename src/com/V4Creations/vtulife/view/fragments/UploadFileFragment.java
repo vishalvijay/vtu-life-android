@@ -6,6 +6,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -34,7 +35,7 @@ public class UploadFileFragment extends Fragment implements TextWatcher,
 		FragmentInfo {
 	String TAG = "UploadFileFragment";
 
-	private VTULifeMainActivity vtuLifeMainActivity;
+	private VTULifeMainActivity activity;
 	private EditText descriptionEditText, departmentEditText, subjectEditText;
 	private TextView fileTextView;
 	private Button browseFileButton;
@@ -58,7 +59,7 @@ public class UploadFileFragment extends Fragment implements TextWatcher,
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		vtuLifeMainActivity = (VTULifeMainActivity) getActivity();
+		activity = (VTULifeMainActivity) getActivity();
 		return inflater.inflate(R.layout.fragemnt_upload_file, null);
 	}
 
@@ -129,7 +130,7 @@ public class UploadFileFragment extends Fragment implements TextWatcher,
 
 	private void clearAllData() {
 		filePathString = "";
-		fileTextView.setText("Select a file");
+		fileTextView.setText(R.string.select_a_file);
 		subjectEditText.setText("");
 		departmentEditText.setText("");
 		descriptionEditText.setText("");
@@ -146,21 +147,23 @@ public class UploadFileFragment extends Fragment implements TextWatcher,
 		Intent i = new Intent(Intent.ACTION_SEND);
 		i.setType("message/rfc822");
 		i.putExtra(Intent.EXTRA_EMAIL, new String[] { "someone@vtulife.com" });
-		i.putExtra(Intent.EXTRA_SUBJECT, "Share notes in VTU Life");
+		i.putExtra(Intent.EXTRA_SUBJECT,
+				getString(R.string.share_notes_mail_subject));
 		String subjectString = subjectEditText.getText().toString();
 		String departmentString = departmentEditText.getText().toString();
 		String descriptionString = descriptionEditText.getText().toString();
-		String message = "Subject : " + subjectString + "\nDepartment : "
-				+ departmentString + "\nDescription : " + descriptionString;
+		String message = String.format(
+				getString(R.string.share_notes_mail_body), subjectString,
+				departmentString, descriptionString);
 		i.putExtra(Intent.EXTRA_TEXT, message);
 		i.putExtra(Intent.EXTRA_STREAM, uri);
 		try {
 			startActivityForResult(
-					Intent.createChooser(i, "Select a email client"),
+					Intent.createChooser(i, getString(R.string.send_email)),
 					SEND_EMAIL);
 		} catch (android.content.ActivityNotFoundException ex) {
-			vtuLifeMainActivity.showCrouton(
-					"There are no email clients installed.", Style.INFO, true);
+			activity.showCrouton(R.string.email_client_missing,
+					Style.INFO, true);
 		}
 	}
 
@@ -170,11 +173,12 @@ public class UploadFileFragment extends Fragment implements TextWatcher,
 		List<String> extent = new ArrayList<String>();
 		Collections.addAll(extent, allowedFileTypeStrings);
 		target.putStringArrayListExtra("ext", (ArrayList<String>) extent);
-		Intent intent = Intent.createChooser(target, "Select a file");
+		Intent intent = Intent.createChooser(target,
+				getString(R.string.select_a_file));
 		try {
 			startActivityForResult(intent, BROUSER_FILE);
 		} catch (ActivityNotFoundException e) {
-			vtuLifeMainActivity.showCrouton("VTU Life file browser not found.",
+			activity.showCrouton(R.string.file_browser_not_found,
 					Style.INFO, true);
 		}
 	}
@@ -185,7 +189,7 @@ public class UploadFileFragment extends Fragment implements TextWatcher,
 				&& !isEditTextEmpty(subjectEditText))
 			sendMail();
 		else {
-			vtuLifeMainActivity.showCrouton("Please provide all details.",
+			activity.showCrouton(R.string.provide_all_details,
 					Style.CONFIRM, true);
 			setErrorOnEditText(true);
 		}
@@ -194,11 +198,13 @@ public class UploadFileFragment extends Fragment implements TextWatcher,
 	private void setErrorOnEditText(boolean isErrorShow) {
 		if (isErrorShow) {
 			if (isEditTextEmpty(departmentEditText))
-				departmentEditText.setError("Enter department");
+				departmentEditText
+						.setError(getString(R.string.department_required));
 			if (isEditTextEmpty(descriptionEditText))
-				descriptionEditText.setError("Enter description");
+				descriptionEditText
+						.setError(getString(R.string.description_required));
 			if (isEditTextEmpty(subjectEditText))
-				subjectEditText.setError("Enter subject");
+				subjectEditText.setError(getString(R.string.subject_required));
 		} else {
 			departmentEditText.setError(null);
 			descriptionEditText.setError(null);
@@ -222,7 +228,7 @@ public class UploadFileFragment extends Fragment implements TextWatcher,
 
 	@Override
 	public String getTitle() {
-		return UploadFileFragment.getFeatureName();
+		return UploadFileFragment.getFeatureName(activity);
 	}
 
 	@Override
@@ -230,7 +236,7 @@ public class UploadFileFragment extends Fragment implements TextWatcher,
 		return mActionBarStatus;
 	}
 
-	public static String getFeatureName() {
-		return "Share Notes";
+	public static String getFeatureName(Context context) {
+		return context.getString(R.string.share_notes);
 	}
 }

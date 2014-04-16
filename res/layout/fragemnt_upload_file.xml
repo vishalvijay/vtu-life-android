@@ -36,7 +36,7 @@
             android:layout_weight="6"
             android:gravity="center"
             android:padding="@dimen/normal_view_padding"
-            android:text="Select a file"
+            android:text="@string/select_a_file"
             android:textAppearance="?android:attr/textAppearanceSmall"
             android:textColor="@color/black"
             app:isItalic="true" />
@@ -47,14 +47,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="..." />
+            android:text="@string/_" />
     </LinearLayout>
 
     <com.V4Creations.vtulife.view.customviews.CustomeEditText
         android:id="@+id/subjectEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Subject"
+        android:hint="@string/subject"
         android:inputType="textNoSuggestions"
         android:singleLine="true" >
 
@@ -65,7 +65,7 @@
         android:id="@+id/departmentEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Department"
+        android:hint="@string/department"
         android:inputType="textNoSuggestions"
         android:singleLine="true" />
 

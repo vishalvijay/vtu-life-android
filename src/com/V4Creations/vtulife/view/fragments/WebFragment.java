@@ -1,6 +1,7 @@
 package com.V4Creations.vtulife.view.fragments;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -20,6 +21,7 @@ import android.widget.TextView;
 import com.V4Creations.vtulife.R;
 import com.V4Creations.vtulife.controller.adapters.VTULifeFragmentAdapter.FragmentInfo;
 import com.V4Creations.vtulife.model.ActionBarStatus;
+import com.V4Creations.vtulife.util.VTULifeConstance;
 import com.V4Creations.vtulife.util.system.SystemFeatureChecker;
 import com.V4Creations.vtulife.view.activity.VTULifeMainActivity;
 
@@ -28,23 +30,24 @@ import de.keyboardsurfer.android.widget.crouton.Style;
 public class WebFragment extends Fragment implements FragmentInfo {
 
 	String TAG = "WebFragment";
-	private VTULifeMainActivity vtuLifeMainActivity;
+	private VTULifeMainActivity activity;
 	private WebView mWebView;
 	private boolean isForwardEnabled = false, isBackEnabled = true,
 			isRefresh = true;
 	private ProgressBar loadingProgressBar;
 	private TextView progressTextView;
-	private String currentUrl = "http://www.vtulife.com";
+	private String currentUrl;
 	private ActionBarStatus mActionBarStatus;
 
 	public WebFragment() {
 		mActionBarStatus = new ActionBarStatus();
+		currentUrl = VTULifeConstance.WEB_URL;
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
-		vtuLifeMainActivity = (VTULifeMainActivity) getActivity();
+		activity = (VTULifeMainActivity) getActivity();
 		return inflater.inflate(R.layout.fragemnt_web, null, false);
 	}
 
@@ -74,8 +77,7 @@ public class WebFragment extends Fragment implements FragmentInfo {
 	@SuppressLint({ "SetJavaScriptEnabled", "JavascriptInterface" })
 	private void initWebView() {
 		mWebView.getSettings().setJavaScriptEnabled(true);
-		mWebView.addJavascriptInterface(new JavaScriptInterface(),
-				"HTMLOUT");
+		mWebView.addJavascriptInterface(new JavaScriptInterface(), "HTMLOUT");
 
 		mWebView.setWebChromeClient(new WebChromeClient() {
 			public void onProgressChanged(WebView view, int progress) {
@@ -86,8 +88,7 @@ public class WebFragment extends Fragment implements FragmentInfo {
 		mWebView.setWebViewClient(new WebViewClient() {
 			public void onReceivedError(WebView view, int errorCode,
 					String description, String failingUrl) {
-				vtuLifeMainActivity
-						.showCrouton(description, Style.ALERT, false);
+				activity.showCrouton(description, Style.ALERT, false);
 				showReload();
 			}
 
@@ -96,8 +97,8 @@ public class WebFragment extends Fragment implements FragmentInfo {
 				isRefresh = false;
 				isBackEnabled = mWebView.canGoBack();
 				isForwardEnabled = mWebView.canGoForward();
-				mActionBarStatus.subTitle = "Loading...";
-				vtuLifeMainActivity.reflectActionBarChange(mActionBarStatus,
+				mActionBarStatus.subTitle = getString(R.string.loading);
+				activity.reflectActionBarChange(mActionBarStatus,
 						VTULifeMainActivity.ID_VTU_LIFE_WEB_FRAGMENT, true);
 				showLoadingProgressBar();
 			}
@@ -105,33 +106,28 @@ public class WebFragment extends Fragment implements FragmentInfo {
 			@Override
 			public void onPageFinished(WebView view, String url) {
 				currentUrl = url;
-				mWebView
-						.loadUrl("javascript:window.HTMLOUT.showHTML('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>');");
+				mWebView.loadUrl("javascript:window.HTMLOUT.showHTML('<head>'+document.getElementsByTagName('html')[0].innerHTML+'</head>');");
 				isRefresh = true;
 				isBackEnabled = mWebView.canGoBack();
 				isForwardEnabled = mWebView.canGoForward();
 				mActionBarStatus.subTitle = null;
-				vtuLifeMainActivity.reflectActionBarChange(mActionBarStatus,
+				activity.reflectActionBarChange(mActionBarStatus,
 						VTULifeMainActivity.ID_VTU_LIFE_WEB_FRAGMENT, true);
 				hideLodingProgressBar();
 			}
 
 			@Override
 			public boolean shouldOverrideUrlLoading(WebView view, String url) {
-				if (url.equals("https://play.google.com/store/apps/details?id=com.V4Creations.vtulife"))
-					vtuLifeMainActivity.showRateApp();
+				if (url.equals(SystemFeatureChecker.getAppPlayStoreURL()))
+					activity.showRateApp();
 				else if (url.contains("classresults.php"))
-					vtuLifeMainActivity
-							.changeCurrentFragemnt(VTULifeMainActivity.ID_CLASS_RESULT_FRAGMENT);
+					activity.changeCurrentFragemnt(VTULifeMainActivity.ID_CLASS_RESULT_FRAGMENT);
 				else if (url.contains("fastresults.php"))
-					vtuLifeMainActivity
-							.changeCurrentFragemnt(VTULifeMainActivity.ID_FAST_RESULT_FRAGMENT);
+					activity.changeCurrentFragemnt(VTULifeMainActivity.ID_FAST_RESULT_FRAGMENT);
 				else if (url.contains("resource"))
-					vtuLifeMainActivity
-							.changeCurrentFragemnt(VTULifeMainActivity.ID_DIRECTORY_LISTING_FRAGMENT);
+					activity.changeCurrentFragemnt(VTULifeMainActivity.ID_DIRECTORY_LISTING_FRAGMENT);
 				else if (url.contains("upload.html"))
-					vtuLifeMainActivity
-							.changeCurrentFragemnt(VTULifeMainActivity.ID_UPLOAD_FILE_FRAGEMENT);
+					activity.changeCurrentFragemnt(VTULifeMainActivity.ID_UPLOAD_FILE_FRAGEMENT);
 				else
 					view.loadUrl(url);
 				return true;
@@ -141,10 +137,9 @@ public class WebFragment extends Fragment implements FragmentInfo {
 			public void onDownloadStart(String url, String userAgent,
 					String contentDisposition, String mimetype,
 					long contentLength) {
-				SystemFeatureChecker.downloadFile(vtuLifeMainActivity, url,
+				SystemFeatureChecker.downloadFile(activity, url, false);
+				activity.showCrouton(R.string.downloading_started, Style.INFO,
 						false);
-				vtuLifeMainActivity.showCrouton("Downloading started",
-						Style.INFO, false);
 			}
 		});
 	}
@@ -162,7 +157,7 @@ public class WebFragment extends Fragment implements FragmentInfo {
 
 	@Override
 	public void onPrepareOptionsMenu(Menu menu) {
-		if (!vtuLifeMainActivity.isNavigationDrawerOpen()) {
+		if (!activity.isNavigationDrawerOpen()) {
 			MenuItem forwardMenuItem = menu.findItem(R.id.menu_forward);
 			MenuItem backMenuItem = menu.findItem(R.id.menu_back);
 			MenuItem refreshMenuItem = menu.findItem(R.id.menu_refresh);
@@ -205,7 +200,7 @@ public class WebFragment extends Fragment implements FragmentInfo {
 				mWebView.reload();
 			else {
 				isRefresh = true;
-				vtuLifeMainActivity.supportInvalidateOptionsMenu();
+				activity.supportInvalidateOptionsMenu();
 				mWebView.stopLoading();
 			}
 			return true;
@@ -230,7 +225,7 @@ public class WebFragment extends Fragment implements FragmentInfo {
 
 	@Override
 	public String getTitle() {
-		return WebFragment.getFeatureName();
+		return WebFragment.getFeatureName(activity);
 	}
 
 	@Override
@@ -238,7 +233,7 @@ public class WebFragment extends Fragment implements FragmentInfo {
 		return mActionBarStatus;
 	}
 
-	public static String getFeatureName() {
-		return "Website";
+	public static String getFeatureName(Context context) {
+		return context.getString(R.string.website);
 	}
 }

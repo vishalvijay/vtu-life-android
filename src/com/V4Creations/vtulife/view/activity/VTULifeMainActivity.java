@@ -109,7 +109,7 @@ public class VTULifeMainActivity extends ActionBarActivity implements
 	private void checkFirstTimeUse() {
 		if (Settings.isFirtsTime(getApplicationContext())) {
 			Settings.setFirstTime(getApplicationContext(), false);
-			showCrouton("Welcome to VTU Life", Style.INFO, true);
+			showCrouton(getString(R.string.welcome_to), Style.INFO, true);
 		}
 	}
 
@@ -147,7 +147,7 @@ public class VTULifeMainActivity extends ActionBarActivity implements
 
 			public void onDrawerOpened(View drawerView) {
 				super.onDrawerOpened(drawerView);
-				getSupportActionBar().setTitle("Menu");
+				getSupportActionBar().setTitle(R.string.menu);
 				supportInvalidateOptionsMenu();
 			}
 		};
@@ -255,7 +255,7 @@ public class VTULifeMainActivity extends ActionBarActivity implements
 		if (mExitFlag)
 			finish();
 		else {
-			Toast.makeText(getApplicationContext(), "Press back again to exit",
+			Toast.makeText(getApplicationContext(), R.string.exit_message,
 					Toast.LENGTH_SHORT).show();
 			new Thread(new Runnable() {
 
@@ -276,7 +276,7 @@ public class VTULifeMainActivity extends ActionBarActivity implements
 			int fragmentId, boolean isInvalidate) {
 		if (actionBarStatus != null) {
 			if (mViewPager.getCurrentItem() == fragmentId) {
-				getSupportActionBar().setTitle("VTU Life");
+				getSupportActionBar().setTitle(R.string.app_name);
 				getSupportActionBar().setSubtitle(actionBarStatus.subTitle);
 				setSupportProgressBarIndeterminateVisibility(actionBarStatus.isInterminatePorogressBarVisible);
 				if (actionBarStatus.isCustomViewOnActionBarEnabled)
@@ -328,17 +328,18 @@ public class VTULifeMainActivity extends ActionBarActivity implements
 										Crouton.hide(infiniteCrouton);
 										infiniteCrouton = null;
 										showCrouton(
-												"Internet connection established.",
+												R.string.internet_connected,
 												Style.INFO, true);
 										isHighDelay = true;
 									}
 								} else if (infiniteCrouton == null) {
 									Crouton.clearCroutonsForActivity(VTULifeMainActivity.this);
-									infiniteCrouton = Crouton.makeText(
-											VTULifeMainActivity.this,
-											"Internet connection lost.",
-											Style.ALERT).setConfiguration(
-											CONFIGURATION_INFINITE);
+									infiniteCrouton = Crouton
+											.makeText(VTULifeMainActivity.this,
+													R.string.internet_lost,
+													Style.ALERT)
+											.setConfiguration(
+													CONFIGURATION_INFINITE);
 									infiniteCrouton.show();
 									isHighDelay = false;
 								}
@@ -436,7 +437,7 @@ public class VTULifeMainActivity extends ActionBarActivity implements
 		facebookButton.setOnClickListener(onClickListener);
 		mailButton.setOnClickListener(onClickListener);
 		downloadButton.setOnClickListener(onClickListener);
-		mHelpDialog.setTitle("Help");
+		mHelpDialog.setTitle(R.string.help);
 		mHelpDialog.show();
 	}
 
@@ -464,7 +465,7 @@ public class VTULifeMainActivity extends ActionBarActivity implements
 			try {
 				startActivity(intent);
 			} catch (ActivityNotFoundException e) {
-				Toast.makeText(this, "No Application Available to View PDF",
+				Toast.makeText(this, R.string.pdf_viewer_missing,
 						Toast.LENGTH_SHORT).show();
 			}
 		} catch (IOException e) {
@@ -493,7 +494,8 @@ public class VTULifeMainActivity extends ActionBarActivity implements
 		i.putExtra(Intent.EXTRA_EMAIL,
 				new String[] { VTULifeUtils.getVTULifePublicEmailId() });
 		try {
-			startActivity(Intent.createChooser(i, "Send email for help"));
+			startActivity(Intent.createChooser(i,
+					getString(R.string.send_email_for_help)));
 		} catch (android.content.ActivityNotFoundException ex) {
 			throw ex;
 		}
@@ -514,7 +516,7 @@ public class VTULifeMainActivity extends ActionBarActivity implements
 		try {
 			SystemFeatureChecker.rateAppOnPlayStore(this);
 		} catch (ActivityNotFoundException e) {
-			showCrouton("Google play app not installed.", Style.ALERT, true);
+			showCrouton(R.string.play_app_missing, Style.ALERT, true);
 		}
 	}
 
@@ -522,8 +524,7 @@ public class VTULifeMainActivity extends ActionBarActivity implements
 		try {
 			SystemFeatureChecker.sendFeedback(this);
 		} catch (ActivityNotFoundException e) {
-			showCrouton("There are no email clients installed.", Style.ALERT,
-					true);
+			showCrouton(R.string.email_client_missing, Style.ALERT, true);
 		}
 	}
 
