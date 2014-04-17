@@ -13,7 +13,7 @@ public class VTULifeConstance {
 	public static final String GCM_SENDER_ID = "812211262410";
 
 	public static final String DEFAULT_FOLDER = "vtulife";
-	public static final CharSequence PACKAGE = "com.V4Creations.vtulife";
+	public static final String PACKAGE = "com.V4Creations.vtulife";
 	public static final String DEFAULT_FONT = "fonts/Roboto-Light.ttf";
 	public static final String DEFAULT_FONT_ITALIC = "fonts/Roboto-LightItalic.ttf";
 	public static final String BUG_SENSE_KEY = "1d45eed5";

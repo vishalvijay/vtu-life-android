@@ -72,7 +72,7 @@ public class ShareAPicFragment extends Fragment implements TextWatcher,
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		activity = (VTULifeMainActivity) getActivity();
-		return inflater.inflate(R.layout.fragemnt_post_a_pic, null);
+		return inflater.inflate(R.layout.fragment_post_a_pic, null);
 	}
 
 	@Override

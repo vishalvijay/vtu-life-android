@@ -21,14 +21,26 @@ public class CustomeTextView extends TextView {
 		init(attrs);
 	}
 
+	public CustomeTextView(Context context) {
+		super(context);
+	}
+
 	public void init(AttributeSet attrs) {
 		TypedArray a = getContext().obtainStyledAttributes(attrs,
 				R.styleable.CustomViewDefault);
 		String font = VTULifeConstance.DEFAULT_FONT;
 		if (a.getString(R.styleable.CustomViewDefault_isItalic) != null)
 			font = VTULifeConstance.DEFAULT_FONT_ITALIC;
+		changeFont(font);
+		a.recycle();
+	}
+
+	private void changeFont(String font) {
 		Typeface tf = Typeface.createFromAsset(getContext().getAssets(), font);
 		setTypeface(tf);
-		a.recycle();
+	}
+
+	public void setItalicFont() {
+		changeFont(VTULifeConstance.DEFAULT_FONT_ITALIC);
 	}
 }

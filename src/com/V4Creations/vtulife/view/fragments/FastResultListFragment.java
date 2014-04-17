@@ -60,7 +60,7 @@ public class FastResultListFragment extends ListFragment implements
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		activity = (VTULifeMainActivity) getActivity();
-		return inflater.inflate(R.layout.fragemnt_fast_result, null);
+		return inflater.inflate(R.layout.fragment_fast_result, null);
 	}
 
 	@Override

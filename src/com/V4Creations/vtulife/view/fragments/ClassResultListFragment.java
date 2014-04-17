@@ -62,7 +62,7 @@ public class ClassResultListFragment extends ListFragment implements
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		activity = (VTULifeMainActivity) getActivity();
-		return inflater.inflate(R.layout.fragemnt_class_result, null);
+		return inflater.inflate(R.layout.fragment_class_result, null);
 	}
 
 	@Override

@@ -27,6 +27,7 @@ import com.V4Creations.vtulife.R;
 import com.V4Creations.vtulife.afilechooser.utils.FileUtils;
 import com.V4Creations.vtulife.controller.adapters.VTULifeFragmentAdapter.FragmentInfo;
 import com.V4Creations.vtulife.model.ActionBarStatus;
+import com.V4Creations.vtulife.util.VTULifeConstance;
 import com.V4Creations.vtulife.view.activity.VTULifeMainActivity;
 
 import de.keyboardsurfer.android.widget.crouton.Style;
@@ -60,7 +61,7 @@ public class UploadFileFragment extends Fragment implements TextWatcher,
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		activity = (VTULifeMainActivity) getActivity();
-		return inflater.inflate(R.layout.fragemnt_upload_file, null);
+		return inflater.inflate(R.layout.fragment_upload_file, null);
 	}
 
 	@Override
@@ -169,7 +170,7 @@ public class UploadFileFragment extends Fragment implements TextWatcher,
 
 	public void getFile() {
 		Intent target = FileUtils.createGetContentIntent();
-		target.setPackage("com.V4Creations.vtulife");
+		target.setPackage(VTULifeConstance.PACKAGE);
 		List<String> extent = new ArrayList<String>();
 		Collections.addAll(extent, allowedFileTypeStrings);
 		target.putStringArrayListExtra("ext", (ArrayList<String>) extent);

@@ -49,7 +49,7 @@ public class DirectoryListingFragment extends ListFragment implements
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		activity = (VTULifeMainActivity) getActivity();
-		return inflater.inflate(R.layout.fragemnt_directory, null);
+		return inflater.inflate(R.layout.fragment_directory, null);
 	}
 
 	@Override

@@ -48,7 +48,7 @@ public class WebFragment extends Fragment implements FragmentInfo {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		activity = (VTULifeMainActivity) getActivity();
-		return inflater.inflate(R.layout.fragemnt_web, null, false);
+		return inflater.inflate(R.layout.fragment_web, null, false);
 	}
 
 	@Override
