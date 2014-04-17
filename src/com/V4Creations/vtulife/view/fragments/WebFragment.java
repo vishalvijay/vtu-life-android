@@ -224,8 +224,8 @@ public class WebFragment extends Fragment implements FragmentInfo {
 	}
 
 	@Override
-	public String getTitle() {
-		return WebFragment.getFeatureName(activity);
+	public String getTitle(Context context) {
+		return WebFragment.getFeatureName(context);
 	}
 
 	@Override

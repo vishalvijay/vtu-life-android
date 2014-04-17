@@ -165,8 +165,8 @@ public class DirectoryListingFragment extends ListFragment implements
 	}
 
 	@Override
-	public String getTitle() {
-		return DirectoryListingFragment.getFeatureName(activity);
+	public String getTitle(Context context) {
+		return DirectoryListingFragment.getFeatureName(context);
 	}
 
 	@Override

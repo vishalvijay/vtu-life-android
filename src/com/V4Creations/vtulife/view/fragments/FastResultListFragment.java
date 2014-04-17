@@ -170,8 +170,8 @@ public class FastResultListFragment extends ListFragment implements
 	}
 
 	@Override
-	public String getTitle() {
-		return FastResultListFragment.getFeatureName(activity);
+	public String getTitle(Context context) {
+		return FastResultListFragment.getFeatureName(context);
 	}
 
 	@Override

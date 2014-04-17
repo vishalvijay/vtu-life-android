@@ -175,8 +175,8 @@ public class ClassResultListFragment extends ListFragment implements
 	}
 
 	@Override
-	public String getTitle() {
-		return ClassResultListFragment.getFeatureName(activity);
+	public String getTitle(Context context) {
+		return ClassResultListFragment.getFeatureName(context);
 	}
 
 	@Override

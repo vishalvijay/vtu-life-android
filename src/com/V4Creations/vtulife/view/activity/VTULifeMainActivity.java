@@ -166,7 +166,7 @@ public class VTULifeMainActivity extends ActionBarActivity implements
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setOffscreenPageLimit(NUM_OF_FRAGMENTS);
 		mVtuLifeFragmentAdapter = new VTULifeFragmentAdapter(
-				getSupportFragmentManager(), vtuLifeFragments);
+				getSupportFragmentManager(), vtuLifeFragments, getApplicationContext());
 		mViewPager.setAdapter(mVtuLifeFragmentAdapter);
 		mTabs.setViewPager(mViewPager);
 		mTabs.setOnPageChangeListener(new OnPageChangeListener() {
@@ -188,7 +188,7 @@ public class VTULifeMainActivity extends ActionBarActivity implements
 				GoogleAnalyticsManager.infomGoogleAnalytics(tracker,
 						GoogleAnalyticsManager.CATEGORY_FRAGMENT,
 						GoogleAnalyticsManager.ACTION_FRAGMENT_SELECTED,
-						fragmentInfo.getTitle(), 0L);
+						fragmentInfo.getTitle(getApplicationContext()), 0L);
 				mNavigationMenu.changeSelected(position);
 			}
 		});

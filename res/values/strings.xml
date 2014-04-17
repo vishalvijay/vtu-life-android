@@ -5,7 +5,7 @@
     <string name="homepage">Homepage : http://www.vtulife.com</string>
     <string name="email">Email</string>
     <string name="app_description">VTU Life android app is a mobile interface of www.vtulife.com. VTU Life provides a platform where Students can communicate, discuss and share resources, information and ideas.</string>
-    <string name="developer">Developer : PACE Students</string>
+    <string name="developer">Developer : V4 Creations</string>
     <string name="app_name">VTU Life</string>
     <string name="please_wait_">Please wait&#8230;</string>
     <string name="www_vtulife_com">www.vtulife.com</string>
@@ -74,7 +74,7 @@
     <string name="li_result">Result : %s</string>
     <string name="li_final">Final : %s</string>
     <string name="li_external">External : %s</string>
-    <string name="li_percentage">Percentage : %s%</string>
+    <string name="li_percentage">Percentage : %s\%</string>
     <string name="li_total">Total : %s</string>
     <string name="li_semester">Semester : %s</string>
     <string name="li_internal">Internal : %s</string>

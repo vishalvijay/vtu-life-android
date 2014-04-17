@@ -162,8 +162,8 @@ public class UploadFileFragment extends Fragment implements TextWatcher,
 					Intent.createChooser(i, getString(R.string.send_email)),
 					SEND_EMAIL);
 		} catch (android.content.ActivityNotFoundException ex) {
-			activity.showCrouton(R.string.email_client_missing,
-					Style.INFO, true);
+			activity.showCrouton(R.string.email_client_missing, Style.INFO,
+					true);
 		}
 	}
 
@@ -178,8 +178,8 @@ public class UploadFileFragment extends Fragment implements TextWatcher,
 		try {
 			startActivityForResult(intent, BROUSER_FILE);
 		} catch (ActivityNotFoundException e) {
-			activity.showCrouton(R.string.file_browser_not_found,
-					Style.INFO, true);
+			activity.showCrouton(R.string.file_browser_not_found, Style.INFO,
+					true);
 		}
 	}
 
@@ -189,8 +189,8 @@ public class UploadFileFragment extends Fragment implements TextWatcher,
 				&& !isEditTextEmpty(subjectEditText))
 			sendMail();
 		else {
-			activity.showCrouton(R.string.provide_all_details,
-					Style.CONFIRM, true);
+			activity.showCrouton(R.string.provide_all_details, Style.CONFIRM,
+					true);
 			setErrorOnEditText(true);
 		}
 	}
@@ -227,8 +227,8 @@ public class UploadFileFragment extends Fragment implements TextWatcher,
 	}
 
 	@Override
-	public String getTitle() {
-		return UploadFileFragment.getFeatureName(activity);
+	public String getTitle(Context context) {
+		return UploadFileFragment.getFeatureName(context);
 	}
 
 	@Override

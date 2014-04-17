@@ -85,11 +85,11 @@
                     app:isItalic="true" />
 
                 <com.V4Creations.vtulife.view.customviews.CustomeTextView
+                    android:id="@+id/emailTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:autoLink="email"
                     android:singleLine="true"
-                    android:text="@string/email"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textColor="@color/solid_white"
                     app:isItalic="true" />

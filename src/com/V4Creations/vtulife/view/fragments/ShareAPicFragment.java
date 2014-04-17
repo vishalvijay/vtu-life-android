@@ -329,8 +329,8 @@ public class ShareAPicFragment extends Fragment implements TextWatcher,
 	}
 
 	@Override
-	public String getTitle() {
-		return ShareAPicFragment.getFeatureName(activity);
+	public String getTitle(Context context) {
+		return ShareAPicFragment.getFeatureName(context);
 	}
 
 	@Override

@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.V4Creations.vtulife"
     android:installLocation="auto"
-    android:versionCode="8010"
+    android:versionCode="8100"
     android:versionName="3.5.1- Beta" >
 
     <uses-sdk

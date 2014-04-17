@@ -14,6 +14,7 @@ import com.V4Creations.vtulife.controller.adapters.ReferredLibraryAdapter;
 import com.V4Creations.vtulife.model.ReferredLibrary;
 import com.V4Creations.vtulife.util.BugSenseManager;
 import com.V4Creations.vtulife.util.GoogleAnalyticsManager;
+import com.V4Creations.vtulife.util.VTULifeConstance;
 import com.V4Creations.vtulife.util.system.SystemFeatureChecker;
 
 public class VTULifeAboutActivity extends ActionBarActivity {
@@ -26,6 +27,10 @@ public class VTULifeAboutActivity extends ActionBarActivity {
 		BugSenseManager.initBugSense(this);
 		setContentView(R.layout.activity_about);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		initViews();
+	}
+
+	private void initViews() {
 		initListView();
 		TextView marqueeTextView = (TextView) this
 				.findViewById(R.id.marqueueTextView);
@@ -34,6 +39,9 @@ public class VTULifeAboutActivity extends ActionBarActivity {
 		String versionString = getString(R.string.version,
 				SystemFeatureChecker.getAppVersionName(getApplicationContext()));
 		versionTextView.setText(versionString);
+		TextView emailTextView = (TextView) findViewById(R.id.emailTextView);
+		emailTextView.setText(getString(R.string.email) + " : "
+				+ VTULifeConstance.VTU_LIFE_EMAILS[0]);
 	}
 
 	private void initListView() {
@@ -45,7 +53,8 @@ public class VTULifeAboutActivity extends ActionBarActivity {
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
-				ReferredLibrary referredLibraryModel = mAdapter.getItem(position);
+				ReferredLibrary referredLibraryModel = mAdapter
+						.getItem(position);
 				referredLibraryModel.setUrlVisible(!referredLibraryModel
 						.isUrlVisible());
 				mAdapter.notifyDataSetChanged();
