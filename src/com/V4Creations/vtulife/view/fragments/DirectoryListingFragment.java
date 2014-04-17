@@ -24,7 +24,7 @@ import com.V4Creations.vtulife.model.ResourceStackItem;
 import com.V4Creations.vtulife.model.interfaces.ResourceLoaderInterface;
 import com.V4Creations.vtulife.util.GoogleAnalyticsManager;
 import com.V4Creations.vtulife.view.activity.VTULifeMainActivity;
-import com.google.analytics.tracking.android.Tracker;
+import com.google.analytics.tracking.android.EasyTracker;
 
 import de.keyboardsurfer.android.widget.crouton.Style;
 
@@ -38,7 +38,7 @@ public class DirectoryListingFragment extends ListFragment implements
 	private LinearLayout progressLinearLayout;
 	private ProgressBar progressBar;
 	private TextView progressTextView;
-	private Tracker mTracker;
+	private EasyTracker mEasyTracker;
 	private ResourceLoaderManager mResourceLoaderManager;
 
 	public DirectoryListingFragment() {
@@ -61,7 +61,7 @@ public class DirectoryListingFragment extends ListFragment implements
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		mTracker = GoogleAnalyticsManager.getGoogleAnalyticsTracker(activity);
+		mEasyTracker = GoogleAnalyticsManager.getGoogleAnalyticsTracker(activity);
 		initView();
 		hideProgressLinearLayout();
 		initResourceLoader();
@@ -90,7 +90,7 @@ public class DirectoryListingFragment extends ListFragment implements
 	public void onListItemClick(ListView l, View view, int position, long id) {
 		super.onListItemClick(l, view, position, id);
 		ResourceItem resourceItem = mAdapter.getItem(position);
-		GoogleAnalyticsManager.infomGoogleAnalytics(mTracker,
+		GoogleAnalyticsManager.infomGoogleAnalytics(mEasyTracker,
 				GoogleAnalyticsManager.CATEGORY_NOTES,
 				GoogleAnalyticsManager.ACTION_FOLDER, resourceItem.name, 0L);
 		if (resourceItem.ext.equals("dir")) {
@@ -213,7 +213,7 @@ public class DirectoryListingFragment extends ListFragment implements
 		mActionBarStatus.subTitle = null;
 		callActionBarReflect();
 		showReload();
-		GoogleAnalyticsManager.infomGoogleAnalytics(mTracker,
+		GoogleAnalyticsManager.infomGoogleAnalytics(mEasyTracker,
 				GoogleAnalyticsManager.CATEGORY_NOTES,
 				GoogleAnalyticsManager.ACTION_NETWORK_ERROR, trackMessage, 0L);
 	}

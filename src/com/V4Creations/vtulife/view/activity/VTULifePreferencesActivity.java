@@ -16,7 +16,7 @@ import com.V4Creations.vtulife.controller.db.VTULifeDataBase;
 import com.V4Creations.vtulife.util.BugSenseManager;
 import com.V4Creations.vtulife.util.GoogleAnalyticsManager;
 import com.V4Creations.vtulife.util.Settings;
-import com.google.analytics.tracking.android.Tracker;
+import com.google.analytics.tracking.android.EasyTracker;
 
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
@@ -25,7 +25,7 @@ public class VTULifePreferencesActivity extends ActionBarActivity {
 	private CompoundButton mFullResultDetailsCompoundButton,
 			mSortedResultCompoundButton, mDeepSearchResultCompoundButton;
 	private Spinner mFavoritePageSpinner;
-	private Tracker mTracker;
+	private EasyTracker mEasyTracker;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,7 @@ public class VTULifePreferencesActivity extends ActionBarActivity {
 		BugSenseManager.initBugSense(this);
 		setContentView(R.layout.activity_preference);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		mTracker = GoogleAnalyticsManager
+		mEasyTracker = GoogleAnalyticsManager
 				.getGoogleAnalyticsTracker(getApplicationContext());
 		initViews();
 	}
@@ -62,7 +62,8 @@ public class VTULifePreferencesActivity extends ActionBarActivity {
 							boolean isChecked) {
 						Settings.setFullSemResultStatus(
 								getApplicationContext(), isChecked);
-						GoogleAnalyticsManager.infomGoogleAnalytics(mTracker,
+						GoogleAnalyticsManager.infomGoogleAnalytics(
+								mEasyTracker,
 								GoogleAnalyticsManager.CATEGORY_PREFERENCES,
 								GoogleAnalyticsManager.ACTION_FULL_RESULT_VIEW,
 								isChecked ? "true" : "false", 0L);
@@ -76,7 +77,8 @@ public class VTULifePreferencesActivity extends ActionBarActivity {
 							boolean isChecked) {
 						Settings.setSortedResultStatus(getApplicationContext(),
 								isChecked);
-						GoogleAnalyticsManager.infomGoogleAnalytics(mTracker,
+						GoogleAnalyticsManager.infomGoogleAnalytics(
+								mEasyTracker,
 								GoogleAnalyticsManager.CATEGORY_PREFERENCES,
 								GoogleAnalyticsManager.ACTION_SORTED_RESULT,
 								isChecked ? "true" : "false", 0L);
@@ -92,7 +94,7 @@ public class VTULifePreferencesActivity extends ActionBarActivity {
 								isChecked);
 						GoogleAnalyticsManager
 								.infomGoogleAnalytics(
-										mTracker,
+										mEasyTracker,
 										GoogleAnalyticsManager.CATEGORY_PREFERENCES,
 										GoogleAnalyticsManager.ACTION_DEEP_RESULT_SEARCH,
 										isChecked ? "true" : "false", 0L);
@@ -111,7 +113,7 @@ public class VTULifePreferencesActivity extends ActionBarActivity {
 						Settings.setFavoritePage(getApplicationContext(),
 								position);
 						GoogleAnalyticsManager.infomGoogleAnalytics(
-								mTracker,
+								mEasyTracker,
 								GoogleAnalyticsManager.CATEGORY_PREFERENCES,
 								GoogleAnalyticsManager.ACTION_FAVORITE_PAGE,
 								getResources().getStringArray(
