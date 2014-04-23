@@ -131,5 +131,7 @@
     <string name="file_browser_not_found">File browser not found</string>
     <string name="department_required">Enter department</string>
     <string name="subject_required">Enter subject</string>
+    <string name="achievements">Achievements</string>
+    <string name="_1st_winning_app_in_appinc_2013_nhttp_goo_gl_c6s3j4">1st winning app in AppInC 2013\\nhttp://goo.gl/C6s3J4</string>
 
 </resources>

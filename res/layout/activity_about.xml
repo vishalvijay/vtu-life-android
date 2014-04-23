@@ -22,6 +22,29 @@
         android:layout_weight="1"
         android:scrollbars="none" />
 
+    <com.V4Creations.vtulife.view.customviews.CustomeTextView
+        android:id="@+id/achivementsTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/box_background"
+        android:text="@string/achievements"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <com.V4Creations.vtulife.view.customviews.CustomeTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autoLink="web"
+        android:drawableLeft="@drawable/win"
+        android:padding="@dimen/common_padding"
+        android:text="@string/_1st_winning_app_in_appinc_2013_nhttp_goo_gl_c6s3j4"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@drawable/box_background" />
+
     <LinearLayout
         android:id="@+id/aboutLinearLayout"
         android:layout_width="match_parent"
