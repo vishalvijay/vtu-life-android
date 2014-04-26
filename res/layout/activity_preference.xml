@@ -43,22 +43,21 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal" >
 
-                    <FrameLayout
-                        android:id="@+id/compoundFrameLayout1"
+                    <org.jraf.android.backport.switchwidget.Switch
+                        android:id="@+id/fullResultViewCompoundButton"
+                        style="@style/Widget.Holo.Light.CompoundButton.Switch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true" >
-
-                        <include layout="@layout/compound_button" />
-                    </FrameLayout>
+                        android:layout_centerVertical="true"
+                        android:padding="2dp" />
 
                     <com.V4Creations.vtulife.view.customviews.CustomeTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
-                        android:layout_toLeftOf="@id/compoundFrameLayout1"
+                        android:layout_toLeftOf="@id/fullResultViewCompoundButton"
                         android:text="@string/to_see_all_semester_result_of_each_student_in_class_result"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:textColor="@color/text_muted"
@@ -84,22 +83,21 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal" >
 
-                    <FrameLayout
-                        android:id="@+id/compoundFrameLayout2"
+                    <org.jraf.android.backport.switchwidget.Switch
+                        android:id="@+id/sortedResultCompoundButton"
+                        style="@style/Widget.Holo.Light.CompoundButton.Switch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true" >
-
-                        <include layout="@layout/compound_button" />
-                    </FrameLayout>
+                        android:layout_centerVertical="true"
+                        android:padding="2dp" />
 
                     <com.V4Creations.vtulife.view.customviews.CustomeTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
-                        android:layout_toLeftOf="@id/compoundFrameLayout2"
+                        android:layout_toLeftOf="@id/sortedResultCompoundButton"
                         android:text="@string/sort_class_result_based_on_usn_but_doing_so_will_make_result_featching_slow_effective_only_in_android_3_0_and_above_"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:textColor="@color/text_muted"
@@ -125,15 +123,14 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal" >
 
-                    <FrameLayout
-                        android:id="@+id/compoundFrameLayout3"
+                    <org.jraf.android.backport.switchwidget.Switch
+                        android:id="@+id/deepSearchCompoundButton"
+                        style="@style/Widget.Holo.Light.CompoundButton.Switch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
-                        android:layout_centerVertical="true" >
-
-                        <include layout="@layout/compound_button" />
-                    </FrameLayout>
+                        android:layout_centerVertical="true"
+                        android:padding="2dp" />
 
                     <com.V4Creations.vtulife.view.customviews.CustomeTextView
                         android:id="@+id/subTitile"
@@ -141,7 +138,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentLeft="true"
                         android:layout_centerVertical="true"
-                        android:layout_toLeftOf="@id/compoundFrameLayout3"
+                        android:layout_toLeftOf="@id/deepSearchCompoundButton"
                         android:text="@string/this_is_an_expensive_operation_better_disable_this_unless_you_realy_want"
                         android:textAppearance="?android:attr/textAppearanceSmall"
                         android:textColor="@color/text_muted"

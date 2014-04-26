@@ -1,5 +1,7 @@
 package com.V4Creations.vtulife.view.activity;
 
+import org.jraf.android.backport.switchwidget.Switch;
+
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.MenuItem;
@@ -22,8 +24,8 @@ import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
 
 public class VTULifePreferencesActivity extends ActionBarActivity {
-	private CompoundButton mFullResultDetailsCompoundButton,
-			mSortedResultCompoundButton, mDeepSearchResultCompoundButton;
+	private Switch mFullResultDetailsSwitch, mSortedResultSwitch,
+			mDeepSearchResultSwitch;
 	private Spinner mFavoritePageSpinner;
 	private EasyTracker mEasyTracker;
 
@@ -40,21 +42,18 @@ public class VTULifePreferencesActivity extends ActionBarActivity {
 
 	private void initViews() {
 		mFavoritePageSpinner = (Spinner) findViewById(R.id.favoritePageSpinner);
-		mFullResultDetailsCompoundButton = (CompoundButton) findViewById(
-				R.id.compoundFrameLayout1).findViewById(R.id.compoundButton);
-		mSortedResultCompoundButton = (CompoundButton) findViewById(
-				R.id.compoundFrameLayout2).findViewById(R.id.compoundButton);
-		mDeepSearchResultCompoundButton = (CompoundButton) findViewById(
-				R.id.compoundFrameLayout3).findViewById(R.id.compoundButton);
+		mFullResultDetailsSwitch = (Switch) findViewById(R.id.fullResultViewCompoundButton);
+		mSortedResultSwitch = (Switch) findViewById(R.id.sortedResultCompoundButton);
+		mDeepSearchResultSwitch = (Switch) findViewById(R.id.deepSearchCompoundButton);
 		mFavoritePageSpinner.setSelection(Settings
 				.getFavoritePage(getApplicationContext()));
-		mFullResultDetailsCompoundButton.setChecked(Settings
+		mFullResultDetailsSwitch.setChecked(Settings
 				.isFullSemResult(getApplicationContext()));
-		mSortedResultCompoundButton.setChecked(Settings
+		mSortedResultSwitch.setChecked(Settings
 				.isSortedResult(getApplicationContext()));
-		mDeepSearchResultCompoundButton.setChecked(Settings
+		mDeepSearchResultSwitch.setChecked(Settings
 				.isDeepSearch(getApplicationContext()));
-		mFullResultDetailsCompoundButton
+		mFullResultDetailsSwitch
 				.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
 					@Override
@@ -69,7 +68,7 @@ public class VTULifePreferencesActivity extends ActionBarActivity {
 								isChecked ? "true" : "false", 0L);
 					}
 				});
-		mSortedResultCompoundButton
+		mSortedResultSwitch
 				.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
 					@Override
@@ -84,7 +83,7 @@ public class VTULifePreferencesActivity extends ActionBarActivity {
 								isChecked ? "true" : "false", 0L);
 					}
 				});
-		mDeepSearchResultCompoundButton
+		mDeepSearchResultSwitch
 				.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
 
 					@Override
