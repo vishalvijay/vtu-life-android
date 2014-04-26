@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 
 import com.google.analytics.tracking.android.EasyTracker;
-import com.google.analytics.tracking.android.Tracker;
+import com.google.analytics.tracking.android.MapBuilder;
 
 public class GoogleAnalyticsManager {
 	public static String CATEGORY_RESULT = "result";
@@ -21,24 +21,24 @@ public class GoogleAnalyticsManager {
 	public static String ACTION_FAVORITE_PAGE = "favorite_page";
 	public static String ACTION_NETWORK_ERROR = "network_error";
 
-	public static void infomGoogleAnalytics(Tracker tracker, String category,
-			String action, String label, long value) {
+	public static void infomGoogleAnalytics(EasyTracker easyTracker,
+			String category, String action, String label, long value) {
 		if (VTULifeUtils.isProduction)
-			tracker.sendEvent(category, action, label, value);
+			easyTracker.send(MapBuilder.createEvent(category, action, label,
+					value).build());
 	}
 
-	public static Tracker getGoogleAnalyticsTracker(Context context) {
-		EasyTracker.getInstance().setContext(context);
-		return EasyTracker.getTracker();
+	public static EasyTracker getGoogleAnalyticsTracker(Context context) {
+		return EasyTracker.getInstance(context);
 	}
 
 	public static void startGoogleAnalyticsForActivity(Activity activity) {
 		if (VTULifeUtils.isProduction)
-			EasyTracker.getInstance().activityStart(activity);
+			EasyTracker.getInstance(activity).activityStart(activity);
 	}
 
 	public static void stopGoogleAnalyticsForActivity(Activity activity) {
 		if (VTULifeUtils.isProduction)
-			EasyTracker.getInstance().activityStop(activity);
+			EasyTracker.getInstance(activity).activityStop(activity);
 	}
 }

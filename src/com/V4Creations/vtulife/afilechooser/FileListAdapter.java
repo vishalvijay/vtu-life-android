@@ -1,130 +1,92 @@
-/* 
- * Copyright (C) 2012 Paul Burke
- * 
- * Licensed under the Apache License, Version 2.0 (the "License"); 
- * you may not use this file except in compliance with the License. 
- * You may obtain a copy of the License at 
- * 
- *      http://www.apache.org/licenses/LICENSE-2.0 
- * 
- * Unless required by applicable law or agreed to in writing, software 
- * distributed under the License is distributed on an "AS IS" BASIS, 
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. 
- * See the License for the specific language governing permissions and 
- * limitations under the License. 
- */
-
 package com.V4Creations.vtulife.afilechooser;
 
 import java.io.File;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Locale;
 
 import android.content.Context;
-import android.view.LayoutInflater;
+import android.os.AsyncTask;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.V4Creations.vtulife.R;
+import com.V4Creations.vtulife.controller.adapters.SupportArrayAdapter;
 
-/**
- * List adapter for Files.
- * 
- * @version 2013-06-25
- * 
- * @author paulburke (ipaulpro)
- * 
- */
-public class FileListAdapter extends BaseAdapter {
+public class FileListAdapter extends SupportArrayAdapter<File> {
 
 	private final static int ICON_FOLDER = R.drawable.folder;
 
-	private List<File> mFiles = new ArrayList<File>();
-	private final LayoutInflater mInflater;
-
 	public FileListAdapter(Context context) {
-		mInflater = LayoutInflater.from(context);
+		super(context);
 	}
 
-	public ArrayList<File> getListItems() {
-		return (ArrayList<File>) mFiles;
+	public void setListItems(ArrayList<File> files) {
+		validateFileWRTExtention(files);
+		clear();
+		supportAddAll(files);
 	}
 
-	public void setListItems(List<File> files) {
-		this.mFiles = files;
-		validateFileWRTExtention();
-		notifyDataSetChanged();
-	}
-
-	private void validateFileWRTExtention() {
+	private void validateFileWRTExtention(ArrayList<File> files) {
 		ArrayList<String> extentionsArrayList = FileChooserActivity.EXTENSIONS;
 		if (extentionsArrayList != null) {
-			for (int i = 0; i < mFiles.size(); i++) {
+			for (int i = 0; i < files.size(); i++) {
 				boolean isExtentionExist = false;
-				for (int j = 0; j < extentionsArrayList.size(); j++)
-					if (getExtention(mFiles.get(i).getAbsolutePath()).matches(
-							"(?i)" + extentionsArrayList.get(j))) {
+				for (String ext : extentionsArrayList)
+					if (getExtention(files.get(i).getAbsolutePath()).matches(
+							"(?i)" + ext)) {
 						isExtentionExist = true;
 						break;
 					}
-				if (!isExtentionExist && !mFiles.get(i).isDirectory())
-					mFiles.remove(i--);
+				if (!isExtentionExist && !files.get(i).isDirectory())
+					files.remove(i--);
 			}
 		}
 	}
 
 	@Override
-	public int getCount() {
-		return mFiles.size();
-	}
-
-	public void add(File file) {
-		mFiles.add(file);
-		notifyDataSetChanged();
-	}
-
-	public void clear() {
-		mFiles.clear();
-		notifyDataSetChanged();
-	}
-
-	@Override
-	public Object getItem(int position) {
-		return mFiles.get(position);
-	}
-
-	@Override
-	public long getItemId(int position) {
-		return position;
-	}
-
-	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
-		View row = convertView;
-		ViewHolder holder = null;
-
-		if (row == null) {
-			row = mInflater.inflate(R.layout.file, parent, false);
-			holder = new ViewHolder(row);
-			row.setTag(holder);
-		} else {
-			// Reduce, reuse, recycle!
-			holder = (ViewHolder) row.getTag();
-		}
-
-		// Get the file at the current position
-		final File file = (File) getItem(position);
-
-		// Set the TextView as the file name
-		holder.nameView.setText(file.getName());
+		File file = getItem(position);
+		ViewHolder viewHolder;
+		if (convertView == null) {
+			convertView = getLayoutInflater().inflate(
+					R.layout.list_directory_item, null);
+			viewHolder = new ViewHolder();
+			viewHolder.nameTextView = (TextView) convertView
+					.findViewById(R.id.nameTextView);
+			viewHolder.sizeTextView = (TextView) convertView
+					.findViewById(R.id.sizeTextView);
+			viewHolder.dateTextView = (TextView) convertView
+					.findViewById(R.id.dateTextView);
+			viewHolder.iconImageView = (ImageView) convertView
+					.findViewById(R.id.iconImageView);
+			convertView.setTag(viewHolder);
+		} else
+			viewHolder = (ViewHolder) convertView.getTag();
 		int fileIcon = selectImage(getExtention(file.getAbsolutePath()));
-		// If the item is not a directory, use the file icon
-		holder.iconView.setImageResource(file.isDirectory() ? ICON_FOLDER
-				: fileIcon);
-		return row;
+		viewHolder.iconImageView
+				.setImageResource(file.isDirectory() ? ICON_FOLDER : fileIcon);
+		viewHolder.nameTextView.setText(file.getName());
+		viewHolder.sizeTextView.setText(readableFileSize(file.length()));
+		viewHolder.sizeTextView.setTag(position);
+		if (file.isDirectory())
+			setFolderSize(viewHolder.sizeTextView, file, position);
+		viewHolder.dateTextView
+				.setText(getLastModifiedDate(file.lastModified()));
+		int color = R.color.odd_color;
+		if (position % 2 == 0)
+			color = R.color.even_color;
+		convertView.setBackgroundResource(color);
+		return convertView;
+	}
+
+	private CharSequence getLastModifiedDate(long lastModified) {
+		SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss",
+				Locale.getDefault());
+		return sdf.format(lastModified);
 	}
 
 	private String getExtention(String fileNameString) {
@@ -181,13 +143,50 @@ public class FileListAdapter extends BaseAdapter {
 			return R.drawable.unknown;
 	}
 
-	static class ViewHolder {
-		TextView nameView;
-		ImageView iconView;
+	public static String readableFileSize(long size) {
+		if (size <= 0)
+			return "0";
+		final String[] units = new String[] { "B", "KB", "MB", "GB", "TB" };
+		int digitGroups = (int) (Math.log10(size) / Math.log10(1024));
+		return new DecimalFormat("#,##0.#").format(size
+				/ Math.pow(1024, digitGroups))
+				+ " " + units[digitGroups];
+	}
 
-		ViewHolder(View row) {
-			nameView = (TextView) row.findViewById(R.id.file_name);
-			iconView = (ImageView) row.findViewById(R.id.file_icon);
-		}
+	private void setFolderSize(final TextView sizeTextView, final File file,
+			final int position) {
+		new AsyncTask<Void, Void, Long>() {
+
+			private long folderSize(File directory) {
+				long length = 0;
+				for (File file : directory.listFiles()) {
+					if (file.isFile())
+						length += file.length();
+					else
+						length += folderSize(file);
+				}
+				return length;
+			}
+
+			@Override
+			protected Long doInBackground(Void... params) {
+				return folderSize(file);
+			}
+
+			@Override
+			protected void onPostExecute(Long result) {
+				super.onPostExecute(result);
+				int pos = (Integer) sizeTextView.getTag();
+				if (pos == position)
+					sizeTextView.setText(readableFileSize(result));
+			}
+		}.execute();
+	}
+
+	private static class ViewHolder {
+		TextView nameTextView;
+		TextView sizeTextView;
+		TextView dateTextView;
+		ImageView iconImageView;
 	}
 }

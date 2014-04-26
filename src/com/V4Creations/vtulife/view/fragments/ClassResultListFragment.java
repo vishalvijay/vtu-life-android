@@ -31,7 +31,7 @@ import com.V4Creations.vtulife.model.interfaces.ClassResultLoaderInterface;
 import com.V4Creations.vtulife.model.interfaces.RefreshListener;
 import com.V4Creations.vtulife.util.GoogleAnalyticsManager;
 import com.V4Creations.vtulife.view.activity.VTULifeMainActivity;
-import com.google.analytics.tracking.android.Tracker;
+import com.google.analytics.tracking.android.EasyTracker;
 
 import de.keyboardsurfer.android.widget.crouton.Crouton;
 import de.keyboardsurfer.android.widget.crouton.Style;
@@ -48,7 +48,7 @@ public class ClassResultListFragment extends ListFragment implements
 	private VTULifeMainActivity activity;
 	private ResultAdapter mAdapter;
 	private ActionBarStatus mActionBarStatus;
-	private Tracker mTracker;
+	private EasyTracker mEasyTracker;
 	private ClassResultLoaderManager mClassResultLoaderManager;
 	private boolean isClassUsnSaved = false;
 
@@ -62,13 +62,14 @@ public class ClassResultListFragment extends ListFragment implements
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		activity = (VTULifeMainActivity) getActivity();
-		return inflater.inflate(R.layout.fragemnt_class_result, null);
+		return inflater.inflate(R.layout.fragment_class_result, null);
 	}
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		mTracker = GoogleAnalyticsManager.getGoogleAnalyticsTracker(activity);
+		mEasyTracker = GoogleAnalyticsManager
+				.getGoogleAnalyticsTracker(activity);
 		initView();
 	}
 
@@ -165,7 +166,7 @@ public class ClassResultListFragment extends ListFragment implements
 	}
 
 	protected void saveAndRefreshUsnHistory() {
-		GoogleAnalyticsManager.infomGoogleAnalytics(mTracker,
+		GoogleAnalyticsManager.infomGoogleAnalytics(mEasyTracker,
 				GoogleAnalyticsManager.CATEGORY_RESULT,
 				GoogleAnalyticsManager.ACTION_CLASS_RESULT,
 				mClassResultLoaderManager.getClassUsn(), 0L);
@@ -175,8 +176,8 @@ public class ClassResultListFragment extends ListFragment implements
 	}
 
 	@Override
-	public String getTitle() {
-		return ClassResultListFragment.getFeatureName(activity);
+	public String getTitle(Context context) {
+		return ClassResultListFragment.getFeatureName(context);
 	}
 
 	@Override
@@ -219,7 +220,7 @@ public class ClassResultListFragment extends ListFragment implements
 			int statusCode, String usn) {
 		activity.showCrouton(message + "(" + usn + ")", Style.ALERT, false);
 		if (!trackMessage.equals(""))
-			GoogleAnalyticsManager.infomGoogleAnalytics(mTracker,
+			GoogleAnalyticsManager.infomGoogleAnalytics(mEasyTracker,
 					GoogleAnalyticsManager.CATEGORY_RESULT,
 					GoogleAnalyticsManager.ACTION_NETWORK_ERROR, trackMessage
 							+ "-" + statusCode, 0L);

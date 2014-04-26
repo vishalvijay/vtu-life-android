@@ -23,7 +23,6 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.List;
 
 import android.annotation.SuppressLint;
 import android.content.ContentResolver;
@@ -443,7 +442,7 @@ public class FileUtils {
 
 	 * @author paulburke
 	 */
-	public static List<File> getFileList(String path) {
+	public static ArrayList<File> getFileList(String path) {
 		ArrayList<File> list = new ArrayList<File>();
 
 		// Current directory File instance

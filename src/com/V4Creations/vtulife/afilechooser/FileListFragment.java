@@ -17,7 +17,7 @@
 package com.V4Creations.vtulife.afilechooser;
 
 import java.io.File;
-import java.util.List;
+import java.util.ArrayList;
 
 import android.os.Bundle;
 import android.os.Environment;
@@ -38,7 +38,7 @@ import com.V4Creations.vtulife.R;
  * 
  */
 public class FileListFragment extends ListFragment implements
-		LoaderManager.LoaderCallbacks<List<File>> {
+		LoaderManager.LoaderCallbacks<ArrayList<File>> {
 
 	private static final int LOADER_ID = 0;
 
@@ -93,12 +93,13 @@ public class FileListFragment extends ListFragment implements
 	}
 
 	@Override
-	public Loader<List<File>> onCreateLoader(int id, Bundle args) {
+	public Loader<ArrayList<File>> onCreateLoader(int id, Bundle args) {
 		return new FileLoader(getActivity(), mPath);
 	}
 
 	@Override
-	public void onLoadFinished(Loader<List<File>> loader, List<File> data) {
+	public void onLoadFinished(Loader<ArrayList<File>> loader,
+			ArrayList<File> data) {
 		mAdapter.setListItems(data);
 
 		if (isResumed())
@@ -108,7 +109,7 @@ public class FileListFragment extends ListFragment implements
 	}
 
 	@Override
-	public void onLoaderReset(Loader<List<File>> loader) {
+	public void onLoaderReset(Loader<ArrayList<File>> loader) {
 		mAdapter.clear();
 	}
 }

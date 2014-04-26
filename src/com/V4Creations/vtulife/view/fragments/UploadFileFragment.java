@@ -27,6 +27,7 @@ import com.V4Creations.vtulife.R;
 import com.V4Creations.vtulife.afilechooser.utils.FileUtils;
 import com.V4Creations.vtulife.controller.adapters.VTULifeFragmentAdapter.FragmentInfo;
 import com.V4Creations.vtulife.model.ActionBarStatus;
+import com.V4Creations.vtulife.util.VTULifeConstance;
 import com.V4Creations.vtulife.view.activity.VTULifeMainActivity;
 
 import de.keyboardsurfer.android.widget.crouton.Style;
@@ -60,7 +61,7 @@ public class UploadFileFragment extends Fragment implements TextWatcher,
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		activity = (VTULifeMainActivity) getActivity();
-		return inflater.inflate(R.layout.fragemnt_upload_file, null);
+		return inflater.inflate(R.layout.fragment_upload_file, null);
 	}
 
 	@Override
@@ -162,14 +163,14 @@ public class UploadFileFragment extends Fragment implements TextWatcher,
 					Intent.createChooser(i, getString(R.string.send_email)),
 					SEND_EMAIL);
 		} catch (android.content.ActivityNotFoundException ex) {
-			activity.showCrouton(R.string.email_client_missing,
-					Style.INFO, true);
+			activity.showCrouton(R.string.email_client_missing, Style.INFO,
+					true);
 		}
 	}
 
 	public void getFile() {
 		Intent target = FileUtils.createGetContentIntent();
-		target.setPackage("com.V4Creations.vtulife");
+		target.setPackage(VTULifeConstance.PACKAGE);
 		List<String> extent = new ArrayList<String>();
 		Collections.addAll(extent, allowedFileTypeStrings);
 		target.putStringArrayListExtra("ext", (ArrayList<String>) extent);
@@ -178,8 +179,8 @@ public class UploadFileFragment extends Fragment implements TextWatcher,
 		try {
 			startActivityForResult(intent, BROUSER_FILE);
 		} catch (ActivityNotFoundException e) {
-			activity.showCrouton(R.string.file_browser_not_found,
-					Style.INFO, true);
+			activity.showCrouton(R.string.file_browser_not_found, Style.INFO,
+					true);
 		}
 	}
 
@@ -189,8 +190,8 @@ public class UploadFileFragment extends Fragment implements TextWatcher,
 				&& !isEditTextEmpty(subjectEditText))
 			sendMail();
 		else {
-			activity.showCrouton(R.string.provide_all_details,
-					Style.CONFIRM, true);
+			activity.showCrouton(R.string.provide_all_details, Style.CONFIRM,
+					true);
 			setErrorOnEditText(true);
 		}
 	}
@@ -227,8 +228,8 @@ public class UploadFileFragment extends Fragment implements TextWatcher,
 	}
 
 	@Override
-	public String getTitle() {
-		return UploadFileFragment.getFeatureName(activity);
+	public String getTitle(Context context) {
+		return UploadFileFragment.getFeatureName(context);
 	}
 
 	@Override

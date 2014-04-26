@@ -31,7 +31,7 @@ import com.V4Creations.vtulife.model.interfaces.RefreshListener;
 import com.V4Creations.vtulife.model.interfaces.ResultLoadedInterface;
 import com.V4Creations.vtulife.util.GoogleAnalyticsManager;
 import com.V4Creations.vtulife.view.activity.VTULifeMainActivity;
-import com.google.analytics.tracking.android.Tracker;
+import com.google.analytics.tracking.android.EasyTracker;
 
 import de.keyboardsurfer.android.widget.crouton.Style;
 
@@ -47,7 +47,7 @@ public class FastResultListFragment extends ListFragment implements
 	private VTULifeMainActivity activity;
 	private ResultAdapter mAdapter;
 	private ActionBarStatus mActionBarStatus;
-	private Tracker mTracker;
+	private EasyTracker mEasyTracker;
 	private ResultLoaderManager mResultLoaderManager;
 
 	private final String usnRegx = "[1-4][a-zA-Z][a-zA-Z][0-9][0-9][a-zA-Z][a-zA-Z][a-zA-Z0-9][0-9][0-9]";
@@ -60,13 +60,13 @@ public class FastResultListFragment extends ListFragment implements
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 		activity = (VTULifeMainActivity) getActivity();
-		return inflater.inflate(R.layout.fragemnt_fast_result, null);
+		return inflater.inflate(R.layout.fragment_fast_result, null);
 	}
 
 	@Override
 	public void onActivityCreated(Bundle savedInstanceState) {
 		super.onActivityCreated(savedInstanceState);
-		mTracker = GoogleAnalyticsManager.getGoogleAnalyticsTracker(activity);
+		mEasyTracker = GoogleAnalyticsManager.getGoogleAnalyticsTracker(activity);
 		initView();
 	}
 
@@ -162,7 +162,7 @@ public class FastResultListFragment extends ListFragment implements
 	}
 
 	protected void saveAndRefreshUsnHistory(String usn) {
-		GoogleAnalyticsManager.infomGoogleAnalytics(mTracker,
+		GoogleAnalyticsManager.infomGoogleAnalytics(mEasyTracker,
 				GoogleAnalyticsManager.CATEGORY_RESULT,
 				GoogleAnalyticsManager.ACTION_FAST_RESULT, usn, 0L);
 		VTULifeDataBase.setUSNHistory(activity, usn);
@@ -170,8 +170,8 @@ public class FastResultListFragment extends ListFragment implements
 	}
 
 	@Override
-	public String getTitle() {
-		return FastResultListFragment.getFeatureName(activity);
+	public String getTitle(Context context) {
+		return FastResultListFragment.getFeatureName(context);
 	}
 
 	@Override
@@ -213,7 +213,7 @@ public class FastResultListFragment extends ListFragment implements
 		stopLoading();
 		activity.showCrouton(message, Style.ALERT, false);
 		if (!trackMessage.equals(""))
-			GoogleAnalyticsManager.infomGoogleAnalytics(mTracker,
+			GoogleAnalyticsManager.infomGoogleAnalytics(mEasyTracker,
 					GoogleAnalyticsManager.CATEGORY_RESULT,
 					GoogleAnalyticsManager.ACTION_NETWORK_ERROR, trackMessage
 							+ "-" + statusCode, 0L);

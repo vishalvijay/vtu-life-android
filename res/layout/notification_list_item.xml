@@ -9,11 +9,11 @@
     android:padding="@dimen/common_padding" >
 
     <ImageView
-        android:contentDescription="@string/notification_icon"
         android:id="@+id/notificationTypeImageView"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:background="@color/theme_color"
+        android:contentDescription="@string/notification_icon"
         android:padding="@dimen/common_padding"
         android:src="@drawable/ic_action_about" />
 
@@ -35,9 +35,9 @@
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_margin="@dimen/common_padding"
+                android:contentDescription="@string/download_app_button"
                 android:focusable="false"
                 android:focusableInTouchMode="false"
-                android:contentDescription="@string/download_app_button"
                 android:src="@drawable/ic_action_download_disabled" />
 
             <com.V4Creations.vtulife.view.customviews.CustomeTextView
@@ -57,6 +57,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_below="@id/titleTextView"
                 android:layout_toLeftOf="@id/downloadImageButton"
+                android:autoLink="all"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="@color/text_muted" />
         </RelativeLayout>

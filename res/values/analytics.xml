@@ -5,4 +5,5 @@
 
     <bool name="ga_autoActivityTracking">true</bool>
     <bool name="ga_reportUncaughtExceptions">true</bool>
+
 </resources>

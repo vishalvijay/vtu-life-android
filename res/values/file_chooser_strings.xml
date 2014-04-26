@@ -15,9 +15,9 @@
  * limitations under the License.
  -->
 <resources>
-    <string name="empty_directory">Empty Directory</string>
+    <string name="empty_directory">Empty folder or allowed file are not available.</string>
     <string name="storage_removed">Storage was removed or unmounted.</string>
     <string name="choose_file">Select a file</string>
-    <string name="error_selecting_file">Error selecting File</string>  
+    <string name="error_selecting_file">Error selecting file</string>  
     <string name="file_type_image">File or folder icon</string>  
 </resources>

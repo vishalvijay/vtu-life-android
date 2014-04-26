@@ -17,6 +17,7 @@
 package com.V4Creations.vtulife.afilechooser;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 
 import android.content.Context;
@@ -33,7 +34,7 @@ import com.V4Creations.vtulife.afilechooser.utils.FileUtils;
  * @author paulburke (ipaulpro)
  * 
  */
-public class FileLoader extends AsyncTaskLoader<List<File>> {
+public class FileLoader extends AsyncTaskLoader<ArrayList<File>> {
 
 	private static final int FILE_OBSERVER_MASK = FileObserver.CREATE
 			| FileObserver.DELETE | FileObserver.DELETE_SELF
@@ -42,7 +43,7 @@ public class FileLoader extends AsyncTaskLoader<List<File>> {
 	
 	private FileObserver mFileObserver;
 	
-	private List<File> mData;
+	private ArrayList<File> mData;
 	private String mPath;
 
 	public FileLoader(Context context, String path) {
@@ -51,12 +52,12 @@ public class FileLoader extends AsyncTaskLoader<List<File>> {
 	}
 
 	@Override
-	public List<File> loadInBackground() {
+	public ArrayList<File> loadInBackground() {
 		return FileUtils.getFileList(mPath);
 	}
 
 	@Override
-	public void deliverResult(List<File> data) {
+	public void deliverResult(ArrayList<File> data) {
 		if (isReset()) {
 			onReleaseResources(data);
 			return;
@@ -107,7 +108,7 @@ public class FileLoader extends AsyncTaskLoader<List<File>> {
 	}
 
 	@Override
-	public void onCanceled(List<File> data) {
+	public void onCanceled(ArrayList<File> data) {
 		super.onCanceled(data);
 
 		onReleaseResources(data);

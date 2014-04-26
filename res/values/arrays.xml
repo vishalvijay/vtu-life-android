@@ -5,11 +5,13 @@
         <item>aFileChooser</item>
         <item>Crouton</item>
         <item>PagerSlidingTabStrip</item>
+        <item>android-switch-backport</item>
     </string-array>
     <string-array name="library_urls">
         <item>https://github.com/iPaulPro/aFileChooser</item>
         <item>https://github.com/dnschneid/crouton</item>
         <item>https://github.com/astuetz/PagerSlidingTabStrip</item>
+        <item>https://github.com/BoD/android-switch-backport</item>
     </string-array>
 
 </resources>

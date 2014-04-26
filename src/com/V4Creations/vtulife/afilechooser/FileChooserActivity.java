@@ -87,7 +87,20 @@ public class FileChooserActivity extends ActionBarActivity implements
 			mPath = savedInstanceState.getString(PATH);
 		}
 		EXTENSIONS = getIntent().getStringArrayListExtra(TAG_EXTENTION);
+		showAllowedExtentions();
 		setTitle(mPath);
+	}
+
+	private void showAllowedExtentions() {
+		if (EXTENSIONS == null)
+			return;
+		String allowedExtentions = "";
+		for (String ext : EXTENSIONS) {
+			if (!allowedExtentions.equals(""))
+				allowedExtentions += ", ";
+			allowedExtentions += ext;
+		}
+		getSupportActionBar().setSubtitle(allowedExtentions);
 	}
 
 	@Override
@@ -141,7 +154,7 @@ public class FileChooserActivity extends ActionBarActivity implements
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case android.R.id.home:
-			mFragmentManager.popBackStack();
+			finish();
 			return true;
 		}
 

@@ -50,7 +50,7 @@ import com.V4Creations.vtulife.view.fragments.FastResultListFragment;
 import com.V4Creations.vtulife.view.fragments.ShareAPicFragment;
 import com.V4Creations.vtulife.view.fragments.UploadFileFragment;
 import com.V4Creations.vtulife.view.fragments.WebFragment;
-import com.google.analytics.tracking.android.Tracker;
+import com.google.analytics.tracking.android.EasyTracker;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 
@@ -85,7 +85,7 @@ public class VTULifeMainActivity extends ActionBarActivity implements
 	private Crouton infiniteCrouton;
 	private static final Configuration CONFIGURATION_INFINITE = new Configuration.Builder()
 			.setDuration(Configuration.DURATION_INFINITE).build();
-	private Tracker tracker;
+	private EasyTracker mEasyTracker;
 	private boolean mExitFlag = false;
 	private Dialog mHelpDialog;
 	private DrawerLayout mDrawerLayout;
@@ -160,13 +160,14 @@ public class VTULifeMainActivity extends ActionBarActivity implements
 	}
 
 	private void initTabs() {
-		tracker = GoogleAnalyticsManager
+		mEasyTracker = GoogleAnalyticsManager
 				.getGoogleAnalyticsTracker(getApplicationContext());
 		mTabs = (PagerSlidingTabStrip) findViewById(R.id.tabs);
 		mViewPager = (ViewPager) findViewById(R.id.pager);
 		mViewPager.setOffscreenPageLimit(NUM_OF_FRAGMENTS);
 		mVtuLifeFragmentAdapter = new VTULifeFragmentAdapter(
-				getSupportFragmentManager(), vtuLifeFragments);
+				getSupportFragmentManager(), vtuLifeFragments,
+				getApplicationContext());
 		mViewPager.setAdapter(mVtuLifeFragmentAdapter);
 		mTabs.setViewPager(mViewPager);
 		mTabs.setOnPageChangeListener(new OnPageChangeListener() {
@@ -185,10 +186,10 @@ public class VTULifeMainActivity extends ActionBarActivity implements
 						.getItem(position);
 				reflectActionBarChange(fragmentInfo.getActionBarStatus(),
 						position, true);
-				GoogleAnalyticsManager.infomGoogleAnalytics(tracker,
+				GoogleAnalyticsManager.infomGoogleAnalytics(mEasyTracker,
 						GoogleAnalyticsManager.CATEGORY_FRAGMENT,
 						GoogleAnalyticsManager.ACTION_FRAGMENT_SELECTED,
-						fragmentInfo.getTitle(), 0L);
+						fragmentInfo.getTitle(getApplicationContext()), 0L);
 				mNavigationMenu.changeSelected(position);
 			}
 		});
