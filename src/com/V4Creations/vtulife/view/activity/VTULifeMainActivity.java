@@ -136,8 +136,9 @@ public class VTULifeMainActivity extends ActionBarActivity implements
 		mNavigationMenuManager = new NavigationMenuManager(this);
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-				R.drawable.vtulife_ic_navigation_drawer, R.string.version,
-				R.string.external_marks) {
+				R.drawable.vtulife_ic_navigation_drawer,
+				R.string.navigation_drawer_open,
+				R.string.navigation_drawer_close) {
 
 			public void onDrawerClosed(View view) {
 				super.onDrawerClosed(view);
