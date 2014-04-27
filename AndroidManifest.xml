@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.V4Creations.vtulife"
     android:installLocation="auto"
-    android:versionCode="8100"
-    android:versionName="3.5.1- Beta" >
+    android:versionCode="8300"
+    android:versionName="3.6.0" >
 
     <uses-sdk
         android:minSdkVersion="9"
