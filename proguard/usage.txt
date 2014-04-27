@@ -96,6 +96,14 @@ android.support.v4.app.Fragment:
     1450:1456:android.support.v4.app.Fragment findFragmentByWho(java.lang.String)
 android.support.v4.app.Fragment$SavedState:
     309:311:Fragment$SavedState(android.os.Bundle)
+android.support.v4.app.FragmentActivity:
+    private static final java.lang.String TAG
+    static final java.lang.String FRAGMENTS_TAG
+    private static final int HONEYCOMB
+    static final int MSG_REALLY_STOPPED
+    static final int MSG_RESUME_PENDING
+    632:634:public java.lang.Object getLastCustomNonConfigurationInstance()
+    876:881:public android.support.v4.app.LoaderManager getSupportLoaderManager()
 android.support.v4.app.FragmentActivity$FragmentTag:
     public static final int Fragment_id
     public static final int Fragment_name
@@ -1525,16 +1533,42 @@ android.support.v7.app.ActionBar$Tab:
     public abstract android.support.v7.app.ActionBar$Tab setContentDescription(int)
     public abstract android.support.v7.app.ActionBar$Tab setContentDescription(java.lang.CharSequence)
 android.support.v7.app.ActionBar$TabListener
+android.support.v7.app.ActionBarActivity:
+    194:194:public android.support.v7.view.ActionMode startSupportActionMode(android.support.v7.view.ActionMode$Callback)
+    265:266:public void setSupportProgressBarVisibility(boolean)
+    294:295:public void setSupportProgressBarIndeterminate(boolean)
+    310:311:public void setSupportProgress(int)
 android.support.v7.app.ActionBarActivityDelegate:
     static final java.lang.String METADATA_UI_OPTIONS
     static final java.lang.String UIOPTION_SPLIT_ACTION_BAR_WHEN_NARROW
     private static final java.lang.String TAG
+    abstract android.support.v7.view.ActionMode startSupportActionMode(android.support.v7.view.ActionMode$Callback)
+    abstract void setSupportProgressBarVisibility(boolean)
+    abstract void setSupportProgressBarIndeterminate(boolean)
+    abstract void setSupportProgress(int)
 android.support.v7.app.ActionBarActivityDelegateBase:
     private static final java.lang.String TAG
+    383:401:public android.support.v7.view.ActionMode startSupportActionMode(android.support.v7.view.ActionMode$Callback)
+    483:485:void setSupportProgressBarVisibility(boolean)
+    495:497:void setSupportProgressBarIndeterminate(boolean)
+    501:502:void setSupportProgress(int)
+    48:48:static synthetic android.support.v7.view.ActionMode access$002(android.support.v7.app.ActionBarActivityDelegateBase,android.support.v7.view.ActionMode)
+android.support.v7.app.ActionBarActivityDelegateBase$ActionModeCallbackWrapper
+android.support.v7.app.ActionBarActivityDelegateICS:
+    174:191:public android.support.v7.view.ActionMode startSupportActionMode(android.support.v7.view.ActionMode$Callback)
+    201:202:void setSupportProgressBarVisibility(boolean)
+    211:212:void setSupportProgressBarIndeterminate(boolean)
+    216:217:void setSupportProgress(int)
+    241:241:android.support.v7.internal.view.ActionModeWrapper$CallbackWrapper createActionModeCallbackWrapper(android.content.Context,android.support.v7.view.ActionMode$Callback)
+android.support.v7.app.ActionBarActivityDelegateJB:
+    38:38:android.support.v7.internal.view.ActionModeWrapper$CallbackWrapper createActionModeCallbackWrapper(android.content.Context,android.support.v7.view.ActionMode$Callback)
 android.support.v7.app.ActionBarImplBase:
     private android.app.Dialog mDialog
     private android.view.View mContentView
     private android.support.v7.app.ActionBarImplBase$TabImpl mSelectedTab
+    android.support.v7.app.ActionBarImplBase$ActionModeImpl mActionMode
+    android.support.v7.view.ActionMode mDeferredDestroyActionMode
+    android.support.v7.view.ActionMode$Callback mDeferredModeDestroyCallback
     private boolean mLastMenuVisibility
     private static final int CONTEXT_DISPLAY_NORMAL
     private static final int CONTEXT_DISPLAY_SPLIT
@@ -1582,28 +1616,19 @@ android.support.v7.app.ActionBarImplBase:
     574:574:public boolean isShowing()
     579:580:public void addOnMenuVisibilityListener(android.support.v7.app.ActionBar$OnMenuVisibilityListener)
     584:585:public void removeOnMenuVisibilityListener(android.support.v7.app.ActionBar$OnMenuVisibilityListener)
+    588:607:public android.support.v7.view.ActionMode startActionMode(android.support.v7.view.ActionMode$Callback)
+    611:622:void animateToMode(boolean)
     919:937:private void ensureTabsExist()
     940:954:private void configureTab(android.support.v7.app.ActionBar$Tab,int)
     957:965:private void cleanupTabs()
     54:54:static synthetic android.support.v7.internal.widget.ScrollingTabContainerView access$000(android.support.v7.app.ActionBarImplBase)
     54:54:static synthetic android.content.Context access$100(android.support.v7.app.ActionBarImplBase)
-android.support.v7.app.ActionBarImplBase$ActionModeImpl:
-    private java.lang.ref.WeakReference mCustomView
-    765:765:public android.view.MenuInflater getMenuInflater()
-    823:825:public void setCustomView(android.view.View)
-    829:830:public void setSubtitle(java.lang.CharSequence)
-    834:835:public void setTitle(java.lang.CharSequence)
-    839:840:public void setTitle(int)
-    844:845:public void setSubtitle(int)
-    849:849:public java.lang.CharSequence getTitle()
-    854:854:public java.lang.CharSequence getSubtitle()
-    859:861:public void setTitleOptionalHint(boolean)
-    865:865:public boolean isTitleOptional()
-    870:870:public android.view.View getCustomView()
-    891:891:public void onCloseMenu(android.support.v7.internal.view.menu.MenuBuilder,boolean)
-    894:903:public boolean onSubMenuSelected(android.support.v7.internal.view.menu.SubMenuBuilder)
-    907:907:public void onCloseSubMenu(android.support.v7.internal.view.menu.SubMenuBuilder)
-    910:915:public void onMenuModeChange(android.view.Menu)
+    54:54:static synthetic boolean access$200(android.support.v7.app.ActionBarImplBase)
+    54:54:static synthetic boolean access$300(android.support.v7.app.ActionBarImplBase)
+    54:54:static synthetic boolean access$400(boolean,boolean,boolean)
+    54:54:static synthetic android.support.v7.internal.widget.ActionBarContextView access$500(android.support.v7.app.ActionBarImplBase)
+    54:54:static synthetic android.support.v7.internal.widget.ActionBarView access$600(android.support.v7.app.ActionBarImplBase)
+android.support.v7.app.ActionBarImplBase$ActionModeImpl
 android.support.v7.app.ActionBarImplBase$TabImpl
 android.support.v7.app.ActionBarImplHC:
     52:56:public void show()
@@ -1738,6 +1763,7 @@ android.support.v7.internal.view.ActionModeWrapper:
     51:52:public void setTitle(java.lang.CharSequence)
     56:57:public void setSubtitle(java.lang.CharSequence)
     61:62:public void invalidate()
+    71:71:public android.view.Menu getMenu()
     76:76:public java.lang.CharSequence getTitle()
     81:82:public void setTitle(int)
     86:86:public java.lang.CharSequence getSubtitle()
@@ -1745,10 +1771,12 @@ android.support.v7.internal.view.ActionModeWrapper:
     96:96:public android.view.View getCustomView()
     101:102:public void setCustomView(android.view.View)
     106:106:public android.view.MenuInflater getMenuInflater()
+android.support.v7.internal.view.ActionModeWrapper$CallbackWrapper
 android.support.v7.internal.view.ActionModeWrapperJB:
     33:33:public boolean getTitleOptionalHint()
     38:39:public void setTitleOptionalHint(boolean)
     43:43:public boolean isTitleOptional()
+android.support.v7.internal.view.ActionModeWrapperJB$CallbackWrapper
 android.support.v7.internal.view.SupportMenuInflater:
     private static final java.lang.String LOG_TAG
     private static final java.lang.String XML_MENU
@@ -1781,6 +1809,7 @@ android.support.v7.internal.view.menu.ActionMenuItemView:
     165:165:public boolean showsIcon()
 android.support.v7.internal.view.menu.ActionMenuPresenter:
     private static final java.lang.String TAG
+    136:138:public void setReserveOverflow(boolean)
     512:514:public android.os.Parcelable onSaveInstanceState()
     519:527:public void onRestoreInstanceState(android.os.Parcelable)
     531:537:public void onSubUiVisibilityChanged(boolean)
@@ -1817,6 +1846,7 @@ android.support.v7.internal.view.menu.MenuBuilder:
     private static final java.lang.String PRESENTER_KEY
     private static final java.lang.String ACTION_VIEW_STATES_KEY
     private static final java.lang.String EXPANDED_ACTION_VIEW_ID
+    209:210:public android.support.v7.internal.view.menu.MenuBuilder setDefaultShowAsAction(int)
     276:298:private void dispatchSaveInstanceState(android.os.Bundle)
     301:321:private void dispatchRestoreInstanceState(android.os.Bundle)
     324:325:public void savePresenterStates(android.os.Bundle)
@@ -1883,6 +1913,7 @@ android.support.v7.internal.view.menu.SubMenuWrapperICS:
     25:25:public bridge synthetic java.lang.Object getWrappedObject()
 android.support.v7.internal.widget.AbsActionBarView:
     private static final int FADE_DURATION
+    119:133:public void animateToVisibility(int)
 android.support.v7.internal.widget.AbsSpinnerICS:
     private android.graphics.Rect mTouchFrame
     54:56:AbsSpinnerICS(android.content.Context)
@@ -1897,7 +1928,12 @@ android.support.v7.internal.widget.ActionBarContainer:
     243:243:public android.support.v7.view.ActionMode startActionModeForChild(android.view.View,android.support.v7.view.ActionMode$Callback)
 android.support.v7.internal.widget.ActionBarContextView:
     private static final java.lang.String TAG
+    194:238:public void initForMode(android.support.v7.view.ActionMode)
+    241:245:public void closeMode()
+    248:254:public void killMode()
     414:414:public boolean isTitleOptional()
+    37:37:public bridge synthetic void animateToVisibility(int)
+android.support.v7.internal.widget.ActionBarContextView$1
 android.support.v7.internal.widget.ActionBarOverlayLayout:
     private android.view.View mContent
     private android.view.View mActionBarTop
@@ -1911,6 +1947,8 @@ android.support.v7.internal.widget.ActionBarView:
     public static final int DISPLAY_DEFAULT
     private static final int DISPLAY_RELAYOUT_MASK
     private static final int DEFAULT_CUSTOM_GRAVITY
+    373:373:public boolean hasEmbeddedTabs()
+    63:63:public bridge synthetic void animateToVisibility(int)
 android.support.v7.internal.widget.ActionBarView$ExpandedActionViewMenuPresenter:
     1393:1393:public android.support.v7.internal.view.menu.MenuView getMenuView(android.view.ViewGroup)
     1422:1422:public void setCallback(android.support.v7.internal.view.menu.MenuPresenter$Callback)
@@ -2060,11 +2098,13 @@ android.support.v7.view.ActionMode:
     147:147:public boolean isTitleOptional()
     public abstract void setCustomView(android.view.View)
     public abstract void invalidate()
+    public abstract android.view.Menu getMenu()
     public abstract java.lang.CharSequence getTitle()
     public abstract java.lang.CharSequence getSubtitle()
     public abstract android.view.View getCustomView()
     public abstract android.view.MenuInflater getMenuInflater()
     216:216:public boolean isUiFocusable()
+android.support.v7.view.ActionMode$Callback
 android.support.v7.widget.PopupMenu
 android.support.v7.widget.PopupMenu$OnDismissListener
 android.support.v7.widget.PopupMenu$OnMenuItemClickListener
@@ -2165,7 +2205,16 @@ android.support.v7.widget.SuggestionsAdapter:
     static final int INVALID_INDEX
     124:124:public int getQueryRefinement()
     172:174:public void close()
-biz.source_code.base64Coder.Base64Coder
+biz.source_code.base64Coder.Base64Coder:
+    public static java.lang.String encodeString(java.lang.String)
+    public static java.lang.String encodeLines(byte[])
+    public static java.lang.String encodeLines(byte[],int,int,int,java.lang.String)
+    public static char[] encode(byte[])
+    public static char[] encode(byte[],int)
+    public static char[] encode(byte[],int,int)
+    public static java.lang.String decodeString(java.lang.String)
+    public static byte[] decodeLines(java.lang.String)
+    private Base64Coder()
 com.V4Creations.vtulife.BuildConfig
 com.V4Creations.vtulife.Manifest
 com.V4Creations.vtulife.Manifest$permission
@@ -2185,8 +2234,10 @@ com.V4Creations.vtulife.R$menu
 com.V4Creations.vtulife.R$string
 com.V4Creations.vtulife.R$style
 com.V4Creations.vtulife.R$styleable:
-    2374:2374:public R$styleable()
+    2530:2530:public R$styleable()
 com.V4Creations.vtulife.R$xml
+com.V4Creations.vtulife.afilechooser.FileChooserActivity:
+    public static final java.lang.String PATH
 com.V4Creations.vtulife.afilechooser.FileListAdapter:
     private static final int ICON_FOLDER
 com.V4Creations.vtulife.afilechooser.FileListFragment:
@@ -2326,6 +2377,20 @@ com.V4Creations.vtulife.util.system.SystemFeatureChecker:
     41:44:public static java.lang.String getImei(android.content.Context)
     48:51:public static int getDisplayWidth(android.app.Activity)
     55:58:public static int getDisplayHeight(android.app.Activity)
+com.V4Creations.vtulife.view.activity.VTULifeMainActivity:
+    private static final int INTERNET_CHECK_TIME_DELAY_HIGH
+    private static final int INTERNET_CHECK_TIME_DELAY_LOW
+    private static final int PREFERENCE_REQUEST_CODE
+    private static final int NOTIFICATION_REQUEST_CODE
+    private static final int PLAY_SERVICES_RESOLUTION_REQUEST
+    public static final int NUM_OF_FRAGMENTS
+    public static final int ID_VTU_LIFE_WEB_FRAGMENT
+    public static final int ID_DIRECTORY_LISTING_FRAGMENT
+    public static final int ID_FAST_RESULT_FRAGMENT
+    public static final int ID_CLASS_RESULT_FRAGMENT
+    public static final int ID_UPLOAD_FILE_FRAGEMENT
+    public static final int ID_SHARE_A_PIC_FRAGMENT
+    311:313:public void clearPendingCrouton()
 com.V4Creations.vtulife.view.customviews.CustomeTextView:
     44:45:public void setItalicFont()
 com.V4Creations.vtulife.view.fragments.ShareAPicFragment:
@@ -2334,39 +2399,6 @@ com.V4Creations.vtulife.view.fragments.ShareAPicFragment:
     private static final int SEND_EMAIL
 com.V4Creations.vtulife.view.fragments.WebFragment$JavaScriptInterface:
     149:149:public void showHTML(java.lang.String)
-com.bugsense.trace.BugProfiler
-com.bugsense.trace.BugProfiler$1
-com.bugsense.trace.BugSense
-com.bugsense.trace.BugSenseHandler
-com.bugsense.trace.BugSenseHandler$1
-com.bugsense.trace.CrashMechanism
-com.bugsense.trace.CrashMechanism$1
-com.bugsense.trace.CrashMechanism$1$1
-com.bugsense.trace.CrashMechanism$1$2
-com.bugsense.trace.CrashMechanism$2
-com.bugsense.trace.CrashMechanism$3
-com.bugsense.trace.CrashMechanism$4
-com.bugsense.trace.CryptoHttpClient
-com.bugsense.trace.DefaultExceptionHandler
-com.bugsense.trace.EventsMechanism
-com.bugsense.trace.EventsMechanism$1
-com.bugsense.trace.EventsMechanism$1$1
-com.bugsense.trace.EventsMechanism$2
-com.bugsense.trace.ExceptionCallback
-com.bugsense.trace.G
-com.bugsense.trace.PingsMechanism
-com.bugsense.trace.PingsMechanism$1
-com.bugsense.trace.PingsMechanism$1$1
-com.bugsense.trace.PingsMechanism$1$2
-com.bugsense.trace.PingsMechanism$1$3
-com.bugsense.trace.PingsMechanism$2
-com.bugsense.trace.PingsMechanism$3
-com.bugsense.trace.PingsMechanism$4
-com.bugsense.trace.UidManager
-com.bugsense.trace.Utils
-com.bugsense.trace.Utils$1
-com.bugsense.trace.Utils$2
-com.bugsense.trace.Utils$3
 com.google.ads.AdRequest
 com.google.ads.AdRequest$ErrorCode
 com.google.ads.AdRequest$Gender
@@ -2466,22 +2498,12 @@ com.google.analytics.tracking.android.EasyTracker:
     private static final java.lang.String EASY_TRACKER_NAME
     private static final int DEFAULT_SAMPLE_RATE
     static final int NUM_MILLISECONDS_TO_WAIT_FOR_OPEN_ACTIVITY
-    private long mLastOnStopTime
-    private java.util.Timer mTimer
-    private java.util.TimerTask mTimerTask
     142:143:static com.google.analytics.tracking.android.EasyTracker getNewInstance(android.content.Context,com.google.analytics.tracking.android.ParameterLoader,com.google.analytics.tracking.android.GoogleAnalytics,com.google.analytics.tracking.android.ServiceManager,com.google.analytics.tracking.android.TrackerHandler)
-    198:198:boolean checkForNewSession()
     297:300:void overrideUncaughtExceptionHandler(java.lang.Thread$UncaughtExceptionHandler)
-    327:346:public void activityStart(android.app.Activity)
-    356:372:public void activityStop(android.app.Activity)
     382:383:public void dispatchLocalHits()
-    386:390:private synchronized void clearExistingTimer()
-    402:411:private java.lang.String getActivityName(android.app.Activity)
     417:418:void setClock(com.google.analytics.tracking.android.Clock)
     422:422:int getActivitiesActive()
     445:446:public static void setResourcePackageName(java.lang.String)
-    86:86:static synthetic boolean access$102(com.google.analytics.tracking.android.EasyTracker,boolean)
-com.google.analytics.tracking.android.EasyTracker$NotInForegroundTimerTask
 com.google.analytics.tracking.android.ExceptionReporter:
     static final java.lang.String DEFAULT_DESCRIPTION
     64:64:public com.google.analytics.tracking.android.ExceptionParser getExceptionParser()
@@ -2545,7 +2567,6 @@ com.google.analytics.tracking.android.MapBuilder:
     67:72:public com.google.analytics.tracking.android.MapBuilder setAll(java.util.Map)
     76:77:public java.lang.String get(java.lang.String)
     88:91:public static com.google.analytics.tracking.android.MapBuilder createAppView()
-    99:106:public static com.google.analytics.tracking.android.MapBuilder createEvent(java.lang.String,java.lang.String,java.lang.String,java.lang.Long)
     119:133:public static com.google.analytics.tracking.android.MapBuilder createTransaction(java.lang.String,java.lang.String,java.lang.Double,java.lang.Double,java.lang.Double,java.lang.String)
     147:157:public static com.google.analytics.tracking.android.MapBuilder createItem(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.Double,java.lang.Long,java.lang.String)
     203:214:public static com.google.analytics.tracking.android.MapBuilder createTiming(java.lang.String,java.lang.Long,java.lang.String,java.lang.String)
@@ -6225,3 +6246,40 @@ de.timroes.swipetodismiss.SwipeDismissList:
     342:343:public void setUndoMultipleString(java.lang.String)
     352:353:public void setRequireTouchBeforeDismiss(boolean)
     749:750:public void setSwipeDisabled(boolean)
+org.jraf.android.backport.switchwidget.R:
+    9:9:public R()
+org.jraf.android.backport.switchwidget.R$attr:
+    10:10:public R$attr()
+org.jraf.android.backport.switchwidget.R$color
+org.jraf.android.backport.switchwidget.R$dimen
+org.jraf.android.backport.switchwidget.R$drawable
+org.jraf.android.backport.switchwidget.R$id
+org.jraf.android.backport.switchwidget.R$layout
+org.jraf.android.backport.switchwidget.R$string
+org.jraf.android.backport.switchwidget.R$style
+org.jraf.android.backport.switchwidget.R$styleable:
+    81:81:public R$styleable()
+org.jraf.android.backport.switchwidget.Switch:
+    private static final int TOUCH_MODE_IDLE
+    private static final int TOUCH_MODE_DOWN
+    private static final int TOUCH_MODE_DRAGGING
+    private static final int SANS
+    private static final int SERIF
+    private static final int MONOSPACE
+org.jraf.android.backport.switchwidget.SwitchPreference
+org.jraf.android.backport.switchwidget.SwitchPreference$Listener
+org.jraf.android.backport.switchwidget.TwoStatePreference:
+    private java.lang.CharSequence mSummaryOn
+    private java.lang.CharSequence mSummaryOff
+    56:57:public TwoStatePreference(android.content.Context,android.util.AttributeSet,int)
+    60:61:public TwoStatePreference(android.content.Context,android.util.AttributeSet)
+    64:65:public TwoStatePreference(android.content.Context)
+    117:121:public void setSummaryOn(java.lang.CharSequence)
+    128:129:public void setSummaryOn(int)
+    136:136:public java.lang.CharSequence getSummaryOn()
+    145:149:public void setSummaryOff(java.lang.CharSequence)
+    156:157:public void setSummaryOff(int)
+    164:164:public java.lang.CharSequence getSummaryOff()
+    175:175:public boolean getDisableDependentsState()
+    185:186:public void setDisableDependentsState(boolean)
+    220:248:void syncSummaryView(android.view.View)

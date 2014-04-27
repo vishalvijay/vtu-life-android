@@ -44,7 +44,7 @@ android.support.v4.app.ActionBarDrawerToggle$Delegate -> android.support.v4.app.
     void setActionBarUpIndicator(android.graphics.drawable.Drawable,int) -> a
     void setActionBarDescription(int) -> a
 android.support.v4.app.ActionBarDrawerToggle$DelegateProvider -> android.support.v4.app.h:
-    android.support.v4.app.ActionBarDrawerToggle$Delegate getDrawerToggleDelegate() -> getDrawerToggleDelegate
+    android.support.v4.app.ActionBarDrawerToggle$Delegate getDrawerToggleDelegate() -> a
 android.support.v4.app.ActionBarDrawerToggle$SlideDrawable -> android.support.v4.app.i:
     boolean mHasMirroring -> b
     android.graphics.Rect mTmpRect -> c
@@ -192,7 +192,7 @@ android.support.v4.app.Fragment -> android.support.v4.app.Fragment:
     boolean isSupportFragmentClass(android.content.Context,java.lang.String) -> b
     void restoreViewState(android.os.Bundle) -> a
     void setIndex(int,android.support.v4.app.Fragment) -> a
-    boolean isInBackStack() -> d_
+    boolean isInBackStack() -> f_
     boolean equals(java.lang.Object) -> equals
     int hashCode() -> hashCode
     java.lang.String toString() -> toString
@@ -275,24 +275,19 @@ android.support.v4.app.Fragment$SavedState$1 -> android.support.v4.app.u:
     java.lang.Object[] newArray(int) -> newArray
     java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
 android.support.v4.app.FragmentActivity -> android.support.v4.app.v:
-    java.lang.String TAG -> TAG
-    java.lang.String FRAGMENTS_TAG -> FRAGMENTS_TAG
-    int HONEYCOMB -> HONEYCOMB
-    int MSG_REALLY_STOPPED -> MSG_REALLY_STOPPED
-    int MSG_RESUME_PENDING -> MSG_RESUME_PENDING
-    android.os.Handler mHandler -> mHandler
-    android.support.v4.app.FragmentManagerImpl mFragments -> mFragments
-    android.support.v4.app.FragmentContainer mContainer -> mContainer
-    boolean mCreated -> mCreated
-    boolean mResumed -> mResumed
-    boolean mStopped -> mStopped
-    boolean mReallyStopped -> mReallyStopped
-    boolean mRetaining -> mRetaining
-    boolean mOptionsMenuInvalidated -> mOptionsMenuInvalidated
-    boolean mCheckedForLoaderManager -> mCheckedForLoaderManager
-    boolean mLoadersStarted -> mLoadersStarted
-    android.support.v4.util.SimpleArrayMap mAllLoaderManagers -> mAllLoaderManagers
-    android.support.v4.app.LoaderManagerImpl mLoaderManager -> mLoaderManager
+    android.os.Handler mHandler -> a
+    android.support.v4.app.FragmentManagerImpl mFragments -> b
+    android.support.v4.app.FragmentContainer mContainer -> c
+    boolean mCreated -> d
+    boolean mResumed -> e
+    boolean mStopped -> f
+    boolean mReallyStopped -> g
+    boolean mRetaining -> h
+    boolean mOptionsMenuInvalidated -> i
+    boolean mCheckedForLoaderManager -> j
+    boolean mLoadersStarted -> k
+    android.support.v4.util.SimpleArrayMap mAllLoaderManagers -> l
+    android.support.v4.app.LoaderManagerImpl mLoaderManager -> m
     void onActivityResult(int,int,android.content.Intent) -> onActivityResult
     void onBackPressed() -> onBackPressed
     void onConfigurationChanged(android.content.res.Configuration) -> onConfigurationChanged
@@ -308,28 +303,26 @@ android.support.v4.app.FragmentActivity -> android.support.v4.app.v:
     void onNewIntent(android.content.Intent) -> onNewIntent
     void onResume() -> onResume
     void onPostResume() -> onPostResume
-    void onResumeFragments() -> onResumeFragments
+    void onResumeFragments() -> a_
     boolean onPreparePanel(int,android.view.View,android.view.Menu) -> onPreparePanel
-    boolean onPrepareOptionsPanel(android.view.View,android.view.Menu) -> onPrepareOptionsPanel
+    boolean onPrepareOptionsPanel(android.view.View,android.view.Menu) -> a
     java.lang.Object onRetainNonConfigurationInstance() -> onRetainNonConfigurationInstance
     void onSaveInstanceState(android.os.Bundle) -> onSaveInstanceState
     void onStart() -> onStart
     void onStop() -> onStop
-    java.lang.Object onRetainCustomNonConfigurationInstance() -> onRetainCustomNonConfigurationInstance
-    java.lang.Object getLastCustomNonConfigurationInstance() -> getLastCustomNonConfigurationInstance
-    void supportInvalidateOptionsMenu() -> supportInvalidateOptionsMenu
+    java.lang.Object onRetainCustomNonConfigurationInstance() -> c
+    void supportInvalidateOptionsMenu() -> d
     void dump(java.lang.String,java.io.FileDescriptor,java.io.PrintWriter,java.lang.String[]) -> dump
-    java.lang.String viewToString(android.view.View) -> viewToString
-    void dumpViewHierarchy(java.lang.String,java.io.PrintWriter,android.view.View) -> dumpViewHierarchy
-    void doReallyStop(boolean) -> doReallyStop
-    void onReallyStop() -> onReallyStop
-    void onAttachFragment(android.support.v4.app.Fragment) -> onAttachFragment
-    android.support.v4.app.FragmentManager getSupportFragmentManager() -> getSupportFragmentManager
+    java.lang.String viewToString(android.view.View) -> a
+    void dumpViewHierarchy(java.lang.String,java.io.PrintWriter,android.view.View) -> a
+    void doReallyStop(boolean) -> a
+    void onReallyStop() -> e
+    void onAttachFragment(android.support.v4.app.Fragment) -> a
+    android.support.v4.app.FragmentManager getSupportFragmentManager() -> f
     void startActivityForResult(android.content.Intent,int) -> startActivityForResult
-    void startActivityFromFragment(android.support.v4.app.Fragment,android.content.Intent,int) -> startActivityFromFragment
-    void invalidateSupportFragment(java.lang.String) -> invalidateSupportFragment
-    android.support.v4.app.LoaderManager getSupportLoaderManager() -> getSupportLoaderManager
-    android.support.v4.app.LoaderManagerImpl getLoaderManager(java.lang.String,boolean,boolean) -> getLoaderManager
+    void startActivityFromFragment(android.support.v4.app.Fragment,android.content.Intent,int) -> a
+    void invalidateSupportFragment(java.lang.String) -> a
+    android.support.v4.app.LoaderManagerImpl getLoaderManager(java.lang.String,boolean,boolean) -> a
 android.support.v4.app.FragmentActivity$1 -> android.support.v4.app.w:
     android.support.v4.app.FragmentActivity this$0 -> a
     void handleMessage(android.os.Message) -> handleMessage
@@ -356,7 +349,7 @@ android.support.v4.app.FragmentManager -> android.support.v4.app.ab:
 android.support.v4.app.FragmentManager$BackStackEntry -> android.support.v4.app.ac:
     java.lang.String getName() -> c
 android.support.v4.app.FragmentManager$OnBackStackChangedListener -> android.support.v4.app.ad:
-    void onBackStackChanged() -> onBackStackChanged
+    void onBackStackChanged() -> b_
 android.support.v4.app.FragmentManagerImpl -> android.support.v4.app.ae:
     boolean DEBUG -> a
     boolean HONEYCOMB -> b
@@ -763,7 +756,7 @@ android.support.v4.app.TaskStackBuilder -> android.support.v4.app.bt:
     android.app.PendingIntent getPendingIntent(int,int) -> a
     android.app.PendingIntent getPendingIntent(int,int,android.os.Bundle) -> a
 android.support.v4.app.TaskStackBuilder$SupportParentable -> android.support.v4.app.bu:
-    android.content.Intent getSupportParentActivityIntent() -> getSupportParentActivityIntent
+    android.content.Intent getSupportParentActivityIntent() -> b
 android.support.v4.app.TaskStackBuilder$TaskStackBuilderImpl -> android.support.v4.app.bv:
     android.app.PendingIntent getPendingIntent(android.content.Context,android.content.Intent[],int,int,android.os.Bundle) -> a
 android.support.v4.app.TaskStackBuilder$TaskStackBuilderImplBase -> android.support.v4.app.bw:
@@ -2514,8 +2507,8 @@ android.support.v7.app.ActionBar$Tab -> android.support.v7.a.e:
     void select() -> d
     java.lang.CharSequence getContentDescription() -> e
 android.support.v7.app.ActionBarActivity -> android.support.v7.a.f:
-    android.support.v7.app.ActionBarActivityDelegate mImpl -> mImpl
-    android.support.v7.app.ActionBar getSupportActionBar() -> getSupportActionBar
+    android.support.v7.app.ActionBarActivityDelegate mImpl -> n
+    android.support.v7.app.ActionBar getSupportActionBar() -> g
     android.view.MenuInflater getMenuInflater() -> getMenuInflater
     void setContentView(int) -> setContentView
     void setContentView(android.view.View) -> setContentView
@@ -2528,36 +2521,32 @@ android.support.v7.app.ActionBarActivity -> android.support.v7.a.f:
     android.view.View onCreatePanelView(int) -> onCreatePanelView
     boolean onMenuItemSelected(int,android.view.MenuItem) -> onMenuItemSelected
     void onTitleChanged(java.lang.CharSequence,int) -> onTitleChanged
-    boolean supportRequestWindowFeature(int) -> supportRequestWindowFeature
-    void supportInvalidateOptionsMenu() -> supportInvalidateOptionsMenu
-    void onSupportActionModeStarted(android.support.v7.view.ActionMode) -> onSupportActionModeStarted
-    void onSupportActionModeFinished(android.support.v7.view.ActionMode) -> onSupportActionModeFinished
-    android.support.v7.view.ActionMode startSupportActionMode(android.support.v7.view.ActionMode$Callback) -> startSupportActionMode
+    boolean supportRequestWindowFeature(int) -> a
+    void supportInvalidateOptionsMenu() -> d
+    void onSupportActionModeStarted(android.support.v7.view.ActionMode) -> a
+    void onSupportActionModeFinished(android.support.v7.view.ActionMode) -> b
     boolean onCreatePanelMenu(int,android.view.Menu) -> onCreatePanelMenu
     boolean onPreparePanel(int,android.view.View,android.view.Menu) -> onPreparePanel
-    boolean onPrepareOptionsPanel(android.view.View,android.view.Menu) -> onPrepareOptionsPanel
-    void superSetContentView(int) -> superSetContentView
-    void superSetContentView(android.view.View) -> superSetContentView
-    void superSetContentView(android.view.View,android.view.ViewGroup$LayoutParams) -> superSetContentView
-    void superAddContentView(android.view.View,android.view.ViewGroup$LayoutParams) -> superAddContentView
-    boolean superOnCreatePanelMenu(int,android.view.Menu) -> superOnCreatePanelMenu
-    boolean superOnPreparePanel(int,android.view.View,android.view.Menu) -> superOnPreparePanel
-    boolean superOnPrepareOptionsPanel(android.view.View,android.view.Menu) -> superOnPrepareOptionsPanel
-    boolean superOnMenuItemSelected(int,android.view.MenuItem) -> superOnMenuItemSelected
+    boolean onPrepareOptionsPanel(android.view.View,android.view.Menu) -> a
+    void superSetContentView(int) -> b
+    void superSetContentView(android.view.View) -> a
+    void superSetContentView(android.view.View,android.view.ViewGroup$LayoutParams) -> a
+    void superAddContentView(android.view.View,android.view.ViewGroup$LayoutParams) -> b
+    boolean superOnCreatePanelMenu(int,android.view.Menu) -> a
+    boolean superOnPreparePanel(int,android.view.View,android.view.Menu) -> a
+    boolean superOnPrepareOptionsPanel(android.view.View,android.view.Menu) -> b
+    boolean superOnMenuItemSelected(int,android.view.MenuItem) -> a
     void onBackPressed() -> onBackPressed
-    void setSupportProgressBarVisibility(boolean) -> setSupportProgressBarVisibility
-    void setSupportProgressBarIndeterminateVisibility(boolean) -> setSupportProgressBarIndeterminateVisibility
-    void setSupportProgressBarIndeterminate(boolean) -> setSupportProgressBarIndeterminate
-    void setSupportProgress(int) -> setSupportProgress
-    void onCreateSupportNavigateUpTaskStack(android.support.v4.app.TaskStackBuilder) -> onCreateSupportNavigateUpTaskStack
-    void onPrepareSupportNavigateUpTaskStack(android.support.v4.app.TaskStackBuilder) -> onPrepareSupportNavigateUpTaskStack
-    boolean onSupportNavigateUp() -> onSupportNavigateUp
-    android.content.Intent getSupportParentActivityIntent() -> getSupportParentActivityIntent
-    boolean supportShouldUpRecreateTask(android.content.Intent) -> supportShouldUpRecreateTask
-    void supportNavigateUpTo(android.content.Intent) -> supportNavigateUpTo
-    android.support.v4.app.ActionBarDrawerToggle$Delegate getDrawerToggleDelegate() -> getDrawerToggleDelegate
+    void setSupportProgressBarIndeterminateVisibility(boolean) -> b
+    void onCreateSupportNavigateUpTaskStack(android.support.v4.app.TaskStackBuilder) -> a
+    void onPrepareSupportNavigateUpTaskStack(android.support.v4.app.TaskStackBuilder) -> b
+    boolean onSupportNavigateUp() -> h
+    android.content.Intent getSupportParentActivityIntent() -> b
+    boolean supportShouldUpRecreateTask(android.content.Intent) -> a
+    void supportNavigateUpTo(android.content.Intent) -> b
+    android.support.v4.app.ActionBarDrawerToggle$Delegate getDrawerToggleDelegate() -> a
     void onContentChanged() -> onContentChanged
-    void onSupportContentChanged() -> onSupportContentChanged
+    void onSupportContentChanged() -> i
 android.support.v7.app.ActionBarActivityDelegate -> android.support.v7.a.g:
     android.support.v7.app.ActionBarActivity mActivity -> a
     android.support.v7.app.ActionBar mActionBar -> d
@@ -2586,11 +2575,7 @@ android.support.v7.app.ActionBarActivityDelegate -> android.support.v7.a.g:
     boolean onCreatePanelMenu(int,android.view.Menu) -> a
     boolean onMenuItemSelected(int,android.view.MenuItem) -> a
     boolean onBackPressed() -> g
-    android.support.v7.view.ActionMode startSupportActionMode(android.support.v7.view.ActionMode$Callback) -> a
-    void setSupportProgressBarVisibility(boolean) -> a
-    void setSupportProgressBarIndeterminateVisibility(boolean) -> b
-    void setSupportProgressBarIndeterminate(boolean) -> c
-    void setSupportProgress(int) -> d
+    void setSupportProgressBarIndeterminateVisibility(boolean) -> a
     android.support.v4.app.ActionBarDrawerToggle$Delegate getDrawerToggleDelegate() -> h
     int getHomeAsUpIndicatorAttrId() -> i
     void onContentChanged() -> j
@@ -2637,37 +2622,25 @@ android.support.v7.app.ActionBarActivityDelegateBase -> android.support.v7.a.j:
     void onMenuModeChange(android.support.v7.internal.view.menu.MenuBuilder) -> a
     void onCloseMenu(android.support.v7.internal.view.menu.MenuBuilder,boolean) -> a
     boolean onOpenSubMenu(android.support.v7.internal.view.menu.MenuBuilder) -> b
-    android.support.v7.view.ActionMode startSupportActionMode(android.support.v7.view.ActionMode$Callback) -> a
     void supportInvalidateOptionsMenu() -> f
     void reopenMenu(android.support.v7.internal.view.menu.MenuBuilder,boolean) -> b
     android.support.v7.internal.view.menu.MenuView getListMenuView(android.content.Context,android.support.v7.internal.view.menu.MenuPresenter$Callback) -> a
     boolean onBackPressed() -> g
-    void setSupportProgressBarVisibility(boolean) -> a
-    void setSupportProgressBarIndeterminateVisibility(boolean) -> b
-    void setSupportProgressBarIndeterminate(boolean) -> c
-    void setSupportProgress(int) -> d
+    void setSupportProgressBarIndeterminateVisibility(boolean) -> a
     int getHomeAsUpIndicatorAttrId() -> i
-    void updateProgressBars(int) -> e
+    void updateProgressBars(int) -> d
     void showProgressBars(android.support.v7.internal.widget.ProgressBarICS,android.support.v7.internal.widget.ProgressBarICS) -> a
     void hideProgressBars(android.support.v7.internal.widget.ProgressBarICS,android.support.v7.internal.widget.ProgressBarICS) -> b
     android.support.v7.internal.widget.ProgressBarICS getCircularProgressBar() -> o
     android.support.v7.internal.widget.ProgressBarICS getHorizontalProgressBar() -> p
     boolean initializePanelMenu() -> q
     boolean preparePanel() -> r
-    android.support.v7.view.ActionMode access$002(android.support.v7.app.ActionBarActivityDelegateBase,android.support.v7.view.ActionMode) -> a
 android.support.v7.app.ActionBarActivityDelegateBase$1 -> android.support.v7.a.k:
     android.support.v7.app.ActionBarActivityDelegateBase this$0 -> a
     void run() -> run
-android.support.v7.app.ActionBarActivityDelegateBase$ActionModeCallbackWrapper -> android.support.v7.a.l:
-    android.support.v7.view.ActionMode$Callback mWrapped -> b
-    android.support.v7.app.ActionBarActivityDelegateBase this$0 -> a
-    boolean onCreateActionMode(android.support.v7.view.ActionMode,android.view.Menu) -> a
-    boolean onPrepareActionMode(android.support.v7.view.ActionMode,android.view.Menu) -> b
-    boolean onActionItemClicked(android.support.v7.view.ActionMode,android.view.MenuItem) -> a
-    void onDestroyActionMode(android.support.v7.view.ActionMode) -> a
-android.support.v7.app.ActionBarActivityDelegateHC -> android.support.v7.a.m:
+android.support.v7.app.ActionBarActivityDelegateHC -> android.support.v7.a.l:
     android.support.v7.app.ActionBar createSupportActionBar() -> a
-android.support.v7.app.ActionBarActivityDelegateICS -> android.support.v7.a.n:
+android.support.v7.app.ActionBarActivityDelegateICS -> android.support.v7.a.m:
     android.view.Menu mMenu -> d
     android.support.v7.app.ActionBar createSupportActionBar() -> a
     void onCreate(android.os.Bundle) -> a
@@ -2686,19 +2659,14 @@ android.support.v7.app.ActionBarActivityDelegateICS -> android.support.v7.a.n:
     boolean onPreparePanel(int,android.view.View,android.view.Menu) -> a
     boolean onMenuItemSelected(int,android.view.MenuItem) -> a
     void onTitleChanged(java.lang.CharSequence) -> a
-    android.support.v7.view.ActionMode startSupportActionMode(android.support.v7.view.ActionMode$Callback) -> a
     void onActionModeStarted(android.view.ActionMode) -> a
-    void setSupportProgressBarVisibility(boolean) -> a
-    void setSupportProgressBarIndeterminateVisibility(boolean) -> b
-    void setSupportProgressBarIndeterminate(boolean) -> c
-    void setSupportProgress(int) -> d
+    void setSupportProgressBarIndeterminateVisibility(boolean) -> a
     void onActionModeFinished(android.view.ActionMode) -> b
     void supportInvalidateOptionsMenu() -> f
     boolean onBackPressed() -> g
     int getHomeAsUpIndicatorAttrId() -> i
-    android.support.v7.internal.view.ActionModeWrapper$CallbackWrapper createActionModeCallbackWrapper(android.content.Context,android.support.v7.view.ActionMode$Callback) -> a
     android.support.v7.internal.view.ActionModeWrapper createActionModeWrapper(android.content.Context,android.view.ActionMode) -> a
-android.support.v7.app.ActionBarActivityDelegateICS$WindowCallbackWrapper -> android.support.v7.a.o:
+android.support.v7.app.ActionBarActivityDelegateICS$WindowCallbackWrapper -> android.support.v7.a.n:
     android.view.Window$Callback mWrapped -> a
     android.support.v7.app.ActionBarActivityDelegateICS this$0 -> b
     boolean dispatchKeyEvent(android.view.KeyEvent) -> dispatchKeyEvent
@@ -2722,43 +2690,39 @@ android.support.v7.app.ActionBarActivityDelegateICS$WindowCallbackWrapper -> and
     android.view.ActionMode onWindowStartingActionMode(android.view.ActionMode$Callback) -> onWindowStartingActionMode
     void onActionModeStarted(android.view.ActionMode) -> onActionModeStarted
     void onActionModeFinished(android.view.ActionMode) -> onActionModeFinished
-android.support.v7.app.ActionBarActivityDelegateJB -> android.support.v7.a.p:
+android.support.v7.app.ActionBarActivityDelegateJB -> android.support.v7.a.o:
     android.support.v7.app.ActionBar createSupportActionBar() -> a
-    android.support.v7.internal.view.ActionModeWrapper$CallbackWrapper createActionModeCallbackWrapper(android.content.Context,android.support.v7.view.ActionMode$Callback) -> a
     android.support.v7.internal.view.ActionModeWrapper createActionModeWrapper(android.content.Context,android.view.ActionMode) -> a
-android.support.v7.app.ActionBarActivityDelegateJBMR2 -> android.support.v7.a.q:
+android.support.v7.app.ActionBarActivityDelegateJBMR2 -> android.support.v7.a.p:
     android.support.v7.app.ActionBar createSupportActionBar() -> a
-android.support.v7.app.ActionBarImplBase -> android.support.v7.a.r:
-    android.content.Context mContext -> e
-    android.content.Context mThemedContext -> f
-    android.support.v7.app.ActionBarActivity mActivity -> g
-    android.support.v7.internal.widget.ActionBarOverlayLayout mOverlayLayout -> h
-    android.support.v7.internal.widget.ActionBarContainer mContainerView -> i
-    android.view.ViewGroup mTopVisibilityView -> j
-    android.support.v7.internal.widget.ActionBarView mActionView -> k
-    android.support.v7.internal.widget.ActionBarContextView mContextView -> l
-    android.support.v7.internal.widget.ActionBarContainer mSplitView -> m
-    android.support.v7.internal.widget.ScrollingTabContainerView mTabScrollView -> n
-    java.util.ArrayList mTabs -> o
-    int mSavedTabPosition -> p
-    boolean mDisplayHomeAsUpSet -> q
-    android.support.v7.app.ActionBarImplBase$ActionModeImpl mActionMode -> a
-    android.support.v7.view.ActionMode mDeferredDestroyActionMode -> b
-    android.support.v7.view.ActionMode$Callback mDeferredModeDestroyCallback -> c
-    java.util.ArrayList mMenuVisibilityListeners -> r
-    int mContextDisplayMode -> s
-    boolean mHasEmbeddedTabs -> t
-    android.os.Handler mHandler -> d
-    int mCurWindowVisibility -> u
-    boolean mHiddenByApp -> v
-    boolean mHiddenBySystem -> w
-    boolean mShowingForMode -> x
-    boolean mNowShowing -> y
-    boolean mShowHideAnimationEnabled -> z
-    android.support.v7.app.ActionBar$Callback mCallback -> A
+android.support.v7.app.ActionBarImplBase -> android.support.v7.a.q:
+    android.content.Context mContext -> b
+    android.content.Context mThemedContext -> c
+    android.support.v7.app.ActionBarActivity mActivity -> d
+    android.support.v7.internal.widget.ActionBarOverlayLayout mOverlayLayout -> e
+    android.support.v7.internal.widget.ActionBarContainer mContainerView -> f
+    android.view.ViewGroup mTopVisibilityView -> g
+    android.support.v7.internal.widget.ActionBarView mActionView -> h
+    android.support.v7.internal.widget.ActionBarContextView mContextView -> i
+    android.support.v7.internal.widget.ActionBarContainer mSplitView -> j
+    android.support.v7.internal.widget.ScrollingTabContainerView mTabScrollView -> k
+    java.util.ArrayList mTabs -> l
+    int mSavedTabPosition -> m
+    boolean mDisplayHomeAsUpSet -> n
+    java.util.ArrayList mMenuVisibilityListeners -> o
+    int mContextDisplayMode -> p
+    boolean mHasEmbeddedTabs -> q
+    android.os.Handler mHandler -> a
+    int mCurWindowVisibility -> r
+    boolean mHiddenByApp -> s
+    boolean mHiddenBySystem -> t
+    boolean mShowingForMode -> u
+    boolean mNowShowing -> v
+    boolean mShowHideAnimationEnabled -> w
+    android.support.v7.app.ActionBar$Callback mCallback -> x
     void init(android.support.v7.app.ActionBarActivity) -> a
     void onConfigurationChanged(android.content.res.Configuration) -> a
-    void setHasEmbeddedTabs(boolean) -> h
+    void setHasEmbeddedTabs(boolean) -> g
     void setCustomView(android.view.View) -> a
     void setTitle(java.lang.CharSequence) -> b
     void setTitle(int) -> a
@@ -2773,43 +2737,26 @@ android.support.v7.app.ActionBarImplBase -> android.support.v7.a.r:
     void setHomeAsUpIndicator(android.graphics.drawable.Drawable) -> a
     void showForActionMode() -> d
     void hideForActionMode() -> e
-    android.support.v7.view.ActionMode startActionMode(android.support.v7.view.ActionMode$Callback) -> a
-    void animateToMode(boolean) -> d
-    boolean checkShowingFlags(boolean,boolean,boolean) -> b
-    void updateVisibility(boolean) -> i
-    void setShowHideAnimationEnabled(boolean) -> e
-    void doShow(boolean) -> f
-    void doHide(boolean) -> g
+    boolean checkShowingFlags(boolean,boolean,boolean) -> a
+    void updateVisibility(boolean) -> h
+    void setShowHideAnimationEnabled(boolean) -> d
+    void doShow(boolean) -> e
+    void doHide(boolean) -> f
     boolean isShowHideAnimationEnabled() -> f
-    boolean access$200(android.support.v7.app.ActionBarImplBase) -> a
-    boolean access$300(android.support.v7.app.ActionBarImplBase) -> b
-    boolean access$400(boolean,boolean,boolean) -> a
-    android.support.v7.internal.widget.ActionBarContextView access$500(android.support.v7.app.ActionBarImplBase) -> c
-    android.support.v7.internal.widget.ActionBarView access$600(android.support.v7.app.ActionBarImplBase) -> d
-android.support.v7.app.ActionBarImplBase$ActionModeImpl -> android.support.v7.a.s:
-    android.support.v7.view.ActionMode$Callback mCallback -> b
-    android.support.v7.internal.view.menu.MenuBuilder mMenu -> c
-    android.support.v7.app.ActionBarImplBase this$0 -> a
-    android.view.Menu getMenu() -> a
-    void finish() -> b
-    void invalidate() -> c
-    boolean dispatchOnCreate() -> d
-    boolean onMenuItemSelected(android.support.v7.internal.view.menu.MenuBuilder,android.view.MenuItem) -> a
-    void onMenuModeChange(android.support.v7.internal.view.menu.MenuBuilder) -> a
-android.support.v7.app.ActionBarImplHC -> android.support.v7.a.t:
-    android.support.v7.internal.widget.NativeActionModeAwareLayout mNativeActionModeAwareLayout -> e
-    android.view.ActionMode mCurActionMode -> f
+android.support.v7.app.ActionBarImplHC -> android.support.v7.a.r:
+    android.support.v7.internal.widget.NativeActionModeAwareLayout mNativeActionModeAwareLayout -> b
+    android.view.ActionMode mCurActionMode -> c
     android.view.ActionMode$Callback onActionModeForChild(android.view.ActionMode$Callback) -> a
     boolean isShowHideAnimationEnabled() -> f
     android.view.ActionMode access$002(android.support.v7.app.ActionBarImplHC,android.view.ActionMode) -> a
-android.support.v7.app.ActionBarImplHC$CallbackWrapper -> android.support.v7.a.u:
+android.support.v7.app.ActionBarImplHC$CallbackWrapper -> android.support.v7.a.s:
     android.view.ActionMode$Callback mWrappedCallback -> b
     android.support.v7.app.ActionBarImplHC this$0 -> a
     boolean onCreateActionMode(android.view.ActionMode,android.view.Menu) -> onCreateActionMode
     boolean onPrepareActionMode(android.view.ActionMode,android.view.Menu) -> onPrepareActionMode
     boolean onActionItemClicked(android.view.ActionMode,android.view.MenuItem) -> onActionItemClicked
     void onDestroyActionMode(android.view.ActionMode) -> onDestroyActionMode
-android.support.v7.app.ActionBarImplICS -> android.support.v7.a.v:
+android.support.v7.app.ActionBarImplICS -> android.support.v7.a.t:
     android.app.Activity mActivity -> a
     android.support.v7.app.ActionBar$Callback mCallback -> b
     android.app.ActionBar mActionBar -> c
@@ -2826,7 +2773,7 @@ android.support.v7.app.ActionBarImplICS -> android.support.v7.a.v:
     void setHomeButtonEnabled(boolean) -> c
     android.widget.ImageView getHomeActionView() -> c
     android.graphics.drawable.Drawable getThemeDefaultUpIndicator() -> d
-android.support.v7.app.ActionBarImplJB -> android.support.v7.a.w:
+android.support.v7.app.ActionBarImplJB -> android.support.v7.a.u:
     void setHomeButtonEnabled(boolean) -> c
     void setHomeAsUpIndicator(android.graphics.drawable.Drawable) -> a
     android.content.Context getThemedContext() -> b
@@ -2836,7 +2783,7 @@ android.support.v7.app.ActionBarImplJB -> android.support.v7.a.w:
     void setSubtitle(java.lang.CharSequence) -> a
     void setTitle(int) -> a
     void setCustomView(android.view.View) -> a
-android.support.v7.app.ActionBarImplJBMR2 -> android.support.v7.a.x:
+android.support.v7.app.ActionBarImplJBMR2 -> android.support.v7.a.v:
     void setHomeAsUpIndicator(android.graphics.drawable.Drawable) -> a
     void setHomeActionContentDescription(int) -> b
 android.support.v7.appcompat.R -> android.support.v7.b.a:
@@ -3354,23 +3301,9 @@ android.support.v7.internal.view.ActionBarPolicy -> android.support.v7.internal.
 android.support.v7.internal.view.ActionModeWrapper -> android.support.v7.internal.view.b:
     android.view.MenuInflater mInflater -> a
     android.view.ActionMode mWrappedObject -> b
-    void finish() -> b
-    android.view.Menu getMenu() -> a
-android.support.v7.internal.view.ActionModeWrapper$CallbackWrapper -> android.support.v7.internal.view.c:
-    android.support.v7.view.ActionMode$Callback mWrappedCallback -> a
-    android.content.Context mContext -> b
-    android.support.v7.internal.view.ActionModeWrapper mLastStartedActionMode -> c
-    boolean onCreateActionMode(android.view.ActionMode,android.view.Menu) -> onCreateActionMode
-    boolean onPrepareActionMode(android.view.ActionMode,android.view.Menu) -> onPrepareActionMode
-    boolean onActionItemClicked(android.view.ActionMode,android.view.MenuItem) -> onActionItemClicked
-    void onDestroyActionMode(android.view.ActionMode) -> onDestroyActionMode
-    void setLastStartedActionMode(android.support.v7.internal.view.ActionModeWrapper) -> a
-    android.support.v7.view.ActionMode getActionModeWrapper(android.view.ActionMode) -> a
-    android.support.v7.internal.view.ActionModeWrapper createActionModeWrapper(android.content.Context,android.view.ActionMode) -> a
-android.support.v7.internal.view.ActionModeWrapperJB -> android.support.v7.internal.view.d:
-android.support.v7.internal.view.ActionModeWrapperJB$CallbackWrapper -> android.support.v7.internal.view.e:
-    android.support.v7.internal.view.ActionModeWrapper createActionModeWrapper(android.content.Context,android.view.ActionMode) -> a
-android.support.v7.internal.view.SupportMenuInflater -> android.support.v7.internal.view.f:
+    void finish() -> a
+android.support.v7.internal.view.ActionModeWrapperJB -> android.support.v7.internal.view.c:
+android.support.v7.internal.view.SupportMenuInflater -> android.support.v7.internal.view.d:
     java.lang.Class[] ACTION_VIEW_CONSTRUCTOR_SIGNATURE -> a
     java.lang.Class[] ACTION_PROVIDER_CONSTRUCTOR_SIGNATURE -> b
     java.lang.Object[] mActionViewConstructorArguments -> c
@@ -3385,12 +3318,12 @@ android.support.v7.internal.view.SupportMenuInflater -> android.support.v7.inter
     java.lang.Object access$400(android.support.v7.internal.view.SupportMenuInflater) -> c
     java.lang.Class[] access$500() -> b
     java.lang.Object[] access$600(android.support.v7.internal.view.SupportMenuInflater) -> d
-android.support.v7.internal.view.SupportMenuInflater$InflatedOnMenuItemClickListener -> android.support.v7.internal.view.g:
+android.support.v7.internal.view.SupportMenuInflater$InflatedOnMenuItemClickListener -> android.support.v7.internal.view.e:
     java.lang.Class[] PARAM_TYPES -> a
     java.lang.Object mRealOwner -> b
     java.lang.reflect.Method mMethod -> c
     boolean onMenuItemClick(android.view.MenuItem) -> onMenuItemClick
-android.support.v7.internal.view.SupportMenuInflater$MenuState -> android.support.v7.internal.view.h:
+android.support.v7.internal.view.SupportMenuInflater$MenuState -> android.support.v7.internal.view.f:
     android.view.Menu menu -> b
     int groupId -> c
     int groupCategory -> d
@@ -3540,14 +3473,13 @@ android.support.v7.internal.view.menu.ActionMenuPresenter -> android.support.v7.
     void initForMenu(android.content.Context,android.support.v7.internal.view.menu.MenuBuilder) -> a
     void onConfigurationChanged(android.content.res.Configuration) -> a
     void setWidthLimit(int,boolean) -> a
-    void setReserveOverflow(boolean) -> a
     void setItemLimit(int) -> a
-    void setExpandedActionViewsExclusive(boolean) -> b
+    void setExpandedActionViewsExclusive(boolean) -> a
     android.support.v7.internal.view.menu.MenuView getMenuView(android.view.ViewGroup) -> a
     android.view.View getItemView(android.support.v7.internal.view.menu.MenuItemImpl,android.view.View,android.view.ViewGroup) -> a
     void bindItemView(android.support.v7.internal.view.menu.MenuItemImpl,android.support.v7.internal.view.menu.MenuView$ItemView) -> a
     boolean shouldIncludeItem(int,android.support.v7.internal.view.menu.MenuItemImpl) -> a
-    void updateMenuView(boolean) -> c
+    void updateMenuView(boolean) -> b
     boolean filterLeftoverView(android.view.ViewGroup,int) -> a
     boolean onSubMenuSelected(android.support.v7.internal.view.menu.SubMenuBuilder) -> a
     android.view.View findViewForItem(android.view.MenuItem) -> a
@@ -3649,7 +3581,7 @@ android.support.v7.internal.view.menu.BaseMenuPresenter -> android.support.v7.in
     int mId -> j
     void initForMenu(android.content.Context,android.support.v7.internal.view.menu.MenuBuilder) -> a
     android.support.v7.internal.view.menu.MenuView getMenuView(android.view.ViewGroup) -> a
-    void updateMenuView(boolean) -> c
+    void updateMenuView(boolean) -> b
     void addItemView(android.view.View,int) -> a
     boolean filterLeftoverView(android.view.ViewGroup,int) -> a
     void setCallback(android.support.v7.internal.view.menu.MenuPresenter$Callback) -> a
@@ -3724,7 +3656,7 @@ android.support.v7.internal.view.menu.ListMenuPresenter -> android.support.v7.in
     void initForMenu(android.content.Context,android.support.v7.internal.view.menu.MenuBuilder) -> a
     android.support.v7.internal.view.menu.MenuView getMenuView(android.view.ViewGroup) -> a
     android.widget.ListAdapter getAdapter() -> a
-    void updateMenuView(boolean) -> c
+    void updateMenuView(boolean) -> b
     void setCallback(android.support.v7.internal.view.menu.MenuPresenter$Callback) -> a
     boolean onSubMenuSelected(android.support.v7.internal.view.menu.SubMenuBuilder) -> a
     void onCloseMenu(android.support.v7.internal.view.menu.MenuBuilder,boolean) -> a
@@ -3768,7 +3700,6 @@ android.support.v7.internal.view.menu.MenuBuilder -> android.support.v7.internal
     java.util.ArrayList mTempShortcutItemList -> v
     java.util.concurrent.CopyOnWriteArrayList mPresenters -> w
     android.support.v7.internal.view.menu.MenuItemImpl mExpandedItem -> x
-    android.support.v7.internal.view.menu.MenuBuilder setDefaultShowAsAction(int) -> a
     void addMenuPresenter(android.support.v7.internal.view.menu.MenuPresenter) -> a
     void removeMenuPresenter(android.support.v7.internal.view.menu.MenuPresenter) -> b
     void dispatchPresenterUpdate(boolean) -> c
@@ -3797,14 +3728,14 @@ android.support.v7.internal.view.menu.MenuBuilder -> android.support.v7.internal
     void setGroupEnabled(int,boolean) -> setGroupEnabled
     boolean hasVisibleItems() -> hasVisibleItems
     android.view.MenuItem findItem(int) -> findItem
-    int findItemIndex(int) -> b
-    int findGroupIndex(int) -> c
+    int findItemIndex(int) -> a
+    int findGroupIndex(int) -> b
     int findGroupIndex(int,int) -> a
     int size() -> size
     android.view.MenuItem getItem(int) -> getItem
     boolean isShortcutKey(int,android.view.KeyEvent) -> isShortcutKey
     void setQwertyMode(boolean) -> setQwertyMode
-    int getOrdering(int) -> d
+    int getOrdering(int) -> c
     boolean isQwertyMode() -> b
     void setShortcutsVisibleInner(boolean) -> d
     boolean isShortcutsVisible() -> c
@@ -4065,7 +3996,7 @@ android.support.v7.internal.view.menu.MenuPopupHelper -> android.support.v7.inte
     int measureContentWidth(android.widget.ListAdapter) -> a
     void onGlobalLayout() -> onGlobalLayout
     void initForMenu(android.content.Context,android.support.v7.internal.view.menu.MenuBuilder) -> a
-    void updateMenuView(boolean) -> c
+    void updateMenuView(boolean) -> b
     void setCallback(android.support.v7.internal.view.menu.MenuPresenter$Callback) -> a
     boolean onSubMenuSelected(android.support.v7.internal.view.menu.SubMenuBuilder) -> a
     void onCloseMenu(android.support.v7.internal.view.menu.MenuBuilder,boolean) -> a
@@ -4089,7 +4020,7 @@ android.support.v7.internal.view.menu.MenuPopupHelper$MenuAdapter -> android.sup
     android.support.v7.internal.view.menu.MenuBuilder access$000(android.support.v7.internal.view.menu.MenuPopupHelper$MenuAdapter) -> a
 android.support.v7.internal.view.menu.MenuPresenter -> android.support.v7.internal.view.menu.af:
     void initForMenu(android.content.Context,android.support.v7.internal.view.menu.MenuBuilder) -> a
-    void updateMenuView(boolean) -> c
+    void updateMenuView(boolean) -> b
     boolean onSubMenuSelected(android.support.v7.internal.view.menu.SubMenuBuilder) -> a
     void onCloseMenu(android.support.v7.internal.view.menu.MenuBuilder,boolean) -> a
     boolean flagActionItems() -> g
@@ -4180,7 +4111,6 @@ android.support.v7.internal.widget.AbsActionBarView -> android.support.v7.intern
     int getContentHeight() -> getContentHeight
     void setSplitView(android.support.v7.internal.widget.ActionBarContainer) -> setSplitView
     int getAnimatedVisibility() -> getAnimatedVisibility
-    void animateToVisibility(int) -> a
     void setVisibility(int) -> setVisibility
     boolean showOverflowMenu() -> a
     void postShowOverflowMenu() -> b
@@ -4286,10 +4216,7 @@ android.support.v7.internal.widget.ActionBarContextView -> android.support.v7.in
     void setSubtitle(java.lang.CharSequence) -> setSubtitle
     java.lang.CharSequence getTitle() -> getTitle
     java.lang.CharSequence getSubtitle() -> getSubtitle
-    void initTitle() -> i
-    void initForMode(android.support.v7.view.ActionMode) -> a
-    void closeMode() -> g
-    void killMode() -> h
+    void initTitle() -> g
     boolean showOverflowMenu() -> a
     boolean hideOverflowMenu() -> c
     boolean isOverflowMenuShowing() -> d
@@ -4302,15 +4229,10 @@ android.support.v7.internal.widget.ActionBarContextView -> android.support.v7.in
     boolean isOverflowReserved() -> e
     void postShowOverflowMenu() -> b
     void setVisibility(int) -> setVisibility
-    void animateToVisibility(int) -> a
     int getAnimatedVisibility() -> getAnimatedVisibility
     void setSplitView(android.support.v7.internal.widget.ActionBarContainer) -> setSplitView
     int getContentHeight() -> getContentHeight
     void setSplitWhenNarrow(boolean) -> setSplitWhenNarrow
-android.support.v7.internal.widget.ActionBarContextView$1 -> android.support.v7.internal.widget.f:
-    android.support.v7.view.ActionMode val$mode -> a
-    android.support.v7.internal.widget.ActionBarContextView this$0 -> b
-    void onClick(android.view.View) -> onClick
 android.support.v7.internal.widget.ActionBarOverlayLayout -> android.support.v7.internal.widget.ActionBarOverlayLayout:
     int mActionBarHeight -> b
     android.support.v7.app.ActionBar mActionBar -> c
@@ -4368,13 +4290,12 @@ android.support.v7.internal.widget.ActionBarView -> android.support.v7.internal.
     void initIndeterminateProgress() -> h
     void setSplitActionBar(boolean) -> setSplitActionBar
     boolean isSplitActionBar() -> i
-    boolean hasEmbeddedTabs() -> j
     void setEmbeddedTabView(android.support.v7.internal.widget.ScrollingTabContainerView) -> setEmbeddedTabView
     void setCallback(android.support.v7.app.ActionBar$OnNavigationListener) -> setCallback
     void setMenu(android.support.v4.internal.view.SupportMenu,android.support.v7.internal.view.menu.MenuPresenter$Callback) -> a
     void configPresenters(android.support.v7.internal.view.menu.MenuBuilder) -> a
-    boolean hasExpandedActionView() -> k
-    void collapseActionView() -> l
+    boolean hasExpandedActionView() -> j
+    void collapseActionView() -> k
     void setCustomNavigationView(android.view.View) -> setCustomNavigationView
     java.lang.CharSequence getTitle() -> getTitle
     void setTitle(java.lang.CharSequence) -> setTitle
@@ -4398,10 +4319,10 @@ android.support.v7.internal.widget.ActionBarView -> android.support.v7.internal.
     int getDisplayOptions() -> getDisplayOptions
     android.view.ViewGroup$LayoutParams generateDefaultLayoutParams() -> generateDefaultLayoutParams
     void onFinishInflate() -> onFinishInflate
-    void initTitle() -> n
+    void initTitle() -> m
     void setContextView(android.support.v7.internal.widget.ActionBarContextView) -> setContextView
     void setCollapsable(boolean) -> setCollapsable
-    boolean isCollapsed() -> m
+    boolean isCollapsed() -> l
     void onMeasure(int,int) -> onMeasure
     void onLayout(boolean,int,int,int,int) -> onLayout
     android.view.ViewGroup$LayoutParams generateLayoutParams(android.util.AttributeSet) -> generateLayoutParams
@@ -4417,7 +4338,6 @@ android.support.v7.internal.widget.ActionBarView -> android.support.v7.internal.
     void postShowOverflowMenu() -> b
     boolean showOverflowMenu() -> a
     void setVisibility(int) -> setVisibility
-    void animateToVisibility(int) -> a
     int getAnimatedVisibility() -> getAnimatedVisibility
     void setSplitView(android.support.v7.internal.widget.ActionBarContainer) -> setSplitView
     int getContentHeight() -> getContentHeight
@@ -4436,22 +4356,22 @@ android.support.v7.internal.widget.ActionBarView -> android.support.v7.internal.
     int access$1200(android.support.v7.internal.widget.ActionBarView) -> k
     void access$1300(android.support.v7.internal.widget.ActionBarView) -> l
     int access$1400(android.support.v7.internal.widget.ActionBarView) -> m
-android.support.v7.internal.widget.ActionBarView$1 -> android.support.v7.internal.widget.g:
+android.support.v7.internal.widget.ActionBarView$1 -> android.support.v7.internal.widget.f:
     android.support.v7.internal.widget.ActionBarView this$0 -> a
     void onItemSelected(android.support.v7.internal.widget.AdapterViewICS,android.view.View,int,long) -> a
     void onNothingSelected(android.support.v7.internal.widget.AdapterViewICS) -> a
-android.support.v7.internal.widget.ActionBarView$2 -> android.support.v7.internal.widget.h:
+android.support.v7.internal.widget.ActionBarView$2 -> android.support.v7.internal.widget.g:
     android.support.v7.internal.widget.ActionBarView this$0 -> a
     void onClick(android.view.View) -> onClick
-android.support.v7.internal.widget.ActionBarView$3 -> android.support.v7.internal.widget.i:
+android.support.v7.internal.widget.ActionBarView$3 -> android.support.v7.internal.widget.h:
     android.support.v7.internal.widget.ActionBarView this$0 -> a
     void onClick(android.view.View) -> onClick
-android.support.v7.internal.widget.ActionBarView$ExpandedActionViewMenuPresenter -> android.support.v7.internal.widget.j:
+android.support.v7.internal.widget.ActionBarView$ExpandedActionViewMenuPresenter -> android.support.v7.internal.widget.i:
     android.support.v7.internal.view.menu.MenuBuilder mMenu -> a
     android.support.v7.internal.view.menu.MenuItemImpl mCurrentExpandedItem -> b
     android.support.v7.internal.widget.ActionBarView this$0 -> c
     void initForMenu(android.content.Context,android.support.v7.internal.view.menu.MenuBuilder) -> a
-    void updateMenuView(boolean) -> c
+    void updateMenuView(boolean) -> b
     boolean onSubMenuSelected(android.support.v7.internal.view.menu.SubMenuBuilder) -> a
     void onCloseMenu(android.support.v7.internal.view.menu.MenuBuilder,boolean) -> a
     boolean flagActionItems() -> g
@@ -4478,12 +4398,12 @@ android.support.v7.internal.widget.ActionBarView$SavedState -> android.support.v
     boolean isOverflowOpen -> b
     android.os.Parcelable$Creator CREATOR -> CREATOR
     void writeToParcel(android.os.Parcel,int) -> writeToParcel
-android.support.v7.internal.widget.ActionBarView$SavedState$1 -> android.support.v7.internal.widget.k:
+android.support.v7.internal.widget.ActionBarView$SavedState$1 -> android.support.v7.internal.widget.j:
     android.support.v7.internal.widget.ActionBarView$SavedState createFromParcel(android.os.Parcel) -> a
     android.support.v7.internal.widget.ActionBarView$SavedState[] newArray(int) -> a
     java.lang.Object[] newArray(int) -> newArray
     java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
-android.support.v7.internal.widget.AdapterViewICS -> android.support.v7.internal.widget.l:
+android.support.v7.internal.widget.AdapterViewICS -> android.support.v7.internal.widget.k:
     int mFirstPosition -> k
     int mSpecificTop -> l
     int mSyncPosition -> m
@@ -4548,26 +4468,26 @@ android.support.v7.internal.widget.AdapterViewICS -> android.support.v7.internal
     void access$000(android.support.v7.internal.widget.AdapterViewICS,android.os.Parcelable) -> a
     android.os.Parcelable access$100(android.support.v7.internal.widget.AdapterViewICS) -> a
     void access$200(android.support.v7.internal.widget.AdapterViewICS) -> b
-android.support.v7.internal.widget.AdapterViewICS$1 -> android.support.v7.internal.widget.m:
-android.support.v7.internal.widget.AdapterViewICS$AdapterDataSetObserver -> android.support.v7.internal.widget.n:
+android.support.v7.internal.widget.AdapterViewICS$1 -> android.support.v7.internal.widget.l:
+android.support.v7.internal.widget.AdapterViewICS$AdapterDataSetObserver -> android.support.v7.internal.widget.m:
     android.os.Parcelable mInstanceState -> b
     android.support.v7.internal.widget.AdapterViewICS this$0 -> a
     void onChanged() -> onChanged
     void onInvalidated() -> onInvalidated
-android.support.v7.internal.widget.AdapterViewICS$OnItemClickListener -> android.support.v7.internal.widget.o:
+android.support.v7.internal.widget.AdapterViewICS$OnItemClickListener -> android.support.v7.internal.widget.n:
     void onItemClick(android.support.v7.internal.widget.AdapterViewICS,android.view.View,int,long) -> a
-android.support.v7.internal.widget.AdapterViewICS$OnItemClickListenerWrapper -> android.support.v7.internal.widget.p:
+android.support.v7.internal.widget.AdapterViewICS$OnItemClickListenerWrapper -> android.support.v7.internal.widget.o:
     android.support.v7.internal.widget.AdapterViewICS$OnItemClickListener mWrappedListener -> b
     android.support.v7.internal.widget.AdapterViewICS this$0 -> a
     void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
-android.support.v7.internal.widget.AdapterViewICS$OnItemSelectedListener -> android.support.v7.internal.widget.q:
+android.support.v7.internal.widget.AdapterViewICS$OnItemSelectedListener -> android.support.v7.internal.widget.p:
     void onItemSelected(android.support.v7.internal.widget.AdapterViewICS,android.view.View,int,long) -> a
     void onNothingSelected(android.support.v7.internal.widget.AdapterViewICS) -> a
-android.support.v7.internal.widget.AdapterViewICS$SelectionNotifier -> android.support.v7.internal.widget.r:
+android.support.v7.internal.widget.AdapterViewICS$SelectionNotifier -> android.support.v7.internal.widget.q:
     android.support.v7.internal.widget.AdapterViewICS this$0 -> a
     void run() -> run
-android.support.v7.internal.widget.CompatTextView -> android.support.v7.internal.widget.s:
-android.support.v7.internal.widget.CompatTextView$AllCapsTransformationMethod -> android.support.v7.internal.widget.t:
+android.support.v7.internal.widget.CompatTextView -> android.support.v7.internal.widget.r:
+android.support.v7.internal.widget.CompatTextView$AllCapsTransformationMethod -> android.support.v7.internal.widget.s:
     java.util.Locale mLocale -> a
     java.lang.CharSequence getTransformation(java.lang.CharSequence,android.view.View) -> getTransformation
     void onFocusChanged(android.view.View,java.lang.CharSequence,boolean,int,android.graphics.Rect) -> onFocusChanged
@@ -4585,7 +4505,7 @@ android.support.v7.internal.widget.LinearLayoutICS -> android.support.v7.interna
     void drawSupportHorizontalDivider(android.graphics.Canvas,int) -> a
     void drawSupportVerticalDivider(android.graphics.Canvas,int) -> b
     boolean hasSupportDividerBeforeChildAt(int) -> a
-android.support.v7.internal.widget.ListPopupWindow -> android.support.v7.internal.widget.u:
+android.support.v7.internal.widget.ListPopupWindow -> android.support.v7.internal.widget.t:
     android.content.Context mContext -> b
     android.widget.PopupWindow mPopup -> c
     android.widget.ListAdapter mAdapter -> d
@@ -4641,14 +4561,14 @@ android.support.v7.internal.widget.ListPopupWindow -> android.support.v7.interna
     android.widget.PopupWindow access$800(android.support.v7.internal.widget.ListPopupWindow) -> b
     android.support.v7.internal.widget.ListPopupWindow$ResizePopupRunnable access$900(android.support.v7.internal.widget.ListPopupWindow) -> c
     android.os.Handler access$1000(android.support.v7.internal.widget.ListPopupWindow) -> d
-android.support.v7.internal.widget.ListPopupWindow$1 -> android.support.v7.internal.widget.v:
+android.support.v7.internal.widget.ListPopupWindow$1 -> android.support.v7.internal.widget.u:
     android.support.v7.internal.widget.ListPopupWindow this$0 -> a
     void run() -> run
-android.support.v7.internal.widget.ListPopupWindow$2 -> android.support.v7.internal.widget.w:
+android.support.v7.internal.widget.ListPopupWindow$2 -> android.support.v7.internal.widget.v:
     android.support.v7.internal.widget.ListPopupWindow this$0 -> a
     void onItemSelected(android.widget.AdapterView,android.view.View,int,long) -> onItemSelected
     void onNothingSelected(android.widget.AdapterView) -> onNothingSelected
-android.support.v7.internal.widget.ListPopupWindow$DropDownListView -> android.support.v7.internal.widget.x:
+android.support.v7.internal.widget.ListPopupWindow$DropDownListView -> android.support.v7.internal.widget.w:
     boolean mListSelectionHidden -> a
     boolean mHijackFocus -> b
     boolean isInTouchMode() -> isInTouchMode
@@ -4657,28 +4577,28 @@ android.support.v7.internal.widget.ListPopupWindow$DropDownListView -> android.s
     boolean hasFocus() -> hasFocus
     int measureHeightOfChildrenCompat(int,int,int,int,int) -> a
     boolean access$502(android.support.v7.internal.widget.ListPopupWindow$DropDownListView,boolean) -> a
-android.support.v7.internal.widget.ListPopupWindow$ListSelectorHider -> android.support.v7.internal.widget.y:
+android.support.v7.internal.widget.ListPopupWindow$ListSelectorHider -> android.support.v7.internal.widget.x:
     android.support.v7.internal.widget.ListPopupWindow this$0 -> a
     void run() -> run
-android.support.v7.internal.widget.ListPopupWindow$PopupDataSetObserver -> android.support.v7.internal.widget.z:
+android.support.v7.internal.widget.ListPopupWindow$PopupDataSetObserver -> android.support.v7.internal.widget.y:
     android.support.v7.internal.widget.ListPopupWindow this$0 -> a
     void onChanged() -> onChanged
     void onInvalidated() -> onInvalidated
-android.support.v7.internal.widget.ListPopupWindow$PopupScrollListener -> android.support.v7.internal.widget.aa:
+android.support.v7.internal.widget.ListPopupWindow$PopupScrollListener -> android.support.v7.internal.widget.z:
     android.support.v7.internal.widget.ListPopupWindow this$0 -> a
     void onScroll(android.widget.AbsListView,int,int,int) -> onScroll
     void onScrollStateChanged(android.widget.AbsListView,int) -> onScrollStateChanged
-android.support.v7.internal.widget.ListPopupWindow$PopupTouchInterceptor -> android.support.v7.internal.widget.ab:
+android.support.v7.internal.widget.ListPopupWindow$PopupTouchInterceptor -> android.support.v7.internal.widget.aa:
     android.support.v7.internal.widget.ListPopupWindow this$0 -> a
     boolean onTouch(android.view.View,android.view.MotionEvent) -> onTouch
-android.support.v7.internal.widget.ListPopupWindow$ResizePopupRunnable -> android.support.v7.internal.widget.ac:
+android.support.v7.internal.widget.ListPopupWindow$ResizePopupRunnable -> android.support.v7.internal.widget.ab:
     android.support.v7.internal.widget.ListPopupWindow this$0 -> a
     void run() -> run
 android.support.v7.internal.widget.NativeActionModeAwareLayout -> android.support.v7.internal.widget.NativeActionModeAwareLayout:
     android.support.v7.internal.widget.NativeActionModeAwareLayout$OnActionModeForChildListener mActionModeForChildListener -> a
     void setActionModeForChildListener(android.support.v7.internal.widget.NativeActionModeAwareLayout$OnActionModeForChildListener) -> setActionModeForChildListener
     android.view.ActionMode startActionModeForChild(android.view.View,android.view.ActionMode$Callback) -> startActionModeForChild
-android.support.v7.internal.widget.NativeActionModeAwareLayout$OnActionModeForChildListener -> android.support.v7.internal.widget.ad:
+android.support.v7.internal.widget.NativeActionModeAwareLayout$OnActionModeForChildListener -> android.support.v7.internal.widget.ac:
     android.view.ActionMode$Callback onActionModeForChild(android.view.ActionMode$Callback) -> a
 android.support.v7.internal.widget.ProgressBarICS -> android.support.v7.internal.widget.ProgressBarICS:
     int[] android_R_styleable_ProgressBar -> f
@@ -4747,8 +4667,8 @@ android.support.v7.internal.widget.ProgressBarICS -> android.support.v7.internal
     void onDetachedFromWindow() -> onDetachedFromWindow
     void access$000(android.support.v7.internal.widget.ProgressBarICS,int,int,boolean,boolean) -> a
     android.support.v7.internal.widget.ProgressBarICS$RefreshProgressRunnable access$102(android.support.v7.internal.widget.ProgressBarICS,android.support.v7.internal.widget.ProgressBarICS$RefreshProgressRunnable) -> a
-android.support.v7.internal.widget.ProgressBarICS$1 -> android.support.v7.internal.widget.ae:
-android.support.v7.internal.widget.ProgressBarICS$RefreshProgressRunnable -> android.support.v7.internal.widget.af:
+android.support.v7.internal.widget.ProgressBarICS$1 -> android.support.v7.internal.widget.ad:
+android.support.v7.internal.widget.ProgressBarICS$RefreshProgressRunnable -> android.support.v7.internal.widget.ae:
     int mId -> b
     int mProgress -> c
     boolean mFromUser -> d
@@ -4760,7 +4680,7 @@ android.support.v7.internal.widget.ProgressBarICS$SavedState -> android.support.
     int secondaryProgress -> b
     android.os.Parcelable$Creator CREATOR -> CREATOR
     void writeToParcel(android.os.Parcel,int) -> writeToParcel
-android.support.v7.internal.widget.ProgressBarICS$SavedState$1 -> android.support.v7.internal.widget.ag:
+android.support.v7.internal.widget.ProgressBarICS$SavedState$1 -> android.support.v7.internal.widget.af:
     android.support.v7.internal.widget.ProgressBarICS$SavedState createFromParcel(android.os.Parcel) -> a
     android.support.v7.internal.widget.ProgressBarICS$SavedState[] newArray(int) -> a
     java.lang.Object[] newArray(int) -> newArray
@@ -4792,17 +4712,17 @@ android.support.v7.internal.widget.ScrollingTabContainerView -> android.support.
     void onItemClick(android.support.v7.internal.widget.AdapterViewICS,android.view.View,int,long) -> a
     android.widget.LinearLayout access$200(android.support.v7.internal.widget.ScrollingTabContainerView) -> a
     android.support.v7.internal.widget.ScrollingTabContainerView$TabView access$300(android.support.v7.internal.widget.ScrollingTabContainerView,android.support.v7.app.ActionBar$Tab,boolean) -> a
-android.support.v7.internal.widget.ScrollingTabContainerView$1 -> android.support.v7.internal.widget.ah:
+android.support.v7.internal.widget.ScrollingTabContainerView$1 -> android.support.v7.internal.widget.ag:
     android.view.View val$tabView -> a
     android.support.v7.internal.widget.ScrollingTabContainerView this$0 -> b
     void run() -> run
-android.support.v7.internal.widget.ScrollingTabContainerView$TabAdapter -> android.support.v7.internal.widget.ai:
+android.support.v7.internal.widget.ScrollingTabContainerView$TabAdapter -> android.support.v7.internal.widget.ah:
     android.support.v7.internal.widget.ScrollingTabContainerView this$0 -> a
     int getCount() -> getCount
     java.lang.Object getItem(int) -> getItem
     long getItemId(int) -> getItemId
     android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
-android.support.v7.internal.widget.ScrollingTabContainerView$TabClickListener -> android.support.v7.internal.widget.aj:
+android.support.v7.internal.widget.ScrollingTabContainerView$TabClickListener -> android.support.v7.internal.widget.ai:
     android.support.v7.internal.widget.ScrollingTabContainerView this$0 -> a
     void onClick(android.view.View) -> onClick
 android.support.v7.internal.widget.ScrollingTabContainerView$TabView -> android.support.v7.internal.widget.ScrollingTabContainerView$TabView:
@@ -4816,7 +4736,7 @@ android.support.v7.internal.widget.ScrollingTabContainerView$TabView -> android.
     void onMeasure(int,int) -> onMeasure
     void update() -> a
     android.support.v7.app.ActionBar$Tab getTab() -> getTab
-android.support.v7.internal.widget.SpinnerICS -> android.support.v7.internal.widget.ak:
+android.support.v7.internal.widget.SpinnerICS -> android.support.v7.internal.widget.aj:
     android.support.v7.internal.widget.SpinnerICS$SpinnerPopup mPopup -> F
     android.support.v7.internal.widget.SpinnerICS$DropDownAdapter mTempAdapter -> G
     int mDropDownWidth -> E
@@ -4836,8 +4756,8 @@ android.support.v7.internal.widget.SpinnerICS -> android.support.v7.internal.wid
     void onClick(android.content.DialogInterface,int) -> onClick
     int measureContentWidth(android.widget.SpinnerAdapter,android.graphics.drawable.Drawable) -> a
     android.graphics.Rect access$200(android.support.v7.internal.widget.SpinnerICS) -> a
-android.support.v7.internal.widget.SpinnerICS$1 -> android.support.v7.internal.widget.al:
-android.support.v7.internal.widget.SpinnerICS$DialogPopup -> android.support.v7.internal.widget.am:
+android.support.v7.internal.widget.SpinnerICS$1 -> android.support.v7.internal.widget.ak:
+android.support.v7.internal.widget.SpinnerICS$DialogPopup -> android.support.v7.internal.widget.al:
     android.app.AlertDialog mPopup -> b
     android.widget.ListAdapter mListAdapter -> c
     java.lang.CharSequence mPrompt -> d
@@ -4848,7 +4768,7 @@ android.support.v7.internal.widget.SpinnerICS$DialogPopup -> android.support.v7.
     void setPromptText(java.lang.CharSequence) -> a
     void show() -> c
     void onClick(android.content.DialogInterface,int) -> onClick
-android.support.v7.internal.widget.SpinnerICS$DropDownAdapter -> android.support.v7.internal.widget.an:
+android.support.v7.internal.widget.SpinnerICS$DropDownAdapter -> android.support.v7.internal.widget.am:
     android.widget.SpinnerAdapter mAdapter -> a
     android.widget.ListAdapter mListAdapter -> b
     int getCount() -> getCount
@@ -4864,7 +4784,7 @@ android.support.v7.internal.widget.SpinnerICS$DropDownAdapter -> android.support
     int getItemViewType(int) -> getItemViewType
     int getViewTypeCount() -> getViewTypeCount
     boolean isEmpty() -> isEmpty
-android.support.v7.internal.widget.SpinnerICS$DropdownPopup -> android.support.v7.internal.widget.ao:
+android.support.v7.internal.widget.SpinnerICS$DropdownPopup -> android.support.v7.internal.widget.an:
     java.lang.CharSequence mHintText -> c
     android.widget.ListAdapter mAdapter -> d
     android.support.v7.internal.widget.SpinnerICS this$0 -> b
@@ -4872,25 +4792,19 @@ android.support.v7.internal.widget.SpinnerICS$DropdownPopup -> android.support.v
     void setPromptText(java.lang.CharSequence) -> a
     void show() -> c
     android.widget.ListAdapter access$100(android.support.v7.internal.widget.SpinnerICS$DropdownPopup) -> a
-android.support.v7.internal.widget.SpinnerICS$DropdownPopup$1 -> android.support.v7.internal.widget.ap:
+android.support.v7.internal.widget.SpinnerICS$DropdownPopup$1 -> android.support.v7.internal.widget.ao:
     android.support.v7.internal.widget.SpinnerICS val$this$0 -> a
     android.support.v7.internal.widget.SpinnerICS$DropdownPopup this$1 -> b
     void onItemClick(android.support.v7.internal.widget.AdapterViewICS,android.view.View,int,long) -> a
-android.support.v7.internal.widget.SpinnerICS$SpinnerPopup -> android.support.v7.internal.widget.aq:
+android.support.v7.internal.widget.SpinnerICS$SpinnerPopup -> android.support.v7.internal.widget.ap:
     void setAdapter(android.widget.ListAdapter) -> a
     void show() -> c
     void dismiss() -> d
     boolean isShowing() -> f
     void setPromptText(java.lang.CharSequence) -> a
 android.support.v7.view.ActionMode -> android.support.v7.c.a:
-    void finish() -> b
-    android.view.Menu getMenu() -> a
-android.support.v7.view.ActionMode$Callback -> android.support.v7.c.b:
-    boolean onCreateActionMode(android.support.v7.view.ActionMode,android.view.Menu) -> a
-    boolean onPrepareActionMode(android.support.v7.view.ActionMode,android.view.Menu) -> b
-    boolean onActionItemClicked(android.support.v7.view.ActionMode,android.view.MenuItem) -> a
-    void onDestroyActionMode(android.support.v7.view.ActionMode) -> a
-android.support.v7.view.CollapsibleActionView -> android.support.v7.c.c:
+    void finish() -> a
+android.support.v7.view.CollapsibleActionView -> android.support.v7.c.b:
     void onActionViewExpanded() -> a
     void onActionViewCollapsed() -> b
 android.support.v7.widget.SearchView -> android.support.v7.widget.SearchView:
@@ -5052,6 +4966,13 @@ android.support.v7.widget.SuggestionsAdapter$ChildViewCache -> android.support.v
     android.widget.ImageView mIcon1 -> c
     android.widget.ImageView mIcon2 -> d
     android.widget.ImageView mIconRefine -> e
+biz.source_code.base64Coder.Base64Coder -> a.a.a.a:
+    java.lang.String systemLineSeparator -> a
+    char[] map1 -> b
+    byte[] map2 -> c
+    byte[] decode(java.lang.String) -> a
+    byte[] decode(char[]) -> a
+    byte[] decode(char[],int,int) -> a
 com.V4Creations.vtulife.R -> com.V4Creations.vtulife.a:
 com.V4Creations.vtulife.R$styleable -> com.V4Creations.vtulife.b:
     int[] ActionBar -> ActionBar
@@ -5100,6 +5021,14 @@ com.V4Creations.vtulife.R$styleable -> com.V4Creations.vtulife.b:
     int AdsAttrs_adSize -> AdsAttrs_adSize
     int AdsAttrs_adSizes -> AdsAttrs_adSizes
     int AdsAttrs_adUnitId -> AdsAttrs_adUnitId
+    int[] Android -> Android
+    int Android_android_textColor -> Android_android_textColor
+    int Android_android_textColorHighlight -> Android_android_textColorHighlight
+    int Android_android_textColorHint -> Android_android_textColorHint
+    int Android_android_textColorLink -> Android_android_textColorLink
+    int Android_android_textSize -> Android_android_textSize
+    int Android_android_textStyle -> Android_android_textStyle
+    int Android_android_typeface -> Android_android_typeface
     int[] CompatTextView -> CompatTextView
     int CompatTextView_textAllCaps -> CompatTextView_textAllCaps
     int[] CustomViewDefault -> CustomViewDefault
@@ -5186,6 +5115,24 @@ com.V4Creations.vtulife.R$styleable -> com.V4Creations.vtulife.b:
     int Spinner_popupPromptView -> Spinner_popupPromptView
     int Spinner_prompt -> Spinner_prompt
     int Spinner_spinnerMode -> Spinner_spinnerMode
+    int[] Switch -> Switch
+    int Switch_switchMinWidth -> Switch_switchMinWidth
+    int Switch_switchPadding -> Switch_switchPadding
+    int Switch_switchTextAppearance -> Switch_switchTextAppearance
+    int Switch_textOff -> Switch_textOff
+    int Switch_textOn -> Switch_textOn
+    int Switch_thumb -> Switch_thumb
+    int Switch_thumbTextPadding -> Switch_thumbTextPadding
+    int Switch_track -> Switch_track
+    int[] SwitchBackportTheme -> SwitchBackportTheme
+    int SwitchBackportTheme_switchPreferenceStyle -> SwitchBackportTheme_switchPreferenceStyle
+    int SwitchBackportTheme_switchStyle -> SwitchBackportTheme_switchStyle
+    int[] SwitchPreference -> SwitchPreference
+    int SwitchPreference_disableDependentsState -> SwitchPreference_disableDependentsState
+    int SwitchPreference_summaryOff -> SwitchPreference_summaryOff
+    int SwitchPreference_summaryOn -> SwitchPreference_summaryOn
+    int SwitchPreference_switchTextOff -> SwitchPreference_switchTextOff
+    int SwitchPreference_switchTextOn -> SwitchPreference_switchTextOn
     int[] Theme -> Theme
     int Theme_actionDropDownStyle -> Theme_actionDropDownStyle
     int Theme_dropdownListPreferredItemHeight -> Theme_dropdownListPreferredItemHeight
@@ -5198,29 +5145,28 @@ com.V4Creations.vtulife.R$styleable -> com.V4Creations.vtulife.b:
     int View_paddingEnd -> View_paddingEnd
     int View_paddingStart -> View_paddingStart
 com.V4Creations.vtulife.afilechooser.FileChooserActivity -> com.V4Creations.vtulife.afilechooser.FileChooserActivity:
-    java.util.ArrayList EXTENSIONS -> EXTENSIONS
-    java.lang.String TAG_EXTENTION -> TAG_EXTENTION
-    java.lang.String TAG_FULLSCREEN -> TAG_FULLSCREEN
-    java.lang.String PATH -> PATH
-    java.lang.String EXTERNAL_BASE_PATH -> EXTERNAL_BASE_PATH
-    android.support.v4.app.FragmentManager mFragmentManager -> mFragmentManager
-    android.content.BroadcastReceiver mStorageListener -> mStorageListener
-    java.lang.String mPath -> mPath
+    java.util.ArrayList EXTENSIONS -> o
+    java.lang.String TAG_EXTENTION -> p
+    java.lang.String TAG_FULLSCREEN -> q
+    java.lang.String EXTERNAL_BASE_PATH -> r
+    android.support.v4.app.FragmentManager mFragmentManager -> s
+    android.content.BroadcastReceiver mStorageListener -> t
+    java.lang.String mPath -> u
     void onCreate(android.os.Bundle) -> onCreate
-    void showAllowedExtentions() -> showAllowedExtentions
+    void showAllowedExtentions() -> j
     void onPause() -> onPause
     void onResume() -> onResume
     void onSaveInstanceState(android.os.Bundle) -> onSaveInstanceState
-    void onBackStackChanged() -> onBackStackChanged
+    void onBackStackChanged() -> b_
     boolean onCreateOptionsMenu(android.view.Menu) -> onCreateOptionsMenu
     boolean onOptionsItemSelected(android.view.MenuItem) -> onOptionsItemSelected
-    void addFragment() -> addFragment
-    void replaceFragment(java.io.File) -> replaceFragment
-    void finishWithResult(java.io.File) -> finishWithResult
-    void onFileSelected(java.io.File) -> onFileSelected
-    void registerStorageListener() -> registerStorageListener
-    void unregisterStorageListener() -> unregisterStorageListener
-    void access$0(com.V4Creations.vtulife.afilechooser.FileChooserActivity,java.io.File) -> access$0
+    void addFragment() -> k
+    void replaceFragment(java.io.File) -> b
+    void finishWithResult(java.io.File) -> c
+    void onFileSelected(java.io.File) -> a
+    void registerStorageListener() -> l
+    void unregisterStorageListener() -> m
+    void access$0(com.V4Creations.vtulife.afilechooser.FileChooserActivity,java.io.File) -> a
 com.V4Creations.vtulife.afilechooser.FileChooserActivity$1 -> com.V4Creations.vtulife.afilechooser.a:
     com.V4Creations.vtulife.afilechooser.FileChooserActivity this$0 -> a
     void onReceive(android.content.Context,android.content.Intent) -> onReceive
@@ -5435,7 +5381,7 @@ com.V4Creations.vtulife.controller.server.ClassResultLoaderManager -> com.V4Crea
     void startLoading() -> g
     java.lang.String generateUsn() -> h
     void getResult() -> i
-    void onStartLoading() -> b_
+    void onStartLoading() -> d_
     void onLoadingSuccess(java.util.ArrayList,java.lang.String) -> a
     void onLoadingFailure(java.lang.String,java.lang.String,int,java.lang.String) -> a
     void stopLoading() -> j
@@ -5590,17 +5536,17 @@ com.V4Creations.vtulife.model.VTULifeNotification$1 -> com.V4Creations.vtulife.a
     java.lang.String doInBackground(java.lang.String[]) -> a
     java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
 com.V4Creations.vtulife.model.interfaces.ClassResultLoaderInterface -> com.V4Creations.vtulife.a.a.a:
-    void onFinishLoading() -> c_
+    void onFinishLoading() -> e_
 com.V4Creations.vtulife.model.interfaces.NotificationFromDBListener -> com.V4Creations.vtulife.a.a.b:
     void notificationListCreated(java.util.ArrayList) -> a
 com.V4Creations.vtulife.model.interfaces.RefreshListener -> com.V4Creations.vtulife.a.a.c:
-    void refresh() -> a_
+    void refresh() -> c_
 com.V4Creations.vtulife.model.interfaces.ResourceLoaderInterface -> com.V4Creations.vtulife.a.a.d:
-    void onStartLoading() -> e_
+    void onStartLoading() -> g_
     void onLoadingSuccess(com.V4Creations.vtulife.model.ResourceStackItem) -> a
     void onLoadingFailure(java.lang.String,java.lang.String) -> a
 com.V4Creations.vtulife.model.interfaces.ResultLoadedInterface -> com.V4Creations.vtulife.a.a.e:
-    void onStartLoading() -> b_
+    void onStartLoading() -> d_
     void onLoadingSuccess(java.util.ArrayList,java.lang.String) -> a
     void onLoadingFailure(java.lang.String,java.lang.String,int,java.lang.String) -> a
 com.V4Creations.vtulife.util.BugSenseManager -> com.V4Creations.vtulife.util.a:
@@ -5630,7 +5576,7 @@ com.V4Creations.vtulife.util.NavigationMenuManager -> com.V4Creations.vtulife.ut
     com.V4Creations.vtulife.util.NavigationMenuManager$NavigationMenuManagerListener navigationMenuManagerListener -> d
     void toggleNavMenu(android.view.Menu,boolean) -> a
 com.V4Creations.vtulife.util.NavigationMenuManager$NavigationMenuManagerListener -> com.V4Creations.vtulife.util.d:
-    void reflectNavChange(boolean) -> reflectNavChange
+    void reflectNavChange(boolean) -> a_
 com.V4Creations.vtulife.util.PagerSlidingTabStrip -> com.V4Creations.vtulife.util.PagerSlidingTabStrip:
     int[] ATTRS -> b
     android.widget.LinearLayout$LayoutParams defaultTabLayoutParams -> c
@@ -5804,15 +5750,15 @@ com.V4Creations.vtulife.view.activity.NavigationMenu -> com.V4Creations.vtulife.
     void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
     void changeSelected(int) -> a
 com.V4Creations.vtulife.view.activity.VTULifeAboutActivity -> com.V4Creations.vtulife.view.activity.VTULifeAboutActivity:
-    com.V4Creations.vtulife.controller.adapters.ReferredLibraryAdapter mAdapter -> mAdapter
-    android.widget.ListView mListView -> mListView
+    com.V4Creations.vtulife.controller.adapters.ReferredLibraryAdapter mAdapter -> o
+    android.widget.ListView mListView -> p
     void onCreate(android.os.Bundle) -> onCreate
-    void initViews() -> initViews
-    void initListView() -> initListView
+    void initViews() -> j
+    void initListView() -> k
     boolean onOptionsItemSelected(android.view.MenuItem) -> onOptionsItemSelected
     void onStart() -> onStart
     void onStop() -> onStop
-    com.V4Creations.vtulife.controller.adapters.ReferredLibraryAdapter access$0(com.V4Creations.vtulife.view.activity.VTULifeAboutActivity) -> access$0
+    com.V4Creations.vtulife.controller.adapters.ReferredLibraryAdapter access$0(com.V4Creations.vtulife.view.activity.VTULifeAboutActivity) -> a
 com.V4Creations.vtulife.view.activity.VTULifeAboutActivity$1 -> com.V4Creations.vtulife.view.activity.b:
     com.V4Creations.vtulife.view.activity.VTULifeAboutActivity this$0 -> a
     void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
@@ -5828,93 +5774,80 @@ com.V4Creations.vtulife.view.activity.VTULifeLoadingScreenActivity$1 -> com.V4Cr
     void onAnimationRepeat(android.view.animation.Animation) -> onAnimationRepeat
     void onAnimationEnd(android.view.animation.Animation) -> onAnimationEnd
 com.V4Creations.vtulife.view.activity.VTULifeMainActivity -> com.V4Creations.vtulife.view.activity.VTULifeMainActivity:
-    java.lang.String TAG -> TAG
-    int INTERNET_CHECK_TIME_DELAY_HIGH -> INTERNET_CHECK_TIME_DELAY_HIGH
-    int INTERNET_CHECK_TIME_DELAY_LOW -> INTERNET_CHECK_TIME_DELAY_LOW
-    int PREFERENCE_REQUEST_CODE -> PREFERENCE_REQUEST_CODE
-    int NOTIFICATION_REQUEST_CODE -> NOTIFICATION_REQUEST_CODE
-    int PLAY_SERVICES_RESOLUTION_REQUEST -> PLAY_SERVICES_RESOLUTION_REQUEST
-    int NUM_OF_FRAGMENTS -> NUM_OF_FRAGMENTS
-    int ID_VTU_LIFE_WEB_FRAGMENT -> ID_VTU_LIFE_WEB_FRAGMENT
-    int ID_DIRECTORY_LISTING_FRAGMENT -> ID_DIRECTORY_LISTING_FRAGMENT
-    int ID_FAST_RESULT_FRAGMENT -> ID_FAST_RESULT_FRAGMENT
-    int ID_CLASS_RESULT_FRAGMENT -> ID_CLASS_RESULT_FRAGMENT
-    int ID_UPLOAD_FILE_FRAGEMENT -> ID_UPLOAD_FILE_FRAGEMENT
-    int ID_SHARE_A_PIC_FRAGMENT -> ID_SHARE_A_PIC_FRAGMENT
-    android.support.v4.view.ViewPager mViewPager -> mViewPager
-    com.V4Creations.vtulife.util.PagerSlidingTabStrip mTabs -> mTabs
-    com.V4Creations.vtulife.controller.adapters.VTULifeFragmentAdapter mVtuLifeFragmentAdapter -> mVtuLifeFragmentAdapter
-    java.util.ArrayList vtuLifeFragments -> vtuLifeFragments
-    boolean isInternetCheckRunning -> isInternetCheckRunning
-    boolean isHighDelay -> isHighDelay
-    android.os.Handler handler -> handler
-    de.keyboardsurfer.android.widget.crouton.Crouton infiniteCrouton -> infiniteCrouton
-    de.keyboardsurfer.android.widget.crouton.Configuration CONFIGURATION_INFINITE -> CONFIGURATION_INFINITE
-    com.google.analytics.tracking.android.EasyTracker mEasyTracker -> mEasyTracker
-    boolean mExitFlag -> mExitFlag
-    android.app.Dialog mHelpDialog -> mHelpDialog
-    android.support.v4.widget.DrawerLayout mDrawerLayout -> mDrawerLayout
-    android.support.v4.app.ActionBarDrawerToggle mDrawerToggle -> mDrawerToggle
-    android.view.View mMenuDrawer -> mMenuDrawer
-    com.V4Creations.vtulife.util.NavigationMenuManager mNavigationMenuManager -> mNavigationMenuManager
-    android.widget.TextView mNotificationCountTextView -> mNotificationCountTextView
-    com.V4Creations.vtulife.view.activity.NavigationMenu mNavigationMenu -> mNavigationMenu
+    java.lang.String TAG -> o
+    android.support.v4.view.ViewPager mViewPager -> p
+    com.V4Creations.vtulife.util.PagerSlidingTabStrip mTabs -> q
+    com.V4Creations.vtulife.controller.adapters.VTULifeFragmentAdapter mVtuLifeFragmentAdapter -> r
+    java.util.ArrayList vtuLifeFragments -> s
+    boolean isInternetCheckRunning -> t
+    boolean isHighDelay -> u
+    android.os.Handler handler -> v
+    de.keyboardsurfer.android.widget.crouton.Crouton infiniteCrouton -> w
+    de.keyboardsurfer.android.widget.crouton.Configuration CONFIGURATION_INFINITE -> x
+    com.google.analytics.tracking.android.EasyTracker mEasyTracker -> y
+    boolean mExitFlag -> z
+    android.app.Dialog mHelpDialog -> A
+    android.support.v4.widget.DrawerLayout mDrawerLayout -> B
+    android.support.v4.app.ActionBarDrawerToggle mDrawerToggle -> C
+    android.view.View mMenuDrawer -> D
+    com.V4Creations.vtulife.util.NavigationMenuManager mNavigationMenuManager -> E
+    android.widget.TextView mNotificationCountTextView -> F
+    com.V4Creations.vtulife.view.activity.NavigationMenu mNavigationMenu -> G
     void onCreate(android.os.Bundle) -> onCreate
-    void checkFirstTimeUse() -> checkFirstTimeUse
-    void gcmCheck() -> gcmCheck
-    void registerGCMToServer() -> registerGCMToServer
-    void init() -> init
-    void initNavigationDrawer() -> initNavigationDrawer
-    void initTabs() -> initTabs
-    void initFragments() -> initFragments
+    void checkFirstTimeUse() -> u
+    void gcmCheck() -> v
+    void registerGCMToServer() -> w
+    void init() -> x
+    void initNavigationDrawer() -> y
+    void initTabs() -> z
+    void initFragments() -> A
     void onPause() -> onPause
-    void stopInternetCheck() -> stopInternetCheck
+    void stopInternetCheck() -> B
     void onResume() -> onResume
-    boolean checkPlayServices() -> checkPlayServices
-    void changeCurrentFragemnt(int) -> changeCurrentFragemnt
+    boolean checkPlayServices() -> C
+    void changeCurrentFragemnt(int) -> c
     void onBackPressed() -> onBackPressed
-    void reflectActionBarChange(com.V4Creations.vtulife.model.ActionBarStatus,int,boolean) -> reflectActionBarChange
-    void showCrouton(java.lang.String,de.keyboardsurfer.android.widget.crouton.Style,boolean) -> showCrouton
-    void showCrouton(int,de.keyboardsurfer.android.widget.crouton.Style,boolean) -> showCrouton
-    void clearPendingCrouton() -> clearPendingCrouton
-    void updateInternetConnection() -> updateInternetConnection
+    void reflectActionBarChange(com.V4Creations.vtulife.model.ActionBarStatus,int,boolean) -> a
+    void showCrouton(java.lang.String,de.keyboardsurfer.android.widget.crouton.Style,boolean) -> a
+    void showCrouton(int,de.keyboardsurfer.android.widget.crouton.Style,boolean) -> a
+    void updateInternetConnection() -> D
     void onStart() -> onStart
     void onStop() -> onStop
     void onDestroy() -> onDestroy
-    void showPreferences() -> showPreferences
+    void showPreferences() -> j
     void onActivityResult(int,int,android.content.Intent) -> onActivityResult
-    void notifyNotificationRefresh() -> notifyNotificationRefresh
-    void notifyUSNCleaner() -> notifyUSNCleaner
-    void showAbout() -> showAbout
-    void showHelp() -> showHelp
-    void downloadHelpManual() -> downloadHelpManual
-    void doDownloadHelpManual() -> doDownloadHelpManual
-    void openManual() -> openManual
-    boolean isManualIsAlradyDownloaded() -> isManualIsAlradyDownloaded
-    java.lang.String getManualFileUrl() -> getManualFileUrl
-    void sendNormalMail() -> sendNormalMail
-    void likeUsOnFacebook() -> likeUsOnFacebook
-    void showNotificationActivity() -> showNotificationActivity
-    void showRateApp() -> showRateApp
-    void showFeedback() -> showFeedback
+    void notifyNotificationRefresh() -> E
+    void notifyUSNCleaner() -> F
+    void showAbout() -> k
+    void showHelp() -> l
+    void downloadHelpManual() -> m
+    void doDownloadHelpManual() -> G
+    void openManual() -> H
+    boolean isManualIsAlradyDownloaded() -> I
+    java.lang.String getManualFileUrl() -> J
+    void sendNormalMail() -> n
+    void likeUsOnFacebook() -> o
+    void showNotificationActivity() -> p
+    void showRateApp() -> q
+    void showFeedback() -> r
     void onPostCreate(android.os.Bundle) -> onPostCreate
     void onConfigurationChanged(android.content.res.Configuration) -> onConfigurationChanged
     boolean onOptionsItemSelected(android.view.MenuItem) -> onOptionsItemSelected
     boolean onPrepareOptionsMenu(android.view.Menu) -> onPrepareOptionsMenu
     boolean onCreateOptionsMenu(android.view.Menu) -> onCreateOptionsMenu
-    void reflectNavChange(boolean) -> reflectNavChange
-    boolean isNavigationDrawerOpen() -> isNavigationDrawerOpen
-    com.V4Creations.vtulife.controller.adapters.VTULifeFragmentAdapter access$0(com.V4Creations.vtulife.view.activity.VTULifeMainActivity) -> access$0
-    com.google.analytics.tracking.android.EasyTracker access$1(com.V4Creations.vtulife.view.activity.VTULifeMainActivity) -> access$1
-    com.V4Creations.vtulife.view.activity.NavigationMenu access$2(com.V4Creations.vtulife.view.activity.VTULifeMainActivity) -> access$2
-    void access$3(com.V4Creations.vtulife.view.activity.VTULifeMainActivity,boolean) -> access$3
-    boolean access$4(com.V4Creations.vtulife.view.activity.VTULifeMainActivity) -> access$4
-    android.os.Handler access$5(com.V4Creations.vtulife.view.activity.VTULifeMainActivity) -> access$5
-    de.keyboardsurfer.android.widget.crouton.Crouton access$6(com.V4Creations.vtulife.view.activity.VTULifeMainActivity) -> access$6
-    void access$7(com.V4Creations.vtulife.view.activity.VTULifeMainActivity,de.keyboardsurfer.android.widget.crouton.Crouton) -> access$7
-    void access$8(com.V4Creations.vtulife.view.activity.VTULifeMainActivity,boolean) -> access$8
-    de.keyboardsurfer.android.widget.crouton.Configuration access$9() -> access$9
-    boolean access$10(com.V4Creations.vtulife.view.activity.VTULifeMainActivity) -> access$10
+    void reflectNavChange(boolean) -> a_
+    boolean isNavigationDrawerOpen() -> s
+    com.V4Creations.vtulife.controller.adapters.VTULifeFragmentAdapter access$0(com.V4Creations.vtulife.view.activity.VTULifeMainActivity) -> a
+    com.google.analytics.tracking.android.EasyTracker access$1(com.V4Creations.vtulife.view.activity.VTULifeMainActivity) -> b
+    com.V4Creations.vtulife.view.activity.NavigationMenu access$2(com.V4Creations.vtulife.view.activity.VTULifeMainActivity) -> c
+    void access$3(com.V4Creations.vtulife.view.activity.VTULifeMainActivity,boolean) -> a
+    boolean access$4(com.V4Creations.vtulife.view.activity.VTULifeMainActivity) -> d
+    android.os.Handler access$5(com.V4Creations.vtulife.view.activity.VTULifeMainActivity) -> e
+    de.keyboardsurfer.android.widget.crouton.Crouton access$6(com.V4Creations.vtulife.view.activity.VTULifeMainActivity) -> f
+    void access$7(com.V4Creations.vtulife.view.activity.VTULifeMainActivity,de.keyboardsurfer.android.widget.crouton.Crouton) -> a
+    void access$8(com.V4Creations.vtulife.view.activity.VTULifeMainActivity,boolean) -> b
+    de.keyboardsurfer.android.widget.crouton.Configuration access$9() -> t
+    boolean access$10(com.V4Creations.vtulife.view.activity.VTULifeMainActivity) -> g
 com.V4Creations.vtulife.view.activity.VTULifeMainActivity$1 -> com.V4Creations.vtulife.view.activity.d:
     com.V4Creations.vtulife.view.activity.VTULifeMainActivity this$0 -> a
     void onDrawerClosed(android.view.View) -> b
@@ -5941,20 +5874,20 @@ com.V4Creations.vtulife.view.activity.VTULifeMainActivity$6 -> com.V4Creations.v
     com.V4Creations.vtulife.view.activity.VTULifeMainActivity this$0 -> a
     void onClick(android.view.View) -> onClick
 com.V4Creations.vtulife.view.activity.VTULifeNotificationActivity -> com.V4Creations.vtulife.view.activity.VTULifeNotificationActivity:
-    com.V4Creations.vtulife.controller.adapters.NotificationAdapter mNotificationAdapter -> mNotificationAdapter
-    de.timroes.swipetodismiss.SwipeDismissList mSwipeList -> mSwipeList
-    android.widget.ListView mListView -> mListView
+    com.V4Creations.vtulife.controller.adapters.NotificationAdapter mNotificationAdapter -> o
+    de.timroes.swipetodismiss.SwipeDismissList mSwipeList -> p
+    android.widget.ListView mListView -> q
     void onCreate(android.os.Bundle) -> onCreate
-    void initViews() -> initViews
-    void initListView() -> initListView
+    void initViews() -> k
+    void initListView() -> l
     boolean onOptionsItemSelected(android.view.MenuItem) -> onOptionsItemSelected
-    void clearNotifications() -> clearNotifications
-    void processClearNotification() -> processClearNotification
+    void clearNotifications() -> m
+    void processClearNotification() -> j
     boolean onCreateOptionsMenu(android.view.Menu) -> onCreateOptionsMenu
     void onStart() -> onStart
     void onStop() -> onStop
-    void initSwipeToDelete() -> initSwipeToDelete
-    com.V4Creations.vtulife.controller.adapters.NotificationAdapter access$0(com.V4Creations.vtulife.view.activity.VTULifeNotificationActivity) -> access$0
+    void initSwipeToDelete() -> n
+    com.V4Creations.vtulife.controller.adapters.NotificationAdapter access$0(com.V4Creations.vtulife.view.activity.VTULifeNotificationActivity) -> a
 com.V4Creations.vtulife.view.activity.VTULifeNotificationActivity$1 -> com.V4Creations.vtulife.view.activity.k:
     com.V4Creations.vtulife.view.activity.VTULifeNotificationActivity this$0 -> a
     void notificationListCreated(java.util.ArrayList) -> a
@@ -5983,18 +5916,18 @@ com.V4Creations.vtulife.view.activity.VTULifeNotificationActivity$5$1 -> com.V4C
     java.lang.String getTitle() -> b
     void discard() -> c
 com.V4Creations.vtulife.view.activity.VTULifePreferencesActivity -> com.V4Creations.vtulife.view.activity.VTULifePreferencesActivity:
-    android.widget.CompoundButton mFullResultDetailsCompoundButton -> mFullResultDetailsCompoundButton
-    android.widget.CompoundButton mSortedResultCompoundButton -> mSortedResultCompoundButton
-    android.widget.CompoundButton mDeepSearchResultCompoundButton -> mDeepSearchResultCompoundButton
-    android.widget.Spinner mFavoritePageSpinner -> mFavoritePageSpinner
-    com.google.analytics.tracking.android.EasyTracker mEasyTracker -> mEasyTracker
+    org.jraf.android.backport.switchwidget.Switch mFullResultDetailsSwitch -> o
+    org.jraf.android.backport.switchwidget.Switch mSortedResultSwitch -> p
+    org.jraf.android.backport.switchwidget.Switch mDeepSearchResultSwitch -> q
+    android.widget.Spinner mFavoritePageSpinner -> r
+    com.google.analytics.tracking.android.EasyTracker mEasyTracker -> s
     void onCreate(android.os.Bundle) -> onCreate
-    void initViews() -> initViews
+    void initViews() -> j
     boolean onOptionsItemSelected(android.view.MenuItem) -> onOptionsItemSelected
     void clearButtonClick(android.view.View) -> clearButtonClick
     void onStart() -> onStart
     void onStop() -> onStop
-    com.google.analytics.tracking.android.EasyTracker access$0(com.V4Creations.vtulife.view.activity.VTULifePreferencesActivity) -> access$0
+    com.google.analytics.tracking.android.EasyTracker access$0(com.V4Creations.vtulife.view.activity.VTULifePreferencesActivity) -> a
 com.V4Creations.vtulife.view.activity.VTULifePreferencesActivity$1 -> com.V4Creations.vtulife.view.activity.r:
     com.V4Creations.vtulife.view.activity.VTULifePreferencesActivity this$0 -> a
     void onCheckedChanged(android.widget.CompoundButton,boolean) -> onCheckedChanged
@@ -6047,15 +5980,15 @@ com.V4Creations.vtulife.view.fragments.ClassResultListFragment -> com.V4Creation
     void saveAndRefreshUsnHistory() -> E
     java.lang.String getTitle(android.content.Context) -> a
     com.V4Creations.vtulife.model.ActionBarStatus getActionBarStatus() -> a
-    void refresh() -> a_
+    void refresh() -> c_
     java.lang.String getFeatureName(android.content.Context) -> b
-    void onStartLoading() -> b_
+    void onStartLoading() -> d_
     void onLoadingSuccess(java.util.ArrayList,java.lang.String) -> a
     void onLoadingFailure(java.lang.String,java.lang.String,int,java.lang.String) -> a
     void onClick(android.view.View) -> onClick
     boolean onEditorAction(android.widget.TextView,int,android.view.KeyEvent) -> onEditorAction
     void callActionBarReflect() -> N
-    void onFinishLoading() -> c_
+    void onFinishLoading() -> e_
     void access$0(com.V4Creations.vtulife.view.fragments.ClassResultListFragment) -> a
     android.widget.AutoCompleteTextView access$1(com.V4Creations.vtulife.view.fragments.ClassResultListFragment) -> b
 com.V4Creations.vtulife.view.fragments.ClassResultListFragment$1 -> com.V4Creations.vtulife.view.a.b:
@@ -6089,7 +6022,7 @@ com.V4Creations.vtulife.view.fragments.DirectoryListingFragment -> com.V4Creatio
     java.lang.String getTitle(android.content.Context) -> a
     com.V4Creations.vtulife.model.ActionBarStatus getActionBarStatus() -> a
     java.lang.String getFeatureName(android.content.Context) -> b
-    void onStartLoading() -> e_
+    void onStartLoading() -> g_
     void callActionBarReflect() -> J
     void onLoadingSuccess(com.V4Creations.vtulife.model.ResourceStackItem) -> a
     void onLoadingFailure(java.lang.String,java.lang.String) -> a
@@ -6120,9 +6053,9 @@ com.V4Creations.vtulife.view.fragments.FastResultListFragment -> com.V4Creations
     void saveAndRefreshUsnHistory(java.lang.String) -> b
     java.lang.String getTitle(android.content.Context) -> a
     com.V4Creations.vtulife.model.ActionBarStatus getActionBarStatus() -> a
-    void refresh() -> a_
+    void refresh() -> c_
     java.lang.String getFeatureName(android.content.Context) -> b
-    void onStartLoading() -> b_
+    void onStartLoading() -> d_
     void onLoadingSuccess(java.util.ArrayList,java.lang.String) -> a
     void onLoadingFailure(java.lang.String,java.lang.String,int,java.lang.String) -> a
     void onClick(android.view.View) -> onClick
@@ -6272,6 +6205,265 @@ com.V4Creations.vtulife.view.fragments.WebFragment$3 -> com.V4Creations.vtulife.
     void onDownloadStart(java.lang.String,java.lang.String,java.lang.String,java.lang.String,long) -> onDownloadStart
 com.V4Creations.vtulife.view.fragments.WebFragment$JavaScriptInterface -> com.V4Creations.vtulife.view.a.q:
     com.V4Creations.vtulife.view.fragments.WebFragment this$0 -> a
+com.bugsense.trace.BugProfiler -> com.bugsense.trace.BugProfiler:
+    com.bugsense.trace.BugProfiler instance -> instance
+    int MAX_LIFETIME -> MAX_LIFETIME
+    java.lang.StringBuilder trackCpu -> trackCpu
+    java.lang.StringBuilder trackMem -> trackMem
+    java.lang.String currentTag -> currentTag
+    int currentStep -> currentStep
+    int runningFor -> runningFor
+    boolean running -> running
+    com.bugsense.trace.BugProfiler getProfiler() -> getProfiler
+    void startProfiling(java.lang.String,int) -> startProfiling
+    void stopProfiling(java.lang.String) -> stopProfiling
+    void startThread() -> startThread
+    boolean access$000() -> access$000
+    java.lang.StringBuilder access$100(com.bugsense.trace.BugProfiler) -> access$100
+    java.lang.StringBuilder access$200(com.bugsense.trace.BugProfiler) -> access$200
+    int access$300() -> access$300
+    int access$412(int) -> access$412
+    int access$400() -> access$400
+    java.lang.String access$500() -> access$500
+com.bugsense.trace.BugProfiler$1 -> com.bugsense.trace.BugProfiler$1:
+    com.bugsense.trace.BugProfiler this$0 -> this$0
+    void run() -> run
+com.bugsense.trace.BugSense -> com.bugsense.trace.BugSense:
+    java.util.concurrent.ExecutorService executor -> executor
+    java.util.concurrent.ExecutorService getExecutor() -> getExecutor
+    void showUpgradeNotification(android.content.Context,java.lang.String) -> showUpgradeNotification
+com.bugsense.trace.BugSenseHandler -> com.bugsense.trace.BugSenseHandler:
+    boolean I_WANT_TO_DEBUG -> I_WANT_TO_DEBUG
+    android.content.SharedPreferences preferences -> preferences
+    android.content.SharedPreferences$Editor editor -> editor
+    com.bugsense.trace.ExceptionCallback exceptionCallback -> exceptionCallback
+    boolean isSessionActive -> isSessionActive
+    java.lang.String locTicker -> locTicker
+    java.lang.String locTitle -> locTitle
+    java.lang.String locText -> locText
+    java.util.HashMap crashExtraData -> crashExtraData
+    void initAndStartSession(android.content.Context,java.lang.String) -> initAndStartSession
+    void sendDataOverWiFiOnly() -> sendDataOverWiFiOnly
+    int getTotalCrashesNum() -> getTotalCrashesNum
+    void clearTotalCrashesNum() -> clearTotalCrashesNum
+    java.lang.String getLastCrashID() -> getLastCrashID
+    void setExceptionCallback(com.bugsense.trace.ExceptionCallback) -> setExceptionCallback
+    com.bugsense.trace.ExceptionCallback getCallback() -> getCallback
+    void startSession(android.content.Context) -> startSession
+    void leaveBreadcrumb(java.lang.String) -> leaveBreadcrumb
+    void closeSession(android.content.Context) -> closeSession
+    void sendEvent(java.lang.String) -> sendEvent
+    void setUserIdentifier(java.lang.String) -> setUserIdentifier
+    void flush(android.content.Context) -> flush
+    void sendExceptionMap(java.util.HashMap,java.lang.Exception) -> sendExceptionMap
+    void sendException(java.lang.Exception) -> sendException
+    void sendExceptionMessage(java.lang.String,java.lang.String,java.lang.Exception) -> sendExceptionMessage
+    void setLogging(boolean) -> setLogging
+    void setLogging(int) -> setLogging
+    void setLogging(java.lang.String) -> setLogging
+    void setLogging(int,java.lang.String) -> setLogging
+    void installHandler() -> installHandler
+    void setLocalizedNotification(java.lang.String,java.lang.String,java.lang.String) -> setLocalizedNotification
+    java.util.HashMap getCrashExtraData() -> getCrashExtraData
+    void addCrashExtraData(java.lang.String,java.lang.String) -> addCrashExtraData
+    void addCrashExtraMap(java.util.HashMap) -> addCrashExtraMap
+    void removeCrashExtraData(java.lang.String) -> removeCrashExtraData
+    void clearCrashExtraData() -> clearCrashExtraData
+    void useProxy(boolean) -> useProxy
+    android.content.SharedPreferences access$002(android.content.SharedPreferences) -> access$002
+    android.content.SharedPreferences$Editor access$102(android.content.SharedPreferences$Editor) -> access$102
+    android.content.SharedPreferences access$000() -> access$000
+    android.content.SharedPreferences$Editor access$100() -> access$100
+com.bugsense.trace.BugSenseHandler$1 -> com.bugsense.trace.BugSenseHandler$1:
+    android.content.Context val$context -> val$context
+    void run() -> run
+com.bugsense.trace.CrashMechanism -> com.bugsense.trace.CrashMechanism:
+    int MAX_CRASHES -> MAX_CRASHES
+    int MAX_EXCEPTIONS -> MAX_EXCEPTIONS
+    int HANDLEDEXCEPTION -> HANDLEDEXCEPTION
+    int CRASH -> CRASH
+    java.lang.String fixfilename -> fixfilename
+    com.bugsense.trace.CrashMechanism instance -> instance
+    com.bugsense.trace.CrashMechanism getInstance() -> getInstance
+    void sendSavedCrashes() -> sendSavedCrashes
+    java.lang.String createJSONFromCrash(java.lang.String,int,int,int,java.lang.String[],java.lang.String,java.util.Map,java.util.Map,int,long,java.util.Map) -> createJSONFromCrash
+    void transmitCrashASync(java.lang.String,int) -> transmitCrashASync
+    boolean transmitCrashSync(java.lang.String,int) -> transmitCrashSync
+    void saveFixNotification(java.lang.String) -> saveFixNotification
+    void saveCrash(java.lang.String,int) -> saveCrash
+    java.lang.String getBreadcrumbsLine(java.util.ArrayList) -> getBreadcrumbsLine
+    java.lang.String getClass(java.lang.String) -> getClass
+    boolean access$000(java.lang.String,int) -> access$000
+com.bugsense.trace.CrashMechanism$1 -> com.bugsense.trace.CrashMechanism$1:
+    com.bugsense.trace.CrashMechanism this$0 -> this$0
+    void run() -> run
+com.bugsense.trace.CrashMechanism$1$1 -> com.bugsense.trace.CrashMechanism$1$1:
+    com.bugsense.trace.CrashMechanism$1 this$1 -> this$1
+    boolean accept(java.io.File,java.lang.String) -> accept
+com.bugsense.trace.CrashMechanism$1$2 -> com.bugsense.trace.CrashMechanism$1$2:
+    com.bugsense.trace.CrashMechanism$1 this$1 -> this$1
+    boolean accept(java.io.File,java.lang.String) -> accept
+com.bugsense.trace.CrashMechanism$2 -> com.bugsense.trace.CrashMechanism$2:
+    java.lang.String val$jsonCrashData -> val$jsonCrashData
+    int val$type -> val$type
+    void run() -> run
+com.bugsense.trace.CrashMechanism$3 -> com.bugsense.trace.CrashMechanism$3:
+    java.lang.String val$line -> val$line
+    void run() -> run
+com.bugsense.trace.CrashMechanism$4 -> com.bugsense.trace.CrashMechanism$4:
+    int val$type -> val$type
+    java.lang.String val$jsonCrashData -> val$jsonCrashData
+    void run() -> run
+com.bugsense.trace.CryptoHttpClient -> com.bugsense.trace.CryptoHttpClient:
+    int KEY -> KEY
+    java.lang.String BASE64KEYANALYTICS -> BASE64KEYANALYTICS
+    java.lang.String BASE64KEYERRORS -> BASE64KEYERRORS
+    int ANALYTICS -> ANALYTICS
+    int ERRORS -> ERRORS
+    org.apache.http.conn.ClientConnectionManager createClientConnectionManager() -> createClientConnectionManager
+    org.apache.http.conn.ssl.SSLSocketFactory newSslSocketFactory() -> newSslSocketFactory
+com.bugsense.trace.DefaultExceptionHandler -> com.bugsense.trace.DefaultExceptionHandler:
+    java.lang.Thread$UncaughtExceptionHandler defaultExceptionHandler -> defaultExceptionHandler
+    void uncaughtException(java.lang.Thread,java.lang.Throwable) -> uncaughtException
+com.bugsense.trace.EventsMechanism -> com.bugsense.trace.EventsMechanism:
+    int MAX_EVENTS_SIZE -> MAX_EVENTS_SIZE
+    int MAX_BYTES -> MAX_BYTES
+    com.bugsense.trace.EventsMechanism instance -> instance
+    com.bugsense.trace.EventsMechanism getInstance() -> getInstance
+    void sendSavedEvents() -> sendSavedEvents
+    java.lang.String getFlatLine(java.lang.String) -> getFlatLine
+    boolean transmitEventSync(java.lang.String) -> transmitEventSync
+    void saveEvent(java.lang.String) -> saveEvent
+com.bugsense.trace.EventsMechanism$1 -> com.bugsense.trace.EventsMechanism$1:
+    com.bugsense.trace.EventsMechanism this$0 -> this$0
+    void run() -> run
+com.bugsense.trace.EventsMechanism$1$1 -> com.bugsense.trace.EventsMechanism$1$1:
+    com.bugsense.trace.EventsMechanism$1 this$1 -> this$1
+    boolean accept(java.io.File,java.lang.String) -> accept
+com.bugsense.trace.EventsMechanism$2 -> com.bugsense.trace.EventsMechanism$2:
+    java.lang.String val$tag -> val$tag
+    void run() -> run
+com.bugsense.trace.ExceptionCallback -> com.bugsense.trace.ExceptionCallback:
+    void lastBreath(java.lang.Exception) -> lastBreath
+com.bugsense.trace.G -> com.bugsense.trace.G:
+    java.lang.String BUGSENSE_VERSION -> BUGSENSE_VERSION
+    java.lang.String FILES_PATH -> FILES_PATH
+    java.lang.String APP_VERSION -> APP_VERSION
+    java.lang.String APP_VERSIONCODE -> APP_VERSIONCODE
+    java.lang.String APP_PACKAGE -> APP_PACKAGE
+    java.lang.String URL -> URL
+    java.lang.String ANALYTICS_URL -> ANALYTICS_URL
+    java.lang.String TAG -> TAG
+    java.lang.String ANDROID_VERSION -> ANDROID_VERSION
+    java.lang.String PHONE_MODEL -> PHONE_MODEL
+    java.lang.String PHONE_BRAND -> PHONE_BRAND
+    java.lang.String API_KEY -> API_KEY
+    boolean HAS_ROOT -> HAS_ROOT
+    java.lang.String LOCALE -> LOCALE
+    java.lang.String UID -> UID
+    int MAX_BREADCRUMBS -> MAX_BREADCRUMBS
+    java.util.ArrayList breadcrumbs -> breadcrumbs
+    boolean SEND_LOG -> SEND_LOG
+    java.lang.String LOG_FILTER -> LOG_FILTER
+    int LOG_LINES -> LOG_LINES
+    long TIMESTAMP -> TIMESTAMP
+    boolean proxyEnabled -> proxyEnabled
+    int IS_WIFI_ON -> IS_WIFI_ON
+    int IS_MOBILENET_ON -> IS_MOBILENET_ON
+    int IS_GPS_ON -> IS_GPS_ON
+    java.lang.String[] SCREEN_PROPS -> SCREEN_PROPS
+    boolean sendOnlyWiFi -> sendOnlyWiFi
+    java.lang.String userIdentifier -> userIdentifier
+    java.lang.String APPS_RUNNING -> APPS_RUNNING
+com.bugsense.trace.PingsMechanism -> com.bugsense.trace.PingsMechanism:
+    int MAX_PINGS_SIZE -> MAX_PINGS_SIZE
+    int MAX_GNIPS_SIZE -> MAX_GNIPS_SIZE
+    int MAX_PERFS_SIZE -> MAX_PERFS_SIZE
+    int PING -> PING
+    int GNIP -> GNIP
+    int TRANS_START -> TRANS_START
+    int TRANS_END -> TRANS_END
+    com.bugsense.trace.PingsMechanism instance -> instance
+    com.bugsense.trace.PingsMechanism getInstance() -> getInstance
+    void sendSavedPings() -> sendSavedPings
+    java.lang.String getFlatLine(int,java.lang.String,java.lang.String,java.lang.String) -> getFlatLine
+    void transmitPingASync(int) -> transmitPingASync
+    void transmitPingASync(java.lang.String,int) -> transmitPingASync
+    boolean transmitPingSync(java.lang.String) -> transmitPingSync
+    void savePing(int,java.lang.String) -> savePing
+    void savePing(int,java.lang.String,java.lang.String,java.lang.String) -> savePing
+com.bugsense.trace.PingsMechanism$1 -> com.bugsense.trace.PingsMechanism$1:
+    com.bugsense.trace.PingsMechanism this$0 -> this$0
+    void run() -> run
+com.bugsense.trace.PingsMechanism$1$1 -> com.bugsense.trace.PingsMechanism$1$1:
+    com.bugsense.trace.PingsMechanism$1 this$1 -> this$1
+    boolean accept(java.io.File,java.lang.String) -> accept
+com.bugsense.trace.PingsMechanism$1$2 -> com.bugsense.trace.PingsMechanism$1$2:
+    com.bugsense.trace.PingsMechanism$1 this$1 -> this$1
+    boolean accept(java.io.File,java.lang.String) -> accept
+com.bugsense.trace.PingsMechanism$1$3 -> com.bugsense.trace.PingsMechanism$1$3:
+    com.bugsense.trace.PingsMechanism$1 this$1 -> this$1
+    boolean accept(java.io.File,java.lang.String) -> accept
+com.bugsense.trace.PingsMechanism$2 -> com.bugsense.trace.PingsMechanism$2:
+    java.lang.String val$jsonCrashData -> val$jsonCrashData
+    int val$type -> val$type
+    void run() -> run
+com.bugsense.trace.PingsMechanism$3 -> com.bugsense.trace.PingsMechanism$3:
+    int val$type -> val$type
+    java.lang.String val$tag -> val$tag
+    void run() -> run
+com.bugsense.trace.PingsMechanism$4 -> com.bugsense.trace.PingsMechanism$4:
+    int val$type -> val$type
+    java.lang.String val$tag -> val$tag
+    java.lang.String val$cpu -> val$cpu
+    java.lang.String val$mem -> val$mem
+    void run() -> run
+com.bugsense.trace.UidManager -> com.bugsense.trace.UidManager:
+    java.lang.String UID_PREFERENCES -> UID_PREFERENCES
+    java.lang.String UID_FIELD -> UID_FIELD
+    java.lang.String UID_ERROR_ID -> UID_ERROR_ID
+    java.lang.String UID_NOSAVED -> UID_NOSAVED
+    int UID_CORRECT_LENTH -> UID_CORRECT_LENTH
+    char[] DIGITS -> DIGITS
+    java.lang.String getUid(android.content.Context) -> getUid
+    boolean saveUid(android.content.Context,java.lang.String) -> saveUid
+    java.lang.String generateUid() -> generateUid
+    char[] encodeHex(byte[]) -> encodeHex
+com.bugsense.trace.Utils -> com.bugsense.trace.Utils:
+    int STATE_OFF -> STATE_OFF
+    int STATE_ON -> STATE_ON
+    int STATE_DONT_KNOW -> STATE_DONT_KNOW
+    java.lang.Runtime rt -> rt
+    java.lang.String crashCounterFile -> crashCounterFile
+    java.lang.String lastCrashIDFile -> lastCrashIDFile
+    boolean checkForRoot() -> checkForRoot
+    java.lang.String getTime() -> getTime
+    java.lang.String exceedLimitString(java.lang.String) -> exceedLimitString
+    java.lang.String readLogs() -> readLogs
+    java.lang.String readFile(java.lang.String) -> readFile
+    java.lang.String MD5(java.lang.String) -> MD5
+    int CheckNetworkConnection(android.content.Context,java.lang.String) -> CheckNetworkConnection
+    int isWifiOn(android.content.Context) -> isWifiOn
+    boolean isOnWifi(android.content.Context) -> isOnWifi
+    int isMobileNetworkOn(android.content.Context) -> isMobileNetworkOn
+    int isGPSOn(android.content.Context) -> isGPSOn
+    java.lang.String[] ScreenProperties(android.content.Context) -> ScreenProperties
+    void setProperties(android.content.Context) -> setProperties
+    java.lang.String getMem() -> getMem
+    java.lang.String getCPU() -> getCPU
+    java.lang.String getAppsRunning(android.content.Context) -> getAppsRunning
+    int getCrashCounter() -> getCrashCounter
+    void clearCrashCounter() -> clearCrashCounter
+    void saveCrashCounter() -> saveCrashCounter
+    void saveLastCrashID(java.lang.String) -> saveLastCrashID
+    java.lang.String getLastCrashID() -> getLastCrashID
+com.bugsense.trace.Utils$1 -> com.bugsense.trace.Utils$1:
+    void run() -> run
+com.bugsense.trace.Utils$2 -> com.bugsense.trace.Utils$2:
+    void run() -> run
+com.bugsense.trace.Utils$3 -> com.bugsense.trace.Utils$3:
+    java.lang.String val$lastID -> val$lastID
+    void run() -> run
 com.google.analytics.tracking.android.AnalyticsClient -> com.google.a.a.a.a:
     void sendHit(java.util.Map,long,java.lang.String,java.util.List) -> a
     void clearHits() -> a
@@ -6376,39 +6568,51 @@ com.google.analytics.tracking.android.EasyTracker -> com.google.a.a.a.p:
     boolean mIsAutoActivityTracking -> e
     int mActivitiesActive -> f
     long mSessionTimeout -> g
-    android.content.Context mContext -> h
-    java.util.Map mActivityNameMap -> i
-    com.google.analytics.tracking.android.ParameterLoader mParameterFetcher -> j
-    com.google.analytics.tracking.android.ServiceManager mServiceManager -> k
-    com.google.analytics.tracking.android.Clock mClock -> l
-    boolean mIsInForeground -> m
-    boolean mStartSessionOnNextSend -> n
+    long mLastOnStopTime -> h
+    android.content.Context mContext -> i
+    java.util.Map mActivityNameMap -> j
+    com.google.analytics.tracking.android.ParameterLoader mParameterFetcher -> k
+    com.google.analytics.tracking.android.ServiceManager mServiceManager -> l
+    com.google.analytics.tracking.android.Clock mClock -> m
+    java.util.Timer mTimer -> n
+    java.util.TimerTask mTimerTask -> o
+    boolean mIsInForeground -> p
+    boolean mStartSessionOnNextSend -> q
     com.google.analytics.tracking.android.EasyTracker getInstance(android.content.Context) -> a
-    void loadParameters() -> a
+    boolean checkForNewSession() -> a
+    void loadParameters() -> b
     com.google.analytics.tracking.android.Logger$LogLevel getLogLevelFromString(java.lang.String) -> a
     void setContext(android.content.Context,com.google.analytics.tracking.android.ParameterLoader,com.google.analytics.tracking.android.ServiceManager) -> a
+    void activityStart(android.app.Activity) -> a
+    void activityStop(android.app.Activity) -> b
+    void clearExistingTimer() -> c
+    java.lang.String getActivityName(android.app.Activity) -> c
     void send(java.util.Map) -> a
+    boolean access$102(com.google.analytics.tracking.android.EasyTracker,boolean) -> a
 com.google.analytics.tracking.android.EasyTracker$1 -> com.google.a.a.a.q:
     com.google.analytics.tracking.android.EasyTracker this$0 -> a
     long currentTimeMillis() -> a
-com.google.analytics.tracking.android.ExceptionParser -> com.google.a.a.a.r:
+com.google.analytics.tracking.android.EasyTracker$NotInForegroundTimerTask -> com.google.a.a.a.r:
+    com.google.analytics.tracking.android.EasyTracker this$0 -> a
+    void run() -> run
+com.google.analytics.tracking.android.ExceptionParser -> com.google.a.a.a.s:
     java.lang.String getDescription(java.lang.String,java.lang.Throwable) -> a
-com.google.analytics.tracking.android.ExceptionReporter -> com.google.a.a.a.s:
+com.google.analytics.tracking.android.ExceptionReporter -> com.google.a.a.a.t:
     java.lang.Thread$UncaughtExceptionHandler mOriginalHandler -> a
     com.google.analytics.tracking.android.Tracker mTracker -> b
     com.google.analytics.tracking.android.ServiceManager mServiceManager -> c
     com.google.analytics.tracking.android.ExceptionParser mExceptionParser -> d
     void uncaughtException(java.lang.Thread,java.lang.Throwable) -> uncaughtException
-com.google.analytics.tracking.android.FutureApis -> com.google.a.a.a.t:
+com.google.analytics.tracking.android.FutureApis -> com.google.a.a.a.u:
     int version() -> a
     boolean setOwnerOnlyReadWrite(java.lang.String) -> a
-com.google.analytics.tracking.android.GANetworkReceiver -> com.google.a.a.a.u:
+com.google.analytics.tracking.android.GANetworkReceiver -> com.google.a.a.a.v:
     java.lang.String SELF_IDENTIFYING_EXTRA -> a
     com.google.analytics.tracking.android.ServiceManager mManager -> b
     void onReceive(android.content.Context,android.content.Intent) -> onReceive
     void register(android.content.Context) -> a
     void sendRadioPoweredBroadcast(android.content.Context) -> b
-com.google.analytics.tracking.android.GAServiceManager -> com.google.a.a.a.v:
+com.google.analytics.tracking.android.GAServiceManager -> com.google.a.a.a.w:
     java.lang.Object MSG_OBJECT -> a
     android.content.Context ctx -> b
     com.google.analytics.tracking.android.AnalyticsStore store -> c
@@ -6440,13 +6644,13 @@ com.google.analytics.tracking.android.GAServiceManager -> com.google.a.a.a.v:
     int access$200(com.google.analytics.tracking.android.GAServiceManager) -> b
     boolean access$300(com.google.analytics.tracking.android.GAServiceManager) -> c
     android.os.Handler access$400(com.google.analytics.tracking.android.GAServiceManager) -> d
-com.google.analytics.tracking.android.GAServiceManager$1 -> com.google.a.a.a.w:
+com.google.analytics.tracking.android.GAServiceManager$1 -> com.google.a.a.a.x:
     com.google.analytics.tracking.android.GAServiceManager this$0 -> a
     void reportStoreIsEmpty(boolean) -> a
-com.google.analytics.tracking.android.GAServiceManager$2 -> com.google.a.a.a.x:
+com.google.analytics.tracking.android.GAServiceManager$2 -> com.google.a.a.a.y:
     com.google.analytics.tracking.android.GAServiceManager this$0 -> a
     boolean handleMessage(android.os.Message) -> handleMessage
-com.google.analytics.tracking.android.GAServiceProxy -> com.google.a.a.a.y:
+com.google.analytics.tracking.android.GAServiceProxy -> com.google.a.a.a.z:
     long lastRequestTime -> a
     com.google.analytics.tracking.android.GAServiceProxy$ConnectState state -> b
     com.google.analytics.tracking.android.AnalyticsClient client -> c
@@ -6492,15 +6696,15 @@ com.google.analytics.tracking.android.GAServiceProxy -> com.google.a.a.a.y:
     com.google.analytics.tracking.android.Clock access$1000(com.google.analytics.tracking.android.GAServiceProxy) -> h
     void access$1100(com.google.analytics.tracking.android.GAServiceProxy) -> i
     java.util.Timer access$1200(com.google.analytics.tracking.android.GAServiceProxy) -> j
-com.google.analytics.tracking.android.GAServiceProxy$1 -> com.google.a.a.a.z:
+com.google.analytics.tracking.android.GAServiceProxy$1 -> com.google.a.a.a.aa:
     com.google.analytics.tracking.android.GAServiceProxy this$0 -> a
     long currentTimeMillis() -> a
-com.google.analytics.tracking.android.GAServiceProxy$2 -> com.google.a.a.a.aa:
+com.google.analytics.tracking.android.GAServiceProxy$2 -> com.google.a.a.a.ab:
     com.google.analytics.tracking.android.GAServiceProxy this$0 -> a
     void run() -> run
-com.google.analytics.tracking.android.GAServiceProxy$3 -> com.google.a.a.a.ab:
+com.google.analytics.tracking.android.GAServiceProxy$3 -> com.google.a.a.a.ac:
     int[] $SwitchMap$com$google$analytics$tracking$android$GAServiceProxy$ConnectState -> a
-com.google.analytics.tracking.android.GAServiceProxy$ConnectState -> com.google.a.a.a.ac:
+com.google.analytics.tracking.android.GAServiceProxy$ConnectState -> com.google.a.a.a.ad:
     com.google.analytics.tracking.android.GAServiceProxy$ConnectState CONNECTING -> a
     com.google.analytics.tracking.android.GAServiceProxy$ConnectState CONNECTED_SERVICE -> b
     com.google.analytics.tracking.android.GAServiceProxy$ConnectState CONNECTED_LOCAL -> c
@@ -6511,13 +6715,13 @@ com.google.analytics.tracking.android.GAServiceProxy$ConnectState -> com.google.
     com.google.analytics.tracking.android.GAServiceProxy$ConnectState[] $VALUES -> h
     com.google.analytics.tracking.android.GAServiceProxy$ConnectState[] values() -> values
     com.google.analytics.tracking.android.GAServiceProxy$ConnectState valueOf(java.lang.String) -> valueOf
-com.google.analytics.tracking.android.GAServiceProxy$DisconnectCheckTask -> com.google.a.a.a.ad:
+com.google.analytics.tracking.android.GAServiceProxy$DisconnectCheckTask -> com.google.a.a.a.ae:
     com.google.analytics.tracking.android.GAServiceProxy this$0 -> a
     void run() -> run
-com.google.analytics.tracking.android.GAServiceProxy$FailedConnectTask -> com.google.a.a.a.ae:
+com.google.analytics.tracking.android.GAServiceProxy$FailedConnectTask -> com.google.a.a.a.af:
     com.google.analytics.tracking.android.GAServiceProxy this$0 -> a
     void run() -> run
-com.google.analytics.tracking.android.GAServiceProxy$HitParams -> com.google.a.a.a.af:
+com.google.analytics.tracking.android.GAServiceProxy$HitParams -> com.google.a.a.a.ag:
     java.util.Map wireFormatParams -> a
     long hitTimeInMilliseconds -> b
     java.lang.String path -> c
@@ -6527,10 +6731,10 @@ com.google.analytics.tracking.android.GAServiceProxy$HitParams -> com.google.a.a
     java.lang.String getPath() -> c
     java.util.List getCommands() -> d
     java.lang.String toString() -> toString
-com.google.analytics.tracking.android.GAServiceProxy$ReconnectTask -> com.google.a.a.a.ag:
+com.google.analytics.tracking.android.GAServiceProxy$ReconnectTask -> com.google.a.a.a.ah:
     com.google.analytics.tracking.android.GAServiceProxy this$0 -> a
     void run() -> run
-com.google.analytics.tracking.android.GAThread -> com.google.a.a.a.ah:
+com.google.analytics.tracking.android.GAThread -> com.google.a.a.a.ai:
     java.util.concurrent.LinkedBlockingQueue queue -> a
     boolean mDisabled -> b
     boolean mClosed -> c
@@ -6564,17 +6768,17 @@ com.google.analytics.tracking.android.GAThread -> com.google.a.a.a.ah:
     java.lang.String access$500(com.google.analytics.tracking.android.GAThread,java.util.Map) -> c
     java.util.List access$600(com.google.analytics.tracking.android.GAThread) -> d
     com.google.analytics.tracking.android.ServiceProxy access$700(com.google.analytics.tracking.android.GAThread) -> e
-com.google.analytics.tracking.android.GAThread$1 -> com.google.a.a.a.ai:
+com.google.analytics.tracking.android.GAThread$1 -> com.google.a.a.a.aj:
     java.util.Map val$hitCopy -> a
     com.google.analytics.tracking.android.GAThread this$0 -> b
     void run() -> run
-com.google.analytics.tracking.android.GAThread$2 -> com.google.a.a.a.aj:
+com.google.analytics.tracking.android.GAThread$2 -> com.google.a.a.a.ak:
     com.google.analytics.tracking.android.GAThread this$0 -> a
     void run() -> run
-com.google.analytics.tracking.android.GAThread$4 -> com.google.a.a.a.ak:
+com.google.analytics.tracking.android.GAThread$4 -> com.google.a.a.a.al:
     com.google.analytics.tracking.android.GAThread this$0 -> a
     void run() -> run
-com.google.analytics.tracking.android.GAUsage -> com.google.a.a.a.al:
+com.google.analytics.tracking.android.GAUsage -> com.google.a.a.a.am:
     java.util.SortedSet mUsedFields -> a
     java.lang.StringBuilder mSequence -> b
     boolean mDisableUsage -> c
@@ -6584,7 +6788,7 @@ com.google.analytics.tracking.android.GAUsage -> com.google.a.a.a.al:
     void setUsage(com.google.analytics.tracking.android.GAUsage$Field) -> a
     java.lang.String getAndClearUsage() -> b
     java.lang.String getAndClearSequence() -> c
-com.google.analytics.tracking.android.GAUsage$Field -> com.google.a.a.a.am:
+com.google.analytics.tracking.android.GAUsage$Field -> com.google.a.a.a.an:
     com.google.analytics.tracking.android.GAUsage$Field MAP_BUILDER_SET -> a
     com.google.analytics.tracking.android.GAUsage$Field MAP_BUILDER_SET_ALL -> b
     com.google.analytics.tracking.android.GAUsage$Field MAP_BUILDER_GET -> c
@@ -6651,7 +6855,7 @@ com.google.analytics.tracking.android.GAUsage$Field -> com.google.a.a.a.am:
     com.google.analytics.tracking.android.GAUsage$Field[] $VALUES -> al
     com.google.analytics.tracking.android.GAUsage$Field[] values() -> values
     com.google.analytics.tracking.android.GAUsage$Field valueOf(java.lang.String) -> valueOf
-com.google.analytics.tracking.android.GoogleAnalytics -> com.google.a.a.a.an:
+com.google.analytics.tracking.android.GoogleAnalytics -> com.google.a.a.a.ao:
     boolean mDryRun -> a
     com.google.analytics.tracking.android.AnalyticsThread mThread -> b
     android.content.Context mContext -> c
@@ -6666,7 +6870,7 @@ com.google.analytics.tracking.android.GoogleAnalytics -> com.google.a.a.a.an:
     void sendHit(java.util.Map) -> a
     boolean getAppOptOut() -> c
     com.google.analytics.tracking.android.Logger getLogger() -> d
-com.google.analytics.tracking.android.Hit -> com.google.a.a.a.ao:
+com.google.analytics.tracking.android.Hit -> com.google.a.a.a.ap:
     java.lang.String mHitString -> a
     long mHitId -> b
     long mHitTime -> c
@@ -6677,11 +6881,11 @@ com.google.analytics.tracking.android.Hit -> com.google.a.a.a.ao:
     long getHitTime() -> c
     java.lang.String getHitUrlScheme() -> d
     void setHitUrl(java.lang.String) -> b
-com.google.analytics.tracking.android.HitBuilder -> com.google.a.a.a.ap:
+com.google.analytics.tracking.android.HitBuilder -> com.google.a.a.a.aq:
     java.util.Map generateHitParams(java.util.Map) -> a
     java.lang.String postProcessHit(com.google.analytics.tracking.android.Hit,long) -> a
     java.lang.String encode(java.lang.String) -> a
-com.google.analytics.tracking.android.Log -> com.google.a.a.a.aq:
+com.google.analytics.tracking.android.Log -> com.google.a.a.a.ar:
     com.google.analytics.tracking.android.GoogleAnalytics sGaInstance -> a
     void e(java.lang.String) -> a
     void i(java.lang.String) -> b
@@ -6689,14 +6893,14 @@ com.google.analytics.tracking.android.Log -> com.google.a.a.a.aq:
     void w(java.lang.String) -> d
     boolean isVerbose() -> a
     com.google.analytics.tracking.android.Logger getLogger() -> b
-com.google.analytics.tracking.android.Logger -> com.google.a.a.a.ar:
+com.google.analytics.tracking.android.Logger -> com.google.a.a.a.as:
     void verbose(java.lang.String) -> a
     void info(java.lang.String) -> b
     void warn(java.lang.String) -> c
     void error(java.lang.String) -> d
     void setLogLevel(com.google.analytics.tracking.android.Logger$LogLevel) -> a
     com.google.analytics.tracking.android.Logger$LogLevel getLogLevel() -> a
-com.google.analytics.tracking.android.Logger$LogLevel -> com.google.a.a.a.as:
+com.google.analytics.tracking.android.Logger$LogLevel -> com.google.a.a.a.at:
     com.google.analytics.tracking.android.Logger$LogLevel VERBOSE -> a
     com.google.analytics.tracking.android.Logger$LogLevel INFO -> b
     com.google.analytics.tracking.android.Logger$LogLevel WARNING -> c
@@ -6704,20 +6908,21 @@ com.google.analytics.tracking.android.Logger$LogLevel -> com.google.a.a.a.as:
     com.google.analytics.tracking.android.Logger$LogLevel[] $VALUES -> e
     com.google.analytics.tracking.android.Logger$LogLevel[] values() -> values
     com.google.analytics.tracking.android.Logger$LogLevel valueOf(java.lang.String) -> valueOf
-com.google.analytics.tracking.android.MapBuilder -> com.google.a.a.a.at:
+com.google.analytics.tracking.android.MapBuilder -> com.google.a.a.a.au:
     java.util.Map map -> a
     com.google.analytics.tracking.android.MapBuilder set(java.lang.String,java.lang.String) -> a
     java.util.Map build() -> a
+    com.google.analytics.tracking.android.MapBuilder createEvent(java.lang.String,java.lang.String,java.lang.String,java.lang.Long) -> a
     com.google.analytics.tracking.android.MapBuilder createException(java.lang.String,java.lang.Boolean) -> a
     com.google.analytics.tracking.android.MapBuilder setCampaignParamsFromUrl(java.lang.String) -> a
     java.lang.String booleanToString(java.lang.Boolean) -> a
-com.google.analytics.tracking.android.ParameterLoader -> com.google.a.a.a.au:
+com.google.analytics.tracking.android.ParameterLoader -> com.google.a.a.a.av:
     java.lang.String getString(java.lang.String) -> a
     java.lang.Double getDoubleFromString(java.lang.String) -> b
     boolean getBoolean(java.lang.String) -> c
     int getInt(java.lang.String,int) -> a
     void setResourcePackageName(java.lang.String) -> d
-com.google.analytics.tracking.android.ParameterLoaderImpl -> com.google.a.a.a.av:
+com.google.analytics.tracking.android.ParameterLoaderImpl -> com.google.a.a.a.aw:
     android.content.Context mContext -> a
     java.lang.String mOverrideResourcePackageName -> b
     int getResourceIdForType(java.lang.String,java.lang.String) -> a
@@ -6726,7 +6931,7 @@ com.google.analytics.tracking.android.ParameterLoaderImpl -> com.google.a.a.a.av
     int getInt(java.lang.String,int) -> a
     java.lang.Double getDoubleFromString(java.lang.String) -> b
     void setResourcePackageName(java.lang.String) -> d
-com.google.analytics.tracking.android.PersistentAnalyticsStore -> com.google.a.a.a.aw:
+com.google.analytics.tracking.android.PersistentAnalyticsStore -> com.google.a.a.a.ax:
     java.lang.String CREATE_HITS_TABLE -> a
     com.google.analytics.tracking.android.PersistentAnalyticsStore$AnalyticsDatabaseHelper mDbHelper -> b
     com.google.analytics.tracking.android.Dispatcher mDispatcher -> c
@@ -6754,10 +6959,10 @@ com.google.analytics.tracking.android.PersistentAnalyticsStore -> com.google.a.a
     java.lang.String access$100(com.google.analytics.tracking.android.PersistentAnalyticsStore) -> b
     android.content.Context access$200(com.google.analytics.tracking.android.PersistentAnalyticsStore) -> c
     java.lang.String access$300() -> e
-com.google.analytics.tracking.android.PersistentAnalyticsStore$1 -> com.google.a.a.a.ax:
+com.google.analytics.tracking.android.PersistentAnalyticsStore$1 -> com.google.a.a.a.ay:
     com.google.analytics.tracking.android.PersistentAnalyticsStore this$0 -> a
     long currentTimeMillis() -> a
-com.google.analytics.tracking.android.PersistentAnalyticsStore$AnalyticsDatabaseHelper -> com.google.a.a.a.ay:
+com.google.analytics.tracking.android.PersistentAnalyticsStore$AnalyticsDatabaseHelper -> com.google.a.a.a.az:
     boolean mBadDatabase -> b
     long mLastDatabaseCheckTime -> c
     com.google.analytics.tracking.android.PersistentAnalyticsStore this$0 -> a
@@ -6767,9 +6972,9 @@ com.google.analytics.tracking.android.PersistentAnalyticsStore$AnalyticsDatabase
     void validateColumnsPresent(android.database.sqlite.SQLiteDatabase) -> a
     void onCreate(android.database.sqlite.SQLiteDatabase) -> onCreate
     void onUpgrade(android.database.sqlite.SQLiteDatabase,int,int) -> onUpgrade
-com.google.analytics.tracking.android.RateLimiter -> com.google.a.a.a.az:
+com.google.analytics.tracking.android.RateLimiter -> com.google.a.a.a.ba:
     boolean tokenAvailable() -> a
-com.google.analytics.tracking.android.ScreenResolutionDefaultProvider -> com.google.a.a.a.ba:
+com.google.analytics.tracking.android.ScreenResolutionDefaultProvider -> com.google.a.a.a.bb:
     com.google.analytics.tracking.android.ScreenResolutionDefaultProvider sInstance -> a
     java.lang.Object sInstanceLock -> b
     android.content.Context mContext -> c
@@ -6777,24 +6982,24 @@ com.google.analytics.tracking.android.ScreenResolutionDefaultProvider -> com.goo
     com.google.analytics.tracking.android.ScreenResolutionDefaultProvider getProvider() -> a
     java.lang.String getValue(java.lang.String) -> a
     java.lang.String getScreenResolutionString() -> b
-com.google.analytics.tracking.android.SendHitRateLimiter -> com.google.a.a.a.bb:
+com.google.analytics.tracking.android.SendHitRateLimiter -> com.google.a.a.a.bc:
     long mMillisecondsPerToken -> a
     int mMaxTokens -> b
     double mTokens -> c
     long mLastTrackTime -> d
     java.lang.Object mTokenLock -> e
     boolean tokenAvailable() -> a
-com.google.analytics.tracking.android.ServiceManager -> com.google.a.a.a.bc:
+com.google.analytics.tracking.android.ServiceManager -> com.google.a.a.a.bd:
     void dispatchLocalHits() -> c
     void setLocalDispatchPeriod(int) -> a
     void updateConnectivityStatus(boolean) -> a
     void onRadioPowered() -> e
-com.google.analytics.tracking.android.ServiceProxy -> com.google.a.a.a.bd:
+com.google.analytics.tracking.android.ServiceProxy -> com.google.a.a.a.be:
     void putHit(java.util.Map,long,java.lang.String,java.util.List) -> a
     void setForceLocalDispatch() -> e
     void dispatch() -> c
     void createService() -> f
-com.google.analytics.tracking.android.SimpleNetworkDispatcher -> com.google.a.a.a.be:
+com.google.analytics.tracking.android.SimpleNetworkDispatcher -> com.google.a.a.a.bf:
     java.lang.String userAgent -> a
     org.apache.http.client.HttpClient httpClient -> b
     android.content.Context ctx -> c
@@ -6807,14 +7012,14 @@ com.google.analytics.tracking.android.SimpleNetworkDispatcher -> com.google.a.a.
     java.lang.String createUserAgentString(java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String,java.lang.String) -> a
     java.net.URL getUrl(com.google.analytics.tracking.android.Hit) -> a
     void overrideHostUrl(java.lang.String) -> a
-com.google.analytics.tracking.android.StandardExceptionParser -> com.google.a.a.a.bf:
+com.google.analytics.tracking.android.StandardExceptionParser -> com.google.a.a.a.bg:
     java.util.TreeSet includedPackages -> a
     void setIncludedPackages(android.content.Context,java.util.Collection) -> a
     java.lang.Throwable getCause(java.lang.Throwable) -> a
     java.lang.StackTraceElement getBestStackTraceElement(java.lang.Throwable) -> b
     java.lang.String getDescription(java.lang.Throwable,java.lang.StackTraceElement,java.lang.String) -> a
     java.lang.String getDescription(java.lang.String,java.lang.Throwable) -> a
-com.google.analytics.tracking.android.Tracker -> com.google.a.a.a.bg:
+com.google.analytics.tracking.android.Tracker -> com.google.a.a.a.bh:
     java.lang.String mName -> a
     com.google.analytics.tracking.android.TrackerHandler mHandler -> b
     java.util.Map mParams -> c
@@ -6824,9 +7029,9 @@ com.google.analytics.tracking.android.Tracker -> com.google.a.a.a.bg:
     com.google.analytics.tracking.android.AppFieldsDefaultProvider mAppFieldsDefaultProvider -> g
     void send(java.util.Map) -> a
     void set(java.lang.String,java.lang.String) -> a
-com.google.analytics.tracking.android.TrackerHandler -> com.google.a.a.a.bh:
+com.google.analytics.tracking.android.TrackerHandler -> com.google.a.a.a.bi:
     void sendHit(java.util.Map) -> a
-com.google.analytics.tracking.android.Utils -> com.google.a.a.a.bi:
+com.google.analytics.tracking.android.Utils -> com.google.a.a.a.bj:
     char[] HEXBYTES -> a
     java.util.Map parseURLParameters(java.lang.String) -> a
     double safeParseDouble(java.lang.String,double) -> a
@@ -11564,13 +11769,13 @@ com.nineoldandroids.view.animation.AnimatorProxy -> com.b.c.a.a:
     void computeRect(android.graphics.RectF,android.view.View) -> a
     void transformMatrix(android.graphics.Matrix,android.view.View) -> a
     void applyTransformation(float,android.view.animation.Transformation) -> applyTransformation
-de.keyboardsurfer.android.widget.crouton.Configuration -> a.a.a.a.a.a:
+de.keyboardsurfer.android.widget.crouton.Configuration -> b.a.a.a.a.a:
     de.keyboardsurfer.android.widget.crouton.Configuration DEFAULT -> a
     int durationInMilliseconds -> b
     int inAnimationResId -> c
     int outAnimationResId -> d
     java.lang.String toString() -> toString
-de.keyboardsurfer.android.widget.crouton.Configuration$Builder -> a.a.a.a.a.b:
+de.keyboardsurfer.android.widget.crouton.Configuration$Builder -> b.a.a.a.a.b:
     int durationInMilliseconds -> a
     int inAnimationResId -> b
     int outAnimationResId -> c
@@ -11579,7 +11784,7 @@ de.keyboardsurfer.android.widget.crouton.Configuration$Builder -> a.a.a.a.a.b:
     int access$0(de.keyboardsurfer.android.widget.crouton.Configuration$Builder) -> a
     int access$1(de.keyboardsurfer.android.widget.crouton.Configuration$Builder) -> b
     int access$2(de.keyboardsurfer.android.widget.crouton.Configuration$Builder) -> c
-de.keyboardsurfer.android.widget.crouton.Crouton -> a.a.a.a.a.c:
+de.keyboardsurfer.android.widget.crouton.Crouton -> b.a.a.a.a.c:
     java.lang.CharSequence text -> a
     de.keyboardsurfer.android.widget.crouton.Style style -> b
     de.keyboardsurfer.android.widget.crouton.Configuration configuration -> c
@@ -11620,7 +11825,7 @@ de.keyboardsurfer.android.widget.crouton.Crouton -> a.a.a.a.a.c:
     android.widget.TextView initializeTextView(android.content.res.Resources) -> c
     void initializeTextViewShadow(android.content.res.Resources,android.widget.TextView) -> a
     android.widget.ImageView initializeImageView() -> s
-de.keyboardsurfer.android.widget.crouton.DefaultAnimationsBuilder -> a.a.a.a.a.d:
+de.keyboardsurfer.android.widget.crouton.DefaultAnimationsBuilder -> b.a.a.a.a.d:
     android.view.animation.Animation slideInDownAnimation -> a
     android.view.animation.Animation slideOutUpAnimation -> b
     int lastInAnimationHeight -> c
@@ -11632,10 +11837,10 @@ de.keyboardsurfer.android.widget.crouton.DefaultAnimationsBuilder -> a.a.a.a.a.d
     boolean areLastMeasuredAnimationHeightAndCurrentEqual(int,android.view.View) -> a
     void setLastInAnimationHeight(int) -> a
     void setLastOutAnimationHeight(int) -> b
-de.keyboardsurfer.android.widget.crouton.LifecycleCallback -> a.a.a.a.a.e:
+de.keyboardsurfer.android.widget.crouton.LifecycleCallback -> b.a.a.a.a.e:
     void onDisplayed() -> a
     void onRemoved() -> b
-de.keyboardsurfer.android.widget.crouton.Manager -> a.a.a.a.a.f:
+de.keyboardsurfer.android.widget.crouton.Manager -> b.a.a.a.a.f:
     de.keyboardsurfer.android.widget.crouton.Manager INSTANCE -> a
     java.util.Queue croutonQueue -> b
     de.keyboardsurfer.android.widget.crouton.Manager getInstance() -> a
@@ -11652,12 +11857,12 @@ de.keyboardsurfer.android.widget.crouton.Manager -> a.a.a.a.a.f:
     void announceForAccessibilityCompat(android.content.Context,java.lang.CharSequence) -> a
     java.lang.String toString() -> toString
     void access$0(de.keyboardsurfer.android.widget.crouton.Manager,de.keyboardsurfer.android.widget.crouton.Crouton,int,long) -> a
-de.keyboardsurfer.android.widget.crouton.Manager$1 -> a.a.a.a.a.g:
+de.keyboardsurfer.android.widget.crouton.Manager$1 -> b.a.a.a.a.g:
     de.keyboardsurfer.android.widget.crouton.Manager this$0 -> a
     android.view.View val$croutonView -> b
     de.keyboardsurfer.android.widget.crouton.Crouton val$crouton -> c
     void onGlobalLayout() -> onGlobalLayout
-de.keyboardsurfer.android.widget.crouton.Style -> a.a.a.a.a.h:
+de.keyboardsurfer.android.widget.crouton.Style -> b.a.a.a.a.h:
     de.keyboardsurfer.android.widget.crouton.Style ALERT -> a
     de.keyboardsurfer.android.widget.crouton.Style CONFIRM -> b
     de.keyboardsurfer.android.widget.crouton.Style INFO -> c
@@ -11684,7 +11889,7 @@ de.keyboardsurfer.android.widget.crouton.Style -> a.a.a.a.a.h:
     int paddingInPixels -> x
     int paddingDimensionResId -> y
     java.lang.String toString() -> toString
-de.keyboardsurfer.android.widget.crouton.Style$Builder -> a.a.a.a.a.i:
+de.keyboardsurfer.android.widget.crouton.Style$Builder -> b.a.a.a.a.i:
     de.keyboardsurfer.android.widget.crouton.Configuration configuration -> a
     int backgroundColorValue -> b
     int backgroundColorResourceId -> c
@@ -11731,18 +11936,18 @@ de.keyboardsurfer.android.widget.crouton.Style$Builder -> a.a.a.a.a.i:
     int access$19(de.keyboardsurfer.android.widget.crouton.Style$Builder) -> t
     int access$20(de.keyboardsurfer.android.widget.crouton.Style$Builder) -> u
     int access$21(de.keyboardsurfer.android.widget.crouton.Style$Builder) -> v
-de.timroes.swipetodismiss.R -> a.b.a.a:
-de.timroes.swipetodismiss.R$id -> a.b.a.b:
+de.timroes.swipetodismiss.R -> b.b.a.a:
+de.timroes.swipetodismiss.R$id -> b.b.a.b:
     int text -> text
     int undo -> undo
-de.timroes.swipetodismiss.R$layout -> a.b.a.c:
+de.timroes.swipetodismiss.R$layout -> b.b.a.c:
     int undo_popup -> undo_popup
-de.timroes.swipetodismiss.R$string -> a.b.a.d:
+de.timroes.swipetodismiss.R$string -> b.b.a.d:
     int undo -> undo
     int undoall -> undoall
-de.timroes.swipetodismiss.R$style -> a.b.a.e:
+de.timroes.swipetodismiss.R$style -> b.b.a.e:
     int fade_animation -> fade_animation
-de.timroes.swipetodismiss.SwipeDismissList -> a.b.a.f:
+de.timroes.swipetodismiss.SwipeDismissList -> b.b.a.f:
     int mSlop -> a
     int mMinFlingVelocity -> b
     int mMaxFlingVelocity -> c
@@ -11803,58 +12008,174 @@ de.timroes.swipetodismiss.SwipeDismissList -> a.b.a.f:
     boolean access$17(de.timroes.swipetodismiss.SwipeDismissList) -> l
     android.os.Handler access$18(de.timroes.swipetodismiss.SwipeDismissList) -> m
     int access$19(de.timroes.swipetodismiss.SwipeDismissList) -> n
-de.timroes.swipetodismiss.SwipeDismissList$1 -> a.b.a.g:
+de.timroes.swipetodismiss.SwipeDismissList$1 -> b.b.a.g:
     de.timroes.swipetodismiss.SwipeDismissList this$0 -> a
     boolean onTouch(android.view.View,android.view.MotionEvent) -> onTouch
-de.timroes.swipetodismiss.SwipeDismissList$2 -> a.b.a.h:
+de.timroes.swipetodismiss.SwipeDismissList$2 -> b.b.a.h:
     de.timroes.swipetodismiss.SwipeDismissList this$0 -> a
     void onScrollStateChanged(android.widget.AbsListView,int) -> onScrollStateChanged
     void onScroll(android.widget.AbsListView,int,int,int) -> onScroll
-de.timroes.swipetodismiss.SwipeDismissList$3 -> a.b.a.i:
+de.timroes.swipetodismiss.SwipeDismissList$3 -> b.b.a.i:
     de.timroes.swipetodismiss.SwipeDismissList this$0 -> a
     android.view.View val$downView -> b
     int val$downPosition -> c
     void onAnimationEnd(com.nineoldandroids.animation.Animator) -> b
-de.timroes.swipetodismiss.SwipeDismissList$4 -> a.b.a.j:
+de.timroes.swipetodismiss.SwipeDismissList$4 -> b.b.a.j:
     de.timroes.swipetodismiss.SwipeDismissList this$0 -> a
     int val$originalHeight -> b
     void onAnimationEnd(com.nineoldandroids.animation.Animator) -> b
-de.timroes.swipetodismiss.SwipeDismissList$5 -> a.b.a.k:
+de.timroes.swipetodismiss.SwipeDismissList$5 -> b.b.a.k:
     de.timroes.swipetodismiss.SwipeDismissList this$0 -> a
     android.view.ViewGroup$LayoutParams val$lp -> b
     android.view.View val$dismissView -> c
     void onAnimationUpdate(com.nineoldandroids.animation.ValueAnimator) -> a
-de.timroes.swipetodismiss.SwipeDismissList$HideUndoPopupHandler -> a.b.a.l:
+de.timroes.swipetodismiss.SwipeDismissList$HideUndoPopupHandler -> b.b.a.l:
     de.timroes.swipetodismiss.SwipeDismissList this$0 -> a
     void handleMessage(android.os.Message) -> handleMessage
-de.timroes.swipetodismiss.SwipeDismissList$OnDismissCallback -> a.b.a.m:
+de.timroes.swipetodismiss.SwipeDismissList$OnDismissCallback -> b.b.a.m:
     de.timroes.swipetodismiss.SwipeDismissList$Undoable onDismiss(android.widget.AbsListView,int) -> a
-de.timroes.swipetodismiss.SwipeDismissList$PendingDismissData -> a.b.a.n:
+de.timroes.swipetodismiss.SwipeDismissList$PendingDismissData -> b.b.a.n:
     int position -> a
     android.view.View view -> b
     de.timroes.swipetodismiss.SwipeDismissList this$0 -> c
     int compareTo(de.timroes.swipetodismiss.SwipeDismissList$PendingDismissData) -> a
     int compareTo(java.lang.Object) -> compareTo
-de.timroes.swipetodismiss.SwipeDismissList$SwipeDirection -> a.b.a.o:
+de.timroes.swipetodismiss.SwipeDismissList$SwipeDirection -> b.b.a.o:
     de.timroes.swipetodismiss.SwipeDismissList$SwipeDirection BOTH -> a
     de.timroes.swipetodismiss.SwipeDismissList$SwipeDirection START -> b
     de.timroes.swipetodismiss.SwipeDismissList$SwipeDirection END -> c
     de.timroes.swipetodismiss.SwipeDismissList$SwipeDirection[] ENUM$VALUES -> d
     de.timroes.swipetodismiss.SwipeDismissList$SwipeDirection[] values() -> values
     de.timroes.swipetodismiss.SwipeDismissList$SwipeDirection valueOf(java.lang.String) -> valueOf
-de.timroes.swipetodismiss.SwipeDismissList$UndoHandler -> a.b.a.p:
+de.timroes.swipetodismiss.SwipeDismissList$UndoHandler -> b.b.a.p:
     de.timroes.swipetodismiss.SwipeDismissList this$0 -> a
     int[] $SWITCH_TABLE$de$timroes$swipetodismiss$SwipeDismissList$UndoMode -> b
     void onClick(android.view.View) -> onClick
     int[] $SWITCH_TABLE$de$timroes$swipetodismiss$SwipeDismissList$UndoMode() -> a
-de.timroes.swipetodismiss.SwipeDismissList$UndoMode -> a.b.a.q:
+de.timroes.swipetodismiss.SwipeDismissList$UndoMode -> b.b.a.q:
     de.timroes.swipetodismiss.SwipeDismissList$UndoMode SINGLE_UNDO -> a
     de.timroes.swipetodismiss.SwipeDismissList$UndoMode MULTI_UNDO -> b
     de.timroes.swipetodismiss.SwipeDismissList$UndoMode COLLAPSED_UNDO -> c
     de.timroes.swipetodismiss.SwipeDismissList$UndoMode[] ENUM$VALUES -> d
     de.timroes.swipetodismiss.SwipeDismissList$UndoMode[] values() -> values
     de.timroes.swipetodismiss.SwipeDismissList$UndoMode valueOf(java.lang.String) -> valueOf
-de.timroes.swipetodismiss.SwipeDismissList$Undoable -> a.b.a.r:
+de.timroes.swipetodismiss.SwipeDismissList$Undoable -> b.b.a.r:
     java.lang.String getTitle() -> b
     void undo() -> a
     void discard() -> c
+org.jraf.android.backport.switchwidget.R -> org.jraf.android.backport.switchwidget.a:
+org.jraf.android.backport.switchwidget.R$attr -> org.jraf.android.backport.switchwidget.b:
+    int disableDependentsState -> disableDependentsState
+    int summaryOff -> summaryOff
+    int summaryOn -> summaryOn
+    int switchMinWidth -> switchMinWidth
+    int switchPadding -> switchPadding
+    int switchPreferenceStyle -> switchPreferenceStyle
+    int switchStyle -> switchStyle
+    int switchTextAppearance -> switchTextAppearance
+    int switchTextOff -> switchTextOff
+    int switchTextOn -> switchTextOn
+    int textOff -> textOff
+    int textOn -> textOn
+    int thumb -> thumb
+    int thumbTextPadding -> thumbTextPadding
+    int track -> track
+org.jraf.android.backport.switchwidget.R$styleable -> org.jraf.android.backport.switchwidget.c:
+    int[] Android -> Android
+    int Android_android_textColor -> Android_android_textColor
+    int Android_android_textColorHighlight -> Android_android_textColorHighlight
+    int Android_android_textColorHint -> Android_android_textColorHint
+    int Android_android_textColorLink -> Android_android_textColorLink
+    int Android_android_textSize -> Android_android_textSize
+    int Android_android_textStyle -> Android_android_textStyle
+    int Android_android_typeface -> Android_android_typeface
+    int[] Switch -> Switch
+    int[] SwitchBackportTheme -> SwitchBackportTheme
+    int SwitchBackportTheme_switchPreferenceStyle -> SwitchBackportTheme_switchPreferenceStyle
+    int SwitchBackportTheme_switchStyle -> SwitchBackportTheme_switchStyle
+    int[] SwitchPreference -> SwitchPreference
+    int SwitchPreference_disableDependentsState -> SwitchPreference_disableDependentsState
+    int SwitchPreference_summaryOff -> SwitchPreference_summaryOff
+    int SwitchPreference_summaryOn -> SwitchPreference_summaryOn
+    int SwitchPreference_switchTextOff -> SwitchPreference_switchTextOff
+    int SwitchPreference_switchTextOn -> SwitchPreference_switchTextOn
+    int Switch_switchMinWidth -> Switch_switchMinWidth
+    int Switch_switchPadding -> Switch_switchPadding
+    int Switch_switchTextAppearance -> Switch_switchTextAppearance
+    int Switch_textOff -> Switch_textOff
+    int Switch_textOn -> Switch_textOn
+    int Switch_thumb -> Switch_thumb
+    int Switch_thumbTextPadding -> Switch_thumbTextPadding
+    int Switch_track -> Switch_track
+org.jraf.android.backport.switchwidget.Switch -> org.jraf.android.backport.switchwidget.Switch:
+    android.graphics.drawable.Drawable mThumbDrawable -> a
+    android.graphics.drawable.Drawable mTrackDrawable -> b
+    int mThumbTextPadding -> c
+    int mSwitchMinWidth -> d
+    int mSwitchPadding -> e
+    java.lang.CharSequence mTextOn -> f
+    java.lang.CharSequence mTextOff -> g
+    int mTouchMode -> h
+    int mTouchSlop -> i
+    float mTouchX -> j
+    float mTouchY -> k
+    android.view.VelocityTracker mVelocityTracker -> l
+    int mMinFlingVelocity -> m
+    float mThumbPosition -> n
+    int mSwitchWidth -> o
+    int mSwitchHeight -> p
+    int mThumbWidth -> q
+    int mSwitchLeft -> r
+    int mSwitchTop -> s
+    int mSwitchRight -> t
+    int mSwitchBottom -> u
+    android.text.TextPaint mTextPaint -> v
+    android.content.res.ColorStateList mTextColors -> w
+    android.text.Layout mOnLayout -> x
+    android.text.Layout mOffLayout -> y
+    android.graphics.Rect mTempRect -> z
+    int[] CHECKED_STATE_SET -> A
+    void setSwitchTextAppearance(android.content.Context,int) -> a
+    void setSwitchTypefaceByIndex(int,int) -> a
+    void setSwitchTypeface(android.graphics.Typeface,int) -> a
+    void setSwitchTypeface(android.graphics.Typeface) -> setSwitchTypeface
+    java.lang.CharSequence getTextOn() -> getTextOn
+    void setTextOn(java.lang.CharSequence) -> setTextOn
+    java.lang.CharSequence getTextOff() -> getTextOff
+    void setTextOff(java.lang.CharSequence) -> setTextOff
+    void onMeasure(int,int) -> onMeasure
+    android.text.Layout makeLayout(java.lang.CharSequence) -> a
+    boolean hitThumb(float,float) -> a
+    boolean onTouchEvent(android.view.MotionEvent) -> onTouchEvent
+    void cancelSuperTouch(android.view.MotionEvent) -> a
+    void stopDrag(android.view.MotionEvent) -> b
+    void animateThumbToCheckedState(boolean) -> a
+    boolean getTargetCheckedState() -> getTargetCheckedState
+    void setChecked(boolean) -> setChecked
+    void onLayout(boolean,int,int,int,int) -> onLayout
+    void onDraw(android.graphics.Canvas) -> onDraw
+    int getCompoundPaddingRight() -> getCompoundPaddingRight
+    int getThumbScrollRange() -> getThumbScrollRange
+    int[] onCreateDrawableState(int) -> onCreateDrawableState
+    void drawableStateChanged() -> drawableStateChanged
+    boolean verifyDrawable(android.graphics.drawable.Drawable) -> verifyDrawable
+org.jraf.android.backport.switchwidget.TwoStatePreference -> org.jraf.android.backport.switchwidget.TwoStatePreference:
+    boolean mChecked -> a
+    boolean mDisableDependentsState -> b
+    void onClick() -> onClick
+    void setChecked(boolean) -> a
+    boolean isChecked() -> a
+    boolean shouldDisableDependents() -> shouldDisableDependents
+    java.lang.Object onGetDefaultValue(android.content.res.TypedArray,int) -> onGetDefaultValue
+    void onSetInitialValue(boolean,java.lang.Object) -> onSetInitialValue
+    android.os.Parcelable onSaveInstanceState() -> onSaveInstanceState
+    void onRestoreInstanceState(android.os.Parcelable) -> onRestoreInstanceState
+org.jraf.android.backport.switchwidget.TwoStatePreference$SavedState -> org.jraf.android.backport.switchwidget.TwoStatePreference$SavedState:
+    boolean checked -> a
+    android.os.Parcelable$Creator CREATOR -> CREATOR
+    void writeToParcel(android.os.Parcel,int) -> writeToParcel
+org.jraf.android.backport.switchwidget.TwoStatePreference$SavedState$1 -> org.jraf.android.backport.switchwidget.d:
+    org.jraf.android.backport.switchwidget.TwoStatePreference$SavedState createFromParcel(android.os.Parcel) -> a
+    org.jraf.android.backport.switchwidget.TwoStatePreference$SavedState[] newArray(int) -> a
+    java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
+    java.lang.Object[] newArray(int) -> newArray

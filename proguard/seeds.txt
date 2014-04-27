@@ -2,62 +2,7 @@ android.support.v4.app.BackStackState
 android.support.v4.app.BackStackState: android.os.Parcelable$Creator CREATOR
 android.support.v4.app.Fragment$SavedState
 android.support.v4.app.Fragment$SavedState: android.os.Parcelable$Creator CREATOR
-android.support.v4.app.FragmentActivity: java.lang.String TAG
-android.support.v4.app.FragmentActivity: java.lang.String FRAGMENTS_TAG
-android.support.v4.app.FragmentActivity: int HONEYCOMB
-android.support.v4.app.FragmentActivity: int MSG_REALLY_STOPPED
-android.support.v4.app.FragmentActivity: int MSG_RESUME_PENDING
-android.support.v4.app.FragmentActivity: android.os.Handler mHandler
-android.support.v4.app.FragmentActivity: android.support.v4.app.FragmentManagerImpl mFragments
-android.support.v4.app.FragmentActivity: android.support.v4.app.FragmentContainer mContainer
-android.support.v4.app.FragmentActivity: boolean mCreated
-android.support.v4.app.FragmentActivity: boolean mResumed
-android.support.v4.app.FragmentActivity: boolean mStopped
-android.support.v4.app.FragmentActivity: boolean mReallyStopped
-android.support.v4.app.FragmentActivity: boolean mRetaining
-android.support.v4.app.FragmentActivity: boolean mOptionsMenuInvalidated
-android.support.v4.app.FragmentActivity: boolean mCheckedForLoaderManager
-android.support.v4.app.FragmentActivity: boolean mLoadersStarted
-android.support.v4.app.FragmentActivity: android.support.v4.util.SimpleArrayMap mAllLoaderManagers
-android.support.v4.app.FragmentActivity: android.support.v4.app.LoaderManagerImpl mLoaderManager
 android.support.v4.app.FragmentActivity: FragmentActivity()
-android.support.v4.app.FragmentActivity: void onActivityResult(int,int,android.content.Intent)
-android.support.v4.app.FragmentActivity: void onBackPressed()
-android.support.v4.app.FragmentActivity: void onConfigurationChanged(android.content.res.Configuration)
-android.support.v4.app.FragmentActivity: void onCreate(android.os.Bundle)
-android.support.v4.app.FragmentActivity: boolean onCreatePanelMenu(int,android.view.Menu)
-android.support.v4.app.FragmentActivity: android.view.View onCreateView(java.lang.String,android.content.Context,android.util.AttributeSet)
-android.support.v4.app.FragmentActivity: void onDestroy()
-android.support.v4.app.FragmentActivity: boolean onKeyDown(int,android.view.KeyEvent)
-android.support.v4.app.FragmentActivity: void onLowMemory()
-android.support.v4.app.FragmentActivity: boolean onMenuItemSelected(int,android.view.MenuItem)
-android.support.v4.app.FragmentActivity: void onPanelClosed(int,android.view.Menu)
-android.support.v4.app.FragmentActivity: void onPause()
-android.support.v4.app.FragmentActivity: void onNewIntent(android.content.Intent)
-android.support.v4.app.FragmentActivity: void onResume()
-android.support.v4.app.FragmentActivity: void onPostResume()
-android.support.v4.app.FragmentActivity: void onResumeFragments()
-android.support.v4.app.FragmentActivity: boolean onPreparePanel(int,android.view.View,android.view.Menu)
-android.support.v4.app.FragmentActivity: boolean onPrepareOptionsPanel(android.view.View,android.view.Menu)
-android.support.v4.app.FragmentActivity: java.lang.Object onRetainNonConfigurationInstance()
-android.support.v4.app.FragmentActivity: void onSaveInstanceState(android.os.Bundle)
-android.support.v4.app.FragmentActivity: void onStart()
-android.support.v4.app.FragmentActivity: void onStop()
-android.support.v4.app.FragmentActivity: java.lang.Object onRetainCustomNonConfigurationInstance()
-android.support.v4.app.FragmentActivity: java.lang.Object getLastCustomNonConfigurationInstance()
-android.support.v4.app.FragmentActivity: void supportInvalidateOptionsMenu()
-android.support.v4.app.FragmentActivity: void dump(java.lang.String,java.io.FileDescriptor,java.io.PrintWriter,java.lang.String[])
-android.support.v4.app.FragmentActivity: java.lang.String viewToString(android.view.View)
-android.support.v4.app.FragmentActivity: void dumpViewHierarchy(java.lang.String,java.io.PrintWriter,android.view.View)
-android.support.v4.app.FragmentActivity: void doReallyStop(boolean)
-android.support.v4.app.FragmentActivity: void onReallyStop()
-android.support.v4.app.FragmentActivity: void onAttachFragment(android.support.v4.app.Fragment)
-android.support.v4.app.FragmentActivity: android.support.v4.app.FragmentManager getSupportFragmentManager()
-android.support.v4.app.FragmentActivity: void startActivityForResult(android.content.Intent,int)
-android.support.v4.app.FragmentActivity: void startActivityFromFragment(android.support.v4.app.Fragment,android.content.Intent,int)
-android.support.v4.app.FragmentActivity: void invalidateSupportFragment(java.lang.String)
-android.support.v4.app.FragmentActivity: android.support.v4.app.LoaderManager getSupportLoaderManager()
-android.support.v4.app.FragmentActivity: android.support.v4.app.LoaderManagerImpl getLoaderManager(java.lang.String,boolean,boolean)
 android.support.v4.app.FragmentManagerState
 android.support.v4.app.FragmentManagerState: android.os.Parcelable$Creator CREATOR
 android.support.v4.app.FragmentState
@@ -130,51 +75,8 @@ android.support.v4.widget.SwipeRefreshLayout: void setOnRefreshListener(android.
 android.support.v4.widget.SwipeRefreshLayout: void setTriggerPercentage(float)
 android.support.v4.widget.SwipeRefreshLayout: void setRefreshing(boolean)
 android.support.v4.widget.SwipeRefreshLayout: void setTargetOffsetTopAndBottom(int)
-android.support.v7.app.ActionBarActivity: android.support.v7.app.ActionBarActivityDelegate mImpl
 android.support.v7.app.ActionBarActivity: ActionBarActivity()
-android.support.v7.app.ActionBarActivity: android.support.v7.app.ActionBar getSupportActionBar()
-android.support.v7.app.ActionBarActivity: android.view.MenuInflater getMenuInflater()
-android.support.v7.app.ActionBarActivity: void setContentView(int)
 android.support.v7.app.ActionBarActivity: void setContentView(android.view.View)
-android.support.v7.app.ActionBarActivity: void setContentView(android.view.View,android.view.ViewGroup$LayoutParams)
-android.support.v7.app.ActionBarActivity: void addContentView(android.view.View,android.view.ViewGroup$LayoutParams)
-android.support.v7.app.ActionBarActivity: void onCreate(android.os.Bundle)
-android.support.v7.app.ActionBarActivity: void onConfigurationChanged(android.content.res.Configuration)
-android.support.v7.app.ActionBarActivity: void onStop()
-android.support.v7.app.ActionBarActivity: void onPostResume()
-android.support.v7.app.ActionBarActivity: android.view.View onCreatePanelView(int)
-android.support.v7.app.ActionBarActivity: boolean onMenuItemSelected(int,android.view.MenuItem)
-android.support.v7.app.ActionBarActivity: void onTitleChanged(java.lang.CharSequence,int)
-android.support.v7.app.ActionBarActivity: boolean supportRequestWindowFeature(int)
-android.support.v7.app.ActionBarActivity: void supportInvalidateOptionsMenu()
-android.support.v7.app.ActionBarActivity: void onSupportActionModeStarted(android.support.v7.view.ActionMode)
-android.support.v7.app.ActionBarActivity: void onSupportActionModeFinished(android.support.v7.view.ActionMode)
-android.support.v7.app.ActionBarActivity: android.support.v7.view.ActionMode startSupportActionMode(android.support.v7.view.ActionMode$Callback)
-android.support.v7.app.ActionBarActivity: boolean onCreatePanelMenu(int,android.view.Menu)
-android.support.v7.app.ActionBarActivity: boolean onPreparePanel(int,android.view.View,android.view.Menu)
-android.support.v7.app.ActionBarActivity: boolean onPrepareOptionsPanel(android.view.View,android.view.Menu)
-android.support.v7.app.ActionBarActivity: void superSetContentView(int)
-android.support.v7.app.ActionBarActivity: void superSetContentView(android.view.View)
-android.support.v7.app.ActionBarActivity: void superSetContentView(android.view.View,android.view.ViewGroup$LayoutParams)
-android.support.v7.app.ActionBarActivity: void superAddContentView(android.view.View,android.view.ViewGroup$LayoutParams)
-android.support.v7.app.ActionBarActivity: boolean superOnCreatePanelMenu(int,android.view.Menu)
-android.support.v7.app.ActionBarActivity: boolean superOnPreparePanel(int,android.view.View,android.view.Menu)
-android.support.v7.app.ActionBarActivity: boolean superOnPrepareOptionsPanel(android.view.View,android.view.Menu)
-android.support.v7.app.ActionBarActivity: boolean superOnMenuItemSelected(int,android.view.MenuItem)
-android.support.v7.app.ActionBarActivity: void onBackPressed()
-android.support.v7.app.ActionBarActivity: void setSupportProgressBarVisibility(boolean)
-android.support.v7.app.ActionBarActivity: void setSupportProgressBarIndeterminateVisibility(boolean)
-android.support.v7.app.ActionBarActivity: void setSupportProgressBarIndeterminate(boolean)
-android.support.v7.app.ActionBarActivity: void setSupportProgress(int)
-android.support.v7.app.ActionBarActivity: void onCreateSupportNavigateUpTaskStack(android.support.v4.app.TaskStackBuilder)
-android.support.v7.app.ActionBarActivity: void onPrepareSupportNavigateUpTaskStack(android.support.v4.app.TaskStackBuilder)
-android.support.v7.app.ActionBarActivity: boolean onSupportNavigateUp()
-android.support.v7.app.ActionBarActivity: android.content.Intent getSupportParentActivityIntent()
-android.support.v7.app.ActionBarActivity: boolean supportShouldUpRecreateTask(android.content.Intent)
-android.support.v7.app.ActionBarActivity: void supportNavigateUpTo(android.content.Intent)
-android.support.v7.app.ActionBarActivity: android.support.v4.app.ActionBarDrawerToggle$Delegate getDrawerToggleDelegate()
-android.support.v7.app.ActionBarActivity: void onContentChanged()
-android.support.v7.app.ActionBarActivity: void onSupportContentChanged()
 android.support.v7.appcompat.R$anim: int abc_fade_in
 android.support.v7.appcompat.R$anim: int abc_fade_out
 android.support.v7.appcompat.R$anim: int abc_slide_in_bottom
@@ -1004,6 +906,7 @@ com.V4Creations.vtulife.R$attr: int cameraTilt
 com.V4Creations.vtulife.R$attr: int cameraZoom
 com.V4Creations.vtulife.R$attr: int customNavigationLayout
 com.V4Creations.vtulife.R$attr: int disableChildrenWhenDisabled
+com.V4Creations.vtulife.R$attr: int disableDependentsState
 com.V4Creations.vtulife.R$attr: int displayOptions
 com.V4Creations.vtulife.R$attr: int divider
 com.V4Creations.vtulife.R$attr: int dividerHorizontal
@@ -1072,6 +975,15 @@ com.V4Creations.vtulife.R$attr: int spinnerMode
 com.V4Creations.vtulife.R$attr: int spinnerStyle
 com.V4Creations.vtulife.R$attr: int subtitle
 com.V4Creations.vtulife.R$attr: int subtitleTextStyle
+com.V4Creations.vtulife.R$attr: int summaryOff
+com.V4Creations.vtulife.R$attr: int summaryOn
+com.V4Creations.vtulife.R$attr: int switchMinWidth
+com.V4Creations.vtulife.R$attr: int switchPadding
+com.V4Creations.vtulife.R$attr: int switchPreferenceStyle
+com.V4Creations.vtulife.R$attr: int switchStyle
+com.V4Creations.vtulife.R$attr: int switchTextAppearance
+com.V4Creations.vtulife.R$attr: int switchTextOff
+com.V4Creations.vtulife.R$attr: int switchTextOn
 com.V4Creations.vtulife.R$attr: int textAllCaps
 com.V4Creations.vtulife.R$attr: int textAppearanceLargePopupMenu
 com.V4Creations.vtulife.R$attr: int textAppearanceListItem
@@ -1080,8 +992,13 @@ com.V4Creations.vtulife.R$attr: int textAppearanceSearchResultSubtitle
 com.V4Creations.vtulife.R$attr: int textAppearanceSearchResultTitle
 com.V4Creations.vtulife.R$attr: int textAppearanceSmallPopupMenu
 com.V4Creations.vtulife.R$attr: int textColorSearchUrl
+com.V4Creations.vtulife.R$attr: int textOff
+com.V4Creations.vtulife.R$attr: int textOn
+com.V4Creations.vtulife.R$attr: int thumb
+com.V4Creations.vtulife.R$attr: int thumbTextPadding
 com.V4Creations.vtulife.R$attr: int title
 com.V4Creations.vtulife.R$attr: int titleTextStyle
+com.V4Creations.vtulife.R$attr: int track
 com.V4Creations.vtulife.R$attr: int uiCompass
 com.V4Creations.vtulife.R$attr: int uiRotateGestures
 com.V4Creations.vtulife.R$attr: int uiScrollGestures
@@ -1115,6 +1032,7 @@ com.V4Creations.vtulife.R$color: int android_color_3
 com.V4Creations.vtulife.R$color: int android_color_4
 com.V4Creations.vtulife.R$color: int android_color_5
 com.V4Creations.vtulife.R$color: int android_color_6
+com.V4Creations.vtulife.R$color: int background_holo_light
 com.V4Creations.vtulife.R$color: int background_tab_pressed
 com.V4Creations.vtulife.R$color: int bg_header
 com.V4Creations.vtulife.R$color: int bg_result_fail
@@ -1122,6 +1040,8 @@ com.V4Creations.vtulife.R$color: int bg_result_pass
 com.V4Creations.vtulife.R$color: int bg_semester
 com.V4Creations.vtulife.R$color: int bg_student_details
 com.V4Creations.vtulife.R$color: int black
+com.V4Creations.vtulife.R$color: int bright_foreground_disabled_holo_dark
+com.V4Creations.vtulife.R$color: int bright_foreground_holo_dark
 com.V4Creations.vtulife.R$color: int btn_focused
 com.V4Creations.vtulife.R$color: int btn_normal
 com.V4Creations.vtulife.R$color: int btn_pressed
@@ -1139,6 +1059,8 @@ com.V4Creations.vtulife.R$color: int common_signin_btn_light_text_pressed
 com.V4Creations.vtulife.R$color: int common_signin_btn_text_dark
 com.V4Creations.vtulife.R$color: int common_signin_btn_text_light
 com.V4Creations.vtulife.R$color: int component_background
+com.V4Creations.vtulife.R$color: int dim_foreground_disabled_holo_dark
+com.V4Creations.vtulife.R$color: int dim_foreground_holo_dark
 com.V4Creations.vtulife.R$color: int even_color
 com.V4Creations.vtulife.R$color: int fail_color
 com.V4Creations.vtulife.R$color: int font_semester
@@ -1149,6 +1071,8 @@ com.V4Creations.vtulife.R$color: int odd_color
 com.V4Creations.vtulife.R$color: int pass_color
 com.V4Creations.vtulife.R$color: int popup_bg_color
 com.V4Creations.vtulife.R$color: int popup_text_color
+com.V4Creations.vtulife.R$color: int primary_text_holo_dark
+com.V4Creations.vtulife.R$color: int secondary_text_holo_dark
 com.V4Creations.vtulife.R$color: int separator_color
 com.V4Creations.vtulife.R$color: int solid_white
 com.V4Creations.vtulife.R$color: int text_muted
@@ -1182,6 +1106,10 @@ com.V4Creations.vtulife.R$dimen: int double_common_padding
 com.V4Creations.vtulife.R$dimen: int normal_view_padding
 com.V4Creations.vtulife.R$dimen: int post_a_pic_heigth
 com.V4Creations.vtulife.R$dimen: int post_a_pic_width
+com.V4Creations.vtulife.R$dimen: int preference_icon_minWidth
+com.V4Creations.vtulife.R$dimen: int preference_item_padding_inner
+com.V4Creations.vtulife.R$dimen: int preference_item_padding_side
+com.V4Creations.vtulife.R$dimen: int preference_widget_width
 com.V4Creations.vtulife.R$dimen: int result_devider_padding
 com.V4Creations.vtulife.R$drawable: int ab_background_textured_vtulife
 com.V4Creations.vtulife.R$drawable: int ab_bottom_solid_vtulife
@@ -1391,6 +1319,25 @@ com.V4Creations.vtulife.R$drawable: int spinner_background_ab_vtulife
 com.V4Creations.vtulife.R$drawable: int student_details_background
 com.V4Creations.vtulife.R$drawable: int submit_selecter
 com.V4Creations.vtulife.R$drawable: int swf
+com.V4Creations.vtulife.R$drawable: int switch_bg_disabled_holo_dark
+com.V4Creations.vtulife.R$drawable: int switch_bg_disabled_holo_light
+com.V4Creations.vtulife.R$drawable: int switch_bg_focused_holo_dark
+com.V4Creations.vtulife.R$drawable: int switch_bg_focused_holo_light
+com.V4Creations.vtulife.R$drawable: int switch_bg_holo_dark
+com.V4Creations.vtulife.R$drawable: int switch_bg_holo_light
+com.V4Creations.vtulife.R$drawable: int switch_inner_holo_dark
+com.V4Creations.vtulife.R$drawable: int switch_inner_holo_light
+com.V4Creations.vtulife.R$drawable: int switch_thumb_activated_holo_dark
+com.V4Creations.vtulife.R$drawable: int switch_thumb_activated_holo_light
+com.V4Creations.vtulife.R$drawable: int switch_thumb_disabled_holo_dark
+com.V4Creations.vtulife.R$drawable: int switch_thumb_disabled_holo_light
+com.V4Creations.vtulife.R$drawable: int switch_thumb_holo_dark
+com.V4Creations.vtulife.R$drawable: int switch_thumb_holo_light
+com.V4Creations.vtulife.R$drawable: int switch_thumb_holo_light_v2
+com.V4Creations.vtulife.R$drawable: int switch_thumb_pressed_holo_dark
+com.V4Creations.vtulife.R$drawable: int switch_thumb_pressed_holo_light
+com.V4Creations.vtulife.R$drawable: int switch_track_holo_dark
+com.V4Creations.vtulife.R$drawable: int switch_track_holo_light
 com.V4Creations.vtulife.R$drawable: int syllabus
 com.V4Creations.vtulife.R$drawable: int tab_indicator_ab_vtulife
 com.V4Creations.vtulife.R$drawable: int tab_selected_focused_vtulife
@@ -1480,9 +1427,11 @@ com.V4Creations.vtulife.R$drawable: int vtulife_textfield_default_holo_light
 com.V4Creations.vtulife.R$drawable: int vtulife_textfield_disabled_focused_holo_light
 com.V4Creations.vtulife.R$drawable: int vtulife_textfield_disabled_holo_light
 com.V4Creations.vtulife.R$drawable: int vtulife_textfield_focused_holo_light
+com.V4Creations.vtulife.R$drawable: int win
 com.V4Creations.vtulife.R$drawable: int xsl
 com.V4Creations.vtulife.R$id: int aboutImageButton
 com.V4Creations.vtulife.R$id: int aboutLinearLayout
+com.V4Creations.vtulife.R$id: int achivementsTextView
 com.V4Creations.vtulife.R$id: int action_bar
 com.V4Creations.vtulife.R$id: int action_bar_activity_content
 com.V4Creations.vtulife.R$id: int action_bar_container
@@ -1503,14 +1452,11 @@ com.V4Creations.vtulife.R$id: int classSubmitImageButton
 com.V4Creations.vtulife.R$id: int classUsnAutoCompleteTextView
 com.V4Creations.vtulife.R$id: int classUsnLinearLayout
 com.V4Creations.vtulife.R$id: int collapseActionView
-com.V4Creations.vtulife.R$id: int compoundButton
-com.V4Creations.vtulife.R$id: int compoundFrameLayout1
-com.V4Creations.vtulife.R$id: int compoundFrameLayout2
-com.V4Creations.vtulife.R$id: int compoundFrameLayout3
 com.V4Creations.vtulife.R$id: int content_frame
 com.V4Creations.vtulife.R$id: int creditsTextView
 com.V4Creations.vtulife.R$id: int dateLabelTextView
 com.V4Creations.vtulife.R$id: int dateTextView
+com.V4Creations.vtulife.R$id: int deepSearchCompoundButton
 com.V4Creations.vtulife.R$id: int default_activity_button
 com.V4Creations.vtulife.R$id: int departmentEditText
 com.V4Creations.vtulife.R$id: int descriptionEditText
@@ -1536,6 +1482,7 @@ com.V4Creations.vtulife.R$id: int favoritePageSpinner
 com.V4Creations.vtulife.R$id: int feedbackImageButton
 com.V4Creations.vtulife.R$id: int fileTextView
 com.V4Creations.vtulife.R$id: int finalExternalTextView
+com.V4Creations.vtulife.R$id: int fullResultViewCompoundButton
 com.V4Creations.vtulife.R$id: int helpImageButton
 com.V4Creations.vtulife.R$id: int home
 com.V4Creations.vtulife.R$id: int homeAsUp
@@ -1609,6 +1556,7 @@ com.V4Creations.vtulife.R$id: int showHome
 com.V4Creations.vtulife.R$id: int showTitle
 com.V4Creations.vtulife.R$id: int sizeLabelTextView
 com.V4Creations.vtulife.R$id: int sizeTextView
+com.V4Creations.vtulife.R$id: int sortedResultCompoundButton
 com.V4Creations.vtulife.R$id: int split_action_bar
 com.V4Creations.vtulife.R$id: int subTitile
 com.V4Creations.vtulife.R$id: int subjectEditText
@@ -1622,6 +1570,7 @@ com.V4Creations.vtulife.R$id: int subjectTotalRevalTextView
 com.V4Creations.vtulife.R$id: int subjectTotalTextView
 com.V4Creations.vtulife.R$id: int submitImageButton
 com.V4Creations.vtulife.R$id: int submit_area
+com.V4Creations.vtulife.R$id: int switchWidget
 com.V4Creations.vtulife.R$id: int tabMode
 com.V4Creations.vtulife.R$id: int tabs
 com.V4Creations.vtulife.R$id: int takeAPhotoImageView
@@ -1682,7 +1631,6 @@ com.V4Creations.vtulife.R$layout: int activity_notification
 com.V4Creations.vtulife.R$layout: int activity_preference
 com.V4Creations.vtulife.R$layout: int check_box_layout
 com.V4Creations.vtulife.R$layout: int chooser
-com.V4Creations.vtulife.R$layout: int compound_button
 com.V4Creations.vtulife.R$layout: int fragment_class_result
 com.V4Creations.vtulife.R$layout: int fragment_directory
 com.V4Creations.vtulife.R$layout: int fragment_fast_result
@@ -1694,6 +1642,8 @@ com.V4Creations.vtulife.R$layout: int menu_content
 com.V4Creations.vtulife.R$layout: int navigation_menu_list_item
 com.V4Creations.vtulife.R$layout: int notification_action_view
 com.V4Creations.vtulife.R$layout: int notification_list_item
+com.V4Creations.vtulife.R$layout: int preference
+com.V4Creations.vtulife.R$layout: int preference_widget_switch
 com.V4Creations.vtulife.R$layout: int referred_library_list_item
 com.V4Creations.vtulife.R$layout: int result_list_item
 com.V4Creations.vtulife.R$layout: int result_single_list_item
@@ -1708,6 +1658,7 @@ com.V4Creations.vtulife.R$menu: int directory_listing_main_layout
 com.V4Creations.vtulife.R$menu: int navigation_drawer_menu
 com.V4Creations.vtulife.R$menu: int vtu_life_web_layout
 com.V4Creations.vtulife.R$string: int _
+com.V4Creations.vtulife.R$string: int _1st_winning_app_in_appinc_2013_nhttp_goo_gl_c6s3j4
 com.V4Creations.vtulife.R$string: int abc_action_bar_home_description
 com.V4Creations.vtulife.R$string: int abc_action_bar_up_description
 com.V4Creations.vtulife.R$string: int abc_action_menu_overflow_description
@@ -1722,6 +1673,7 @@ com.V4Creations.vtulife.R$string: int abc_searchview_description_voice
 com.V4Creations.vtulife.R$string: int abc_shareactionprovider_share_with
 com.V4Creations.vtulife.R$string: int abc_shareactionprovider_share_with_application
 com.V4Creations.vtulife.R$string: int about
+com.V4Creations.vtulife.R$string: int achievements
 com.V4Creations.vtulife.R$string: int app_description
 com.V4Creations.vtulife.R$string: int app_help
 com.V4Creations.vtulife.R$string: int app_name
@@ -1825,6 +1777,8 @@ com.V4Creations.vtulife.R$string: int location_client_powered_by_google
 com.V4Creations.vtulife.R$string: int menu
 com.V4Creations.vtulife.R$string: int modified_
 com.V4Creations.vtulife.R$string: int na
+com.V4Creations.vtulife.R$string: int navigation_drawer_close
+com.V4Creations.vtulife.R$string: int navigation_drawer_open
 com.V4Creations.vtulife.R$string: int no_notification_to_clear
 com.V4Creations.vtulife.R$string: int no_search_history_available
 com.V4Creations.vtulife.R$string: int notes
@@ -1870,6 +1824,8 @@ com.V4Creations.vtulife.R$string: int student_help_text
 com.V4Creations.vtulife.R$string: int subject
 com.V4Creations.vtulife.R$string: int subject_required
 com.V4Creations.vtulife.R$string: int submit
+com.V4Creations.vtulife.R$string: int switch_off
+com.V4Creations.vtulife.R$string: int switch_on
 com.V4Creations.vtulife.R$string: int this_is_an_expensive_operation_better_disable_this_unless_you_realy_want
 com.V4Creations.vtulife.R$string: int to_see_all_semester_result_of_each_student_in_class_result
 com.V4Creations.vtulife.R$string: int undo
@@ -1900,6 +1856,7 @@ com.V4Creations.vtulife.R$style: int ImageButtonvtulife
 com.V4Creations.vtulife.R$style: int ListViewvtulife
 com.V4Creations.vtulife.R$style: int ListViewvtulife_White
 com.V4Creations.vtulife.R$style: int PopupMenu_Vtulife
+com.V4Creations.vtulife.R$style: int Preference_SwitchPreference
 com.V4Creations.vtulife.R$style: int ProgressBar_Vtulife
 com.V4Creations.vtulife.R$style: int ProgressBarvtulife
 com.V4Creations.vtulife.R$style: int RadioButtonvtulife
@@ -1945,6 +1902,8 @@ com.V4Creations.vtulife.R$style: int TextAppearance_AppCompat_Widget_Base_DropDo
 com.V4Creations.vtulife.R$style: int TextAppearance_AppCompat_Widget_DropDownItem
 com.V4Creations.vtulife.R$style: int TextAppearance_AppCompat_Widget_PopupMenu_Large
 com.V4Creations.vtulife.R$style: int TextAppearance_AppCompat_Widget_PopupMenu_Small
+com.V4Creations.vtulife.R$style: int TextAppearance_Holo_Light_Widget_Switch
+com.V4Creations.vtulife.R$style: int TextAppearance_Holo_Widget_Switch
 com.V4Creations.vtulife.R$style: int TextAppearance_Widget_AppCompat_Base_ExpandedMenu_Item
 com.V4Creations.vtulife.R$style: int TextAppearance_Widget_AppCompat_ExpandedMenu_Item
 com.V4Creations.vtulife.R$style: int Theme_AppCompat
@@ -2047,6 +2006,8 @@ com.V4Creations.vtulife.R$style: int Widget_AppCompat_PopupMenu
 com.V4Creations.vtulife.R$style: int Widget_AppCompat_ProgressBar
 com.V4Creations.vtulife.R$style: int Widget_AppCompat_ProgressBar_Horizontal
 com.V4Creations.vtulife.R$style: int Widget_AppCompat_Spinner_DropDown_ActionBar
+com.V4Creations.vtulife.R$style: int Widget_Holo_CompoundButton_Switch
+com.V4Creations.vtulife.R$style: int Widget_Holo_Light_CompoundButton_Switch
 com.V4Creations.vtulife.R$style: int _vtulife
 com.V4Creations.vtulife.R$style: int fade_animation
 com.V4Creations.vtulife.R$style: int vtulife
@@ -2096,6 +2057,14 @@ com.V4Creations.vtulife.R$styleable: int[] AdsAttrs
 com.V4Creations.vtulife.R$styleable: int AdsAttrs_adSize
 com.V4Creations.vtulife.R$styleable: int AdsAttrs_adSizes
 com.V4Creations.vtulife.R$styleable: int AdsAttrs_adUnitId
+com.V4Creations.vtulife.R$styleable: int[] Android
+com.V4Creations.vtulife.R$styleable: int Android_android_textColor
+com.V4Creations.vtulife.R$styleable: int Android_android_textColorHighlight
+com.V4Creations.vtulife.R$styleable: int Android_android_textColorHint
+com.V4Creations.vtulife.R$styleable: int Android_android_textColorLink
+com.V4Creations.vtulife.R$styleable: int Android_android_textSize
+com.V4Creations.vtulife.R$styleable: int Android_android_textStyle
+com.V4Creations.vtulife.R$styleable: int Android_android_typeface
 com.V4Creations.vtulife.R$styleable: int[] CompatTextView
 com.V4Creations.vtulife.R$styleable: int CompatTextView_textAllCaps
 com.V4Creations.vtulife.R$styleable: int[] CustomViewDefault
@@ -2182,6 +2151,24 @@ com.V4Creations.vtulife.R$styleable: int Spinner_disableChildrenWhenDisabled
 com.V4Creations.vtulife.R$styleable: int Spinner_popupPromptView
 com.V4Creations.vtulife.R$styleable: int Spinner_prompt
 com.V4Creations.vtulife.R$styleable: int Spinner_spinnerMode
+com.V4Creations.vtulife.R$styleable: int[] Switch
+com.V4Creations.vtulife.R$styleable: int Switch_switchMinWidth
+com.V4Creations.vtulife.R$styleable: int Switch_switchPadding
+com.V4Creations.vtulife.R$styleable: int Switch_switchTextAppearance
+com.V4Creations.vtulife.R$styleable: int Switch_textOff
+com.V4Creations.vtulife.R$styleable: int Switch_textOn
+com.V4Creations.vtulife.R$styleable: int Switch_thumb
+com.V4Creations.vtulife.R$styleable: int Switch_thumbTextPadding
+com.V4Creations.vtulife.R$styleable: int Switch_track
+com.V4Creations.vtulife.R$styleable: int[] SwitchBackportTheme
+com.V4Creations.vtulife.R$styleable: int SwitchBackportTheme_switchPreferenceStyle
+com.V4Creations.vtulife.R$styleable: int SwitchBackportTheme_switchStyle
+com.V4Creations.vtulife.R$styleable: int[] SwitchPreference
+com.V4Creations.vtulife.R$styleable: int SwitchPreference_disableDependentsState
+com.V4Creations.vtulife.R$styleable: int SwitchPreference_summaryOff
+com.V4Creations.vtulife.R$styleable: int SwitchPreference_summaryOn
+com.V4Creations.vtulife.R$styleable: int SwitchPreference_switchTextOff
+com.V4Creations.vtulife.R$styleable: int SwitchPreference_switchTextOn
 com.V4Creations.vtulife.R$styleable: int[] Theme
 com.V4Creations.vtulife.R$styleable: int Theme_actionDropDownStyle
 com.V4Creations.vtulife.R$styleable: int Theme_dropdownListPreferredItemHeight
@@ -2195,31 +2182,7 @@ com.V4Creations.vtulife.R$styleable: int View_paddingEnd
 com.V4Creations.vtulife.R$styleable: int View_paddingStart
 com.V4Creations.vtulife.R$xml: int mimetypes
 com.V4Creations.vtulife.afilechooser.FileChooserActivity
-com.V4Creations.vtulife.afilechooser.FileChooserActivity: java.util.ArrayList EXTENSIONS
-com.V4Creations.vtulife.afilechooser.FileChooserActivity: java.lang.String TAG_EXTENTION
-com.V4Creations.vtulife.afilechooser.FileChooserActivity: java.lang.String TAG_FULLSCREEN
-com.V4Creations.vtulife.afilechooser.FileChooserActivity: java.lang.String PATH
-com.V4Creations.vtulife.afilechooser.FileChooserActivity: java.lang.String EXTERNAL_BASE_PATH
-com.V4Creations.vtulife.afilechooser.FileChooserActivity: android.support.v4.app.FragmentManager mFragmentManager
-com.V4Creations.vtulife.afilechooser.FileChooserActivity: android.content.BroadcastReceiver mStorageListener
-com.V4Creations.vtulife.afilechooser.FileChooserActivity: java.lang.String mPath
-com.V4Creations.vtulife.afilechooser.FileChooserActivity: void <clinit>()
 com.V4Creations.vtulife.afilechooser.FileChooserActivity: FileChooserActivity()
-com.V4Creations.vtulife.afilechooser.FileChooserActivity: void onCreate(android.os.Bundle)
-com.V4Creations.vtulife.afilechooser.FileChooserActivity: void showAllowedExtentions()
-com.V4Creations.vtulife.afilechooser.FileChooserActivity: void onPause()
-com.V4Creations.vtulife.afilechooser.FileChooserActivity: void onResume()
-com.V4Creations.vtulife.afilechooser.FileChooserActivity: void onSaveInstanceState(android.os.Bundle)
-com.V4Creations.vtulife.afilechooser.FileChooserActivity: void onBackStackChanged()
-com.V4Creations.vtulife.afilechooser.FileChooserActivity: boolean onCreateOptionsMenu(android.view.Menu)
-com.V4Creations.vtulife.afilechooser.FileChooserActivity: boolean onOptionsItemSelected(android.view.MenuItem)
-com.V4Creations.vtulife.afilechooser.FileChooserActivity: void addFragment()
-com.V4Creations.vtulife.afilechooser.FileChooserActivity: void replaceFragment(java.io.File)
-com.V4Creations.vtulife.afilechooser.FileChooserActivity: void finishWithResult(java.io.File)
-com.V4Creations.vtulife.afilechooser.FileChooserActivity: void onFileSelected(java.io.File)
-com.V4Creations.vtulife.afilechooser.FileChooserActivity: void registerStorageListener()
-com.V4Creations.vtulife.afilechooser.FileChooserActivity: void unregisterStorageListener()
-com.V4Creations.vtulife.afilechooser.FileChooserActivity: void access$0(com.V4Creations.vtulife.afilechooser.FileChooserActivity,java.io.File)
 com.V4Creations.vtulife.controller.gcm.GcmBroadcastReceiver
 com.V4Creations.vtulife.controller.gcm.GcmBroadcastReceiver: GcmBroadcastReceiver()
 com.V4Creations.vtulife.controller.gcm.GcmIntentService
@@ -2264,138 +2227,16 @@ com.V4Creations.vtulife.util.PagerSlidingTabStrip: int getTabPaddingLeftRight()
 com.V4Creations.vtulife.util.PagerSlidingTabStrip$SavedState
 com.V4Creations.vtulife.util.PagerSlidingTabStrip$SavedState: android.os.Parcelable$Creator CREATOR
 com.V4Creations.vtulife.view.activity.VTULifeAboutActivity
-com.V4Creations.vtulife.view.activity.VTULifeAboutActivity: com.V4Creations.vtulife.controller.adapters.ReferredLibraryAdapter mAdapter
-com.V4Creations.vtulife.view.activity.VTULifeAboutActivity: android.widget.ListView mListView
 com.V4Creations.vtulife.view.activity.VTULifeAboutActivity: VTULifeAboutActivity()
-com.V4Creations.vtulife.view.activity.VTULifeAboutActivity: void onCreate(android.os.Bundle)
-com.V4Creations.vtulife.view.activity.VTULifeAboutActivity: void initViews()
-com.V4Creations.vtulife.view.activity.VTULifeAboutActivity: void initListView()
-com.V4Creations.vtulife.view.activity.VTULifeAboutActivity: boolean onOptionsItemSelected(android.view.MenuItem)
-com.V4Creations.vtulife.view.activity.VTULifeAboutActivity: void onStart()
-com.V4Creations.vtulife.view.activity.VTULifeAboutActivity: void onStop()
-com.V4Creations.vtulife.view.activity.VTULifeAboutActivity: com.V4Creations.vtulife.controller.adapters.ReferredLibraryAdapter access$0(com.V4Creations.vtulife.view.activity.VTULifeAboutActivity)
 com.V4Creations.vtulife.view.activity.VTULifeLoadingScreenActivity
 com.V4Creations.vtulife.view.activity.VTULifeLoadingScreenActivity: VTULifeLoadingScreenActivity()
 com.V4Creations.vtulife.view.activity.VTULifeMainActivity
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: java.lang.String TAG
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: int INTERNET_CHECK_TIME_DELAY_HIGH
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: int INTERNET_CHECK_TIME_DELAY_LOW
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: int PREFERENCE_REQUEST_CODE
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: int NOTIFICATION_REQUEST_CODE
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: int PLAY_SERVICES_RESOLUTION_REQUEST
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: int NUM_OF_FRAGMENTS
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: int ID_VTU_LIFE_WEB_FRAGMENT
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: int ID_DIRECTORY_LISTING_FRAGMENT
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: int ID_FAST_RESULT_FRAGMENT
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: int ID_CLASS_RESULT_FRAGMENT
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: int ID_UPLOAD_FILE_FRAGEMENT
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: int ID_SHARE_A_PIC_FRAGMENT
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: android.support.v4.view.ViewPager mViewPager
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: com.V4Creations.vtulife.util.PagerSlidingTabStrip mTabs
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: com.V4Creations.vtulife.controller.adapters.VTULifeFragmentAdapter mVtuLifeFragmentAdapter
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: java.util.ArrayList vtuLifeFragments
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: boolean isInternetCheckRunning
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: boolean isHighDelay
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: android.os.Handler handler
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: de.keyboardsurfer.android.widget.crouton.Crouton infiniteCrouton
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: de.keyboardsurfer.android.widget.crouton.Configuration CONFIGURATION_INFINITE
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: com.google.analytics.tracking.android.EasyTracker mEasyTracker
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: boolean mExitFlag
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: android.app.Dialog mHelpDialog
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: android.support.v4.widget.DrawerLayout mDrawerLayout
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: android.support.v4.app.ActionBarDrawerToggle mDrawerToggle
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: android.view.View mMenuDrawer
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: com.V4Creations.vtulife.util.NavigationMenuManager mNavigationMenuManager
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: android.widget.TextView mNotificationCountTextView
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: com.V4Creations.vtulife.view.activity.NavigationMenu mNavigationMenu
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void <clinit>()
 com.V4Creations.vtulife.view.activity.VTULifeMainActivity: VTULifeMainActivity()
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void onCreate(android.os.Bundle)
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void checkFirstTimeUse()
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void gcmCheck()
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void registerGCMToServer()
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void init()
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void initNavigationDrawer()
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void initTabs()
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void initFragments()
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void onPause()
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void stopInternetCheck()
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void onResume()
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: boolean checkPlayServices()
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void changeCurrentFragemnt(int)
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void onBackPressed()
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void reflectActionBarChange(com.V4Creations.vtulife.model.ActionBarStatus,int,boolean)
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void showCrouton(java.lang.String,de.keyboardsurfer.android.widget.crouton.Style,boolean)
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void showCrouton(int,de.keyboardsurfer.android.widget.crouton.Style,boolean)
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void clearPendingCrouton()
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void updateInternetConnection()
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void onStart()
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void onStop()
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void onDestroy()
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void showPreferences()
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void onActivityResult(int,int,android.content.Intent)
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void notifyNotificationRefresh()
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void notifyUSNCleaner()
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void showAbout()
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void showHelp()
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void downloadHelpManual()
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void doDownloadHelpManual()
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void openManual()
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: boolean isManualIsAlradyDownloaded()
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: java.lang.String getManualFileUrl()
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void sendNormalMail()
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void likeUsOnFacebook()
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void showNotificationActivity()
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void showRateApp()
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void showFeedback()
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void onPostCreate(android.os.Bundle)
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void onConfigurationChanged(android.content.res.Configuration)
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: boolean onOptionsItemSelected(android.view.MenuItem)
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: boolean onPrepareOptionsMenu(android.view.Menu)
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: boolean onCreateOptionsMenu(android.view.Menu)
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void reflectNavChange(boolean)
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: boolean isNavigationDrawerOpen()
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: com.V4Creations.vtulife.controller.adapters.VTULifeFragmentAdapter access$0(com.V4Creations.vtulife.view.activity.VTULifeMainActivity)
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: com.google.analytics.tracking.android.EasyTracker access$1(com.V4Creations.vtulife.view.activity.VTULifeMainActivity)
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: com.V4Creations.vtulife.view.activity.NavigationMenu access$2(com.V4Creations.vtulife.view.activity.VTULifeMainActivity)
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void access$3(com.V4Creations.vtulife.view.activity.VTULifeMainActivity,boolean)
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: boolean access$4(com.V4Creations.vtulife.view.activity.VTULifeMainActivity)
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: android.os.Handler access$5(com.V4Creations.vtulife.view.activity.VTULifeMainActivity)
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: de.keyboardsurfer.android.widget.crouton.Crouton access$6(com.V4Creations.vtulife.view.activity.VTULifeMainActivity)
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void access$7(com.V4Creations.vtulife.view.activity.VTULifeMainActivity,de.keyboardsurfer.android.widget.crouton.Crouton)
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: void access$8(com.V4Creations.vtulife.view.activity.VTULifeMainActivity,boolean)
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: de.keyboardsurfer.android.widget.crouton.Configuration access$9()
-com.V4Creations.vtulife.view.activity.VTULifeMainActivity: boolean access$10(com.V4Creations.vtulife.view.activity.VTULifeMainActivity)
 com.V4Creations.vtulife.view.activity.VTULifeNotificationActivity
-com.V4Creations.vtulife.view.activity.VTULifeNotificationActivity: com.V4Creations.vtulife.controller.adapters.NotificationAdapter mNotificationAdapter
-com.V4Creations.vtulife.view.activity.VTULifeNotificationActivity: de.timroes.swipetodismiss.SwipeDismissList mSwipeList
-com.V4Creations.vtulife.view.activity.VTULifeNotificationActivity: android.widget.ListView mListView
 com.V4Creations.vtulife.view.activity.VTULifeNotificationActivity: VTULifeNotificationActivity()
-com.V4Creations.vtulife.view.activity.VTULifeNotificationActivity: void onCreate(android.os.Bundle)
-com.V4Creations.vtulife.view.activity.VTULifeNotificationActivity: void initViews()
-com.V4Creations.vtulife.view.activity.VTULifeNotificationActivity: void initListView()
-com.V4Creations.vtulife.view.activity.VTULifeNotificationActivity: boolean onOptionsItemSelected(android.view.MenuItem)
-com.V4Creations.vtulife.view.activity.VTULifeNotificationActivity: void clearNotifications()
-com.V4Creations.vtulife.view.activity.VTULifeNotificationActivity: void processClearNotification()
-com.V4Creations.vtulife.view.activity.VTULifeNotificationActivity: boolean onCreateOptionsMenu(android.view.Menu)
-com.V4Creations.vtulife.view.activity.VTULifeNotificationActivity: void onStart()
-com.V4Creations.vtulife.view.activity.VTULifeNotificationActivity: void onStop()
-com.V4Creations.vtulife.view.activity.VTULifeNotificationActivity: void initSwipeToDelete()
-com.V4Creations.vtulife.view.activity.VTULifeNotificationActivity: com.V4Creations.vtulife.controller.adapters.NotificationAdapter access$0(com.V4Creations.vtulife.view.activity.VTULifeNotificationActivity)
 com.V4Creations.vtulife.view.activity.VTULifePreferencesActivity
-com.V4Creations.vtulife.view.activity.VTULifePreferencesActivity: android.widget.CompoundButton mFullResultDetailsCompoundButton
-com.V4Creations.vtulife.view.activity.VTULifePreferencesActivity: android.widget.CompoundButton mSortedResultCompoundButton
-com.V4Creations.vtulife.view.activity.VTULifePreferencesActivity: android.widget.CompoundButton mDeepSearchResultCompoundButton
-com.V4Creations.vtulife.view.activity.VTULifePreferencesActivity: android.widget.Spinner mFavoritePageSpinner
-com.V4Creations.vtulife.view.activity.VTULifePreferencesActivity: com.google.analytics.tracking.android.EasyTracker mEasyTracker
 com.V4Creations.vtulife.view.activity.VTULifePreferencesActivity: VTULifePreferencesActivity()
-com.V4Creations.vtulife.view.activity.VTULifePreferencesActivity: void onCreate(android.os.Bundle)
-com.V4Creations.vtulife.view.activity.VTULifePreferencesActivity: void initViews()
-com.V4Creations.vtulife.view.activity.VTULifePreferencesActivity: boolean onOptionsItemSelected(android.view.MenuItem)
 com.V4Creations.vtulife.view.activity.VTULifePreferencesActivity: void clearButtonClick(android.view.View)
-com.V4Creations.vtulife.view.activity.VTULifePreferencesActivity: void onStart()
-com.V4Creations.vtulife.view.activity.VTULifePreferencesActivity: void onStop()
-com.V4Creations.vtulife.view.activity.VTULifePreferencesActivity: com.google.analytics.tracking.android.EasyTracker access$0(com.V4Creations.vtulife.view.activity.VTULifePreferencesActivity)
 com.V4Creations.vtulife.view.customviews.CustomeAutoCompleteTextView
 com.V4Creations.vtulife.view.customviews.CustomeAutoCompleteTextView: CustomeAutoCompleteTextView(android.content.Context,android.util.AttributeSet,int)
 com.V4Creations.vtulife.view.customviews.CustomeAutoCompleteTextView: CustomeAutoCompleteTextView(android.content.Context,android.util.AttributeSet)
@@ -2412,6 +2253,303 @@ com.V4Creations.vtulife.view.customviews.CustomeTextView
 com.V4Creations.vtulife.view.customviews.CustomeTextView: CustomeTextView(android.content.Context,android.util.AttributeSet,int)
 com.V4Creations.vtulife.view.customviews.CustomeTextView: CustomeTextView(android.content.Context,android.util.AttributeSet)
 com.V4Creations.vtulife.view.customviews.CustomeTextView: CustomeTextView(android.content.Context)
+com.bugsense.trace.BugProfiler
+com.bugsense.trace.BugProfiler: com.bugsense.trace.BugProfiler instance
+com.bugsense.trace.BugProfiler: int MAX_LIFETIME
+com.bugsense.trace.BugProfiler: java.lang.StringBuilder trackCpu
+com.bugsense.trace.BugProfiler: java.lang.StringBuilder trackMem
+com.bugsense.trace.BugProfiler: java.lang.String currentTag
+com.bugsense.trace.BugProfiler: int currentStep
+com.bugsense.trace.BugProfiler: int runningFor
+com.bugsense.trace.BugProfiler: boolean running
+com.bugsense.trace.BugProfiler: BugProfiler()
+com.bugsense.trace.BugProfiler: com.bugsense.trace.BugProfiler getProfiler()
+com.bugsense.trace.BugProfiler: void startProfiling(java.lang.String,int)
+com.bugsense.trace.BugProfiler: void stopProfiling(java.lang.String)
+com.bugsense.trace.BugProfiler: void startThread()
+com.bugsense.trace.BugProfiler: boolean access$000()
+com.bugsense.trace.BugProfiler: java.lang.StringBuilder access$100(com.bugsense.trace.BugProfiler)
+com.bugsense.trace.BugProfiler: java.lang.StringBuilder access$200(com.bugsense.trace.BugProfiler)
+com.bugsense.trace.BugProfiler: int access$300()
+com.bugsense.trace.BugProfiler: int access$412(int)
+com.bugsense.trace.BugProfiler: int access$400()
+com.bugsense.trace.BugProfiler: java.lang.String access$500()
+com.bugsense.trace.BugProfiler: void <clinit>()
+com.bugsense.trace.BugProfiler$1
+com.bugsense.trace.BugProfiler$1: com.bugsense.trace.BugProfiler this$0
+com.bugsense.trace.BugProfiler$1: BugProfiler$1(com.bugsense.trace.BugProfiler)
+com.bugsense.trace.BugProfiler$1: void run()
+com.bugsense.trace.BugSense
+com.bugsense.trace.BugSense: java.util.concurrent.ExecutorService executor
+com.bugsense.trace.BugSense: BugSense()
+com.bugsense.trace.BugSense: java.util.concurrent.ExecutorService getExecutor()
+com.bugsense.trace.BugSense: void showUpgradeNotification(android.content.Context,java.lang.String)
+com.bugsense.trace.BugSense: void <clinit>()
+com.bugsense.trace.BugSenseHandler
+com.bugsense.trace.BugSenseHandler: boolean I_WANT_TO_DEBUG
+com.bugsense.trace.BugSenseHandler: android.content.SharedPreferences preferences
+com.bugsense.trace.BugSenseHandler: android.content.SharedPreferences$Editor editor
+com.bugsense.trace.BugSenseHandler: com.bugsense.trace.ExceptionCallback exceptionCallback
+com.bugsense.trace.BugSenseHandler: boolean isSessionActive
+com.bugsense.trace.BugSenseHandler: java.lang.String locTicker
+com.bugsense.trace.BugSenseHandler: java.lang.String locTitle
+com.bugsense.trace.BugSenseHandler: java.lang.String locText
+com.bugsense.trace.BugSenseHandler: java.util.HashMap crashExtraData
+com.bugsense.trace.BugSenseHandler: BugSenseHandler()
+com.bugsense.trace.BugSenseHandler: void initAndStartSession(android.content.Context,java.lang.String)
+com.bugsense.trace.BugSenseHandler: void sendDataOverWiFiOnly()
+com.bugsense.trace.BugSenseHandler: int getTotalCrashesNum()
+com.bugsense.trace.BugSenseHandler: void clearTotalCrashesNum()
+com.bugsense.trace.BugSenseHandler: java.lang.String getLastCrashID()
+com.bugsense.trace.BugSenseHandler: void setExceptionCallback(com.bugsense.trace.ExceptionCallback)
+com.bugsense.trace.BugSenseHandler: com.bugsense.trace.ExceptionCallback getCallback()
+com.bugsense.trace.BugSenseHandler: void startSession(android.content.Context)
+com.bugsense.trace.BugSenseHandler: void leaveBreadcrumb(java.lang.String)
+com.bugsense.trace.BugSenseHandler: void closeSession(android.content.Context)
+com.bugsense.trace.BugSenseHandler: void sendEvent(java.lang.String)
+com.bugsense.trace.BugSenseHandler: void setUserIdentifier(java.lang.String)
+com.bugsense.trace.BugSenseHandler: void flush(android.content.Context)
+com.bugsense.trace.BugSenseHandler: void sendExceptionMap(java.util.HashMap,java.lang.Exception)
+com.bugsense.trace.BugSenseHandler: void sendException(java.lang.Exception)
+com.bugsense.trace.BugSenseHandler: void sendExceptionMessage(java.lang.String,java.lang.String,java.lang.Exception)
+com.bugsense.trace.BugSenseHandler: void setLogging(boolean)
+com.bugsense.trace.BugSenseHandler: void setLogging(int)
+com.bugsense.trace.BugSenseHandler: void setLogging(java.lang.String)
+com.bugsense.trace.BugSenseHandler: void setLogging(int,java.lang.String)
+com.bugsense.trace.BugSenseHandler: void installHandler()
+com.bugsense.trace.BugSenseHandler: void setLocalizedNotification(java.lang.String,java.lang.String,java.lang.String)
+com.bugsense.trace.BugSenseHandler: java.util.HashMap getCrashExtraData()
+com.bugsense.trace.BugSenseHandler: void addCrashExtraData(java.lang.String,java.lang.String)
+com.bugsense.trace.BugSenseHandler: void addCrashExtraMap(java.util.HashMap)
+com.bugsense.trace.BugSenseHandler: void removeCrashExtraData(java.lang.String)
+com.bugsense.trace.BugSenseHandler: void clearCrashExtraData()
+com.bugsense.trace.BugSenseHandler: void useProxy(boolean)
+com.bugsense.trace.BugSenseHandler: android.content.SharedPreferences access$002(android.content.SharedPreferences)
+com.bugsense.trace.BugSenseHandler: android.content.SharedPreferences$Editor access$102(android.content.SharedPreferences$Editor)
+com.bugsense.trace.BugSenseHandler: android.content.SharedPreferences access$000()
+com.bugsense.trace.BugSenseHandler: android.content.SharedPreferences$Editor access$100()
+com.bugsense.trace.BugSenseHandler: void <clinit>()
+com.bugsense.trace.BugSenseHandler$1
+com.bugsense.trace.BugSenseHandler$1: android.content.Context val$context
+com.bugsense.trace.BugSenseHandler$1: BugSenseHandler$1(android.content.Context)
+com.bugsense.trace.BugSenseHandler$1: void run()
+com.bugsense.trace.CrashMechanism
+com.bugsense.trace.CrashMechanism: int MAX_CRASHES
+com.bugsense.trace.CrashMechanism: int MAX_EXCEPTIONS
+com.bugsense.trace.CrashMechanism: int HANDLEDEXCEPTION
+com.bugsense.trace.CrashMechanism: int CRASH
+com.bugsense.trace.CrashMechanism: java.lang.String fixfilename
+com.bugsense.trace.CrashMechanism: com.bugsense.trace.CrashMechanism instance
+com.bugsense.trace.CrashMechanism: CrashMechanism()
+com.bugsense.trace.CrashMechanism: com.bugsense.trace.CrashMechanism getInstance()
+com.bugsense.trace.CrashMechanism: void sendSavedCrashes()
+com.bugsense.trace.CrashMechanism: java.lang.String createJSONFromCrash(java.lang.String,int,int,int,java.lang.String[],java.lang.String,java.util.Map,java.util.Map,int,long,java.util.Map)
+com.bugsense.trace.CrashMechanism: void transmitCrashASync(java.lang.String,int)
+com.bugsense.trace.CrashMechanism: boolean transmitCrashSync(java.lang.String,int)
+com.bugsense.trace.CrashMechanism: void saveFixNotification(java.lang.String)
+com.bugsense.trace.CrashMechanism: void saveCrash(java.lang.String,int)
+com.bugsense.trace.CrashMechanism: java.lang.String getBreadcrumbsLine(java.util.ArrayList)
+com.bugsense.trace.CrashMechanism: java.lang.String getClass(java.lang.String)
+com.bugsense.trace.CrashMechanism: boolean access$000(java.lang.String,int)
+com.bugsense.trace.CrashMechanism$1
+com.bugsense.trace.CrashMechanism$1: com.bugsense.trace.CrashMechanism this$0
+com.bugsense.trace.CrashMechanism$1: CrashMechanism$1(com.bugsense.trace.CrashMechanism)
+com.bugsense.trace.CrashMechanism$1: void run()
+com.bugsense.trace.CrashMechanism$1$1
+com.bugsense.trace.CrashMechanism$1$1: com.bugsense.trace.CrashMechanism$1 this$1
+com.bugsense.trace.CrashMechanism$1$1: CrashMechanism$1$1(com.bugsense.trace.CrashMechanism$1)
+com.bugsense.trace.CrashMechanism$1$1: boolean accept(java.io.File,java.lang.String)
+com.bugsense.trace.CrashMechanism$1$2
+com.bugsense.trace.CrashMechanism$1$2: com.bugsense.trace.CrashMechanism$1 this$1
+com.bugsense.trace.CrashMechanism$1$2: CrashMechanism$1$2(com.bugsense.trace.CrashMechanism$1)
+com.bugsense.trace.CrashMechanism$1$2: boolean accept(java.io.File,java.lang.String)
+com.bugsense.trace.CrashMechanism$2
+com.bugsense.trace.CrashMechanism$2: java.lang.String val$jsonCrashData
+com.bugsense.trace.CrashMechanism$2: int val$type
+com.bugsense.trace.CrashMechanism$2: CrashMechanism$2(java.lang.String,int)
+com.bugsense.trace.CrashMechanism$2: void run()
+com.bugsense.trace.CrashMechanism$3
+com.bugsense.trace.CrashMechanism$3: java.lang.String val$line
+com.bugsense.trace.CrashMechanism$3: CrashMechanism$3(java.lang.String)
+com.bugsense.trace.CrashMechanism$3: void run()
+com.bugsense.trace.CrashMechanism$4
+com.bugsense.trace.CrashMechanism$4: int val$type
+com.bugsense.trace.CrashMechanism$4: java.lang.String val$jsonCrashData
+com.bugsense.trace.CrashMechanism$4: CrashMechanism$4(int,java.lang.String)
+com.bugsense.trace.CrashMechanism$4: void run()
+com.bugsense.trace.CryptoHttpClient
+com.bugsense.trace.CryptoHttpClient: int KEY
+com.bugsense.trace.CryptoHttpClient: java.lang.String BASE64KEYANALYTICS
+com.bugsense.trace.CryptoHttpClient: java.lang.String BASE64KEYERRORS
+com.bugsense.trace.CryptoHttpClient: int ANALYTICS
+com.bugsense.trace.CryptoHttpClient: int ERRORS
+com.bugsense.trace.CryptoHttpClient: CryptoHttpClient(int)
+com.bugsense.trace.CryptoHttpClient: org.apache.http.conn.ClientConnectionManager createClientConnectionManager()
+com.bugsense.trace.CryptoHttpClient: org.apache.http.conn.ssl.SSLSocketFactory newSslSocketFactory()
+com.bugsense.trace.DefaultExceptionHandler
+com.bugsense.trace.DefaultExceptionHandler: java.lang.Thread$UncaughtExceptionHandler defaultExceptionHandler
+com.bugsense.trace.DefaultExceptionHandler: DefaultExceptionHandler(java.lang.Thread$UncaughtExceptionHandler)
+com.bugsense.trace.DefaultExceptionHandler: void uncaughtException(java.lang.Thread,java.lang.Throwable)
+com.bugsense.trace.EventsMechanism
+com.bugsense.trace.EventsMechanism: int MAX_EVENTS_SIZE
+com.bugsense.trace.EventsMechanism: int MAX_BYTES
+com.bugsense.trace.EventsMechanism: com.bugsense.trace.EventsMechanism instance
+com.bugsense.trace.EventsMechanism: EventsMechanism()
+com.bugsense.trace.EventsMechanism: com.bugsense.trace.EventsMechanism getInstance()
+com.bugsense.trace.EventsMechanism: void sendSavedEvents()
+com.bugsense.trace.EventsMechanism: java.lang.String getFlatLine(java.lang.String)
+com.bugsense.trace.EventsMechanism: boolean transmitEventSync(java.lang.String)
+com.bugsense.trace.EventsMechanism: void saveEvent(java.lang.String)
+com.bugsense.trace.EventsMechanism$1
+com.bugsense.trace.EventsMechanism$1: com.bugsense.trace.EventsMechanism this$0
+com.bugsense.trace.EventsMechanism$1: EventsMechanism$1(com.bugsense.trace.EventsMechanism)
+com.bugsense.trace.EventsMechanism$1: void run()
+com.bugsense.trace.EventsMechanism$1$1
+com.bugsense.trace.EventsMechanism$1$1: com.bugsense.trace.EventsMechanism$1 this$1
+com.bugsense.trace.EventsMechanism$1$1: EventsMechanism$1$1(com.bugsense.trace.EventsMechanism$1)
+com.bugsense.trace.EventsMechanism$1$1: boolean accept(java.io.File,java.lang.String)
+com.bugsense.trace.EventsMechanism$2
+com.bugsense.trace.EventsMechanism$2: java.lang.String val$tag
+com.bugsense.trace.EventsMechanism$2: EventsMechanism$2(java.lang.String)
+com.bugsense.trace.EventsMechanism$2: void run()
+com.bugsense.trace.ExceptionCallback
+com.bugsense.trace.ExceptionCallback: void lastBreath(java.lang.Exception)
+com.bugsense.trace.G
+com.bugsense.trace.G: java.lang.String BUGSENSE_VERSION
+com.bugsense.trace.G: java.lang.String FILES_PATH
+com.bugsense.trace.G: java.lang.String APP_VERSION
+com.bugsense.trace.G: java.lang.String APP_VERSIONCODE
+com.bugsense.trace.G: java.lang.String APP_PACKAGE
+com.bugsense.trace.G: java.lang.String URL
+com.bugsense.trace.G: java.lang.String ANALYTICS_URL
+com.bugsense.trace.G: java.lang.String TAG
+com.bugsense.trace.G: java.lang.String ANDROID_VERSION
+com.bugsense.trace.G: java.lang.String PHONE_MODEL
+com.bugsense.trace.G: java.lang.String PHONE_BRAND
+com.bugsense.trace.G: java.lang.String API_KEY
+com.bugsense.trace.G: boolean HAS_ROOT
+com.bugsense.trace.G: java.lang.String LOCALE
+com.bugsense.trace.G: java.lang.String UID
+com.bugsense.trace.G: int MAX_BREADCRUMBS
+com.bugsense.trace.G: java.util.ArrayList breadcrumbs
+com.bugsense.trace.G: boolean SEND_LOG
+com.bugsense.trace.G: java.lang.String LOG_FILTER
+com.bugsense.trace.G: int LOG_LINES
+com.bugsense.trace.G: long TIMESTAMP
+com.bugsense.trace.G: boolean proxyEnabled
+com.bugsense.trace.G: int IS_WIFI_ON
+com.bugsense.trace.G: int IS_MOBILENET_ON
+com.bugsense.trace.G: int IS_GPS_ON
+com.bugsense.trace.G: java.lang.String[] SCREEN_PROPS
+com.bugsense.trace.G: boolean sendOnlyWiFi
+com.bugsense.trace.G: java.lang.String userIdentifier
+com.bugsense.trace.G: java.lang.String APPS_RUNNING
+com.bugsense.trace.G: G()
+com.bugsense.trace.G: void <clinit>()
+com.bugsense.trace.PingsMechanism
+com.bugsense.trace.PingsMechanism: int MAX_PINGS_SIZE
+com.bugsense.trace.PingsMechanism: int MAX_GNIPS_SIZE
+com.bugsense.trace.PingsMechanism: int MAX_PERFS_SIZE
+com.bugsense.trace.PingsMechanism: int PING
+com.bugsense.trace.PingsMechanism: int GNIP
+com.bugsense.trace.PingsMechanism: int TRANS_START
+com.bugsense.trace.PingsMechanism: int TRANS_END
+com.bugsense.trace.PingsMechanism: com.bugsense.trace.PingsMechanism instance
+com.bugsense.trace.PingsMechanism: PingsMechanism()
+com.bugsense.trace.PingsMechanism: com.bugsense.trace.PingsMechanism getInstance()
+com.bugsense.trace.PingsMechanism: void sendSavedPings()
+com.bugsense.trace.PingsMechanism: java.lang.String getFlatLine(int,java.lang.String,java.lang.String,java.lang.String)
+com.bugsense.trace.PingsMechanism: void transmitPingASync(int)
+com.bugsense.trace.PingsMechanism: void transmitPingASync(java.lang.String,int)
+com.bugsense.trace.PingsMechanism: boolean transmitPingSync(java.lang.String)
+com.bugsense.trace.PingsMechanism: void savePing(int,java.lang.String)
+com.bugsense.trace.PingsMechanism: void savePing(int,java.lang.String,java.lang.String,java.lang.String)
+com.bugsense.trace.PingsMechanism$1
+com.bugsense.trace.PingsMechanism$1: com.bugsense.trace.PingsMechanism this$0
+com.bugsense.trace.PingsMechanism$1: PingsMechanism$1(com.bugsense.trace.PingsMechanism)
+com.bugsense.trace.PingsMechanism$1: void run()
+com.bugsense.trace.PingsMechanism$1$1
+com.bugsense.trace.PingsMechanism$1$1: com.bugsense.trace.PingsMechanism$1 this$1
+com.bugsense.trace.PingsMechanism$1$1: PingsMechanism$1$1(com.bugsense.trace.PingsMechanism$1)
+com.bugsense.trace.PingsMechanism$1$1: boolean accept(java.io.File,java.lang.String)
+com.bugsense.trace.PingsMechanism$1$2
+com.bugsense.trace.PingsMechanism$1$2: com.bugsense.trace.PingsMechanism$1 this$1
+com.bugsense.trace.PingsMechanism$1$2: PingsMechanism$1$2(com.bugsense.trace.PingsMechanism$1)
+com.bugsense.trace.PingsMechanism$1$2: boolean accept(java.io.File,java.lang.String)
+com.bugsense.trace.PingsMechanism$1$3
+com.bugsense.trace.PingsMechanism$1$3: com.bugsense.trace.PingsMechanism$1 this$1
+com.bugsense.trace.PingsMechanism$1$3: PingsMechanism$1$3(com.bugsense.trace.PingsMechanism$1)
+com.bugsense.trace.PingsMechanism$1$3: boolean accept(java.io.File,java.lang.String)
+com.bugsense.trace.PingsMechanism$2
+com.bugsense.trace.PingsMechanism$2: java.lang.String val$jsonCrashData
+com.bugsense.trace.PingsMechanism$2: int val$type
+com.bugsense.trace.PingsMechanism$2: PingsMechanism$2(java.lang.String,int)
+com.bugsense.trace.PingsMechanism$2: void run()
+com.bugsense.trace.PingsMechanism$3
+com.bugsense.trace.PingsMechanism$3: int val$type
+com.bugsense.trace.PingsMechanism$3: java.lang.String val$tag
+com.bugsense.trace.PingsMechanism$3: PingsMechanism$3(int,java.lang.String)
+com.bugsense.trace.PingsMechanism$3: void run()
+com.bugsense.trace.PingsMechanism$4
+com.bugsense.trace.PingsMechanism$4: int val$type
+com.bugsense.trace.PingsMechanism$4: java.lang.String val$tag
+com.bugsense.trace.PingsMechanism$4: java.lang.String val$cpu
+com.bugsense.trace.PingsMechanism$4: java.lang.String val$mem
+com.bugsense.trace.PingsMechanism$4: PingsMechanism$4(int,java.lang.String,java.lang.String,java.lang.String)
+com.bugsense.trace.PingsMechanism$4: void run()
+com.bugsense.trace.UidManager
+com.bugsense.trace.UidManager: java.lang.String UID_PREFERENCES
+com.bugsense.trace.UidManager: java.lang.String UID_FIELD
+com.bugsense.trace.UidManager: java.lang.String UID_ERROR_ID
+com.bugsense.trace.UidManager: java.lang.String UID_NOSAVED
+com.bugsense.trace.UidManager: int UID_CORRECT_LENTH
+com.bugsense.trace.UidManager: char[] DIGITS
+com.bugsense.trace.UidManager: UidManager()
+com.bugsense.trace.UidManager: java.lang.String getUid(android.content.Context)
+com.bugsense.trace.UidManager: boolean saveUid(android.content.Context,java.lang.String)
+com.bugsense.trace.UidManager: java.lang.String generateUid()
+com.bugsense.trace.UidManager: char[] encodeHex(byte[])
+com.bugsense.trace.UidManager: void <clinit>()
+com.bugsense.trace.Utils
+com.bugsense.trace.Utils: int STATE_OFF
+com.bugsense.trace.Utils: int STATE_ON
+com.bugsense.trace.Utils: int STATE_DONT_KNOW
+com.bugsense.trace.Utils: java.lang.Runtime rt
+com.bugsense.trace.Utils: java.lang.String crashCounterFile
+com.bugsense.trace.Utils: java.lang.String lastCrashIDFile
+com.bugsense.trace.Utils: Utils()
+com.bugsense.trace.Utils: boolean checkForRoot()
+com.bugsense.trace.Utils: java.lang.String getTime()
+com.bugsense.trace.Utils: java.lang.String exceedLimitString(java.lang.String)
+com.bugsense.trace.Utils: java.lang.String readLogs()
+com.bugsense.trace.Utils: java.lang.String readFile(java.lang.String)
+com.bugsense.trace.Utils: java.lang.String MD5(java.lang.String)
+com.bugsense.trace.Utils: int CheckNetworkConnection(android.content.Context,java.lang.String)
+com.bugsense.trace.Utils: int isWifiOn(android.content.Context)
+com.bugsense.trace.Utils: boolean isOnWifi(android.content.Context)
+com.bugsense.trace.Utils: int isMobileNetworkOn(android.content.Context)
+com.bugsense.trace.Utils: int isGPSOn(android.content.Context)
+com.bugsense.trace.Utils: java.lang.String[] ScreenProperties(android.content.Context)
+com.bugsense.trace.Utils: void setProperties(android.content.Context)
+com.bugsense.trace.Utils: java.lang.String getMem()
+com.bugsense.trace.Utils: java.lang.String getCPU()
+com.bugsense.trace.Utils: java.lang.String getAppsRunning(android.content.Context)
+com.bugsense.trace.Utils: int getCrashCounter()
+com.bugsense.trace.Utils: void clearCrashCounter()
+com.bugsense.trace.Utils: void saveCrashCounter()
+com.bugsense.trace.Utils: void saveLastCrashID(java.lang.String)
+com.bugsense.trace.Utils: java.lang.String getLastCrashID()
+com.bugsense.trace.Utils: void <clinit>()
+com.bugsense.trace.Utils$1
+com.bugsense.trace.Utils$1: Utils$1()
+com.bugsense.trace.Utils$1: void run()
+com.bugsense.trace.Utils$2
+com.bugsense.trace.Utils$2: Utils$2()
+com.bugsense.trace.Utils$2: void run()
+com.bugsense.trace.Utils$3
+com.bugsense.trace.Utils$3: java.lang.String val$lastID
+com.bugsense.trace.Utils$3: Utils$3(java.lang.String)
+com.bugsense.trace.Utils$3: void run()
 com.google.ads.AdRequest$ErrorCode: com.google.ads.AdRequest$ErrorCode[] values()
 com.google.ads.AdRequest$ErrorCode: com.google.ads.AdRequest$ErrorCode valueOf(java.lang.String)
 com.google.ads.AdRequest$Gender: com.google.ads.AdRequest$Gender[] values()
@@ -2913,3 +3051,99 @@ de.timroes.swipetodismiss.SwipeDismissList$SwipeDirection: de.timroes.swipetodis
 de.timroes.swipetodismiss.SwipeDismissList$SwipeDirection: de.timroes.swipetodismiss.SwipeDismissList$SwipeDirection valueOf(java.lang.String)
 de.timroes.swipetodismiss.SwipeDismissList$UndoMode: de.timroes.swipetodismiss.SwipeDismissList$UndoMode[] values()
 de.timroes.swipetodismiss.SwipeDismissList$UndoMode: de.timroes.swipetodismiss.SwipeDismissList$UndoMode valueOf(java.lang.String)
+org.jraf.android.backport.switchwidget.R$attr: int disableDependentsState
+org.jraf.android.backport.switchwidget.R$attr: int summaryOff
+org.jraf.android.backport.switchwidget.R$attr: int summaryOn
+org.jraf.android.backport.switchwidget.R$attr: int switchMinWidth
+org.jraf.android.backport.switchwidget.R$attr: int switchPadding
+org.jraf.android.backport.switchwidget.R$attr: int switchPreferenceStyle
+org.jraf.android.backport.switchwidget.R$attr: int switchStyle
+org.jraf.android.backport.switchwidget.R$attr: int switchTextAppearance
+org.jraf.android.backport.switchwidget.R$attr: int switchTextOff
+org.jraf.android.backport.switchwidget.R$attr: int switchTextOn
+org.jraf.android.backport.switchwidget.R$attr: int textOff
+org.jraf.android.backport.switchwidget.R$attr: int textOn
+org.jraf.android.backport.switchwidget.R$attr: int thumb
+org.jraf.android.backport.switchwidget.R$attr: int thumbTextPadding
+org.jraf.android.backport.switchwidget.R$attr: int track
+org.jraf.android.backport.switchwidget.R$color: int background_holo_light
+org.jraf.android.backport.switchwidget.R$color: int bright_foreground_disabled_holo_dark
+org.jraf.android.backport.switchwidget.R$color: int bright_foreground_holo_dark
+org.jraf.android.backport.switchwidget.R$color: int dim_foreground_disabled_holo_dark
+org.jraf.android.backport.switchwidget.R$color: int dim_foreground_holo_dark
+org.jraf.android.backport.switchwidget.R$color: int primary_text_holo_dark
+org.jraf.android.backport.switchwidget.R$color: int secondary_text_holo_dark
+org.jraf.android.backport.switchwidget.R$dimen: int preference_icon_minWidth
+org.jraf.android.backport.switchwidget.R$dimen: int preference_item_padding_inner
+org.jraf.android.backport.switchwidget.R$dimen: int preference_item_padding_side
+org.jraf.android.backport.switchwidget.R$dimen: int preference_widget_width
+org.jraf.android.backport.switchwidget.R$drawable: int switch_bg_disabled_holo_dark
+org.jraf.android.backport.switchwidget.R$drawable: int switch_bg_disabled_holo_light
+org.jraf.android.backport.switchwidget.R$drawable: int switch_bg_focused_holo_dark
+org.jraf.android.backport.switchwidget.R$drawable: int switch_bg_focused_holo_light
+org.jraf.android.backport.switchwidget.R$drawable: int switch_bg_holo_dark
+org.jraf.android.backport.switchwidget.R$drawable: int switch_bg_holo_light
+org.jraf.android.backport.switchwidget.R$drawable: int switch_inner_holo_dark
+org.jraf.android.backport.switchwidget.R$drawable: int switch_inner_holo_light
+org.jraf.android.backport.switchwidget.R$drawable: int switch_thumb_activated_holo_dark
+org.jraf.android.backport.switchwidget.R$drawable: int switch_thumb_activated_holo_light
+org.jraf.android.backport.switchwidget.R$drawable: int switch_thumb_disabled_holo_dark
+org.jraf.android.backport.switchwidget.R$drawable: int switch_thumb_disabled_holo_light
+org.jraf.android.backport.switchwidget.R$drawable: int switch_thumb_holo_dark
+org.jraf.android.backport.switchwidget.R$drawable: int switch_thumb_holo_light
+org.jraf.android.backport.switchwidget.R$drawable: int switch_thumb_holo_light_v2
+org.jraf.android.backport.switchwidget.R$drawable: int switch_thumb_pressed_holo_dark
+org.jraf.android.backport.switchwidget.R$drawable: int switch_thumb_pressed_holo_light
+org.jraf.android.backport.switchwidget.R$drawable: int switch_track_holo_dark
+org.jraf.android.backport.switchwidget.R$drawable: int switch_track_holo_light
+org.jraf.android.backport.switchwidget.R$id: int switchWidget
+org.jraf.android.backport.switchwidget.R$layout: int preference
+org.jraf.android.backport.switchwidget.R$layout: int preference_widget_switch
+org.jraf.android.backport.switchwidget.R$string: int switch_off
+org.jraf.android.backport.switchwidget.R$string: int switch_on
+org.jraf.android.backport.switchwidget.R$style: int Preference_SwitchPreference
+org.jraf.android.backport.switchwidget.R$style: int TextAppearance_Holo_Light_Widget_Switch
+org.jraf.android.backport.switchwidget.R$style: int TextAppearance_Holo_Widget_Switch
+org.jraf.android.backport.switchwidget.R$style: int Widget_Holo_CompoundButton_Switch
+org.jraf.android.backport.switchwidget.R$style: int Widget_Holo_Light_CompoundButton_Switch
+org.jraf.android.backport.switchwidget.R$styleable: int[] Android
+org.jraf.android.backport.switchwidget.R$styleable: int Android_android_textColor
+org.jraf.android.backport.switchwidget.R$styleable: int Android_android_textColorHighlight
+org.jraf.android.backport.switchwidget.R$styleable: int Android_android_textColorHint
+org.jraf.android.backport.switchwidget.R$styleable: int Android_android_textColorLink
+org.jraf.android.backport.switchwidget.R$styleable: int Android_android_textSize
+org.jraf.android.backport.switchwidget.R$styleable: int Android_android_textStyle
+org.jraf.android.backport.switchwidget.R$styleable: int Android_android_typeface
+org.jraf.android.backport.switchwidget.R$styleable: int[] Switch
+org.jraf.android.backport.switchwidget.R$styleable: int[] SwitchBackportTheme
+org.jraf.android.backport.switchwidget.R$styleable: int SwitchBackportTheme_switchPreferenceStyle
+org.jraf.android.backport.switchwidget.R$styleable: int SwitchBackportTheme_switchStyle
+org.jraf.android.backport.switchwidget.R$styleable: int[] SwitchPreference
+org.jraf.android.backport.switchwidget.R$styleable: int SwitchPreference_disableDependentsState
+org.jraf.android.backport.switchwidget.R$styleable: int SwitchPreference_summaryOff
+org.jraf.android.backport.switchwidget.R$styleable: int SwitchPreference_summaryOn
+org.jraf.android.backport.switchwidget.R$styleable: int SwitchPreference_switchTextOff
+org.jraf.android.backport.switchwidget.R$styleable: int SwitchPreference_switchTextOn
+org.jraf.android.backport.switchwidget.R$styleable: int Switch_switchMinWidth
+org.jraf.android.backport.switchwidget.R$styleable: int Switch_switchPadding
+org.jraf.android.backport.switchwidget.R$styleable: int Switch_switchTextAppearance
+org.jraf.android.backport.switchwidget.R$styleable: int Switch_textOff
+org.jraf.android.backport.switchwidget.R$styleable: int Switch_textOn
+org.jraf.android.backport.switchwidget.R$styleable: int Switch_thumb
+org.jraf.android.backport.switchwidget.R$styleable: int Switch_thumbTextPadding
+org.jraf.android.backport.switchwidget.R$styleable: int Switch_track
+org.jraf.android.backport.switchwidget.Switch
+org.jraf.android.backport.switchwidget.Switch: Switch(android.content.Context)
+org.jraf.android.backport.switchwidget.Switch: Switch(android.content.Context,android.util.AttributeSet)
+org.jraf.android.backport.switchwidget.Switch: Switch(android.content.Context,android.util.AttributeSet,int)
+org.jraf.android.backport.switchwidget.Switch: void setSwitchTypeface(android.graphics.Typeface)
+org.jraf.android.backport.switchwidget.Switch: java.lang.CharSequence getTextOn()
+org.jraf.android.backport.switchwidget.Switch: void setTextOn(java.lang.CharSequence)
+org.jraf.android.backport.switchwidget.Switch: java.lang.CharSequence getTextOff()
+org.jraf.android.backport.switchwidget.Switch: void setTextOff(java.lang.CharSequence)
+org.jraf.android.backport.switchwidget.Switch: boolean getTargetCheckedState()
+org.jraf.android.backport.switchwidget.Switch: void setChecked(boolean)
+org.jraf.android.backport.switchwidget.Switch: int getCompoundPaddingRight()
+org.jraf.android.backport.switchwidget.Switch: int getThumbScrollRange()
+org.jraf.android.backport.switchwidget.TwoStatePreference$SavedState
+org.jraf.android.backport.switchwidget.TwoStatePreference$SavedState: android.os.Parcelable$Creator CREATOR
